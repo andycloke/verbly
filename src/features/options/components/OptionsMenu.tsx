@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Toggle from 'material-ui/Toggle';
 
 import './OptionsMenu.css';
 
@@ -14,10 +15,11 @@ const OptionsMenu = ({
   return (
     <div className="OptionsMenu__outer">
       <h1 className="OptionsMenu__header">Options</h1>
-      <p>{`${displayEnglishInfinitive}`}</p>
-      <button onClick={toggleEnglishInfinitive}>
-        Toggle english infinitive
-      </button>
+      <Toggle
+        label="Toggle english infinitive"
+        toggled={displayEnglishInfinitive}
+        onToggle={toggleEnglishInfinitive}
+      />
     </div>
   );
 };
