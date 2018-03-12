@@ -8,6 +8,11 @@ const reducer = (options: Options = initialOptions, action: any) => {
         ...options,
         displayEnglishInfinitive: !options.displayEnglishInfinitive
       };
+    case actionTypes.TOGGLE_AUDIO_FEEDBACK:
+      return {
+        ...options,
+        audioFeedback: !options.audioFeedback
+      };
     default:
       return options;
   }

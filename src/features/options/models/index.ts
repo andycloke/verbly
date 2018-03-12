@@ -1,7 +1,9 @@
 export type Options = {
   displayEnglishInfinitive: boolean;
+  audioFeedback: boolean;
 };
 
 export const initialOptions = {
-  displayEnglishInfinitive: true
+  displayEnglishInfinitive: true,
+  audioFeedback: true
 };

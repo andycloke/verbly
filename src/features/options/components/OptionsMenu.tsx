@@ -6,19 +6,28 @@ import './OptionsMenu.css';
 type Props = {
   displayEnglishInfinitive: boolean;
   toggleEnglishInfinitive: (event: React.MouseEvent<HTMLElement>) => any;
+  audioFeedback: boolean;
+  toggleAudioFeedback: (event: React.MouseEvent<HTMLElement>) => any;
 };
 
 const OptionsMenu = ({
   displayEnglishInfinitive,
-  toggleEnglishInfinitive
+  toggleEnglishInfinitive,
+  audioFeedback,
+  toggleAudioFeedback
 }: Props) => {
   return (
     <div className="OptionsMenu__outer">
       <h1 className="OptionsMenu__header">Options</h1>
       <Toggle
-        label="Toggle english infinitive"
+        label="Display english infinitive"
         toggled={displayEnglishInfinitive}
         onToggle={toggleEnglishInfinitive}
+      />
+      <Toggle
+        label="Audio feedback"
+        toggled={audioFeedback}
+        onToggle={toggleAudioFeedback}
       />
     </div>
   );
