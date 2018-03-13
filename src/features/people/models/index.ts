@@ -7,7 +7,7 @@ export type PeopleInPlay = {
   ellos: boolean;
 };
 
-export const initialState = {
+export const initialState: PeopleInPlay = {
   yo: true,
   tu: true,
   el: true,

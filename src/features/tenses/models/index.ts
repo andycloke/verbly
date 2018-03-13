@@ -14,7 +14,7 @@ export type TensesInPlay = {
   imperativeNegativePresent: boolean;
 };
 
-export const initialState = {
+export const initialState: TensesInPlay = {
   indicativePresent: true,
   indicativePresentProgressive: true,
   indicativeFuture: true,

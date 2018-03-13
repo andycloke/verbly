@@ -6,11 +6,14 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 import options from './features/options/reducers';
 import peopleInPlay from './features/people/reducers';
 import tensesInPlay from './features/tenses/reducers';
+import tensesInPlay from './features/tenses/reducers';
+import verbsInPlay from './features/verbs/reducers';
 
 const reducer = combineReducers({
   options,
   peopleInPlay,
-  tensesInPlay
+  tensesInPlay,
+  verbsInPlay
 });
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
