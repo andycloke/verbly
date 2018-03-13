@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Toggle from 'material-ui/Toggle';
-
-import './OptionsMenu.css';
+import Subheader from 'material-ui/Subheader';
+import { List, ListItem } from 'material-ui/List';
 
 type Props = {
   displayEnglishInfinitive: boolean;
@@ -17,19 +17,19 @@ const OptionsMenu = ({
   toggleAudioFeedback
 }: Props) => {
   return (
-    <div className="OptionsMenu__outer">
-      <h1 className="OptionsMenu__header">Options</h1>
-      <Toggle
-        label="Display english infinitive"
-        toggled={displayEnglishInfinitive}
-        onToggle={toggleEnglishInfinitive}
+    <List>
+      <Subheader>Options</Subheader>
+      <ListItem
+        primaryText="Display english infinitive"
+        onClick={toggleEnglishInfinitive}
+        rightIcon={<Toggle toggled={displayEnglishInfinitive} />}
       />
-      <Toggle
-        label="Audio feedback"
-        toggled={audioFeedback}
-        onToggle={toggleAudioFeedback}
+      <ListItem
+        primaryText="Audio feedback"
+        onClick={toggleAudioFeedback}
+        rightIcon={<Toggle toggled={audioFeedback} />}
       />
-    </div>
+    </List>
   );
 };
 
