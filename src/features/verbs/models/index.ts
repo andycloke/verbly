@@ -31,5 +31,5 @@ export const initialState: VerbsInPlay = {
   reflexive: VerbsIncludedOptions.Include,
   irregular: VerbsIncludedOptions.Include,
   whichVerbs: WhichVerbsOptions.Common,
-  userDefinedVerbs: ['estar', 'hacer']
+  userDefinedVerbs: []
 };
