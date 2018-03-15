@@ -1,15 +1,19 @@
-// import { actionTypes } from '../actions';
-// import { initialState } from '../models';
+import { actionTypes } from '../actions';
+import { initialState, Game } from '../models';
 
-// export default (peopleInPlay: PeopleInPlay = initialState, action: any) => {
-//   switch (action.type) {
-//     case actionTypes.TOGGLE_PERSON_IN_PLAY:
-//       const { person } = action.payload;
-//       return {
-//         ...peopleInPlay,
-//         [person]: !peopleInPlay[person]
-//       };
-//     default:
-//       return peopleInPlay;
-//   }
-// };
+export default (game: Game = initialState, action: any) => {
+  switch (action.type) {
+    case actionTypes.START_GAME:
+      return {
+        ...game,
+        started: true
+      };
+    case actionTypes.END_GAME:
+      return {
+        ...game,
+        started: false
+      };
+    default:
+      return game;
+  }
+};

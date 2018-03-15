@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import AppBar from './features/common/components/AppBar';
 import MainMenu from './features/main-menu/components/MainMenu';
+import StartEndGameButton from './features/main-menu/containers/StartEndGameButton';
 import OptionsMenu from './features/options/containers/OptionsMenu';
 
 import './App.css';
@@ -17,6 +18,7 @@ class App extends React.Component {
         <MuiThemeProvider>
           <div className="App">
             <AppBar />
+            <StartEndGameButton />
             <MainMenu />
             <OptionsMenu />
           </div>

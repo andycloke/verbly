@@ -7,12 +7,14 @@ import options from './features/options/reducers';
 import peopleInPlay from './features/main-menu/features/people/reducers';
 import tensesInPlay from './features/main-menu/features/tenses/reducers';
 import verbsInPlay from './features/main-menu/features/verbs/reducers';
+import game from './features/game/reducers';
 
 const reducer = combineReducers({
   options,
   peopleInPlay,
   tensesInPlay,
-  verbsInPlay
+  verbsInPlay,
+  game
 });
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
