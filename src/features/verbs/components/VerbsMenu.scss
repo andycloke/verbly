@@ -1,0 +1,17 @@
+.VerbsMenu__outer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+$minWidth: 225px;
+
+.VerbsMenu__outer > div {
+  width: 33%;
+  min-width: $minWidth;
+}
+
+@media screen and (max-width: (3 * $minWidth)) {
+  .VerbsMenu__outer > div {
+    width: 100%;
+  }
+}

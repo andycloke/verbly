@@ -1,0 +1,11 @@
+.VerbsMenu__outer {
+  display: flex;
+  flex-wrap: wrap; }
+
+.VerbsMenu__outer > div {
+  width: 33%;
+  min-width: 225px; }
+
+@media screen and (max-width: 675px) {
+  .VerbsMenu__outer > div {
+    width: 100%; } }

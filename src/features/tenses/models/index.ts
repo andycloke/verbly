@@ -16,18 +16,18 @@ export type TensesInPlay = {
 
 export const initialState: TensesInPlay = {
   indicativePresent: true,
-  indicativePresentProgressive: true,
-  indicativeFuture: true,
-  conditionalPresent: true,
-  indicativeImperfect: true,
-  indicativePreterite: true,
-  indicativePresentPerfect: true,
-  indicativeFuturePerfect: true,
-  indicativePastPerfect: true,
-  conditionalPerfect: true,
-  subjunctivePresent: true,
-  imperativeAffirmativePresent: true,
-  imperativeNegativePresent: true
+  indicativePresentProgressive: false,
+  indicativeFuture: false,
+  conditionalPresent: false,
+  indicativeImperfect: false,
+  indicativePreterite: false,
+  indicativePresentPerfect: false,
+  indicativeFuturePerfect: false,
+  indicativePastPerfect: false,
+  conditionalPerfect: false,
+  subjunctivePresent: false,
+  imperativeAffirmativePresent: false,
+  imperativeNegativePresent: false
 };
 
 export const tenses = Object.freeze({
