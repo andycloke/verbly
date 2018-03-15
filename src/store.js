@@ -4,9 +4,9 @@ import thunk from 'redux-thunk';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 import options from './features/options/reducers';
-import peopleInPlay from './features/main-menu/features/people/reducers';
-import tensesInPlay from './features/main-menu/features/tenses/reducers';
-import verbsInPlay from './features/main-menu/features/verbs/reducers';
+import peopleInPlay from './features/menu/features/people/reducers';
+import tensesInPlay from './features/menu/features/tenses/reducers';
+import verbsInPlay from './features/menu/features/verbs/reducers';
 import game from './features/game/reducers';
 
 const reducer = combineReducers({

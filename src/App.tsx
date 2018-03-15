@@ -4,14 +4,15 @@ import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import AppBar from './features/common/components/AppBar';
-import MainMenu from './features/main-menu/components/MainMenu';
-import StartEndGameButton from './features/main-menu/containers/StartEndGameButton';
-import OptionsMenu from './features/options/containers/OptionsMenu';
+// import MainMenu from './features/menu/components/MainMenu';
+import StartEndGameButton from './features/common/containers/StartEndGameButton';
+import MainSection from './features/common/containers/MainSection';
+// import OptionsMenu from './features/options/containers/OptionsMenu';
 
 import './App.css';
 import store from './store';
 
-class App extends React.Component {
+class App extends React.PureComponent {
   render() {
     return (
       <Provider store={store}>
@@ -19,8 +20,7 @@ class App extends React.Component {
           <div className="App">
             <AppBar />
             <StartEndGameButton />
-            <MainMenu />
-            <OptionsMenu />
+            <MainSection />
           </div>
         </MuiThemeProvider>
       </Provider>
