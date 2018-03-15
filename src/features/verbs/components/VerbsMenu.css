@@ -4,7 +4,9 @@
 
 .VerbsMenu__outer > div {
   width: 33%;
-  min-width: 225px; }
+  min-width: 225px;
+  border: 1px solid #eee;
+  margin: -1px 0 0 -1px; }
 
 @media screen and (max-width: 675px) {
   .VerbsMenu__outer > div {

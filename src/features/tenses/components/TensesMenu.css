@@ -1,0 +1,11 @@
+.TensesMenu__outer {
+  flex: 3; }
+
+.TensesMenu__outer > div {
+  display: flex;
+  flex-wrap: wrap; }
+
+.TensesMenu__outer > div > div:not(:first-child) {
+  width: 33%;
+  border: 1px solid #eee;
+  margin: -1px 0 0 -1px; }

@@ -10,10 +10,8 @@ export default class MainMenu extends React.PureComponent {
   render() {
     return (
       <div>
-        <div className="MainMenu__peopleTensesWrapper">
-          <PeopleMenu />
-          <TensesMenu />
-        </div>
+        <TensesMenu />
+        <PeopleMenu />
         <VerbsMenu />
       </div>
     );

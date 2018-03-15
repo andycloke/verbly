@@ -5,6 +5,8 @@ import Checkbox from 'material-ui/Checkbox';
 import Subheader from 'material-ui/Subheader';
 import { List, ListItem } from 'material-ui/List';
 
+import './PeopleMenu.css';
+
 export type PeopleMenuDataProps = {
   inPlay: PeopleInPlay;
 };
@@ -29,20 +31,23 @@ const PeopleMenu = ({ inPlay, togglePersonInPlay }: Props) => {
     event: React.MouseEvent<HTMLElement>
   ): any => togglePersonInPlay(person);
   return (
-    <List>
+    <div className="PeopleMenu__outer">
       <Subheader>People</Subheader>
-      {Object.keys(inPlay).map(key => {
-        const checkBox = <Checkbox checked={inPlay[key]} />;
-        return (
-          <ListItem
-            key={key}
-            primaryText={displayText[key]}
-            leftIcon={checkBox}
-            onClick={makeClickHandler(key)}
-          />
-        );
-      })}
-    </List>
+      <List>
+        {Object.keys(inPlay).map(key => {
+          const checkBox = <Checkbox checked={inPlay[key]} />;
+          return (
+            <ListItem
+              key={key}
+              primaryText={displayText[key]}
+              // secondaryText="test"
+              leftIcon={checkBox}
+              onClick={makeClickHandler(key)}
+            />
+          );
+        })}
+      </List>
+    </div>
   );
 };
 

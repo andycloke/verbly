@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
 
+import AppBar from './features/common/components/AppBar';
 import MainMenu from './features/main-menu/components/MainMenu';
 import OptionsMenu from './features/options/containers/OptionsMenu';
 
@@ -16,7 +16,7 @@ class App extends React.Component {
       <Provider store={store}>
         <MuiThemeProvider>
           <div className="App">
-            <AppBar title="Verbly" />
+            <AppBar />
             <MainMenu />
             <OptionsMenu />
           </div>

@@ -1,0 +1,6 @@
+.PeopleMenu__outer {
+  flex: 1; }
+
+.PeopleMenu__outer > div > div:not(:first-child) > span {
+  border: 1px solid #eee;
+  margin: -1px 0 0 -1px; }

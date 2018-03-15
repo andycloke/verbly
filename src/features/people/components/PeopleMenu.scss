@@ -1,0 +1,9 @@
+@import '../../../common.scss';
+
+.PeopleMenu__outer {
+  flex: 1;
+}
+
+.PeopleMenu__outer > div > div:not(:first-child) > span {
+  @include flatCard;
+}

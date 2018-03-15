@@ -7,6 +7,8 @@ import { List, ListItem } from 'material-ui/List';
 import { TensesInPlay } from '../models';
 import displayText from './displayText';
 
+import './TensesMenu.css';
+
 export type TensesMenuDataProps = {
   inPlay: TensesInPlay;
 };
@@ -22,21 +24,23 @@ const TensesMenu = ({ inPlay, toggleTenseInPlay }: Props) => {
     event: React.MouseEvent<HTMLElement>
   ): any => toggleTenseInPlay(tense);
   return (
-    <List>
-      <Subheader>Tenses</Subheader>
-      {Object.keys(inPlay).map(key => {
-        const checkBox = <Checkbox checked={inPlay[key]} />;
-        return (
-          <ListItem
-            key={key}
-            primaryText={displayText[key].text}
-            secondaryText={displayText[key].example}
-            leftIcon={checkBox}
-            onClick={makeClickHandler(key)}
-          />
-        );
-      })}
-    </List>
+    <div className="TensesMenu__outer">
+      <List>
+        <Subheader>Tenses</Subheader>
+        {Object.keys(inPlay).map(key => {
+          const checkBox = <Checkbox checked={inPlay[key]} />;
+          return (
+            <ListItem
+              key={key}
+              primaryText={displayText[key].text}
+              secondaryText={displayText[key].example}
+              leftIcon={checkBox}
+              onClick={makeClickHandler(key)}
+            />
+          );
+        })}
+      </List>
+    </div>
   );
 };
 
