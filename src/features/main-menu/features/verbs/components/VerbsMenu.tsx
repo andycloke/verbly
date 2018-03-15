@@ -3,7 +3,7 @@ import Subheader from 'material-ui/Subheader';
 import TextField from 'material-ui/TextField';
 import { List } from 'material-ui/List';
 
-import ListRadioButton from '../../../../features/common/components/ListRadioButton';
+import ListRadioButton from '../../../../../features/common/components/ListRadioButton';
 
 import {
   VerbsIncludedOptions,
