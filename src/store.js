@@ -4,10 +4,10 @@ import thunk from 'redux-thunk';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 import options from './features/options/reducers';
-import peopleInPlay from './features/people/reducers';
-import tensesInPlay from './features/tenses/reducers';
-import tensesInPlay from './features/tenses/reducers';
-import verbsInPlay from './features/verbs/reducers';
+import peopleInPlay from './features/main-menu/people/reducers';
+import tensesInPlay from './features/main-menu/tenses/reducers';
+import tensesInPlay from './features/main-menu/tenses/reducers';
+import verbsInPlay from './features/main-menu/verbs/reducers';
 
 const reducer = combineReducers({
   options,
