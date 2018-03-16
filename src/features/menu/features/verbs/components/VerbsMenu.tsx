@@ -56,7 +56,7 @@ export default class VerbsMenu extends React.PureComponent<Props, State> {
 
     return (
       <div className="VerbsMenu__outer">
-        {/* <Subheader>Verbs</Subheader> */}
+        <Subheader>Verbs</Subheader>
         <List>
           <Subheader>Reflexive</Subheader>
           <ListRadioButton
