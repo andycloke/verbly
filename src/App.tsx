@@ -17,7 +17,7 @@ class App extends React.PureComponent {
     return (
       <Provider store={store}>
         <MuiThemeProvider>
-          <div className="App">
+          <div>
             <AppBar />
             <StartEndGameButton />
             <MainSection />
