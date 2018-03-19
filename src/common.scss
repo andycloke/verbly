@@ -1,4 +1,6 @@
+$lightGrey: #eee;
+
 @mixin flatCard {
-  border: 1px solid #eee;
+  border: 1px solid $lightGrey;
   margin: -1px 0 0 -1px;
 }
