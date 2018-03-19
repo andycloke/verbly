@@ -1,0 +1,1122 @@
+[
+  {
+    "spanishInfinitive": "abordar",
+    "englishInfinitive": "to board",
+    "irregular": false,
+    "type": "",
+    "reflexive": false,
+    "common": false,
+    "indicativePresent": {
+      "yo": ["abordo"],
+      "tu": ["abordas"],
+      "el": ["aborda"],
+      "ns": ["abordamos"],
+      "vs": ["abordáis"],
+      "ellos": ["abordan"]
+    },
+    "indicativePreterite": {
+      "yo": ["abordé"],
+      "tu": ["abordaste"],
+      "el": ["abordó"],
+      "ns": ["abordamos"],
+      "vs": ["abordasteis"],
+      "ellos": ["abordaron"]
+    },
+    "indicativeFuture": {
+      "yo": ["abordaré"],
+      "tu": ["abordarás"],
+      "el": ["abordará"],
+      "ns": ["abordaremos"],
+      "vs": ["abordaréis"],
+      "ellos": ["abordarán"]
+    },
+    "conditionalPresent": {
+      "yo": ["abordaría"],
+      "tu": ["abordarías"],
+      "el": ["abordaría"],
+      "ns": ["abordaríamos"],
+      "vs": ["abordaríais"],
+      "ellos": ["abordarían"]
+    },
+    "indicativeImperfect": {
+      "yo": ["abordaba"],
+      "tu": ["abordabas"],
+      "el": ["abordaba"],
+      "ns": ["abordábamos"],
+      "vs": ["abordabais"],
+      "ellos": ["abordaban"]
+    },
+    "indicativePresentProgressive": {
+      "yo": ["estoy abordando"],
+      "tu": ["estás abordando"],
+      "el": ["está abordando"],
+      "ns": ["estamos abordando"],
+      "vs": ["estáis abordando"],
+      "ellos": ["están abordando"]
+    },
+    "indicativePresentPerfect": {
+      "yo": ["he abordado"],
+      "tu": ["has abordado"],
+      "el": ["ha abordado"],
+      "ns": ["hemos abordado"],
+      "vs": ["habéis abordado"],
+      "ellos": ["han abordado"]
+    },
+    "indicativePastPerfect": {
+      "yo": ["había abordado"],
+      "tu": ["habías abordado"],
+      "el": ["había abordado"],
+      "ns": ["habíamos abordado"],
+      "vs": ["habíais abordado"],
+      "ellos": ["habían abordado"]
+    },
+    "indicativeFuturePerfect": {
+      "yo": ["habré abordado"],
+      "tu": ["habrás abordado"],
+      "el": ["habrá abordado"],
+      "ns": ["habremos abordado"],
+      "vs": ["habréis abordado"],
+      "ellos": ["habrán abordado"]
+    },
+    "conditionalPerfect": {
+      "yo": ["habría abordado"],
+      "tu": ["habrías abordado"],
+      "el": ["habría abordado"],
+      "ns": ["habríamos abordado"],
+      "vs": ["habríais abordado"],
+      "ellos": ["habrían abordado"]
+    },
+    "subjunctivePresent": {
+      "yo": ["aborde"],
+      "tu": ["abordes"],
+      "el": ["aborde"],
+      "ns": ["abordemos"],
+      "vs": ["abordéis"],
+      "ellos": ["aborden"]
+    },
+    "imperativeAffirmativePresent": {
+      "yo": [""],
+      "tu": ["aborda"],
+      "el": ["aborde"],
+      "ns": ["abordemos"],
+      "vs": ["abordad"],
+      "ellos": ["aborden"]
+    },
+    "imperativeNegativePresent": {
+      "yo": "",
+      "tu": ["no abordes"],
+      "el": ["no aborde"],
+      "ns": ["no abordemos"],
+      "vs": ["no abordéis"],
+      "ellos": ["no aborden"]
+    }
+  },
+  {
+    "spanishInfinitive": "abortar",
+    "englishInfinitive": "to abort",
+    "irregular": false,
+    "type": "",
+    "reflexive": false,
+    "common": false,
+    "indicativePresent": {
+      "yo": ["aborto"],
+      "tu": ["abortas"],
+      "el": ["aborta"],
+      "ns": ["abortamos"],
+      "vs": ["abortáis"],
+      "ellos": ["abortan"]
+    },
+    "indicativePreterite": {
+      "yo": ["aborté"],
+      "tu": ["abortaste"],
+      "el": ["abortó"],
+      "ns": ["abortamos"],
+      "vs": ["abortasteis"],
+      "ellos": ["abortaron"]
+    },
+    "indicativeFuture": {
+      "yo": ["abortaré"],
+      "tu": ["abortarás"],
+      "el": ["abortará"],
+      "ns": ["abortaremos"],
+      "vs": ["abortaréis"],
+      "ellos": ["abortarán"]
+    },
+    "conditionalPresent": {
+      "yo": ["abortaría"],
+      "tu": ["abortarías"],
+      "el": ["abortaría"],
+      "ns": ["abortaríamos"],
+      "vs": ["abortaríais"],
+      "ellos": ["abortarían"]
+    },
+    "indicativeImperfect": {
+      "yo": ["abortaba"],
+      "tu": ["abortabas"],
+      "el": ["abortaba"],
+      "ns": ["abortábamos"],
+      "vs": ["abortabais"],
+      "ellos": ["abortaban"]
+    },
+    "indicativePresentProgressive": {
+      "yo": ["estoy abortando"],
+      "tu": ["estás abortando"],
+      "el": ["está abortando"],
+      "ns": ["estamos abortando"],
+      "vs": ["estáis abortando"],
+      "ellos": ["están abortando"]
+    },
+    "indicativePresentPerfect": {
+      "yo": ["he abortado"],
+      "tu": ["has abortado"],
+      "el": ["ha abortado"],
+      "ns": ["hemos abortado"],
+      "vs": ["habéis abortado"],
+      "ellos": ["han abortado"]
+    },
+    "indicativePastPerfect": {
+      "yo": ["había abortado"],
+      "tu": ["habías abortado"],
+      "el": ["había abortado"],
+      "ns": ["habíamos abortado"],
+      "vs": ["habíais abortado"],
+      "ellos": ["habían abortado"]
+    },
+    "indicativeFuturePerfect": {
+      "yo": ["habré abortado"],
+      "tu": ["habrás abortado"],
+      "el": ["habrá abortado"],
+      "ns": ["habremos abortado"],
+      "vs": ["habréis abortado"],
+      "ellos": ["habrán abortado"]
+    },
+    "conditionalPerfect": {
+      "yo": ["habría abortado"],
+      "tu": ["habrías abortado"],
+      "el": ["habría abortado"],
+      "ns": ["habríamos abortado"],
+      "vs": ["habríais abortado"],
+      "ellos": ["habrían abortado"]
+    },
+    "subjunctivePresent": {
+      "yo": ["aborte"],
+      "tu": ["abortes"],
+      "el": ["aborte"],
+      "ns": ["abortemos"],
+      "vs": ["abortéis"],
+      "ellos": ["aborten"]
+    },
+    "imperativeAffirmativePresent": {
+      "yo": [""],
+      "tu": ["aborta"],
+      "el": ["aborte"],
+      "ns": ["abortemos"],
+      "vs": ["abortad"],
+      "ellos": ["aborten"]
+    },
+    "imperativeNegativePresent": {
+      "yo": "",
+      "tu": ["no abortes"],
+      "el": ["no aborte"],
+      "ns": ["no abortemos"],
+      "vs": ["no abortéis"],
+      "ellos": ["no aborten"]
+    }
+  },
+  {
+    "spanishInfinitive": "abrazar",
+    "englishInfinitive": "to hug",
+    "irregular": true,
+    "type": "ze > ce (-zar)",
+    "reflexive": false,
+    "common": false,
+    "indicativePresent": {
+      "yo": ["abrazo"],
+      "tu": ["abrazas"],
+      "el": ["abraza"],
+      "ns": ["abrazamos"],
+      "vs": ["abrazáis"],
+      "ellos": ["abrazan"]
+    },
+    "indicativePreterite": {
+      "yo": ["abracé"],
+      "tu": ["abrazaste"],
+      "el": ["abrazó"],
+      "ns": ["abrazamos"],
+      "vs": ["abrazasteis"],
+      "ellos": ["abrazaron"]
+    },
+    "indicativeFuture": {
+      "yo": ["abrazaré"],
+      "tu": ["abrazarás"],
+      "el": ["abrazará"],
+      "ns": ["abrazaremos"],
+      "vs": ["abrazaréis"],
+      "ellos": ["abrazarán"]
+    },
+    "conditionalPresent": {
+      "yo": ["abrazaría"],
+      "tu": ["abrazarías"],
+      "el": ["abrazaría"],
+      "ns": ["abrazaríamos"],
+      "vs": ["abrazaríais"],
+      "ellos": ["abrazarían"]
+    },
+    "indicativeImperfect": {
+      "yo": ["abrazaba"],
+      "tu": ["abrazabas"],
+      "el": ["abrazaba"],
+      "ns": ["abrazábamos"],
+      "vs": ["abrazabais"],
+      "ellos": ["abrazaban"]
+    },
+    "indicativePresentProgressive": {
+      "yo": ["estoy abrazando"],
+      "tu": ["estás abrazando"],
+      "el": ["está abrazando"],
+      "ns": ["estamos abrazando"],
+      "vs": ["estáis abrazando"],
+      "ellos": ["están abrazando"]
+    },
+    "indicativePresentPerfect": {
+      "yo": ["he abrazado"],
+      "tu": ["has abrazado"],
+      "el": ["ha abrazado"],
+      "ns": ["hemos abrazado"],
+      "vs": ["habéis abrazado"],
+      "ellos": ["han abrazado"]
+    },
+    "indicativePastPerfect": {
+      "yo": ["había abrazado"],
+      "tu": ["habías abrazado"],
+      "el": ["había abrazado"],
+      "ns": ["habíamos abrazado"],
+      "vs": ["habíais abrazado"],
+      "ellos": ["habían abrazado"]
+    },
+    "indicativeFuturePerfect": {
+      "yo": ["habré abrazado"],
+      "tu": ["habrás abrazado"],
+      "el": ["habrá abrazado"],
+      "ns": ["habremos abrazado"],
+      "vs": ["habréis abrazado"],
+      "ellos": ["habrán abrazado"]
+    },
+    "conditionalPerfect": {
+      "yo": ["habría abrazado"],
+      "tu": ["habrías abrazado"],
+      "el": ["habría abrazado"],
+      "ns": ["habríamos abrazado"],
+      "vs": ["habríais abrazado"],
+      "ellos": ["habrían abrazado"]
+    },
+    "subjunctivePresent": {
+      "yo": ["abrace"],
+      "tu": ["abraces"],
+      "el": ["abrace"],
+      "ns": ["abracemos"],
+      "vs": ["abracéis"],
+      "ellos": ["abracen"]
+    },
+    "imperativeAffirmativePresent": {
+      "yo": [""],
+      "tu": ["abraza"],
+      "el": ["abrace"],
+      "ns": ["abracemos"],
+      "vs": ["abrazad"],
+      "ellos": ["abracen"]
+    },
+    "imperativeNegativePresent": {
+      "yo": "",
+      "tu": ["no abraces"],
+      "el": ["no abrace"],
+      "ns": ["no abracemos"],
+      "vs": ["no abracéis"],
+      "ellos": ["no abracen"]
+    }
+  },
+  {
+    "spanishInfinitive": "abrir",
+    "englishInfinitive": "to open",
+    "irregular": true,
+    "type": "",
+    "reflexive": false,
+    "common": true,
+    "indicativePresent": {
+      "yo": ["abro"],
+      "tu": ["abres"],
+      "el": ["abre"],
+      "ns": ["abrimos"],
+      "vs": ["abrís"],
+      "ellos": ["abren"]
+    },
+    "indicativePreterite": {
+      "yo": ["abrí"],
+      "tu": ["abriste"],
+      "el": ["abrió"],
+      "ns": ["abrimos"],
+      "vs": ["abristeis"],
+      "ellos": ["abrieron"]
+    },
+    "indicativeFuture": {
+      "yo": ["abriré"],
+      "tu": ["abrirás"],
+      "el": ["abrirá"],
+      "ns": ["abriremos"],
+      "vs": ["abriréis"],
+      "ellos": ["abrirán"]
+    },
+    "conditionalPresent": {
+      "yo": ["abriría"],
+      "tu": ["abrirías"],
+      "el": ["abriría"],
+      "ns": ["abriríamos"],
+      "vs": ["abriríais"],
+      "ellos": ["abrirían"]
+    },
+    "indicativeImperfect": {
+      "yo": ["abría"],
+      "tu": ["abrías"],
+      "el": ["abría"],
+      "ns": ["abríamos"],
+      "vs": ["abríais"],
+      "ellos": ["abrían"]
+    },
+    "indicativePresentProgressive": {
+      "yo": ["estoy abriendo"],
+      "tu": ["estás abriendo"],
+      "el": ["está abriendo"],
+      "ns": ["estamos abriendo"],
+      "vs": ["estáis abriendo"],
+      "ellos": ["están abriendo"]
+    },
+    "indicativePresentPerfect": {
+      "yo": ["he abierto"],
+      "tu": ["has abierto"],
+      "el": ["ha abierto"],
+      "ns": ["hemos abierto"],
+      "vs": ["habéis abierto"],
+      "ellos": ["han abierto"]
+    },
+    "indicativePastPerfect": {
+      "yo": ["había abierto"],
+      "tu": ["habías abierto"],
+      "el": ["había abierto"],
+      "ns": ["habíamos abierto"],
+      "vs": ["habíais abierto"],
+      "ellos": ["habían abierto"]
+    },
+    "indicativeFuturePerfect": {
+      "yo": ["habré abierto"],
+      "tu": ["habrás abierto"],
+      "el": ["habrá abierto"],
+      "ns": ["habremos abierto"],
+      "vs": ["habréis abierto"],
+      "ellos": ["habrán abierto"]
+    },
+    "conditionalPerfect": {
+      "yo": ["habría abierto"],
+      "tu": ["habrías abierto"],
+      "el": ["habría abierto"],
+      "ns": ["habríamos abierto"],
+      "vs": ["habríais abierto"],
+      "ellos": ["habrían abierto"]
+    },
+    "subjunctivePresent": {
+      "yo": ["abra"],
+      "tu": ["abras"],
+      "el": ["abra"],
+      "ns": ["abramos"],
+      "vs": ["abráis"],
+      "ellos": ["abran"]
+    },
+    "imperativeAffirmativePresent": {
+      "yo": [""],
+      "tu": ["abre"],
+      "el": ["abra"],
+      "ns": ["abramos"],
+      "vs": ["abrid"],
+      "ellos": ["abran"]
+    },
+    "imperativeNegativePresent": {
+      "yo": "",
+      "tu": ["no abras"],
+      "el": ["no abra"],
+      "ns": ["no abramos"],
+      "vs": ["no abráis"],
+      "ellos": ["no abran"]
+    }
+  },
+  {
+    "spanishInfinitive": "aburrir",
+    "englishInfinitive": "to bore",
+    "irregular": false,
+    "type": "",
+    "reflexive": false,
+    "common": false,
+    "indicativePresent": {
+      "yo": ["aburro"],
+      "tu": ["aburres"],
+      "el": ["aburre"],
+      "ns": ["aburrimos"],
+      "vs": ["aburrís"],
+      "ellos": ["aburren"]
+    },
+    "indicativePreterite": {
+      "yo": ["aburrí"],
+      "tu": ["aburriste"],
+      "el": ["aburrió"],
+      "ns": ["aburrimos"],
+      "vs": ["aburristeis"],
+      "ellos": ["aburrieron"]
+    },
+    "indicativeFuture": {
+      "yo": ["aburriré"],
+      "tu": ["aburrirás"],
+      "el": ["aburrirá"],
+      "ns": ["aburriremos"],
+      "vs": ["aburriréis"],
+      "ellos": ["aburrirán"]
+    },
+    "conditionalPresent": {
+      "yo": ["aburriría"],
+      "tu": ["aburrirías"],
+      "el": ["aburriría"],
+      "ns": ["aburriríamos"],
+      "vs": ["aburriríais"],
+      "ellos": ["aburrirían"]
+    },
+    "indicativeImperfect": {
+      "yo": ["aburría"],
+      "tu": ["aburrías"],
+      "el": ["aburría"],
+      "ns": ["aburríamos"],
+      "vs": ["aburríais"],
+      "ellos": ["aburrían"]
+    },
+    "indicativePresentProgressive": {
+      "yo": ["estoy aburriendo"],
+      "tu": ["estás aburriendo"],
+      "el": ["está aburriendo"],
+      "ns": ["estamos aburriendo"],
+      "vs": ["estáis aburriendo"],
+      "ellos": ["están aburriendo"]
+    },
+    "indicativePresentPerfect": {
+      "yo": ["he aburrido"],
+      "tu": ["has aburrido"],
+      "el": ["ha aburrido"],
+      "ns": ["hemos aburrido"],
+      "vs": ["habéis aburrido"],
+      "ellos": ["han aburrido"]
+    },
+    "indicativePastPerfect": {
+      "yo": ["había aburrido"],
+      "tu": ["habías aburrido"],
+      "el": ["había aburrido"],
+      "ns": ["habíamos aburrido"],
+      "vs": ["habíais aburrido"],
+      "ellos": ["habían aburrido"]
+    },
+    "indicativeFuturePerfect": {
+      "yo": ["habré aburrido"],
+      "tu": ["habrás aburrido"],
+      "el": ["habrá aburrido"],
+      "ns": ["habremos aburrido"],
+      "vs": ["habréis aburrido"],
+      "ellos": ["habrán aburrido"]
+    },
+    "conditionalPerfect": {
+      "yo": ["habría aburrido"],
+      "tu": ["habrías aburrido"],
+      "el": ["habría aburrido"],
+      "ns": ["habríamos aburrido"],
+      "vs": ["habríais aburrido"],
+      "ellos": ["habrían aburrido"]
+    },
+    "subjunctivePresent": {
+      "yo": ["aburra"],
+      "tu": ["aburras"],
+      "el": ["aburra"],
+      "ns": ["aburramos"],
+      "vs": ["aburráis"],
+      "ellos": ["aburran"]
+    },
+    "imperativeAffirmativePresent": {
+      "yo": [""],
+      "tu": ["aburre"],
+      "el": ["aburra"],
+      "ns": ["aburramos"],
+      "vs": ["aburrid"],
+      "ellos": ["aburran"]
+    },
+    "imperativeNegativePresent": {
+      "yo": "",
+      "tu": ["no aburras"],
+      "el": ["no aburra"],
+      "ns": ["no aburramos"],
+      "vs": ["no aburráis"],
+      "ellos": ["no aburran"]
+    }
+  },
+  {
+    "spanishInfinitive": "aburrirse",
+    "englishInfinitive": "to get bored",
+    "irregular": false,
+    "type": "",
+    "reflexive": true,
+    "common": true,
+    "indicativePresent": {
+      "yo": ["me aburro"],
+      "tu": ["te aburres"],
+      "el": ["se aburre"],
+      "ns": ["nos aburrimos"],
+      "vs": ["os aburrís"],
+      "ellos": ["se aburren"]
+    },
+    "indicativePreterite": {
+      "yo": ["me aburrí"],
+      "tu": ["te aburriste"],
+      "el": ["se aburrió"],
+      "ns": ["nos aburrimos"],
+      "vs": ["os aburristeis"],
+      "ellos": ["se aburrieron"]
+    },
+    "indicativeFuture": {
+      "yo": ["me aburriré"],
+      "tu": ["te aburrirás"],
+      "el": ["se aburrirá"],
+      "ns": ["nos aburriremos"],
+      "vs": ["os aburriréis"],
+      "ellos": ["se aburrirán"]
+    },
+    "conditionalPresent": {
+      "yo": ["me aburriría"],
+      "tu": ["te aburrirías"],
+      "el": ["se aburriría"],
+      "ns": ["nos aburriríamos"],
+      "vs": ["os aburriríais"],
+      "ellos": ["se aburrirían"]
+    },
+    "indicativeImperfect": {
+      "yo": ["me aburría"],
+      "tu": ["te aburrías"],
+      "el": ["se aburría"],
+      "ns": ["nos aburríamos"],
+      "vs": ["os aburríais"],
+      "ellos": ["se aburrían"]
+    },
+    "indicativePresentProgressive": {
+      "yo": ["me estoy aburriendo", "estoy aburriéndome"],
+      "tu": ["te estás aburriendo", "estás aburriéndote"],
+      "el": ["se está aburriendo", "está aburriéndose"],
+      "ns": ["nos estamos aburriendo", "estamos aburriéndonos"],
+      "vs": ["os estáis aburriendo", "estáis aburriéndoos"],
+      "ellos": ["se están aburriendo", "están aburriéndose"]
+    },
+    "indicativePresentPerfect": {
+      "yo": ["me he aburrido"],
+      "tu": ["te has aburrido"],
+      "el": ["se ha aburrido"],
+      "ns": ["nos hemos aburrido"],
+      "vs": ["os habéis aburrido"],
+      "ellos": ["se han aburrido"]
+    },
+    "indicativePastPerfect": {
+      "yo": ["me había aburrido"],
+      "tu": ["te habías aburrido"],
+      "el": ["se había aburrido"],
+      "ns": ["nos habíamos aburrido"],
+      "vs": ["os habíais aburrido"],
+      "ellos": ["se habían aburrido"]
+    },
+    "indicativeFuturePerfect": {
+      "yo": ["me habré aburrido"],
+      "tu": ["te habrás aburrido"],
+      "el": ["se habrá aburrido"],
+      "ns": ["nos habremos aburrido"],
+      "vs": ["os habréis aburrido"],
+      "ellos": ["se habrán aburrido"]
+    },
+    "conditionalPerfect": {
+      "yo": ["me habría aburrido"],
+      "tu": ["te habrías aburrido"],
+      "el": ["se habría aburrido"],
+      "ns": ["nos habríamos aburrido"],
+      "vs": ["os habríais aburrido"],
+      "ellos": ["se habrían aburrido"]
+    },
+    "subjunctivePresent": {
+      "yo": ["me aburra"],
+      "tu": ["te aburras"],
+      "el": ["se aburra"],
+      "ns": ["nos aburramos"],
+      "vs": ["os aburráis"],
+      "ellos": ["se aburran"]
+    },
+    "imperativeAffirmativePresent": {
+      "yo": [""],
+      "tu": ["abúrrete"],
+      "el": ["abúrrase"],
+      "ns": ["aburrámonos"],
+      "vs": ["aburríos"],
+      "ellos": ["abúrranse"]
+    },
+    "imperativeNegativePresent": {
+      "yo": "",
+      "tu": ["no te aburras"],
+      "el": ["no se aburra"],
+      "ns": ["no nos aburramos"],
+      "vs": ["no os aburráis"],
+      "ellos": ["no se aburran"]
+    }
+  },
+  {
+    "spanishInfinitive": "abusar",
+    "englishInfinitive": "to go too far",
+    "irregular": false,
+    "type": "",
+    "reflexive": false,
+    "common": false,
+    "indicativePresent": {
+      "yo": ["abuso"],
+      "tu": ["abusas"],
+      "el": ["abusa"],
+      "ns": ["abusamos"],
+      "vs": ["abusáis"],
+      "ellos": ["abusan"]
+    },
+    "indicativePreterite": {
+      "yo": ["abusé"],
+      "tu": ["abusaste"],
+      "el": ["abusó"],
+      "ns": ["abusamos"],
+      "vs": ["abusasteis"],
+      "ellos": ["abusaron"]
+    },
+    "indicativeFuture": {
+      "yo": ["abusaré"],
+      "tu": ["abusarás"],
+      "el": ["abusará"],
+      "ns": ["abusaremos"],
+      "vs": ["abusaréis"],
+      "ellos": ["abusarán"]
+    },
+    "conditionalPresent": {
+      "yo": ["abusaría"],
+      "tu": ["abusarías"],
+      "el": ["abusaría"],
+      "ns": ["abusaríamos"],
+      "vs": ["abusaríais"],
+      "ellos": ["abusarían"]
+    },
+    "indicativeImperfect": {
+      "yo": ["abusaba"],
+      "tu": ["abusabas"],
+      "el": ["abusaba"],
+      "ns": ["abusábamos"],
+      "vs": ["abusabais"],
+      "ellos": ["abusaban"]
+    },
+    "indicativePresentProgressive": {
+      "yo": ["estoy abusando"],
+      "tu": ["estás abusando"],
+      "el": ["está abusando"],
+      "ns": ["estamos abusando"],
+      "vs": ["estáis abusando"],
+      "ellos": ["están abusando"]
+    },
+    "indicativePresentPerfect": {
+      "yo": ["he abusado"],
+      "tu": ["has abusado"],
+      "el": ["ha abusado"],
+      "ns": ["hemos abusado"],
+      "vs": ["habéis abusado"],
+      "ellos": ["han abusado"]
+    },
+    "indicativePastPerfect": {
+      "yo": ["había abusado"],
+      "tu": ["habías abusado"],
+      "el": ["había abusado"],
+      "ns": ["habíamos abusado"],
+      "vs": ["habíais abusado"],
+      "ellos": ["habían abusado"]
+    },
+    "indicativeFuturePerfect": {
+      "yo": ["habré abusado"],
+      "tu": ["habrás abusado"],
+      "el": ["habrá abusado"],
+      "ns": ["habremos abusado"],
+      "vs": ["habréis abusado"],
+      "ellos": ["habrán abusado"]
+    },
+    "conditionalPerfect": {
+      "yo": ["habría abusado"],
+      "tu": ["habrías abusado"],
+      "el": ["habría abusado"],
+      "ns": ["habríamos abusado"],
+      "vs": ["habríais abusado"],
+      "ellos": ["habrían abusado"]
+    },
+    "subjunctivePresent": {
+      "yo": ["abuse"],
+      "tu": ["abuses"],
+      "el": ["abuse"],
+      "ns": ["abusemos"],
+      "vs": ["abuséis"],
+      "ellos": ["abusen"]
+    },
+    "imperativeAffirmativePresent": {
+      "yo": [""],
+      "tu": ["abusa"],
+      "el": ["abuse"],
+      "ns": ["abusemos"],
+      "vs": ["abusad"],
+      "ellos": ["abusen"]
+    },
+    "imperativeNegativePresent": {
+      "yo": "",
+      "tu": ["no abuses"],
+      "el": ["no abuse"],
+      "ns": ["no abusemos"],
+      "vs": ["no abuséis"],
+      "ellos": ["no abusen"]
+    }
+  },
+  {
+    "spanishInfinitive": "acabar",
+    "englishInfinitive": "to finish",
+    "irregular": false,
+    "type": "",
+    "reflexive": false,
+    "common": false,
+    "indicativePresent": {
+      "yo": ["acabo"],
+      "tu": ["acabas"],
+      "el": ["acaba"],
+      "ns": ["acabamos"],
+      "vs": ["acabáis"],
+      "ellos": ["acaban"]
+    },
+    "indicativePreterite": {
+      "yo": ["acabé"],
+      "tu": ["acabaste"],
+      "el": ["acabó"],
+      "ns": ["acabamos"],
+      "vs": ["acabasteis"],
+      "ellos": ["acabaron"]
+    },
+    "indicativeFuture": {
+      "yo": ["acabaré"],
+      "tu": ["acabarás"],
+      "el": ["acabará"],
+      "ns": ["acabaremos"],
+      "vs": ["acabaréis"],
+      "ellos": ["acabarán"]
+    },
+    "conditionalPresent": {
+      "yo": ["acabaría"],
+      "tu": ["acabarías"],
+      "el": ["acabaría"],
+      "ns": ["acabaríamos"],
+      "vs": ["acabaríais"],
+      "ellos": ["acabarían"]
+    },
+    "indicativeImperfect": {
+      "yo": ["acababa"],
+      "tu": ["acababas"],
+      "el": ["acababa"],
+      "ns": ["acabábamos"],
+      "vs": ["acababais"],
+      "ellos": ["acababan"]
+    },
+    "indicativePresentProgressive": {
+      "yo": ["estoy acabando"],
+      "tu": ["estás acabando"],
+      "el": ["está acabando"],
+      "ns": ["estamos acabando"],
+      "vs": ["estáis acabando"],
+      "ellos": ["están acabando"]
+    },
+    "indicativePresentPerfect": {
+      "yo": ["he acabado"],
+      "tu": ["has acabado"],
+      "el": ["ha acabado"],
+      "ns": ["hemos acabado"],
+      "vs": ["habéis acabado"],
+      "ellos": ["han acabado"]
+    },
+    "indicativePastPerfect": {
+      "yo": ["había acabado"],
+      "tu": ["habías acabado"],
+      "el": ["había acabado"],
+      "ns": ["habíamos acabado"],
+      "vs": ["habíais acabado"],
+      "ellos": ["habían acabado"]
+    },
+    "indicativeFuturePerfect": {
+      "yo": ["habré acabado"],
+      "tu": ["habrás acabado"],
+      "el": ["habrá acabado"],
+      "ns": ["habremos acabado"],
+      "vs": ["habréis acabado"],
+      "ellos": ["habrán acabado"]
+    },
+    "conditionalPerfect": {
+      "yo": ["habría acabado"],
+      "tu": ["habrías acabado"],
+      "el": ["habría acabado"],
+      "ns": ["habríamos acabado"],
+      "vs": ["habríais acabado"],
+      "ellos": ["habrían acabado"]
+    },
+    "subjunctivePresent": {
+      "yo": ["acabe"],
+      "tu": ["acabes"],
+      "el": ["acabe"],
+      "ns": ["acabemos"],
+      "vs": ["acabéis"],
+      "ellos": ["acaben"]
+    },
+    "imperativeAffirmativePresent": {
+      "yo": [""],
+      "tu": ["acaba"],
+      "el": ["acabe"],
+      "ns": ["acabemos"],
+      "vs": ["acabad"],
+      "ellos": ["acaben"]
+    },
+    "imperativeNegativePresent": {
+      "yo": "",
+      "tu": ["no acabes"],
+      "el": ["no acabe"],
+      "ns": ["no acabemos"],
+      "vs": ["no acabéis"],
+      "ellos": ["no acaben"]
+    }
+  },
+  {
+    "spanishInfinitive": "acampar",
+    "englishInfinitive": "to camp",
+    "irregular": false,
+    "type": "",
+    "reflexive": false,
+    "common": false,
+    "indicativePresent": {
+      "yo": ["acampo"],
+      "tu": ["acampas"],
+      "el": ["acampa"],
+      "ns": ["acampamos"],
+      "vs": ["acampáis"],
+      "ellos": ["acampan"]
+    },
+    "indicativePreterite": {
+      "yo": ["acampé"],
+      "tu": ["acampaste"],
+      "el": ["acampó"],
+      "ns": ["acampamos"],
+      "vs": ["acampasteis"],
+      "ellos": ["acamparon"]
+    },
+    "indicativeFuture": {
+      "yo": ["acamparé"],
+      "tu": ["acamparás"],
+      "el": ["acampará"],
+      "ns": ["acamparemos"],
+      "vs": ["acamparéis"],
+      "ellos": ["acamparán"]
+    },
+    "conditionalPresent": {
+      "yo": ["acamparía"],
+      "tu": ["acamparías"],
+      "el": ["acamparía"],
+      "ns": ["acamparíamos"],
+      "vs": ["acamparíais"],
+      "ellos": ["acamparían"]
+    },
+    "indicativeImperfect": {
+      "yo": ["acampaba"],
+      "tu": ["acampabas"],
+      "el": ["acampaba"],
+      "ns": ["acampábamos"],
+      "vs": ["acampabais"],
+      "ellos": ["acampaban"]
+    },
+    "indicativePresentProgressive": {
+      "yo": ["estoy acampando"],
+      "tu": ["estás acampando"],
+      "el": ["está acampando"],
+      "ns": ["estamos acampando"],
+      "vs": ["estáis acampando"],
+      "ellos": ["están acampando"]
+    },
+    "indicativePresentPerfect": {
+      "yo": ["he acampado"],
+      "tu": ["has acampado"],
+      "el": ["ha acampado"],
+      "ns": ["hemos acampado"],
+      "vs": ["habéis acampado"],
+      "ellos": ["han acampado"]
+    },
+    "indicativePastPerfect": {
+      "yo": ["había acampado"],
+      "tu": ["habías acampado"],
+      "el": ["había acampado"],
+      "ns": ["habíamos acampado"],
+      "vs": ["habíais acampado"],
+      "ellos": ["habían acampado"]
+    },
+    "indicativeFuturePerfect": {
+      "yo": ["habré acampado"],
+      "tu": ["habrás acampado"],
+      "el": ["habrá acampado"],
+      "ns": ["habremos acampado"],
+      "vs": ["habréis acampado"],
+      "ellos": ["habrán acampado"]
+    },
+    "conditionalPerfect": {
+      "yo": ["habría acampado"],
+      "tu": ["habrías acampado"],
+      "el": ["habría acampado"],
+      "ns": ["habríamos acampado"],
+      "vs": ["habríais acampado"],
+      "ellos": ["habrían acampado"]
+    },
+    "subjunctivePresent": {
+      "yo": ["acampe"],
+      "tu": ["acampes"],
+      "el": ["acampe"],
+      "ns": ["acampemos"],
+      "vs": ["acampéis"],
+      "ellos": ["acampen"]
+    },
+    "imperativeAffirmativePresent": {
+      "yo": [""],
+      "tu": ["acampa"],
+      "el": ["acampe"],
+      "ns": ["acampemos"],
+      "vs": ["acampad"],
+      "ellos": ["acampen"]
+    },
+    "imperativeNegativePresent": {
+      "yo": "",
+      "tu": ["no acampes"],
+      "el": ["no acampe"],
+      "ns": ["no acampemos"],
+      "vs": ["no acampéis"],
+      "ellos": ["no acampen"]
+    }
+  },
+  {
+    "spanishInfinitive": "aceptar",
+    "englishInfinitive": "to accept",
+    "irregular": false,
+    "type": "",
+    "reflexive": false,
+    "common": false,
+    "indicativePresent": {
+      "yo": ["acepto"],
+      "tu": ["aceptas"],
+      "el": ["acepta"],
+      "ns": ["aceptamos"],
+      "vs": ["aceptáis"],
+      "ellos": ["aceptan"]
+    },
+    "indicativePreterite": {
+      "yo": ["acepté"],
+      "tu": ["aceptaste"],
+      "el": ["aceptó"],
+      "ns": ["aceptamos"],
+      "vs": ["aceptasteis"],
+      "ellos": ["aceptaron"]
+    },
+    "indicativeFuture": {
+      "yo": ["aceptaré"],
+      "tu": ["aceptarás"],
+      "el": ["aceptará"],
+      "ns": ["aceptaremos"],
+      "vs": ["aceptaréis"],
+      "ellos": ["aceptarán"]
+    },
+    "conditionalPresent": {
+      "yo": ["aceptaría"],
+      "tu": ["aceptarías"],
+      "el": ["aceptaría"],
+      "ns": ["aceptaríamos"],
+      "vs": ["aceptaríais"],
+      "ellos": ["aceptarían"]
+    },
+    "indicativeImperfect": {
+      "yo": ["aceptaba"],
+      "tu": ["aceptabas"],
+      "el": ["aceptaba"],
+      "ns": ["aceptábamos"],
+      "vs": ["aceptabais"],
+      "ellos": ["aceptaban"]
+    },
+    "indicativePresentProgressive": {
+      "yo": ["estoy aceptando"],
+      "tu": ["estás aceptando"],
+      "el": ["está aceptando"],
+      "ns": ["estamos aceptando"],
+      "vs": ["estáis aceptando"],
+      "ellos": ["están aceptando"]
+    },
+    "indicativePresentPerfect": {
+      "yo": ["he aceptado"],
+      "tu": ["has aceptado"],
+      "el": ["ha aceptado"],
+      "ns": ["hemos aceptado"],
+      "vs": ["habéis aceptado"],
+      "ellos": ["han aceptado"]
+    },
+    "indicativePastPerfect": {
+      "yo": ["había aceptado"],
+      "tu": ["habías aceptado"],
+      "el": ["había aceptado"],
+      "ns": ["habíamos aceptado"],
+      "vs": ["habíais aceptado"],
+      "ellos": ["habían aceptado"]
+    },
+    "indicativeFuturePerfect": {
+      "yo": ["habré aceptado"],
+      "tu": ["habrás aceptado"],
+      "el": ["habrá aceptado"],
+      "ns": ["habremos aceptado"],
+      "vs": ["habréis aceptado"],
+      "ellos": ["habrán aceptado"]
+    },
+    "conditionalPerfect": {
+      "yo": ["habría aceptado"],
+      "tu": ["habrías aceptado"],
+      "el": ["habría aceptado"],
+      "ns": ["habríamos aceptado"],
+      "vs": ["habríais aceptado"],
+      "ellos": ["habrían aceptado"]
+    },
+    "subjunctivePresent": {
+      "yo": ["acepte"],
+      "tu": ["aceptes"],
+      "el": ["acepte"],
+      "ns": ["aceptemos"],
+      "vs": ["aceptéis"],
+      "ellos": ["acepten"]
+    },
+    "imperativeAffirmativePresent": {
+      "yo": [""],
+      "tu": ["acepta"],
+      "el": ["acepte"],
+      "ns": ["aceptemos"],
+      "vs": ["aceptad"],
+      "ellos": ["acepten"]
+    },
+    "imperativeNegativePresent": {
+      "yo": "",
+      "tu": ["no aceptes"],
+      "el": ["no acepte"],
+      "ns": ["no aceptemos"],
+      "vs": ["no aceptéis"],
+      "ellos": ["no acepten"]
+    }
+  }
+]
