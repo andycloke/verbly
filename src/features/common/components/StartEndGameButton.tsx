@@ -1,4 +1,6 @@
 import * as React from 'react';
+import ArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
+import Cancel from 'material-ui/svg-icons/navigation/cancel';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -15,6 +17,7 @@ const StartEndGameButton = ({ toggleStartGame, gameStarted }: Props) => {
       secondary
       onClick={handleClick}
       label={gameStarted ? 'Quit' : 'Play'}
+      icon={gameStarted ? <Cancel /> : <ArrowRight />}
     />
   );
 };
