@@ -1,6 +1,10 @@
 import { actionTypes } from '../actions';
 import { combineReducers } from 'redux';
-import { initialState, ConjugationsState } from '../models/Conjugation';
+import {
+  initialState,
+  ConjugationsState,
+  Conjugation
+} from '../models/Conjugation';
 import fetch from './fetch';
 
 const conjugations = (
@@ -9,10 +13,15 @@ const conjugations = (
 ) => {
   switch (action.type) {
     case actionTypes.RECEIVE_CONJUGATIONS:
-      return [
-        ...conjugationsState.conjugations,
-        ...action.payload.conjugations
-      ];
+      return action.payload.conjugations.reduce(
+        (cs: object, c: Conjugation) => {
+          return {
+            ...cs,
+            [c.spanishInfinitive]: c
+          };
+        },
+        {}
+      );
     default:
       return conjugationsState;
   }

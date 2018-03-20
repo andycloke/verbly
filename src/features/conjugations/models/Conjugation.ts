@@ -30,9 +30,10 @@ export type Conjugation = {
 };
 
 export type ConjugationsState = {
-  conjugations: Array<Conjugation>;
+  conjugations: object;
+  // TODO: conjugations: object<string, Conjugation>;
 };
 
 export const initialState = {
-  conjugations: []
+  conjugations: {}
 };
