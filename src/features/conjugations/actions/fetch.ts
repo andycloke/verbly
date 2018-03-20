@@ -1,4 +1,6 @@
 import conjugationsService from '../../../service/conjugations';
+import { setGameVerbs } from '../../game/actions';
+import { Conjugation } from '../models/Conjugation';
 import { receiveConjugations } from './';
 
 export const actionTypes = {
@@ -24,7 +26,10 @@ export const fetchConjugations = () => {
   return async function(dispatch: any) {
     dispatch(startFetchingConjugations());
     const conjugations = await conjugationsService.fetchConjugations();
-    dispatch(receiveConjugations(conjugations));
     dispatch(successFetchingConjugations());
+    dispatch(receiveConjugations(conjugations));
+    dispatch(
+      setGameVerbs(conjugations.map((c: Conjugation) => c.spanishInfinitive))
+    );
   };
 };
