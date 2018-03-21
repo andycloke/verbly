@@ -8,12 +8,12 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 import './Game.css';
 
 export type DispatchProps = {
-  fetchConjugations: () => void;
+  fetchConjugationsIfNotFetched: () => void;
 };
 
 class Game extends React.PureComponent<DispatchProps> {
   async componentDidMount() {
-    this.props.fetchConjugations();
+    this.props.fetchConjugationsIfNotFetched();
   }
   render() {
     return (
