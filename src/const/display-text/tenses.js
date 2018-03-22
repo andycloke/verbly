@@ -1,62 +1,58 @@
-import { tenses } from '../models';
+import { Tenses } from '../models/tenses';
 
-const displayText = {
-  [tenses.indicativePresent]: {
+const DisplayText = {
+  [Tenses.IndicativePresent]: {
     text: 'Present',
     example: 'Yo hablo'
   },
-  [tenses.indicativePresentProgressive]: {
+  [Tenses.IndicativePresentProgressive]: {
     text: 'Present Progressive',
     example: 'Yo estoy hablando'
   },
-  [tenses.indicativeFuture]: {
+  [Tenses.IndicativeFuture]: {
     text: 'Future',
     example: 'Yo hablaré'
   },
-  [tenses.conditionalPresent]: {
+  [Tenses.ConditionalPresent]: {
     text: 'Conditional',
     example: 'Yo hablaría'
   },
-  [tenses.indicativePresent]: {
-    text: 'Present',
-    example: 'Yo hablo'
-  },
-  [tenses.indicativeImperfect]: {
+  [Tenses.IndicativeImperfect]: {
     text: 'Imperfect',
     example: 'Yo hablaba'
   },
-  [tenses.indicativePreterite]: {
+  [Tenses.IndicativePreterite]: {
     text: 'Preterite',
     example: 'Yo hablé'
   },
-  [tenses.indicativePresentPerfect]: {
+  [Tenses.IndicativePresentPerfect]: {
     text: 'Present Perfect',
     example: 'Yo he hablado'
   },
-  [tenses.indicativeFuturePerfect]: {
+  [Tenses.IndicativeFuturePerfect]: {
     text: 'Future Perfect',
     example: 'Yo habré hablado'
   },
-  [tenses.indicativePastPerfect]: {
+  [Tenses.IndicativePastPerfect]: {
     text: 'Past Perfect',
     example: 'Yo había hablado'
   },
-  [tenses.conditionalPerfect]: {
+  [Tenses.ConditionalPerfect]: {
     text: 'Conditional Perfect',
     example: 'Yo habría hablado'
   },
-  [tenses.subjunctivePresent]: {
+  [Tenses.SubjunctivePresent]: {
     text: 'Subjunctive',
     example: 'Yo hable'
   },
-  [tenses.imperativeAffirmativePresent]: {
+  [Tenses.ImperativeAffirmativePresent]: {
     text: 'Imperative (Affirmative)',
     example: 'Habla!'
   },
-  [tenses.imperativeNegativePresent]: {
+  [Tenses.ImperativeNegativePresent]: {
     text: 'Imperative (Negative)',
     example: 'No hables!'
   }
 };
 
-export default displayText;
+export default DisplayText;

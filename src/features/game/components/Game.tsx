@@ -6,6 +6,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentSend from 'material-ui/svg-icons/content/send';
 
 import { StateProps, DispatchProps } from '../containers/Game';
+import displayText from '../../../const/display-text/tenses';
 
 import './Game.css';
 
@@ -15,19 +16,20 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
   }
 
   render() {
+    const { tense, person, verb } = this.props;
     return (
       <div className="Game__outer">
         <Paper>
           <div className="Game__inner">
             <span className="Game__innerText--border">Tense</span>
             <span className="Game__innerText--border Game__innerText--leftAlign Game__tense">
-              Present
+              {tense ? displayText[tense].text : ''}
             </span>
             <span className="Game__innerText--border">Verb</span>
             <span className="Game__innerText--border Game__innerText--leftAlign Game__verb">
-              Correr - to run
+              {verb}
             </span>
-            <span className="Game__person">Tu</span>
+            <span className="Game__person">{person}</span>
             <TextField className="Game__input" id="text-field-default" />
             <div className="Game__submitButtonCell">
               <FloatingActionButton

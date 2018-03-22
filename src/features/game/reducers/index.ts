@@ -18,6 +18,11 @@ export default (game: Game = initialState, action: any) => {
         ...game,
         unseenVerbs: action.payload.verbs
       };
+    case actionTypes.NEW_QUESTION:
+      return {
+        ...game,
+        currentQuestion: action.payload
+      };
     default:
       return game;
   }

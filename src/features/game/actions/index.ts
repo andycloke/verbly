@@ -1,8 +1,9 @@
 import { getVerbsFilteredByUserOptions } from '../../conjugations/selectors';
+import { getAllPeopleInPlay } from '../../menu/features/people/selectors';
 import { N_GAME_VERBS } from '../const';
 import { gameShouldEnd } from '../selectors';
 import { getNextVerbTenseToStudy } from '../logic';
-import { shuffle } from '../../../util';
+import { shuffle, randomElement } from '../../../util';
 
 export const actionTypes = {
   START_GAME: 'game/START_GAME',
@@ -30,8 +31,17 @@ export const newQuestion = () => {
   return function(dispatch: any, getState: any) {
     const state = getState();
     if (gameShouldEnd(state)) dispatch(endGame());
-    const nextVerbTense = getNextVerbTenseToStudy(state);
-    // TODO
+    const verbTense = getNextVerbTenseToStudy(state);
+    const { spanishInfinitive, tense } = verbTense;
+    const person = randomElement(getAllPeopleInPlay(state));
+    dispatch({
+      type: actionTypes.NEW_QUESTION,
+      payload: {
+        person,
+        spanishInfinitive,
+        tense
+      }
+    });
   };
 };
 

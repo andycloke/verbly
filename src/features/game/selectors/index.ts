@@ -1,5 +1,6 @@
-import { Game, VerbTense } from '../models';
+import { Game, VerbTense, CurrentQuestion } from '../models';
 import { MAX_QUESTIONS_ANSWERED } from '../const';
+import { StateProps } from '../containers/Game';
 
 export const getGameSlice = (state: any): Game => state.game;
 
@@ -26,4 +27,20 @@ export const gameShouldEnd = (state: any): boolean =>
   (getGameUnseenVerbs(state).length === 0 &&
     getGameShowAgainVerbs(state).length === 0);
 
-export const getGameProps = (state: any): any => ({});
+export const getCurrentQuestion = (state: any): CurrentQuestion =>
+  getGameSlice(state).currentQuestion;
+
+export const getCurrentQuestionTense = (state: any): string =>
+  getCurrentQuestion(state).tense;
+
+export const getCurrentQuestionPerson = (state: any): string =>
+  getCurrentQuestion(state).person;
+
+export const getCurrentQuestionVerb = (state: any): string =>
+  getCurrentQuestion(state).spanishInfinitive;
+
+export const getGameProps = (state: any): StateProps => ({
+  tense: getCurrentQuestionTense(state),
+  person: getCurrentQuestionPerson(state),
+  verb: getCurrentQuestionVerb(state)
+});

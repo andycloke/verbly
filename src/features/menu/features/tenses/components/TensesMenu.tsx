@@ -5,7 +5,7 @@ import Subheader from 'material-ui/Subheader';
 import { List, ListItem } from 'material-ui/List';
 
 import { TensesInPlay } from '../models';
-import displayText from './displayText';
+import displayText from '../../../../../const/display-text/tenses';
 
 import './TensesMenu.css';
 
@@ -28,6 +28,7 @@ const TensesMenu = ({ inPlay, toggleTenseInPlay }: Props) => {
       <List>
         <Subheader>Tenses</Subheader>
         {Object.keys(inPlay).map(key => {
+          console.log('key: ', key);
           const checkBox = <Checkbox checked={inPlay[key]} />;
           return (
             <ListItem

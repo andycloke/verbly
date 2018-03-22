@@ -1,47 +1,33 @@
+import { Tenses } from '../../../../../const/models/tenses';
+
 export type TensesInPlay = {
-  indicativePresent: boolean;
-  indicativePreterite: boolean;
-  indicativeFuture: boolean;
-  conditionalPresent: boolean;
-  indicativePresentProgressive: boolean;
-  indicativeImperfect: boolean;
-  indicativePresentPerfect: boolean;
-  indicativeFuturePerfect: boolean;
-  indicativePastPerfect: boolean;
-  conditionalPerfect: boolean;
-  subjunctivePresent: boolean;
-  imperativeAffirmativePresent: boolean;
-  imperativeNegativePresent: boolean;
+  [Tenses.IndicativePresent]: boolean;
+  [Tenses.IndicativePresentProgressive]: boolean;
+  [Tenses.IndicativeFuture]: boolean;
+  [Tenses.ConditionalPresent]: boolean;
+  [Tenses.IndicativePreterite]: boolean;
+  [Tenses.IndicativeImperfect]: boolean;
+  [Tenses.IndicativePresentPerfect]: boolean;
+  [Tenses.IndicativeFuturePerfect]: boolean;
+  [Tenses.IndicativePastPerfect]: boolean;
+  [Tenses.ConditionalPerfect]: boolean;
+  [Tenses.SubjunctivePresent]: boolean;
+  [Tenses.ImperativeAffirmativePresent]: boolean;
+  [Tenses.ImperativeNegativePresent]: boolean;
 };
 
 export const initialState: TensesInPlay = {
-  indicativePresent: true,
-  indicativePresentProgressive: false,
-  indicativeFuture: false,
-  conditionalPresent: false,
-  indicativeImperfect: false,
-  indicativePreterite: false,
-  indicativePresentPerfect: false,
-  indicativeFuturePerfect: false,
-  indicativePastPerfect: false,
-  conditionalPerfect: false,
-  subjunctivePresent: false,
-  imperativeAffirmativePresent: false,
-  imperativeNegativePresent: false
+  [Tenses.IndicativePresent]: true,
+  [Tenses.IndicativePresentProgressive]: false,
+  [Tenses.IndicativeFuture]: false,
+  [Tenses.ConditionalPresent]: false,
+  [Tenses.IndicativePreterite]: false,
+  [Tenses.IndicativeImperfect]: false,
+  [Tenses.IndicativePresentPerfect]: false,
+  [Tenses.IndicativeFuturePerfect]: false,
+  [Tenses.IndicativePastPerfect]: false,
+  [Tenses.ConditionalPerfect]: false,
+  [Tenses.SubjunctivePresent]: false,
+  [Tenses.ImperativeAffirmativePresent]: false,
+  [Tenses.ImperativeNegativePresent]: false
 };
-
-export const tenses = Object.freeze({
-  indicativePresent: 'indicativePresent',
-  indicativePresentProgressive: 'indicativePresentProgressive',
-  indicativePreterite: 'indicativePreterite',
-  indicativeFuture: 'indicativeFuture',
-  conditionalPresent: 'conditionalPresent',
-  indicativeImperfect: 'indicativeImperfect',
-  indicativePresentPerfect: 'indicativePresentPerfect',
-  indicativeFuturePerfect: 'indicativeFuturePerfect',
-  indicativePastPerfect: 'indicativePastPerfect',
-  conditionalPerfect: 'conditionalPerfect',
-  subjunctivePresent: 'subjunctivePresent',
-  imperativeAffirmativePresent: 'imperativeAffirmativePresent',
-  imperativeNegativePresent: 'imperativeNegativePresent'
-});

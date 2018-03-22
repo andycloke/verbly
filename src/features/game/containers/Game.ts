@@ -5,7 +5,11 @@ import { initialiseGame } from '../actions';
 import GameComp from '../components/Game';
 import ConjugationsFetchWrapper from '../../conjugations/containers/ConjugationsFetchWrapper';
 
-export type StateProps = {};
+export type StateProps = {
+  tense: string;
+  person: string;
+  verb: string;
+};
 
 export type DispatchProps = {
   initialiseGame: () => void;
