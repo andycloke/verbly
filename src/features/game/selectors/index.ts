@@ -63,6 +63,9 @@ export const getCurrentQuestionVerb = (state: any): string =>
 export const getUserAnswer = (state: any): string =>
   getGameSlice(state).userAnswer;
 
+export const userAnswerNotBlank = (state: any): boolean =>
+  getUserAnswer(state) !== '';
+
 export const getCorrectAnswers = (state: any): string[] => {
   const tense = getCurrentQuestionTense(state);
   const person = getCurrentQuestionPerson(state);
@@ -72,6 +75,9 @@ export const getCorrectAnswers = (state: any): string[] => {
 
 export const isUserAnswerCorrect = (state: any): boolean =>
   getCorrectAnswers(state).includes(getUserAnswer(state));
+
+export const getConjugationsBeingDisplayed = (state: any): boolean =>
+  getGameSlice(state).displayConjugations;
 
 export const getGameProps = (state: any): StateProps => {
   const spanishInfinitive = getCurrentQuestionVerb(state);
@@ -83,7 +89,8 @@ export const getGameProps = (state: any): StateProps => {
       englishInfinitive: getDisplayEnglishInfinitive(state)
         ? getEnglishInfinitive(state, spanishInfinitive)
         : '',
-      userAnswer: getUserAnswer(state)
+      userAnswer: getUserAnswer(state),
+      displayConjugations: getConjugationsBeingDisplayed(state)
     };
   }
   return {
@@ -91,6 +98,7 @@ export const getGameProps = (state: any): StateProps => {
     person: '',
     verb: '',
     englishInfinitive: '',
-    userAnswer: ''
+    userAnswer: '',
+    displayConjugations: false
   };
 };

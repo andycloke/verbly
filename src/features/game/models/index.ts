@@ -19,6 +19,7 @@ export type Game = {
   questionsAnswered: number;
   currentQuestion: CurrentQuestion;
   userAnswer: string;
+  displayConjugations: boolean;
 };
 
 export const initialState = {
@@ -32,5 +33,6 @@ export const initialState = {
     spanishInfinitive: '',
     tense: ''
   },
-  userAnswer: ''
+  userAnswer: '',
+  displayConjugations: false
 };

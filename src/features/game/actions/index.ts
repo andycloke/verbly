@@ -7,7 +7,9 @@ import {
   isUserAnswerCorrect,
   getCurrentQuestionVerb,
   getCurrentQuestionTense,
-  verbIsToBeShownAgain
+  verbIsToBeShownAgain,
+  getConjugationsBeingDisplayed,
+  userAnswerNotBlank
 } from '../selectors';
 import { getNextVerbTenseToStudy } from '../logic';
 import { shuffle, randomElement } from '../../../util';
@@ -20,6 +22,8 @@ export const actionTypes = {
   REMOVE_GAME_VERB: 'game/REMOVE_GAME_VERB',
   REMOVE_UNSEEN_VERB: 'game/REMOVE_UNSEEN_VERB',
   ADD_SHOW_AGAIN_VERB: 'game/ADD_SHOW_AGAIN_VERB',
+  SHOW_CONJUGATIONS: 'game/SHOW_CONJUGATIONS',
+  HIDE_CONJUGATIONS: 'game/HIDE_CONJUGATIONS',
   UPDATE_USER_ANSWER: 'game/UPDATE_USER_ANSWER',
   CLEAR_USER_ANSWER: 'game/CLEAR_USER_ANSWER',
   SUBMIT_ANSWER: 'game/SUBMIT_ANSWER'
@@ -42,6 +46,14 @@ export const updateUserAnswer = (userAnswer: string) => ({
 
 export const clearUserAnswer = () => ({
   type: actionTypes.CLEAR_USER_ANSWER
+});
+
+export const showConjugations = () => ({
+  type: actionTypes.SHOW_CONJUGATIONS
+});
+
+export const hideConjugations = () => ({
+  type: actionTypes.HIDE_CONJUGATIONS
 });
 
 export const setGameUnseenVerbs = (verbs: Array<string>) => ({
@@ -76,8 +88,15 @@ export const addShowAgainVerbTense = (verb: string, tense: string) => ({
 export const newQuestion = () => {
   return function(dispatch: any, getState: any) {
     const state = getState();
-    if (gameShouldEnd(state)) dispatch(endGame());
-    else {
+    if (gameShouldEnd(state)) {
+      dispatch(endGame());
+    } else {
+      if (getConjugationsBeingDisplayed(state)) {
+        dispatch(hideConjugations());
+      }
+      if (userAnswerNotBlank(state)) {
+        dispatch(clearUserAnswer());
+      }
       const verbTense = getNextVerbTenseToStudy(state);
       const { spanishInfinitive, tense } = verbTense;
       const person = randomElement(getAllPeopleInPlay(state));
@@ -122,7 +141,7 @@ export const submitAnswer = () => {
         dispatch(removeUnseenVerb(verb));
         dispatch(addShowAgainVerbTense(verb, tense));
       }
-      // TODO: show conjugations
+      dispatch(showConjugations());
     }
   };
 };

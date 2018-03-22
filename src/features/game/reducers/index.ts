@@ -62,6 +62,16 @@ export default (game: Game = initialState, action: any) => {
         ...game,
         userAnswer: ''
       };
+    case actionTypes.SHOW_CONJUGATIONS:
+      return {
+        ...game,
+        displayConjugations: true
+      };
+    case actionTypes.HIDE_CONJUGATIONS:
+      return {
+        ...game,
+        displayConjugations: false
+      };
     default:
       return game;
   }
