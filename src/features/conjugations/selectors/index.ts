@@ -23,17 +23,26 @@ export const getAllConjugations = (state: any) =>
 
 export const getSingleConjugation = (
   state: any,
-  infinitive: string
-): Conjugation => getAllConjugations(state)[infinitive];
+  spanishInfinitive: string
+): Conjugation => getAllConjugations(state)[spanishInfinitive];
 
-export const isVerbIrregular = (state: any, infinitive: string): boolean =>
-  getSingleConjugation(state, infinitive).irregular;
+export const isVerbIrregular = (
+  state: any,
+  spanishInfinitive: string
+): boolean => getSingleConjugation(state, spanishInfinitive).irregular;
 
-export const isVerbReflexive = (state: any, infinitive: string): boolean =>
-  getSingleConjugation(state, infinitive).reflexive;
+export const isVerbReflexive = (
+  state: any,
+  spanishInfinitive: string
+): boolean => getSingleConjugation(state, spanishInfinitive).reflexive;
 
-export const isVerbCommon = (state: any, infinitive: string): boolean =>
-  getSingleConjugation(state, infinitive).common;
+export const isVerbCommon = (state: any, spanishInfinitive: string): boolean =>
+  getSingleConjugation(state, spanishInfinitive).common;
+
+export const getEnglishInfinitive = (
+  state: any,
+  spanishInfinitive: string
+): string => getSingleConjugation(state, spanishInfinitive).englishInfinitive;
 
 export const getAllInfinitves = (state: any): Array<string> =>
   Object.keys(getAllConjugations(state));

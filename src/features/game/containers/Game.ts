@@ -9,6 +9,7 @@ export type StateProps = {
   tense: string;
   person: string;
   verb: string;
+  englishInfinitive: string;
 };
 
 export type DispatchProps = {

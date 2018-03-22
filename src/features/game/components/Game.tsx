@@ -16,7 +16,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
   }
 
   render() {
-    const { tense, person, verb } = this.props;
+    const { tense, person, verb, englishInfinitive } = this.props;
     return (
       <div className="Game__outer">
         <Paper>
@@ -27,7 +27,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
             </span>
             <span className="Game__innerText--border">Verb</span>
             <span className="Game__innerText--border Game__innerText--leftAlign Game__verb">
-              {verb}
+              {`${verb} ${englishInfinitive ? `- ${englishInfinitive}` : ''}`}
             </span>
             <span className="Game__person">{person}</span>
             <TextField className="Game__input" id="text-field-default" />

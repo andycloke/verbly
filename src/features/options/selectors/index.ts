@@ -1,6 +1,6 @@
 const getOptionsSlice = (state: any) => state.options;
 
-const getDisplayEnglishInfinitive = (state: any): boolean =>
+export const getDisplayEnglishInfinitive = (state: any): boolean =>
   getOptionsSlice(state).displayEnglishInfinitive;
 
 const getAudioFeedback = (state: any): boolean =>
