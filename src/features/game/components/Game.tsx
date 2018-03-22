@@ -5,16 +5,11 @@ import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentSend from 'material-ui/svg-icons/content/send';
 
+import { StateProps, DispatchProps } from '../containers/Game';
+
 import './Game.css';
 
-export type DispatchProps = {
-  fetchConjugationsIfNotFetched: () => void;
-};
-
-class Game extends React.PureComponent<DispatchProps> {
-  async componentDidMount() {
-    this.props.fetchConjugationsIfNotFetched();
-  }
+class Game extends React.PureComponent<StateProps & DispatchProps> {
   render() {
     return (
       <div className="Game__outer">

@@ -4,6 +4,6 @@ export type Game = {
 };
 
 export const initialState = {
-  started: true,
+  started: false,
   verbs: []
 };

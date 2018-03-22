@@ -1,8 +1,6 @@
 import conjugationsService from '../../../service/conjugations';
-// import { setGameVerbs } from '../../game/actions';
-// import { Conjugation } from '../models/Conjugation';
 import { receiveConjugations } from './';
-import { areConjugationsFetched, areConjugationsFetching } from '../selectors';
+import { getConjugationsFetched, getConjugationsFetching } from '../selectors';
 
 export const actionTypes = {
   START_FETCHING_CONJUGATIONS: 'conjugations/fetch/START_FETCHING_CONJUGATIONS',
@@ -26,7 +24,7 @@ export const errorFetchingConjugations = () => ({
 export const fetchConjugationsIfNotFetched = () => {
   return async function(dispatch: any, getState: any) {
     const state = getState();
-    if (!areConjugationsFetched(state) && !areConjugationsFetching(state)) {
+    if (!getConjugationsFetched(state) && !getConjugationsFetching(state)) {
       dispatch(startFetchingConjugations());
       const conjugations = await conjugationsService.fetchConjugations();
       dispatch(successFetchingConjugations());

@@ -1,15 +1,17 @@
 import { connect } from 'react-redux';
 
-import { fetchConjugationsIfNotFetched } from '../../conjugations/actions/fetch';
-
 import { getGameProps } from '../selectors';
-import Game, { DispatchProps } from '../components/Game';
+import GameComp from '../components/Game';
+import ConjugationsFetchWrapper from '../../conjugations/containers/ConjugationsFetchWrapper';
 
-const mapStateToProps = (state: any) => getGameProps(state);
+export type StateProps = {};
 
-const mapDispatchToProps = (dispatch: any): DispatchProps => ({
-  fetchConjugationsIfNotFetched: async () =>
-    dispatch(fetchConjugationsIfNotFetched())
-});
+export type DispatchProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game as any);
+const mapStateToProps = (state: any): StateProps => getGameProps(state);
+
+const mapDispatchToProps = (dispatch: any): DispatchProps => ({});
+
+const Game = connect(mapStateToProps, mapDispatchToProps)(GameComp as any);
+
+export default ConjugationsFetchWrapper(Game);

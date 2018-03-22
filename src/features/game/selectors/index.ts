@@ -8,4 +8,4 @@ export const getGameStarted = (state: any): boolean =>
 export const getGameVerbs = (state: any): Array<string> =>
   getGameSlice(state).verbs;
 
-export const getGameProps = (state: any): any => undefined;
+export const getGameProps = (state: any): any => ({});
