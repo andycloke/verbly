@@ -1,11 +1,12 @@
 import {
-  VerbsIncludedOptions,
-  WhichVerbsOptions
-} from '../../menu/features/verbs/models';
-import {
-  getIrregularVerbsInPlay,
-  getReflexiveVerbsInPlay,
-  getWhichVerbsInPlay
+  irregularVerbsOnly,
+  irregularVerbsIncluded,
+  irregularVerbsExcluded,
+  reflexiveVerbsIncluded,
+  reflexiveVerbsExcluded,
+  reflexiveVerbsOnly,
+  commonVerbsOnly,
+  allVerbsInPlay
 } from '../../menu/features/verbs/selectors';
 import { Conjugation } from '../models/Conjugation';
 
@@ -42,28 +43,25 @@ export const getListOfAllConjugations = (state: any): Array<Conjugation> =>
 
 export const getVerbsFilteredByUserOptions = (state: any): Array<string> => {
   const allInfinitives = getAllInfinitves(state);
-  const irregularVerbsInPlayOption = getIrregularVerbsInPlay(state);
   // TODO: which verbs - user specified
   let filteredVerbs = allInfinitives.filter(
     (infinitive: string): boolean =>
-      (irregularVerbsInPlayOption === VerbsIncludedOptions.Only &&
-        isVerbIrregular(state, infinitive)) ||
-      (irregularVerbsInPlayOption === VerbsIncludedOptions.Exclude &&
-        !isVerbIrregular(state, infinitive))
+      (irregularVerbsOnly(state) && isVerbIrregular(state, infinitive)) ||
+      (irregularVerbsExcluded(state) && !isVerbIrregular(state, infinitive)) ||
+      irregularVerbsIncluded(state)
   );
-  const reflexiveVerbsInPlayOption = getReflexiveVerbsInPlay(state);
+  if (!filteredVerbs.length) return [];
   filteredVerbs = filteredVerbs.filter(
     (infinitive: string): boolean =>
-      (reflexiveVerbsInPlayOption === VerbsIncludedOptions.Only &&
-        isVerbReflexive(state, infinitive)) ||
-      (reflexiveVerbsInPlayOption === VerbsIncludedOptions.Exclude &&
-        !isVerbReflexive(state, infinitive))
+      (reflexiveVerbsOnly(state) && isVerbReflexive(state, infinitive)) ||
+      (reflexiveVerbsExcluded(state) && !isVerbReflexive(state, infinitive)) ||
+      reflexiveVerbsIncluded(state)
   );
-  const commonVerbsOption = getWhichVerbsInPlay(state);
+  if (!filteredVerbs.length) return [];
   filteredVerbs = filteredVerbs.filter(
     (infinitive: string): boolean =>
-      commonVerbsOption === WhichVerbsOptions.Common &&
-      isVerbCommon(state, infinitive)
+      (commonVerbsOnly(state) && isVerbCommon(state, infinitive)) ||
+      allVerbsInPlay(state)
   );
   return filteredVerbs;
 };
