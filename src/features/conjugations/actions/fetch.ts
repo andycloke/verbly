@@ -27,8 +27,8 @@ export const fetchConjugationsIfNotFetched = () => {
     if (!getConjugationsFetched(state) && !getConjugationsFetching(state)) {
       dispatch(startFetchingConjugations());
       const conjugations = await conjugationsService.fetchConjugations();
-      dispatch(successFetchingConjugations());
       dispatch(receiveConjugations(conjugations));
+      dispatch(successFetchingConjugations());
     }
   };
 };
