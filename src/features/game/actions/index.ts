@@ -15,10 +15,11 @@ import { shuffle, randomElement } from '../../../util';
 export const actionTypes = {
   START_GAME: 'game/START_GAME',
   END_GAME: 'game/END_GAME',
+  NEW_QUESTION: 'game/NEW_QUESTION',
   SET_GAME_UNSEEN_VERBS: 'game/SET_GAME_UNSEEN_VERBS',
   REMOVE_GAME_VERB: 'game/REMOVE_GAME_VERB',
+  REMOVE_UNSEEN_VERB: 'game/REMOVE_UNSEEN_VERB',
   ADD_SHOW_AGAIN_VERB: 'game/ADD_SHOW_AGAIN_VERB',
-  NEW_QUESTION: 'game/NEW_QUESTION',
   UPDATE_USER_ANSWER: 'game/UPDATE_USER_ANSWER',
   CLEAR_USER_ANSWER: 'game/CLEAR_USER_ANSWER',
   SUBMIT_ANSWER: 'game/SUBMIT_ANSWER'
@@ -47,6 +48,13 @@ export const setGameUnseenVerbs = (verbs: Array<string>) => ({
   type: actionTypes.SET_GAME_UNSEEN_VERBS,
   payload: {
     verbs
+  }
+});
+
+export const removeUnseenVerb = (verb: string) => ({
+  type: actionTypes.REMOVE_UNSEEN_VERB,
+  payload: {
+    verb
   }
 });
 
@@ -111,6 +119,7 @@ export const submitAnswer = () => {
     } else {
       const tense = getCurrentQuestionTense(state);
       if (!verbIsToBeShownAgain(state, verb)) {
+        dispatch(removeUnseenVerb(verb));
         dispatch(addShowAgainVerbTense(verb, tense));
       }
       // TODO: show conjugations

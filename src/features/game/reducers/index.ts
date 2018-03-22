@@ -18,6 +18,13 @@ export default (game: Game = initialState, action: any) => {
         ...game,
         unseenVerbs: action.payload.verbs
       };
+    case actionTypes.REMOVE_UNSEEN_VERB:
+      return {
+        ...game,
+        unseenVerbs: game.unseenVerbs.filter(
+          (verb: string): boolean => verb !== action.payload.verb
+        )
+      };
     case actionTypes.REMOVE_GAME_VERB:
       return {
         ...game,
