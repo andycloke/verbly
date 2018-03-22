@@ -15,11 +15,23 @@ export const getGameStarted = (state: any): boolean =>
 export const getGameUnseenVerbs = (state: any): Array<string> =>
   getGameSlice(state).unseenVerbs;
 
+export const getNumberOfUnseenVerbs = (state: any): number =>
+  getGameUnseenVerbs(state).length;
+
+export const noMoreUnseenVerbs = (state: any): boolean =>
+  getGameUnseenVerbs(state).length === 0;
+
 export const getNextUnseenVerb = (state: any): string =>
   getGameUnseenVerbs(state)[0];
 
 export const getGameShowAgainVerbTenses = (state: any): Array<VerbTense> =>
   getGameSlice(state).showAgainVerbTenses;
+
+export const getNumberOfGameShowAgainVerbTenses = (state: any): number =>
+  getGameShowAgainVerbTenses(state).length;
+
+export const noMoreShowAgainVerbTenses = (state: any): boolean =>
+  getNumberOfGameShowAgainVerbTenses(state) === 0;
 
 export const getGameShowAgainVerbs = (state: any): Array<string> =>
   getGameShowAgainVerbTenses(state).map(
@@ -37,11 +49,22 @@ export const verbIsToBeShownAgain = (
 export const getNextShowAgainVerbTense = (state: any): VerbTense =>
   getGameShowAgainVerbTenses(state)[0];
 
-export const getQuestionsAnswered = (state: any): number =>
+export const getNumberOfQuestionsAnswered = (state: any): number =>
   getGameSlice(state).questionsAnswered;
 
+// Limited number of questions can be asked, so at a certain point we need to show
+// any verb-tense combos that need reviewing
+export const needToStartShowingShowAgainVerbTenses = (state: any): boolean =>
+  MAX_QUESTIONS_ANSWERED - getNumberOfQuestionsAnswered(state) <=
+  getNumberOfGameShowAgainVerbTenses(state);
+
+export const needToUseShowAgainVerbTenseForNextQuestion = (
+  state: any
+): boolean =>
+  noMoreUnseenVerbs(state) || needToStartShowingShowAgainVerbTenses(state);
+
 export const gameShouldEnd = (state: any): boolean =>
-  getQuestionsAnswered(state) >= MAX_QUESTIONS_ANSWERED ||
+  getNumberOfQuestionsAnswered(state) >= MAX_QUESTIONS_ANSWERED ||
   (getGameUnseenVerbs(state).length === 0 &&
     getGameShowAgainVerbTenses(state).length === 0);
 

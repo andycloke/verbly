@@ -24,7 +24,14 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
   };
 
   render() {
-    const { tense, person, verb, englishInfinitive, userAnswer } = this.props;
+    const {
+      tense,
+      person,
+      verb,
+      englishInfinitive,
+      userAnswer,
+      displayConjugations
+    } = this.props;
     return (
       <div className="Game__outer">
         <Paper>
@@ -43,6 +50,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
               id="answerInput"
               onChange={this.handleUserAnswerChange}
               value={userAnswer}
+              disabled={displayConjugations}
             />
             <div className="Game__submitButtonCell">
               <FloatingActionButton
