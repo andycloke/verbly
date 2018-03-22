@@ -1,15 +1,27 @@
-import { Fetch } from '../models/Fetch';
+import { Conjugation } from '../models/Conjugation';
+
+import {
+  getConjugationsFetching,
+  getConjugationsFetched,
+  getConjugationsFetchError
+} from './fetch';
 
 export const getConjugationsSlice = (state: any) => state.conjugations;
 
-export const getConjugationsFetchStatus = (state: any): Fetch =>
-  getConjugationsSlice(state).fetch;
+export const getAllConjugations = (state: any) =>
+  getConjugationsSlice(state).conjugations;
 
-export const getConjugationsFetching = (state: any): boolean =>
-  getConjugationsFetchStatus(state).fetching;
+export const getSingleConjugation = (state: any, infinitive: string) =>
+  getAllConjugations(state)[infinitive];
 
-export const getConjugationsFetched = (state: any): boolean =>
-  getConjugationsFetchStatus(state).fetched;
+export const getAllInfinitves = (state: any): Array<string> =>
+  Object.keys(getAllConjugations(state));
 
-export const getConjugationsFetchError = (state: any): boolean =>
-  getConjugationsFetchStatus(state).error;
+export const getListOfAllConjugations = (state: any): Array<Conjugation> =>
+  Object.values(getAllConjugations(state));
+
+export {
+  getConjugationsFetching,
+  getConjugationsFetched,
+  getConjugationsFetchError
+};
