@@ -10,7 +10,8 @@ export const actionTypes = {
   START_GAME: 'game/START_GAME',
   END_GAME: 'game/END_GAME',
   SET_GAME_UNSEEN_VERBS: 'game/SET_GAME_UNSEEN_VERBS',
-  NEW_QUESTION: 'game/NEW_QUESTION'
+  NEW_QUESTION: 'game/NEW_QUESTION',
+  UPDATE_USER_ANSWER: 'game/UPDATE_USER_ANSWER'
 };
 
 export const startGame = () => ({
@@ -19,6 +20,13 @@ export const startGame = () => ({
 
 export const endGame = () => ({
   type: actionTypes.END_GAME
+});
+
+export const updateUserAnswer = (userAnswer: string) => ({
+  type: actionTypes.UPDATE_USER_ANSWER,
+  payload: {
+    userAnswer
+  }
 });
 
 export const setGameUnseenVerbs = (verbs: Array<string>) => ({

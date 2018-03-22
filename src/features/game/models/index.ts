@@ -18,6 +18,7 @@ export type Game = {
   showAgainVerbs: Array<VerbTense>; // need reviewing again in this game
   questionsAnswered: number;
   currentQuestion: CurrentQuestion;
+  userAnswer: string;
 };
 
 export const initialState = {
@@ -30,5 +31,6 @@ export const initialState = {
     displayPerson: '',
     spanishInfinitive: '',
     tense: ''
-  }
+  },
+  userAnswer: ''
 };

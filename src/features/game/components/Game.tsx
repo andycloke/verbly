@@ -15,8 +15,12 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
     this.props.initialiseGame();
   }
 
+  handleUserAnswerChange = (e: React.FormEvent<{}>, newValue: string) => {
+    this.props.updateUserAnswer(newValue);
+  };
+
   render() {
-    const { tense, person, verb, englishInfinitive } = this.props;
+    const { tense, person, verb, englishInfinitive, userAnswer } = this.props;
     return (
       <div className="Game__outer">
         <Paper>
@@ -30,7 +34,12 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
               {`${verb} ${englishInfinitive ? `- ${englishInfinitive}` : ''}`}
             </span>
             <span className="Game__person">{person}</span>
-            <TextField className="Game__input" id="text-field-default" />
+            <TextField
+              className="Game__input"
+              id="answerInput"
+              onChange={this.handleUserAnswerChange}
+              value={userAnswer}
+            />
             <div className="Game__submitButtonCell">
               <FloatingActionButton
                 secondary

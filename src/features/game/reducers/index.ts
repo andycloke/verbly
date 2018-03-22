@@ -23,6 +23,11 @@ export default (game: Game = initialState, action: any) => {
         ...game,
         currentQuestion: action.payload
       };
+    case actionTypes.UPDATE_USER_ANSWER:
+      return {
+        ...game,
+        userAnswer: action.payload.userAnswer
+      };
     default:
       return game;
   }
