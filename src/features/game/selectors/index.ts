@@ -2,7 +2,10 @@ import { Game, VerbTense, CurrentQuestion } from '../models';
 import { MAX_QUESTIONS_ANSWERED } from '../const';
 import { StateProps } from '../containers/Game';
 import { getDisplayEnglishInfinitive } from '../../options/selectors';
-import { getEnglishInfinitive } from '../../conjugations/selectors';
+import {
+  getEnglishInfinitive,
+  getConjugationInTenseForPerson
+} from '../../conjugations/selectors';
 
 export const getGameSlice = (state: any): Game => state.game;
 
@@ -46,6 +49,16 @@ export const getCurrentQuestionVerb = (state: any): string =>
 
 export const getUserAnswer = (state: any): string =>
   getGameSlice(state).userAnswer;
+
+export const getCorrectAnswers = (state: any): string[] => {
+  const tense = getCurrentQuestionTense(state);
+  const person = getCurrentQuestionPerson(state);
+  const verb = getCurrentQuestionVerb(state);
+  return getConjugationInTenseForPerson(state, verb, tense, person);
+};
+
+export const isUserAnswerCorrect = (state: any): boolean =>
+  getCorrectAnswers(state).includes(getUserAnswer(state));
 
 export const getGameProps = (state: any): StateProps => {
   const spanishInfinitive = getCurrentQuestionVerb(state);

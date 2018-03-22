@@ -19,6 +19,10 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
     this.props.updateUserAnswer(newValue);
   };
 
+  handleSubmitAnswerClick = (event: React.MouseEvent<HTMLElement>) => {
+    this.props.submitAnswer();
+  };
+
   render() {
     const { tense, person, verb, englishInfinitive, userAnswer } = this.props;
     return (
@@ -45,6 +49,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
                 secondary
                 mini
                 className="Game__submitButton"
+                onMouseDown={this.handleSubmitAnswerClick}
               >
                 <ContentSend />
               </FloatingActionButton>

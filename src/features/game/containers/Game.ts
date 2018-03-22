@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { getGameProps } from '../selectors';
-import { initialiseGame, updateUserAnswer } from '../actions';
+import { initialiseGame, updateUserAnswer, submitAnswer } from '../actions';
 import GameComp from '../components/Game';
 import ConjugationsFetchWrapper from '../../conjugations/containers/ConjugationsFetchWrapper';
 
@@ -16,6 +16,7 @@ export type StateProps = {
 export type DispatchProps = {
   initialiseGame: () => void;
   updateUserAnswer: (userAnswer: string) => void;
+  submitAnswer: () => void;
 };
 
 const mapStateToProps = (state: any): StateProps => getGameProps(state);
@@ -23,7 +24,8 @@ const mapStateToProps = (state: any): StateProps => getGameProps(state);
 const mapDispatchToProps = (dispatch: any): DispatchProps => ({
   initialiseGame: () => dispatch(initialiseGame()),
   updateUserAnswer: (userAnswer: string) =>
-    dispatch(updateUserAnswer(userAnswer))
+    dispatch(updateUserAnswer(userAnswer)),
+  submitAnswer: () => dispatch(submitAnswer())
 });
 
 const Game = connect(mapStateToProps, mapDispatchToProps)(GameComp as any);

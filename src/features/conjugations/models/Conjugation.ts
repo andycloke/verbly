@@ -1,10 +1,13 @@
+import { Tenses } from '../../../const/models/tenses';
+import { People } from '../../../const/models/people';
+
 type SingleTenseConjugations = {
-  yo: Array<string>;
-  tu: Array<string>;
-  el: Array<string>;
-  ns: Array<string>;
-  vs: Array<string>;
-  ellos: Array<string>;
+  [People.Yo]: Array<string>;
+  [People.Tu]: Array<string>;
+  [People.El]: Array<string>;
+  [People.Nosotros]: Array<string>;
+  [People.Vosotros]: Array<string>;
+  [People.Ellos]: Array<string>;
 };
 
 export type Conjugation = {
@@ -14,19 +17,19 @@ export type Conjugation = {
   type: string;
   common: boolean;
   reflexive: boolean;
-  indicativePresent: SingleTenseConjugations;
-  indicativePreterite: SingleTenseConjugations;
-  indicativeFuture: SingleTenseConjugations;
-  conditionalPresent: SingleTenseConjugations;
-  indicativeImperfect: SingleTenseConjugations;
-  indicativePresentProgressive: SingleTenseConjugations;
-  indicativePresentPerfect: SingleTenseConjugations;
-  indicativePastPerfect: SingleTenseConjugations;
-  indicativeFuturePerfect: SingleTenseConjugations;
-  conditionalPerfect: SingleTenseConjugations;
-  subjunctivePresent: SingleTenseConjugations;
-  imperativeAffirmativePresent: SingleTenseConjugations;
-  imperativeNegativePresent: SingleTenseConjugations;
+  [Tenses.IndicativePresent]: SingleTenseConjugations;
+  [Tenses.IndicativePreterite]: SingleTenseConjugations;
+  [Tenses.IndicativeFuture]: SingleTenseConjugations;
+  [Tenses.ConditionalPresent]: SingleTenseConjugations;
+  [Tenses.IndicativeImperfect]: SingleTenseConjugations;
+  [Tenses.IndicativePresentProgressive]: SingleTenseConjugations;
+  [Tenses.IndicativePresentPerfect]: SingleTenseConjugations;
+  [Tenses.IndicativePastPerfect]: SingleTenseConjugations;
+  [Tenses.IndicativeFuturePerfect]: SingleTenseConjugations;
+  [Tenses.ConditionalPerfect]: SingleTenseConjugations;
+  [Tenses.SubjunctivePresent]: SingleTenseConjugations;
+  [Tenses.ImperativeAffirmativePresent]: SingleTenseConjugations;
+  [Tenses.ImperativeNegativePresent]: SingleTenseConjugations;
 };
 
 export type ConjugationsState = {

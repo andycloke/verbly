@@ -18,6 +18,13 @@ export default (game: Game = initialState, action: any) => {
         ...game,
         unseenVerbs: action.payload.verbs
       };
+    case actionTypes.REMOVE_UNSEEN_VERB:
+      return {
+        ...game,
+        unseenVerbs: game.unseenVerbs.filter(
+          (verb: string): boolean => verb !== action.payload.verb
+        )
+      };
     case actionTypes.NEW_QUESTION:
       return {
         ...game,
@@ -27,6 +34,11 @@ export default (game: Game = initialState, action: any) => {
       return {
         ...game,
         userAnswer: action.payload.userAnswer
+      };
+    case actionTypes.CLEAR_USER_ANSWER:
+      return {
+        ...game,
+        userAnswer: ''
       };
     default:
       return game;

@@ -26,6 +26,13 @@ export const getSingleConjugation = (
   spanishInfinitive: string
 ): Conjugation => getAllConjugations(state)[spanishInfinitive];
 
+export const getConjugationInTenseForPerson = (
+  state: any,
+  spanishInfinitive: string,
+  tense: string,
+  person: string
+): string[] => getSingleConjugation(state, spanishInfinitive)[tense][person];
+
 export const isVerbIrregular = (
   state: any,
   spanishInfinitive: string
