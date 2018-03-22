@@ -1,26 +1,19 @@
+import { People } from '../../../../../const/models/people';
+
 export type PeopleInPlay = {
-  yo: boolean;
-  tu: boolean;
-  el: boolean;
-  nosotros: boolean;
-  vosotros: boolean;
-  ellos: boolean;
+  [People.Yo]: boolean;
+  [People.Tu]: boolean;
+  [People.El]: boolean;
+  [People.Nosotros]: boolean;
+  [People.Vosotros]: boolean;
+  [People.Ellos]: boolean;
 };
 
 export const initialState: PeopleInPlay = {
-  yo: true,
-  tu: true,
-  el: true,
-  nosotros: true,
-  vosotros: false,
-  ellos: true
+  [People.Yo]: true,
+  [People.Tu]: true,
+  [People.El]: true,
+  [People.Nosotros]: true,
+  [People.Vosotros]: false,
+  [People.Ellos]: true
 };
-
-export const people = Object.freeze({
-  yo: 'yo',
-  tu: 'tu',
-  el: 'el',
-  nosotros: 'nosotros',
-  vosotros: 'vosotros',
-  ellos: 'ellos'
-});

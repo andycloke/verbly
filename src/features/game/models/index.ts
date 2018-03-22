@@ -7,6 +7,7 @@ export type VerbTense = {
 
 export type CurrentQuestion = {
   person: string;
+  displayPerson: string;
   spanishInfinitive: string;
   tense: string;
 };
@@ -26,6 +27,7 @@ export const initialState = {
   questionsAnswered: 0,
   currentQuestion: {
     person: '',
+    displayPerson: '',
     spanishInfinitive: '',
     tense: ''
   }

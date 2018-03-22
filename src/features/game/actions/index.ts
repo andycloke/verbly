@@ -1,5 +1,6 @@
 import { getVerbsFilteredByUserOptions } from '../../conjugations/selectors';
 import { getAllPeopleInPlay } from '../../menu/features/people/selectors';
+import { peopleMap } from '../../../const/models/people';
 import { N_GAME_VERBS } from '../const';
 import { gameShouldEnd } from '../selectors';
 import { getNextVerbTenseToStudy } from '../logic';
@@ -34,12 +35,14 @@ export const newQuestion = () => {
     const verbTense = getNextVerbTenseToStudy(state);
     const { spanishInfinitive, tense } = verbTense;
     const person = randomElement(getAllPeopleInPlay(state));
+    const displayPerson = randomElement(peopleMap[person]);
     dispatch({
       type: actionTypes.NEW_QUESTION,
       payload: {
         person,
         spanishInfinitive,
-        tense
+        tense,
+        displayPerson
       }
     });
   };

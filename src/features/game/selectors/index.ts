@@ -38,6 +38,9 @@ export const getCurrentQuestionTense = (state: any): string =>
 export const getCurrentQuestionPerson = (state: any): string =>
   getCurrentQuestion(state).person;
 
+export const getCurrentQuestionDisplayPerson = (state: any): string =>
+  getCurrentQuestion(state).displayPerson;
+
 export const getCurrentQuestionVerb = (state: any): string =>
   getCurrentQuestion(state).spanishInfinitive;
 
@@ -46,7 +49,7 @@ export const getGameProps = (state: any): StateProps => {
   if (spanishInfinitive) {
     return {
       tense: getCurrentQuestionTense(state),
-      person: getCurrentQuestionPerson(state),
+      person: getCurrentQuestionDisplayPerson(state),
       verb: spanishInfinitive,
       englishInfinitive: getDisplayEnglishInfinitive(state)
         ? getEnglishInfinitive(state, spanishInfinitive)

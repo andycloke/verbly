@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { PeopleInPlay, people } from '../models';
+import { peopleMap } from '../../../../../const/models/people';
+import { PeopleInPlay } from '../models';
 import Checkbox from 'material-ui/Checkbox';
 import Subheader from 'material-ui/Subheader';
 import { List, ListItem } from 'material-ui/List';
@@ -17,15 +18,6 @@ type PeopleMenuDispatchProps = {
 
 type Props = PeopleMenuDataProps & PeopleMenuDispatchProps;
 
-const displayText = {
-  [people.yo]: 'Yo',
-  [people.tu]: 'Tú',
-  [people.el]: 'Él, Ella, Usted',
-  [people.nosotros]: 'Nosotros, Nosotras',
-  [people.vosotros]: 'Vosotros, Vosotras',
-  [people.ellos]: 'Ellos, Ellas'
-};
-
 const PeopleMenu = ({ inPlay, togglePersonInPlay }: Props) => {
   const makeClickHandler = (person: string) => (
     event: React.MouseEvent<HTMLElement>
@@ -39,8 +31,7 @@ const PeopleMenu = ({ inPlay, togglePersonInPlay }: Props) => {
           return (
             <ListItem
               key={key}
-              primaryText={displayText[key]}
-              // secondaryText="test"
+              primaryText={peopleMap[key].join(', ')}
               leftIcon={checkBox}
               onClick={makeClickHandler(key)}
             />
