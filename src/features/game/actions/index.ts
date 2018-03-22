@@ -5,7 +5,8 @@ import { N_GAME_VERBS } from '../const';
 import {
   gameShouldEnd,
   isUserAnswerCorrect,
-  getCurrentQuestionVerb
+  getCurrentQuestionVerb,
+  getCurrentQuestionTense
 } from '../selectors';
 import { getNextVerbTenseToStudy } from '../logic';
 import { shuffle, randomElement } from '../../../util';
@@ -15,6 +16,7 @@ export const actionTypes = {
   END_GAME: 'game/END_GAME',
   SET_GAME_UNSEEN_VERBS: 'game/SET_GAME_UNSEEN_VERBS',
   REMOVE_UNSEEN_VERB: 'game/REMOVE_UNSEEN_VERB',
+  ADD_SHOW_AGAIN_VERB: 'game/ADD_SHOW_AGAIN_VERB',
   NEW_QUESTION: 'game/NEW_QUESTION',
   UPDATE_USER_ANSWER: 'game/UPDATE_USER_ANSWER',
   CLEAR_USER_ANSWER: 'game/CLEAR_USER_ANSWER',
@@ -51,6 +53,14 @@ export const removeUnseenVerb = (verb: string) => ({
   type: actionTypes.REMOVE_UNSEEN_VERB,
   payload: {
     verb
+  }
+});
+
+export const addShowAgainVerbTense = (verb: string, tense: string) => ({
+  type: actionTypes.ADD_SHOW_AGAIN_VERB,
+  payload: {
+    verb,
+    tense
   }
 });
 
@@ -98,7 +108,9 @@ export const submitAnswer = () => {
       dispatch(newQuestion());
       dispatch(clearUserAnswer());
     } else {
-      console.log('wrong');
+      const tense = getCurrentQuestionTense(state);
+      dispatch(addShowAgainVerbTense(verb, tense));
+      // TODO: show conjugations
     }
   };
 };

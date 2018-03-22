@@ -25,6 +25,17 @@ export default (game: Game = initialState, action: any) => {
           (verb: string): boolean => verb !== action.payload.verb
         )
       };
+    case actionTypes.ADD_SHOW_AGAIN_VERB:
+      return {
+        ...game,
+        showAgainVerbs: [
+          ...game.showAgainVerbs,
+          {
+            spanishInfinitive: action.payload.verb,
+            tense: action.payload.tense
+          }
+        ]
+      };
     case actionTypes.NEW_QUESTION:
       return {
         ...game,
