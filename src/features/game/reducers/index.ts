@@ -13,10 +13,10 @@ export default (game: Game = initialState, action: any) => {
         ...game,
         started: false
       };
-    case actionTypes.SET_GAME_VERBS:
+    case actionTypes.SET_GAME_UNSEEN_VERBS:
       return {
         ...game,
-        verbs: action.payload.verbs
+        unseenVerbs: action.payload.verbs
       };
     default:
       return game;

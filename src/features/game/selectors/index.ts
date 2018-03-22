@@ -1,11 +1,29 @@
-import { Game } from '../models';
+import { Game, VerbTense } from '../models';
+import { MAX_QUESTIONS_ANSWERED } from '../const';
 
 export const getGameSlice = (state: any): Game => state.game;
 
 export const getGameStarted = (state: any): boolean =>
   getGameSlice(state).started;
 
-export const getGameVerbs = (state: any): Array<string> =>
-  getGameSlice(state).verbs;
+export const getGameUnseenVerbs = (state: any): Array<string> =>
+  getGameSlice(state).unseenVerbs;
+
+export const getNextUnseenVerb = (state: any): string =>
+  getGameUnseenVerbs(state)[0];
+
+export const getGameShowAgainVerbs = (state: any): Array<VerbTense> =>
+  getGameSlice(state).showAgainVerbs;
+
+export const getNextShowAgainVerbTense = (state: any): VerbTense =>
+  getGameShowAgainVerbs(state)[0];
+
+export const getQuestionsAnswered = (state: any): number =>
+  getGameSlice(state).questionsAnswered;
+
+export const gameShouldEnd = (state: any): boolean =>
+  getQuestionsAnswered(state) >= MAX_QUESTIONS_ANSWERED ||
+  (getGameUnseenVerbs(state).length === 0 &&
+    getGameShowAgainVerbs(state).length === 0);
 
 export const getGameProps = (state: any): any => ({});

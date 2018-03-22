@@ -9,6 +9,7 @@ import tensesInPlay from './features/menu/features/tenses/reducers';
 import verbsInPlay from './features/menu/features/verbs/reducers';
 import game from './features/game/reducers';
 import conjugations from './features/conjugations/reducers';
+import stats from './features/stats/reducers';
 
 const reducer = combineReducers({
   options,
@@ -16,7 +17,8 @@ const reducer = combineReducers({
   tensesInPlay,
   verbsInPlay,
   game,
-  conjugations
+  conjugations,
+  stats
 });
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));

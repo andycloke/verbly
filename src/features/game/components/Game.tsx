@@ -10,6 +10,10 @@ import { StateProps, DispatchProps } from '../containers/Game';
 import './Game.css';
 
 class Game extends React.PureComponent<StateProps & DispatchProps> {
+  componentDidMount() {
+    this.props.initialiseGame();
+  }
+
   render() {
     return (
       <div className="Game__outer">

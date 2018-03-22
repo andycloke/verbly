@@ -10,9 +10,9 @@ const statAlreadyExists = (
 
 // TODO: bit nested at the momemnt, could be simplified
 export default (stats: any = {}, action: any) => {
-  const { verb, tense, timeStamp } = action.payload;
   switch (action.type) {
     case actionTypes.UPDATE_VERB_TENSE_AFTER_CORRECT:
+      const { verb, tense, timeStamp } = action.payload;
       return {
         ...stats,
         [tense]: {
