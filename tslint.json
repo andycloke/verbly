@@ -5,7 +5,7 @@
     "ban": false,
     "class-name": true,
     "comment-format": [true, "check-space"],
-    "curly": true,
+    "curly": [true, "ignore-same-line"],
     "eofline": false,
     "forin": true,
     "indent": [true, "spaces"],
