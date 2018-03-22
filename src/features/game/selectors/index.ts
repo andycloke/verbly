@@ -18,11 +18,24 @@ export const getGameUnseenVerbs = (state: any): Array<string> =>
 export const getNextUnseenVerb = (state: any): string =>
   getGameUnseenVerbs(state)[0];
 
-export const getGameShowAgainVerbs = (state: any): Array<VerbTense> =>
-  getGameSlice(state).showAgainVerbs;
+export const getGameShowAgainVerbTenses = (state: any): Array<VerbTense> =>
+  getGameSlice(state).showAgainVerbTenses;
+
+export const getGameShowAgainVerbs = (state: any): Array<string> =>
+  getGameShowAgainVerbTenses(state).map(
+    (verbTense: VerbTense) => verbTense.spanishInfinitive
+  );
+
+export const verbIsToBeShownAgain = (
+  state: any,
+  spanishInfinitive: string
+): boolean => {
+  const showAgainVerbs = getGameShowAgainVerbs(state);
+  return !!showAgainVerbs.length && showAgainVerbs.includes(spanishInfinitive);
+};
 
 export const getNextShowAgainVerbTense = (state: any): VerbTense =>
-  getGameShowAgainVerbs(state)[0];
+  getGameShowAgainVerbTenses(state)[0];
 
 export const getQuestionsAnswered = (state: any): number =>
   getGameSlice(state).questionsAnswered;
@@ -30,7 +43,7 @@ export const getQuestionsAnswered = (state: any): number =>
 export const gameShouldEnd = (state: any): boolean =>
   getQuestionsAnswered(state) >= MAX_QUESTIONS_ANSWERED ||
   (getGameUnseenVerbs(state).length === 0 &&
-    getGameShowAgainVerbs(state).length === 0);
+    getGameShowAgainVerbTenses(state).length === 0);
 
 export const getCurrentQuestion = (state: any): CurrentQuestion =>
   getGameSlice(state).currentQuestion;

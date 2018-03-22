@@ -15,7 +15,7 @@ export type CurrentQuestion = {
 export type Game = {
   started: boolean;
   unseenVerbs: Array<string>; // unseen (as far as this game is concerned)
-  showAgainVerbs: Array<VerbTense>; // need reviewing again in this game
+  showAgainVerbTenses: Array<VerbTense>; // need reviewing again in this game
   questionsAnswered: number;
   currentQuestion: CurrentQuestion;
   userAnswer: string;
@@ -24,7 +24,7 @@ export type Game = {
 export const initialState = {
   started: false,
   unseenVerbs: [],
-  showAgainVerbs: [],
+  showAgainVerbTenses: [],
   questionsAnswered: 0,
   currentQuestion: {
     person: '',

@@ -6,7 +6,8 @@ import {
   gameShouldEnd,
   isUserAnswerCorrect,
   getCurrentQuestionVerb,
-  getCurrentQuestionTense
+  getCurrentQuestionTense,
+  verbIsToBeShownAgain
 } from '../selectors';
 import { getNextVerbTenseToStudy } from '../logic';
 import { shuffle, randomElement } from '../../../util';
@@ -15,7 +16,7 @@ export const actionTypes = {
   START_GAME: 'game/START_GAME',
   END_GAME: 'game/END_GAME',
   SET_GAME_UNSEEN_VERBS: 'game/SET_GAME_UNSEEN_VERBS',
-  REMOVE_UNSEEN_VERB: 'game/REMOVE_UNSEEN_VERB',
+  REMOVE_GAME_VERB: 'game/REMOVE_GAME_VERB',
   ADD_SHOW_AGAIN_VERB: 'game/ADD_SHOW_AGAIN_VERB',
   NEW_QUESTION: 'game/NEW_QUESTION',
   UPDATE_USER_ANSWER: 'game/UPDATE_USER_ANSWER',
@@ -49,8 +50,8 @@ export const setGameUnseenVerbs = (verbs: Array<string>) => ({
   }
 });
 
-export const removeUnseenVerb = (verb: string) => ({
-  type: actionTypes.REMOVE_UNSEEN_VERB,
+export const removeGameVerb = (verb: string) => ({
+  type: actionTypes.REMOVE_GAME_VERB,
   payload: {
     verb
   }
@@ -104,12 +105,14 @@ export const submitAnswer = () => {
     const state = getState();
     const verb = getCurrentQuestionVerb(state);
     if (isUserAnswerCorrect(state)) {
-      dispatch(removeUnseenVerb(verb));
+      dispatch(removeGameVerb(verb));
       dispatch(newQuestion());
       dispatch(clearUserAnswer());
     } else {
       const tense = getCurrentQuestionTense(state);
-      dispatch(addShowAgainVerbTense(verb, tense));
+      if (!verbIsToBeShownAgain(state, verb)) {
+        dispatch(addShowAgainVerbTense(verb, tense));
+      }
       // TODO: show conjugations
     }
   };
