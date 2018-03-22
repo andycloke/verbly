@@ -10,15 +10,11 @@ export enum VerbsIncludedOptions {
   Only = 'Only'
 }
 
-// export type VerbsIncludedOptions = 'Include' | 'Exclude' | 'Only';
-
 export enum WhichVerbsOptions {
   All = 'All',
   Common = 'Common',
   UserDefined = 'UserDefined'
 }
-
-// export type WhichVerbsOptions = 'All' | 'Common' | 'User Defined';
 
 export type VerbsInPlay = {
   reflexive: VerbsIncludedOptions;
