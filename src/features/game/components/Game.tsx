@@ -13,14 +13,17 @@ import './Game.css';
 
 class Game extends React.PureComponent<StateProps & DispatchProps> {
   answerInput: TextField;
+  mounted: boolean;
 
   componentDidMount() {
     this.props.initialiseGame();
     window.addEventListener('keydown', this.handleKeyDown);
+    this.mounted = true;
   }
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyDown);
+    this.mounted = false;
   }
 
   handleKeyDown = (e: KeyboardEvent) => {
@@ -45,7 +48,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
   submitAndFocus = () => {
     this.props.submit();
     setTimeout(() => {
-      this.answerInput.focus();
+      if (this.mounted) this.answerInput.focus();
     }, 100);
   };
 
