@@ -22,6 +22,7 @@ export const actionTypes = {
   REMOVE_GAME_VERB: 'game/REMOVE_GAME_VERB',
   REMOVE_UNSEEN_VERB: 'game/REMOVE_UNSEEN_VERB',
   ADD_SHOW_AGAIN_VERB: 'game/ADD_SHOW_AGAIN_VERB',
+  REMOVE_SHOW_AGAIN_VERB: 'game/REMOVE_SHOW_AGAIN_VERB',
   SHOW_CONJUGATIONS: 'game/SHOW_CONJUGATIONS',
   HIDE_CONJUGATIONS: 'game/HIDE_CONJUGATIONS',
   UPDATE_USER_ANSWER: 'game/UPDATE_USER_ANSWER',
@@ -85,6 +86,14 @@ export const addShowAgainVerbTense = (verb: string, tense: string) => ({
   }
 });
 
+// no need for tenses, as we never have duplicate verbs tested in 1 game
+export const removeShowAgainVerbTense = (verb: string) => ({
+  type: actionTypes.REMOVE_SHOW_AGAIN_VERB,
+  payload: {
+    verb
+  }
+});
+
 export const newQuestion = () => {
   return function(dispatch: any, getState: any) {
     const state = getState();
@@ -139,6 +148,10 @@ export const submitAnswer = () => {
       const tense = getCurrentQuestionTense(state);
       if (!verbIsToBeShownAgain(state, verb)) {
         dispatch(removeUnseenVerb(verb));
+        dispatch(addShowAgainVerbTense(verb, tense));
+      } else {
+        // move verb-tense to back of show again verb-tenses
+        dispatch(removeShowAgainVerbTense(verb));
         dispatch(addShowAgainVerbTense(verb, tense));
       }
       dispatch(showConjugations());

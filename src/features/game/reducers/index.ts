@@ -47,6 +47,14 @@ export default (game: Game = initialState, action: any) => {
           }
         ]
       };
+    case actionTypes.REMOVE_SHOW_AGAIN_VERB:
+      return {
+        ...game,
+        showAgainVerbTenses: game.showAgainVerbTenses.filter(
+          (verbTense: VerbTense): boolean =>
+            verbTense.spanishInfinitive !== action.payload.verb
+        )
+      };
     case actionTypes.NEW_QUESTION:
       return {
         ...game,
