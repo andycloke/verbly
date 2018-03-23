@@ -3,6 +3,7 @@ import * as React from 'react';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import ContentSend from 'material-ui/svg-icons/content/send';
 
 import { StateProps, DispatchProps } from '../containers/Game';
@@ -11,8 +12,19 @@ import displayText from '../../../const/display-text/tenses';
 
 import './Game.css';
 
+const accentedLetters = ['á', 'é', 'í', 'ñ', 'ó', 'ú'];
+const letterButtonStyle = {
+  minWidth: '50px',
+  margin: '0 5px'
+};
+
+// for some reason need to delay calling of input functions e.g. focus
+// to get them to work
+const inputFuncsDelay = 100;
+
 class Game extends React.PureComponent<StateProps & DispatchProps> {
   answerInput: TextField;
+  answerInputHTML: HTMLInputElement;
   mounted: boolean;
 
   componentDidMount() {
@@ -35,9 +47,15 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
 
   makeAnswerInputRef = (input: TextField) => {
     this.answerInput = input;
+    this.answerInputHTML = this.answerInput.getInputNode();
   };
 
-  handleUserAnswerChange = (e: React.FormEvent<{}>, newValue: string) => {
+  handleUserAnswerChange = (
+    e: any, // React.FormEvent<HTMLInputElement> but this doesnt have selectionStart :/
+    newValue: string
+  ) => {
+    // const { selectionStart } = e.target;
+    // this.setState({ selectionStart });
     this.props.updateUserAnswer(newValue);
   };
 
@@ -47,9 +65,34 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
 
   submitAndFocus = () => {
     this.props.submit();
+    this.focusAnswerInput();
+  };
+
+  focusAnswerInput = () => {
     setTimeout(() => {
       if (this.mounted) this.answerInput.focus();
-    }, 100);
+    }, inputFuncsDelay);
+  };
+
+  makeLetterButtonClickHandler = (letter: string) => (
+    event: React.MouseEvent<HTMLElement>
+  ) => {
+    const { selectionStart, selectionEnd } = this.answerInputHTML;
+    const { userAnswer, updateUserAnswer } = this.props;
+    updateUserAnswer(
+      userAnswer.slice(0, selectionStart) +
+        letter +
+        userAnswer.slice(selectionEnd)
+    );
+    this.focusAnswerInput();
+    setTimeout(() => {
+      if (this.mounted) {
+        this.answerInputHTML.setSelectionRange(
+          selectionStart + 1,
+          selectionStart + 1
+        );
+      }
+    }, inputFuncsDelay);
   };
 
   render() {
@@ -63,7 +106,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
     } = this.props;
     return (
       <div className="Game__outer">
-        <Paper>
+        <Paper style={{ width: '100%' }}>
           <div className="Game__inner">
             <span className="Game__innerText--border">Tense</span>
             <span className="Game__innerText--border Game__innerText--leftAlign Game__tense">
@@ -100,7 +143,19 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
           <div className="Game__conjugationsContainer">
             <ConjugationsTable />
           </div>
-        ) : null}
+        ) : (
+          <div className="Game__accentedLetters">
+            {accentedLetters.map((letter: string) => (
+              <RaisedButton
+                key={letter}
+                label={letter}
+                onMouseDown={this.makeLetterButtonClickHandler(letter)}
+                primary
+                style={letterButtonStyle}
+              />
+            ))}
+          </div>
+        )}
       </div>
     );
   }

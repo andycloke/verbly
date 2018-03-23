@@ -4,6 +4,9 @@
   width: 95%;
   max-width: 650px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 $rowHeight: 50px;
@@ -53,6 +56,16 @@ $rowHeight: 50px;
 .Game__submitButton > button {
   display: block !important;
 }
+
+.Game__conjugationsContainer {
+  width: 100%;
+}
+
+.Game__accentedLetters,
 .Game__conjugationsContainer {
   margin: 30px auto;
+}
+
+.Game__accentedLetters span {
+  text-transform: lowercase !important;
 }
