@@ -14,14 +14,17 @@ type DispatchProps = {
 
 type Props = StateProps & DispatchProps;
 
-const ConjugationsFetchWrapper = (Component: React.ComponentType) => {
+const ConjugationsFetchWrapper = (
+  Component: React.ComponentType,
+  alwaysRenderChildren: boolean = false
+) => {
   class ConjugationsFetchWrapperComponent extends React.PureComponent<Props> {
     async componentDidMount() {
       this.props.fetchConjugationsIfNotFetched();
     }
     render() {
       const { fetched } = this.props;
-      return fetched ? <Component /> : null;
+      return fetched || alwaysRenderChildren ? <Component /> : null;
     }
   }
 
