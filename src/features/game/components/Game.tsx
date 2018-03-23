@@ -12,37 +12,79 @@ import displayText from '../../../const/display-text/tenses';
 
 import './Game.css';
 
-const accentedLetters = ['á', 'é', 'í', 'ñ', 'ó', 'ú'];
+const accentedLettersMap = {
+  a: 'á',
+  e: 'é',
+  i: 'í',
+  n: 'ñ',
+  o: 'ó',
+  u: 'ú'
+};
 const letterButtonStyle = {
   minWidth: '50px',
   margin: '0 5px'
 };
+enum KeyboardKeys {
+  Shift = 'Shift',
+  Enter = 'Enter'
+}
 
 // for some reason need to delay calling of input functions e.g. focus
-// to get them to work
+// to get them to work. This delay time seems to work okay.
 const inputFuncsDelay = 100;
 
-class Game extends React.PureComponent<StateProps & DispatchProps> {
+type State = {
+  lastKeyPressed: string;
+};
+
+class Game extends React.PureComponent<StateProps & DispatchProps, State> {
   answerInput: TextField;
   answerInputHTML: HTMLInputElement;
   mounted: boolean;
 
+  state = {
+    lastKeyPressed: ''
+  };
+
   componentDidMount() {
     this.props.initialiseGame();
     window.addEventListener('keydown', this.handleKeyDown);
+    window.addEventListener('keyup', this.handleKeyUp);
     this.mounted = true;
   }
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyDown);
+    window.removeEventListener('keyup', this.handleKeyUp);
     this.mounted = false;
   }
 
   handleKeyDown = (e: KeyboardEvent) => {
     const { key } = e;
-    if (key === 'Enter') {
+    const { lastKeyPressed } = this.state;
+    this.setState({
+      lastKeyPressed: key
+    });
+    if (key === KeyboardKeys.Enter) {
       this.submitAndFocus();
+    } else if (!!lastKeyPressed) {
+      const lastTwoKeysPressed = [key, lastKeyPressed];
+      if (lastTwoKeysPressed.includes(KeyboardKeys.Shift)) {
+        const otherKeyPressed = lastTwoKeysPressed
+          .filter(k => k !== KeyboardKeys.Shift)[0]
+          .toLowerCase();
+        if (Object.keys(accentedLettersMap).includes(otherKeyPressed)) {
+          e.preventDefault();
+          this.addAccentedLetterToUserAnswer(
+            accentedLettersMap[otherKeyPressed]
+          );
+        }
+      }
     }
+  };
+
+  handleKeyUp = (e: KeyboardEvent) => {
+    this.setState({ lastKeyPressed: '' });
   };
 
   makeAnswerInputRef = (input: TextField) => {
@@ -54,8 +96,6 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
     e: any, // React.FormEvent<HTMLInputElement> but this doesnt have selectionStart :/
     newValue: string
   ) => {
-    // const { selectionStart } = e.target;
-    // this.setState({ selectionStart });
     this.props.updateUserAnswer(newValue);
   };
 
@@ -74,9 +114,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
     }, inputFuncsDelay);
   };
 
-  makeLetterButtonClickHandler = (letter: string) => (
-    event: React.MouseEvent<HTMLElement>
-  ) => {
+  addAccentedLetterToUserAnswer = (letter: string) => {
     const { selectionStart, selectionEnd } = this.answerInputHTML;
     const { userAnswer, updateUserAnswer } = this.props;
     updateUserAnswer(
@@ -94,6 +132,10 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
       }
     }, inputFuncsDelay);
   };
+
+  makeLetterButtonClickHandler = (letter: string) => (
+    event: React.MouseEvent<HTMLElement>
+  ) => this.addAccentedLetterToUserAnswer(letter);
 
   render() {
     const {
@@ -145,7 +187,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
           </div>
         ) : (
           <div className="Game__accentedLetters">
-            {accentedLetters.map((letter: string) => (
+            {Object.values(accentedLettersMap).map((letter: string) => (
               <RaisedButton
                 key={letter}
                 label={letter}
