@@ -37,3 +37,6 @@
 
 .Game__submitButton > button {
   display: block !important; }
+
+.Game__conjugationsContainer {
+  margin: 30px auto; }

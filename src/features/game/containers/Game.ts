@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch: any): PreMergeDispatchProps => ({
 export type DispatchProps = {
   initialiseGame: () => void;
   updateUserAnswer: (userAnswer: string) => void;
-  handleSubmitClick: () => void;
+  submit: () => void;
 };
 
 const mergeProps = (
@@ -49,9 +49,7 @@ const mergeProps = (
   ...props,
   initialiseGame: actions.initialiseGame,
   updateUserAnswer: actions.updateUserAnswer,
-  handleSubmitClick: props.displayConjugations
-    ? actions.newQuestion
-    : actions.submitAnswer
+  submit: props.displayConjugations ? actions.newQuestion : actions.submitAnswer
 });
 
 const Game = connect(mapStateToProps, mapDispatchToProps, mergeProps)(

@@ -1,0 +1,31 @@
+@import 'common.scss';
+
+.ConjugationsTable__row {
+  height: 44px;
+  border: 1px solid $lightGrey;
+  margin: -1px 0 0;
+  display: flex;
+  align-items: center;
+  background: #fafafa;
+  position: relative;
+}
+
+.ConjugationsTable__row--highlight {
+  background: white;
+  font-weight: bold;
+  border: 1px solid #bbb;
+  z-index: 1;
+}
+
+.ConjugationsTable__personContainer {
+  width: 33%;
+}
+
+.ConjugationsTable__person {
+  width: 100px;
+  margin: 0 auto;
+}
+
+.ConjugationsTable__conjugationContainer {
+  width: 66.67%;
+}

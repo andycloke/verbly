@@ -6,21 +6,47 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentSend from 'material-ui/svg-icons/content/send';
 
 import { StateProps, DispatchProps } from '../containers/Game';
+import ConjugationsTable from '../containers/ConjugationsTable';
 import displayText from '../../../const/display-text/tenses';
 
 import './Game.css';
 
 class Game extends React.PureComponent<StateProps & DispatchProps> {
+  answerInput: TextField;
+
   componentDidMount() {
     this.props.initialiseGame();
+    window.addEventListener('keydown', this.handleKeyDown);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  }
+
+  handleKeyDown = (e: KeyboardEvent) => {
+    const { key } = e;
+    if (key === 'Enter') {
+      this.submitAndFocus();
+    }
+  };
+
+  makeAnswerInputRef = (input: TextField) => {
+    this.answerInput = input;
+  };
 
   handleUserAnswerChange = (e: React.FormEvent<{}>, newValue: string) => {
     this.props.updateUserAnswer(newValue);
   };
 
   handleSubmitClick = (event: React.MouseEvent<HTMLElement>) => {
-    this.props.handleSubmitClick();
+    this.submitAndFocus();
+  };
+
+  submitAndFocus = () => {
+    this.props.submit();
+    setTimeout(() => {
+      this.answerInput.focus();
+    }, 100);
   };
 
   render() {
@@ -48,6 +74,9 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
             <TextField
               className="Game__input"
               id="answerInput"
+              ref={this.makeAnswerInputRef}
+              autoFocus
+              fullWidth
               onChange={this.handleUserAnswerChange}
               value={userAnswer}
               disabled={displayConjugations}
@@ -64,6 +93,11 @@ class Game extends React.PureComponent<StateProps & DispatchProps> {
             </div>
           </div>
         </Paper>
+        {displayConjugations ? (
+          <div className="Game__conjugationsContainer">
+            <ConjugationsTable />
+          </div>
+        ) : null}
       </div>
     );
   }

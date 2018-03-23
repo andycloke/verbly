@@ -1,6 +1,9 @@
+import { People } from '../../../const/models/people';
 import { Game, VerbTense, CurrentQuestion } from '../models';
 import { MAX_QUESTIONS_ANSWERED } from '../const';
 import { StateProps } from '../containers/Game';
+import { ConjugationDisplayPair } from '../containers/ConjugationsTable';
+import { StateProps as ConjugationsTableStateProps } from '../containers/ConjugationsTable';
 import { getDisplayEnglishInfinitive } from '../../options/selectors';
 import {
   getEnglishInfinitive,
@@ -123,5 +126,32 @@ export const getGameProps = (state: any): StateProps => {
     englishInfinitive: '',
     userAnswer: '',
     displayConjugations: false
+  };
+};
+
+export const getConjugationsTableProps = (
+  state: any
+): ConjugationsTableStateProps => {
+  const questionVerb = getCurrentQuestionVerb(state);
+  const questionTense = getCurrentQuestionTense(state);
+  const questionPerson = getCurrentQuestionPerson(state);
+  const displayPerson = getCurrentQuestionDisplayPerson(state);
+  const people = Object.keys(People);
+  const conjugations: ConjugationDisplayPair[] = [];
+  people.forEach((person: string) => {
+    const highlight = person === questionPerson;
+    conjugations.push({
+      person: highlight ? displayPerson : person,
+      conjugation: getConjugationInTenseForPerson(
+        state,
+        questionVerb,
+        questionTense,
+        person
+      )[0],
+      highlight
+    });
+  });
+  return {
+    conjugations
   };
 };
