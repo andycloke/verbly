@@ -1,2 +1,7 @@
 .MainMenu__outer {
-  display: flex; }
+  display: flex;
+  height: 100%; }
+
+.MainMenu_rightContainer {
+  height: 100%;
+  overflow: auto; }

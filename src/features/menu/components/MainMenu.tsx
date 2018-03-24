@@ -12,7 +12,7 @@ class MainMenu extends React.PureComponent {
     return (
       <div className="MainMenu__outer">
         <PeopleMenu />
-        <div>
+        <div className="MainMenu_rightContainer">
           <TensesMenu />
           <VerbsMenu />
         </div>

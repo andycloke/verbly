@@ -13,8 +13,8 @@ $minWidth: 225px;
   @include flatCard;
 }
 
-@media screen and (max-width: (3 * $minWidth)) {
+@media screen and (max-width: $mainMenuBreakPoint1) {
   .VerbsMenu__outer > div {
-    width: 100%;
+    width: 50%;
   }
 }

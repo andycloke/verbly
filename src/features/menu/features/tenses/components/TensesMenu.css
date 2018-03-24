@@ -10,3 +10,7 @@
   width: 33%;
   border: 1px solid #eee;
   margin: -1px 0 0 -1px; }
+
+@media screen and (max-width: 1070px) {
+  .TensesMenu__outer > div > div:not(:first-child) {
+    width: 50%; } }

@@ -14,3 +14,9 @@
   width: 33%;
   @include flatCard;
 }
+
+@media screen and (max-width: $mainMenuBreakPoint1) {
+  .TensesMenu__outer > div > div:not(:first-child) {
+    width: 50%;
+  }
+}
