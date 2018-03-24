@@ -25,7 +25,7 @@ const TensesMenu = ({ inPlay, toggleTenseInPlay }: Props) => {
   ): any => toggleTenseInPlay(tense);
   return (
     <div className="TensesMenu__outer">
-      <List>
+      <List style={{ paddingBottom: 0 }}>
         <Subheader>Tenses</Subheader>
         {Object.keys(inPlay).map(key => {
           const checkBox = <Checkbox checked={inPlay[key]} />;

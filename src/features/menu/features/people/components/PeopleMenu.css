@@ -1,5 +1,8 @@
 .PeopleMenu__outer {
-  flex: 1; }
+  flex: 1;
+  background: #fafafa;
+  min-width: 260px;
+  max-width: 300px; }
 
 .PeopleMenu__outer > div > div:not(:first-child) > span {
   border: 1px solid #eee;

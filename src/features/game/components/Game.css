@@ -1,7 +1,7 @@
 .Game__outer {
   width: 95%;
   max-width: 650px;
-  margin: 0 auto;
+  margin: 30px auto 10px;
   display: flex;
   flex-direction: column;
   align-items: center; }
@@ -44,9 +44,11 @@
 .Game__conjugationsContainer {
   width: 100%; }
 
-.Game__accentedLetters,
 .Game__conjugationsContainer {
   margin: 30px auto; }
+
+.Game__accentedLetters {
+  margin: 12px auto; }
 
 .Game__accentedLetters span {
   text-transform: lowercase !important; }

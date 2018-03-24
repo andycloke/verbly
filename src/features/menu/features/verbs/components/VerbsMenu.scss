@@ -13,9 +13,6 @@ $minWidth: 225px;
   @include flatCard;
 }
 
-// .VerbsMenu__outer > div > div:not(:first-child) {
-// }
-
 @media screen and (max-width: (3 * $minWidth)) {
   .VerbsMenu__outer > div {
     width: 100%;

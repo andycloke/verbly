@@ -10,10 +10,12 @@ import './MainMenu.css';
 class MainMenu extends React.PureComponent {
   render() {
     return (
-      <div>
-        <TensesMenu />
+      <div className="MainMenu__outer">
         <PeopleMenu />
-        <VerbsMenu />
+        <div>
+          <TensesMenu />
+          <VerbsMenu />
+        </div>
       </div>
     );
   }

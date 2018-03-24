@@ -121,9 +121,14 @@ export default class VerbsMenu extends React.PureComponent<Props, State> {
                 floatingLabelText="Choose"
                 floatingLabelFixed
                 value={this.state.whichVerbsInputValue}
-                hintText="Estar, pagar"
+                hintText="estar, pagar"
                 onChange={this.handleChange}
                 onFocus={this.setWhichVerbsInPlayToUserDefined}
+                floatingLabelStyle={{
+                  top: 5
+                }}
+                style={{ height: 35 }}
+                inputStyle={{ marginTop: -5 }}
               />
             }
             onClick={setWhichVerbsInPlay}

@@ -1,5 +1,6 @@
 .TensesMenu__outer {
-  flex: 3; }
+  flex: 3;
+  max-width: 1400px; }
 
 .TensesMenu__outer > div {
   display: flex;

@@ -13,6 +13,7 @@ import { pathToHome, pathToGame } from './paths';
 // import OptionsMenu from './features/options/containers/OptionsMenu';
 
 import store from './store';
+import './App.css';
 
 class App extends React.PureComponent {
   render() {
@@ -20,9 +21,11 @@ class App extends React.PureComponent {
       <Provider store={store}>
         <BrowserRouter>
           <MuiThemeProvider>
-            <div>
-              <AppBar />
-              <StartEndGameButton />
+            <AppBar />
+            <div className="App__inner">
+              <div className="App__startEndButtonContainer">
+                <StartEndGameButton />
+              </div>
               <Switch>
                 <Route exact path={pathToHome()} component={MainMenu} />
                 <Route exact path={pathToGame()} component={Game} />
