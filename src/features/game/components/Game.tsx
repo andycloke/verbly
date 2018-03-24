@@ -86,6 +86,8 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
     if (this.answerInput) {
       this.answerInputHTML = this.answerInput.getInputNode();
       this.answerInputHTML.setAttribute('autocapitalize', 'off');
+      this.answerInputHTML.setAttribute('autocorrect', 'off');
+      this.answerInputHTML.setAttribute('autocomplete', 'off');
     }
   };
 
