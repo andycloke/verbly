@@ -1,25 +1,15 @@
 import * as React from 'react';
-import ArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
-import Cancel from 'material-ui/svg-icons/navigation/cancel';
+import { Route, Switch } from 'react-router-dom';
+import StartGameButton from '../containers/StartGameButton';
+import EndGameButton from '../containers/EndGameButton';
 
-import RaisedButton from 'material-ui/RaisedButton';
+import { pathToHome, pathToGame } from '../../../paths';
 
-export type Props = {
-  gameStarted: boolean;
-  toggleStartGame: () => void;
-};
-
-const StartEndGameButton = ({ toggleStartGame, gameStarted }: Props) => {
-  const handleClick = (event: React.MouseEvent<HTMLElement>): void =>
-    toggleStartGame();
-  return (
-    <RaisedButton
-      secondary
-      onClick={handleClick}
-      label={gameStarted ? 'Quit' : 'Play'}
-      icon={gameStarted ? <Cancel /> : <ArrowRight />}
-    />
-  );
-};
+const StartEndGameButton = () => (
+  <Switch>
+    <Route exact path={pathToHome()} component={StartGameButton} />
+    <Route exact path={pathToGame()} component={EndGameButton} />
+  </Switch>
+);
 
 export default StartEndGameButton;

@@ -6,12 +6,16 @@ export default (game: Game = initialState, action: any) => {
     case actionTypes.START_GAME:
       return {
         ...game,
-        started: true
+        started: true,
+        unseenVerbs: [],
+        showAgainVerbTenses: []
       };
     case actionTypes.END_GAME:
       return {
         ...game,
-        started: false
+        started: false,
+        unseenVerbs: [],
+        showAgainVerbTenses: []
       };
     case actionTypes.SET_GAME_UNSEEN_VERBS:
       return {

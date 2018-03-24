@@ -125,6 +125,7 @@ export const newQuestion = () => {
 
 export const initialiseGame = () => {
   return function(dispatch: any, getState: any) {
+    dispatch(startGame());
     dispatch(clearUserAnswer());
     const state = getState();
     const suitableVerbs: string[] = getVerbsFilteredByUserOptions(state);
