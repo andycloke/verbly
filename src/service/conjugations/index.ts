@@ -1,4 +1,4 @@
-async function fetchConjugations(options = {}) {
+async function fetchConjugations() {
   const result = await fetch(
     `${process.env.PUBLIC_URL}/data/conjugations.json`
   );
