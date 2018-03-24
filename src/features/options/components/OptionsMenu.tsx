@@ -3,30 +3,31 @@ import Toggle from 'material-ui/Toggle';
 import Subheader from 'material-ui/Subheader';
 import { List, ListItem } from 'material-ui/List';
 
-type Props = {
-  displayEnglishInfinitive: boolean;
-  toggleEnglishInfinitive: (event: React.MouseEvent<HTMLElement>) => any;
-  audioFeedback: boolean;
-  toggleAudioFeedback: (event: React.MouseEvent<HTMLElement>) => any;
-};
+import { StateProps, DispatchProps } from '../containers/OptionsMenu';
 
 const OptionsMenu = ({
   displayEnglishInfinitive,
   toggleEnglishInfinitive,
   audioFeedback,
   toggleAudioFeedback
-}: Props) => {
+}: StateProps & DispatchProps) => {
+  const handleEnglishInfinitiveClick = (
+    event: React.MouseEvent<HTMLElement>
+  ): void => toggleEnglishInfinitive();
+  const handleAudioFeedbackClick = (
+    event: React.MouseEvent<HTMLElement>
+  ): void => toggleAudioFeedback();
   return (
     <List>
       <Subheader>Options</Subheader>
       <ListItem
         primaryText="Display english infinitive"
-        onClick={toggleEnglishInfinitive}
+        onClick={handleEnglishInfinitiveClick}
         rightIcon={<Toggle toggled={displayEnglishInfinitive} />}
       />
       <ListItem
         primaryText="Audio feedback"
-        onClick={toggleAudioFeedback}
+        onClick={handleAudioFeedbackClick}
         rightIcon={<Toggle toggled={audioFeedback} />}
       />
     </List>

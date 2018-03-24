@@ -4,12 +4,12 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import AppBar from './features/common/components/AppBar';
+import AppBar from './features/common/containers/AppBar';
 import MainMenu from './features/menu/components/MainMenu';
 import Game from './features/game/containers/Game';
 
 import { pathToHome, pathToGame } from './paths';
-// import OptionsMenu from './features/options/containers/OptionsMenu';
+import OptionsMenuModal from './features/options/containers/OptionsMenuModal';
 
 import store from './store';
 import './App.css';
@@ -20,13 +20,16 @@ class App extends React.PureComponent {
       <Provider store={store}>
         <BrowserRouter>
           <MuiThemeProvider>
-            <AppBar />
-            <div className="App__inner">
-              <Switch>
-                <Route exact path={pathToHome()} component={MainMenu} />
-                <Route exact path={pathToGame()} component={Game} />
-                <Redirect to={pathToHome()} />
-              </Switch>
+            <div>
+              <AppBar />
+              <div className="App__inner">
+                <Switch>
+                  <Route exact path={pathToHome()} component={MainMenu} />
+                  <Route exact path={pathToGame()} component={Game} />
+                  <Redirect to={pathToHome()} />
+                </Switch>
+              </div>
+              <OptionsMenuModal />
             </div>
           </MuiThemeProvider>
         </BrowserRouter>

@@ -17,6 +17,7 @@ const StartGameButton = ({ startGame }: Props) => {
         onClick={handleClick}
         secondary
         label="Play"
+        labelPosition="before"
         icon={<ArrowRight />}
       />
     </Link>

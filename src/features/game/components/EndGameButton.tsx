@@ -17,6 +17,7 @@ const EndGameButton = ({ endGame }: Props) => {
         onClick={handleClick}
         secondary
         label="Quit"
+        labelPosition="before"
         icon={<Cancel />}
       />
     </Link>

@@ -4,9 +4,19 @@ import { getOptionsMenuProps } from '../selectors';
 import OptionsMenu from '../components/OptionsMenu';
 import { toggleEnglishInfinitive, toggleAudioFeedback } from '../actions';
 
-const mapStateToProps = (state: any) => getOptionsMenuProps(state);
+export type StateProps = {
+  displayEnglishInfinitive: boolean;
+  audioFeedback: boolean;
+};
 
-const mapDispatchToProps = (dispatch: any) => ({
+export type DispatchProps = {
+  toggleEnglishInfinitive: () => any;
+  toggleAudioFeedback: () => any;
+};
+
+const mapStateToProps = (state: any): StateProps => getOptionsMenuProps(state);
+
+const mapDispatchToProps = (dispatch: any): DispatchProps => ({
   toggleEnglishInfinitive: () => dispatch(toggleEnglishInfinitive()),
   toggleAudioFeedback: () => dispatch(toggleAudioFeedback())
 });
