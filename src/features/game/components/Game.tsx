@@ -89,7 +89,9 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
 
   makeAnswerInputRef = (input: TextField) => {
     this.answerInput = input;
-    this.answerInputHTML = this.answerInput.getInputNode();
+    if (this.answerInput) {
+      this.answerInputHTML = this.answerInput.getInputNode();
+    }
   };
 
   handleUserAnswerChange = (
