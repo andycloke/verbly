@@ -24,6 +24,7 @@ const OptionsMenu = ({
         primaryText="Display english infinitive"
         onClick={handleEnglishInfinitiveClick}
         rightIcon={<Toggle toggled={displayEnglishInfinitive} />}
+        innerDivStyle={{ lineHeight: 1.3 }}
       />
       <ListItem
         primaryText="Audio feedback"
