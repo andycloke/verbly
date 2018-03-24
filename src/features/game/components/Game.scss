@@ -61,9 +61,12 @@ $rowHeight: 50px;
   width: 100%;
 }
 
-.Game__accentedLetters,
 .Game__conjugationsContainer {
   margin: 30px auto;
+}
+
+.Game__accentedLetters {
+  margin: 12px auto;
 }
 
 .Game__accentedLetters span {

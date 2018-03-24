@@ -29,3 +29,9 @@
 .ConjugationsTable__conjugationContainer {
   width: 66.67%;
 }
+
+@media screen and (max-width: 440px) {
+  .ConjugationsTable__row {
+    padding-left: 20px;
+  }
+}
