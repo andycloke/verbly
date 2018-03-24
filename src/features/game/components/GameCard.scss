@@ -1,0 +1,45 @@
+@import 'common.scss';
+
+$rowHeight: 50px;
+
+.GameCard__wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, $rowHeight);
+  grid-template-areas:
+    'tense-label tense tense'
+    'verb-label verb verb'
+    'person input submit';
+  text-align: center;
+  line-height: $rowHeight;
+}
+.GameCard__innerText--border {
+  border-bottom: 1px solid $lightGrey;
+}
+
+.GameCard__innerText--leftAlign {
+  text-align: left;
+}
+
+.GameCard__tense {
+  grid-area: tense;
+}
+
+.GameCard__verb {
+  grid-area: verb;
+}
+
+.GameCard__person {
+  grid-area: person;
+}
+
+.GameCard__input {
+  grid-area: input;
+}
+
+.GameCard__submitButtonCell {
+  grid-area: submit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

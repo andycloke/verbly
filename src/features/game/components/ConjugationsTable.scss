@@ -1,5 +1,10 @@
 @import 'common.scss';
 
+.ConjugationsTable__outer {
+  margin: 30px auto;
+  width: 100%;
+}
+
 .ConjugationsTable__row {
   height: 44px;
   border: 1px solid $lightGrey;

@@ -9,8 +9,8 @@ import './ConjugationsTable.css';
 class ConjugationsTable extends React.PureComponent<StateProps> {
   render() {
     return (
-      <Paper>
-        <div className="ConjugationsTable__outer">
+      <div className="ConjugationsTable__outer">
+        <Paper style={{ width: '100%' }}>
           {this.props.conjugations.map(({ person, conjugation, highlight }) => (
             <div
               key={person}
@@ -26,8 +26,8 @@ class ConjugationsTable extends React.PureComponent<StateProps> {
               </div>
             </div>
           ))}
-        </div>
-      </Paper>
+        </Paper>
+      </div>
     );
   }
 }

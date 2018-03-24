@@ -1,14 +1,12 @@
 import * as React from 'react';
 
-import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 
 import EndGameButton from '../containers/EndGameButton';
 import { StateProps, DispatchProps } from '../containers/Game';
 import ConjugationsTable from '../containers/ConjugationsTable';
-import displayText from '../../../const/display-text/tenses';
 import AccentedLetterKey from './AccentedLetterKey';
-import SubmitButton from './SubmitButton';
+import GameCard from './GameCard';
 
 import './Game.css';
 
@@ -83,7 +81,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
     this.setState({ lastKeyPressed: '' });
   };
 
-  makeAnswerInputRef = (input: TextField) => {
+  makeAnswerInputRef = (input: TextField): void => {
     this.answerInput = input;
     if (this.answerInput) {
       this.answerInputHTML = this.answerInput.getInputNode();
@@ -93,11 +91,11 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
   handleUserAnswerChange = (
     e: any, // React.FormEvent<HTMLInputElement> but this doesnt have selectionStart :/
     newValue: string
-  ) => {
+  ): void => {
     this.props.updateUserAnswer(newValue);
   };
 
-  handleSubmitClick = (event: React.MouseEvent<HTMLElement>) => {
+  handleSubmitClick = (event: React.MouseEvent<HTMLElement>): void => {
     this.submitAndFocus();
   };
 
@@ -150,36 +148,19 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
           <EndGameButton />
         </div>
         <div className="Game__outer">
-          <Paper style={{ width: '100%' }}>
-            <div className="Game__inner">
-              <span className="Game__innerText--border">Tense</span>
-              <span className="Game__innerText--border Game__innerText--leftAlign Game__tense">
-                {tense ? displayText[tense].text : ''}
-              </span>
-              <span className="Game__innerText--border">Verb</span>
-              <span className="Game__innerText--border Game__innerText--leftAlign Game__verb">
-                {`${verb} ${englishInfinitive ? `- ${englishInfinitive}` : ''}`}
-              </span>
-              <span className="Game__person">{person}</span>
-              <TextField
-                className="Game__input"
-                id="answerInput"
-                ref={this.makeAnswerInputRef}
-                autoFocus
-                fullWidth
-                onChange={this.handleUserAnswerChange}
-                value={userAnswer}
-                disabled={displayConjugations}
-              />
-              <div className="Game__submitButtonCell">
-                <SubmitButton onClick={this.handleSubmitClick} />
-              </div>
-            </div>
-          </Paper>
+          <GameCard
+            tense={tense}
+            person={person}
+            verb={verb}
+            handleUserAnswerChange={this.handleUserAnswerChange}
+            makeAnswerInputRef={this.makeAnswerInputRef}
+            englishInfinitive={englishInfinitive}
+            userAnswer={userAnswer}
+            displayConjugations={displayConjugations}
+            handleSubmitClick={this.handleSubmitClick}
+          />
           {displayConjugations ? (
-            <div className="Game__conjugationsContainer">
-              <ConjugationsTable />
-            </div>
+            <ConjugationsTable />
           ) : (
             <div className="Game__accentedLetters">
               {Object.values(accentedLettersMap).map((letter: string) => (

@@ -16,56 +16,8 @@
   align-items: center;
 }
 
-$rowHeight: 50px;
-
-.Game__inner {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, $rowHeight);
-  grid-template-areas:
-    'tense-label tense tense'
-    'verb-label verb verb'
-    'person input submit';
-  text-align: center;
-  line-height: $rowHeight;
-}
-.Game__innerText--border {
-  border-bottom: 1px solid $lightGrey;
-}
-
-.Game__innerText--leftAlign {
-  text-align: left;
-}
-
-.Game__tense {
-  grid-area: tense;
-}
-
-.Game__verb {
-  grid-area: verb;
-}
-
-.Game__person {
-  grid-area: person;
-}
-
-.Game__input {
-  grid-area: input;
-}
-
-.Game__submitButtonCell {
-  grid-area: submit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .Game__conjugationsContainer {
   width: 100%;
-}
-
-.Game__conjugationsContainer {
-  margin: 30px auto;
 }
 
 .Game__accentedLetters {
