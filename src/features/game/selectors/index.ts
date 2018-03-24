@@ -100,7 +100,7 @@ export const getCorrectAnswers = (state: any): string[] => {
 };
 
 export const isUserAnswerCorrect = (state: any): boolean =>
-  getCorrectAnswers(state).includes(getUserAnswer(state));
+  getCorrectAnswers(state).includes(getUserAnswer(state).toLowerCase());
 
 export const getConjugationsBeingDisplayed = (state: any): boolean =>
   getGameSlice(state).displayConjugations;

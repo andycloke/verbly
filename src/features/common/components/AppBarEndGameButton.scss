@@ -1,0 +1,7 @@
+@import 'common.scss';
+
+@media screen and (min-width: $moveQuitButtonBreakPoint) {
+  .AppBarEndGameButton__outer {
+    display: none;
+  }
+}

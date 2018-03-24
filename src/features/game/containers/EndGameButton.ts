@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { endGame } from '../../game/actions';
@@ -7,4 +8,10 @@ const mapDispatchToProps = (dispatch: any): Props => ({
   endGame: () => dispatch(endGame())
 });
 
-export default connect(undefined, mapDispatchToProps)(EndGameButton);
+export const connectEndGameButton = (Component: React.Component<Props>) => {
+  return connect(undefined, mapDispatchToProps, undefined, {
+    pure: false
+  })(Component as any);
+};
+
+export default connectEndGameButton(EndGameButton as any);

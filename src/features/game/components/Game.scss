@@ -27,3 +27,12 @@
 .Game__accentedLetters span {
   text-transform: lowercase !important;
 }
+
+@media screen and (max-width: $moveQuitButtonBreakPoint) {
+  .Game__endButton {
+    display: none;
+  }
+  .Game__outer {
+    padding-top: 12px;
+  }
+}

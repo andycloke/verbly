@@ -11,4 +11,6 @@ const mapDispatchToProps = (dispatch: any): DispatchProps => ({
   toggleOptionsMenuOpen: () => dispatch(toggleOptionsMenuOpen())
 });
 
-export default connect(undefined, mapDispatchToProps)(AppBar);
+export default connect(undefined, mapDispatchToProps, undefined, {
+  pure: false
+})(AppBar);
