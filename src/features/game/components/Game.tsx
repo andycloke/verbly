@@ -2,14 +2,13 @@ import * as React from 'react';
 
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import ContentSend from 'material-ui/svg-icons/content/send';
 
 import EndGameButton from '../containers/EndGameButton';
 import { StateProps, DispatchProps } from '../containers/Game';
 import ConjugationsTable from '../containers/ConjugationsTable';
 import displayText from '../../../const/display-text/tenses';
+import AccentedLetterKey from './AccentedLetterKey';
+import SubmitButton from './SubmitButton';
 
 import './Game.css';
 
@@ -20,10 +19,6 @@ const accentedLettersMap = {
   n: 'ñ',
   o: 'ó',
   u: 'ú'
-};
-const letterButtonStyle = {
-  minWidth: '50px',
-  margin: '0 5px'
 };
 enum KeyboardKeys {
   Shift = 'Shift',
@@ -177,14 +172,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
                 disabled={displayConjugations}
               />
               <div className="Game__submitButtonCell">
-                <FloatingActionButton
-                  secondary
-                  mini
-                  className="Game__submitButton"
-                  onMouseDown={this.handleSubmitClick}
-                >
-                  <ContentSend />
-                </FloatingActionButton>
+                <SubmitButton onClick={this.handleSubmitClick} />
               </div>
             </div>
           </Paper>
@@ -195,12 +183,10 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
           ) : (
             <div className="Game__accentedLetters">
               {Object.values(accentedLettersMap).map((letter: string) => (
-                <RaisedButton
+                <AccentedLetterKey
                   key={letter}
-                  label={letter}
-                  onMouseDown={this.makeLetterButtonClickHandler(letter)}
-                  primary
-                  style={letterButtonStyle}
+                  letter={letter}
+                  onClick={this.makeLetterButtonClickHandler(letter)}
                 />
               ))}
             </div>
