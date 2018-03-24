@@ -1,3 +1,8 @@
+.Game__endButton {
+  position: absolute;
+  top: 5px;
+  right: 12px; }
+
 .Game__outer {
   width: 95%;
   max-width: 650px;

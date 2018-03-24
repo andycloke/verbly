@@ -7,17 +7,3 @@
   margin: 0 auto;
   height: calc(100% - 64px);
 }
-
-.App__startEndButtonContainer {
-  position: absolute;
-  right: 12px;
-  top: 6px;
-  z-index: 1;
-}
-
-@media screen and (max-width: $mainMenuTabsBreakPoint) {
-  .App__startEndButtonContainer {
-    top: 52px;
-    right: 5px;
-  }
-}

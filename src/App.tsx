@@ -7,7 +7,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from './features/common/components/AppBar';
 import MainMenu from './features/menu/components/MainMenu';
 import Game from './features/game/containers/Game';
-import StartEndGameButton from './features/common/components/StartEndGameButton';
 
 import { pathToHome, pathToGame } from './paths';
 // import OptionsMenu from './features/options/containers/OptionsMenu';
@@ -23,9 +22,6 @@ class App extends React.PureComponent {
           <MuiThemeProvider>
             <AppBar />
             <div className="App__inner">
-              <div className="App__startEndButtonContainer">
-                <StartEndGameButton />
-              </div>
               <Switch>
                 <Route exact path={pathToHome()} component={MainMenu} />
                 <Route exact path={pathToGame()} component={Game} />

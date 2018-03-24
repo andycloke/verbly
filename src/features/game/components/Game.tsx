@@ -6,6 +6,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import ContentSend from 'material-ui/svg-icons/content/send';
 
+import EndGameButton from '../containers/EndGameButton';
 import { StateProps, DispatchProps } from '../containers/Game';
 import ConjugationsTable from '../containers/ConjugationsTable';
 import displayText from '../../../const/display-text/tenses';
@@ -149,57 +150,62 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
       displayConjugations
     } = this.props;
     return (
-      <div className="Game__outer">
-        <Paper style={{ width: '100%' }}>
-          <div className="Game__inner">
-            <span className="Game__innerText--border">Tense</span>
-            <span className="Game__innerText--border Game__innerText--leftAlign Game__tense">
-              {tense ? displayText[tense].text : ''}
-            </span>
-            <span className="Game__innerText--border">Verb</span>
-            <span className="Game__innerText--border Game__innerText--leftAlign Game__verb">
-              {`${verb} ${englishInfinitive ? `- ${englishInfinitive}` : ''}`}
-            </span>
-            <span className="Game__person">{person}</span>
-            <TextField
-              className="Game__input"
-              id="answerInput"
-              ref={this.makeAnswerInputRef}
-              autoFocus
-              fullWidth
-              onChange={this.handleUserAnswerChange}
-              value={userAnswer}
-              disabled={displayConjugations}
-            />
-            <div className="Game__submitButtonCell">
-              <FloatingActionButton
-                secondary
-                mini
-                className="Game__submitButton"
-                onMouseDown={this.handleSubmitClick}
-              >
-                <ContentSend />
-              </FloatingActionButton>
-            </div>
-          </div>
-        </Paper>
-        {displayConjugations ? (
-          <div className="Game__conjugationsContainer">
-            <ConjugationsTable />
-          </div>
-        ) : (
-          <div className="Game__accentedLetters">
-            {Object.values(accentedLettersMap).map((letter: string) => (
-              <RaisedButton
-                key={letter}
-                label={letter}
-                onMouseDown={this.makeLetterButtonClickHandler(letter)}
-                primary
-                style={letterButtonStyle}
+      <div>
+        <div className="Game__endButton">
+          <EndGameButton />
+        </div>
+        <div className="Game__outer">
+          <Paper style={{ width: '100%' }}>
+            <div className="Game__inner">
+              <span className="Game__innerText--border">Tense</span>
+              <span className="Game__innerText--border Game__innerText--leftAlign Game__tense">
+                {tense ? displayText[tense].text : ''}
+              </span>
+              <span className="Game__innerText--border">Verb</span>
+              <span className="Game__innerText--border Game__innerText--leftAlign Game__verb">
+                {`${verb} ${englishInfinitive ? `- ${englishInfinitive}` : ''}`}
+              </span>
+              <span className="Game__person">{person}</span>
+              <TextField
+                className="Game__input"
+                id="answerInput"
+                ref={this.makeAnswerInputRef}
+                autoFocus
+                fullWidth
+                onChange={this.handleUserAnswerChange}
+                value={userAnswer}
+                disabled={displayConjugations}
               />
-            ))}
-          </div>
-        )}
+              <div className="Game__submitButtonCell">
+                <FloatingActionButton
+                  secondary
+                  mini
+                  className="Game__submitButton"
+                  onMouseDown={this.handleSubmitClick}
+                >
+                  <ContentSend />
+                </FloatingActionButton>
+              </div>
+            </div>
+          </Paper>
+          {displayConjugations ? (
+            <div className="Game__conjugationsContainer">
+              <ConjugationsTable />
+            </div>
+          ) : (
+            <div className="Game__accentedLetters">
+              {Object.values(accentedLettersMap).map((letter: string) => (
+                <RaisedButton
+                  key={letter}
+                  label={letter}
+                  onMouseDown={this.makeLetterButtonClickHandler(letter)}
+                  primary
+                  style={letterButtonStyle}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     );
   }

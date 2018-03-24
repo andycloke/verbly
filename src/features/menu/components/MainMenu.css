@@ -9,8 +9,16 @@
   height: 100%;
   overflow: auto; }
 
+.MainMenu__startButton {
+  position: absolute;
+  top: 5px;
+  right: 12px; }
+
 @media screen and (max-width: 750px) {
   .MainMenu__outer {
     display: none; }
   .MainMenu__outer--tabs {
-    display: block; } }
+    display: block; }
+  .MainMenu__startButton {
+    right: 5px;
+    top: 54px; } }

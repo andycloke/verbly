@@ -14,11 +14,21 @@
   overflow: auto;
 }
 
+.MainMenu__startButton {
+  position: absolute;
+  top: 5px;
+  right: 12px;
+}
+
 @media screen and (max-width: $mainMenuTabsBreakPoint) {
   .MainMenu__outer {
     display: none;
   }
   .MainMenu__outer--tabs {
     display: block;
+  }
+  .MainMenu__startButton {
+    right: 5px;
+    top: 54px;
   }
 }
