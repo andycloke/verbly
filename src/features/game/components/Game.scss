@@ -1,16 +1,9 @@
 @import 'common.scss';
 
-.Game__endButton {
-  position: absolute;
-  top: 5px;
-  right: 12px;
-}
-
 .Game__outer {
   width: 95%;
   max-width: 650px;
-  margin: 0 auto 10px;
-  padding-top: 52px;
+  margin: 20px auto 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,11 +21,8 @@
   text-transform: lowercase !important;
 }
 
-@media screen and (max-width: $moveQuitButtonBreakPoint) {
-  .Game__endButton {
-    display: none;
-  }
+@media screen and (max-width: $gameMobileBreakPoint) {
   .Game__outer {
-    padding-top: 12px;
+    margin-top: 10px;
   }
 }

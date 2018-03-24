@@ -4,7 +4,7 @@ import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import FlatButton from 'material-ui/FlatButton';
 
 import { DispatchProps } from '../containers/AppBar';
-import AppBarEndGameButton from '../containers/AppBarEndGameButton';
+import EndGameButton from '../containers/EndGameButton';
 
 const AppBar = ({ toggleOptionsMenuOpen }: DispatchProps) => {
   const handleOptionsClick = (e: React.MouseEvent<HTMLButtonElement>): void =>
@@ -19,7 +19,7 @@ const AppBar = ({ toggleOptionsMenuOpen }: DispatchProps) => {
           onClick={handleOptionsClick}
         />
       }
-      iconElementLeft={<AppBarEndGameButton />}
+      iconElementLeft={<EndGameButton />}
     />
   );
 };

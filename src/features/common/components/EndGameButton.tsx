@@ -8,8 +8,6 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { pathToHome } from '../../../paths';
 import { pathToGame } from '../../../paths';
 
-import './AppBarEndGameButton.css';
-
 export type Props = {
   endGame: () => void;
 };

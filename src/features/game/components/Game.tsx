@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import TextField from 'material-ui/TextField';
 
-import EndGameButton from '../containers/EndGameButton';
 import { StateProps, DispatchProps } from '../containers/Game';
 import ConjugationsTable from '../containers/ConjugationsTable';
 import AccentedLetterKey from './AccentedLetterKey';
@@ -146,36 +145,31 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
       displayConjugations
     } = this.props;
     return (
-      <div>
-        <div className="Game__endButton">
-          <EndGameButton />
-        </div>
-        <div className="Game__outer">
-          <GameCard
-            tense={tense}
-            person={person}
-            verb={verb}
-            handleUserAnswerChange={this.handleUserAnswerChange}
-            makeAnswerInputRef={this.makeAnswerInputRef}
-            englishInfinitive={englishInfinitive}
-            userAnswer={userAnswer}
-            displayConjugations={displayConjugations}
-            handleSubmitClick={this.handleSubmitClick}
-          />
-          {displayConjugations ? (
-            <ConjugationsTable />
-          ) : (
-            <div className="Game__accentedLetters">
-              {Object.values(accentedLettersMap).map((letter: string) => (
-                <AccentedLetterKey
-                  key={letter}
-                  letter={letter}
-                  onClick={this.makeLetterButtonClickHandler(letter)}
-                />
-              ))}
-            </div>
-          )}
-        </div>
+      <div className="Game__outer">
+        <GameCard
+          tense={tense}
+          person={person}
+          verb={verb}
+          handleUserAnswerChange={this.handleUserAnswerChange}
+          makeAnswerInputRef={this.makeAnswerInputRef}
+          englishInfinitive={englishInfinitive}
+          userAnswer={userAnswer}
+          displayConjugations={displayConjugations}
+          handleSubmitClick={this.handleSubmitClick}
+        />
+        {displayConjugations ? (
+          <ConjugationsTable />
+        ) : (
+          <div className="Game__accentedLetters">
+            {Object.values(accentedLettersMap).map((letter: string) => (
+              <AccentedLetterKey
+                key={letter}
+                letter={letter}
+                onClick={this.makeLetterButtonClickHandler(letter)}
+              />
+            ))}
+          </div>
+        )}
       </div>
     );
   }
