@@ -1,3 +1,6 @@
+@import 'common.scss';
+@import 'common.scss';
+
 .App__inner {
   position: relative;
   max-width: 1600px;
@@ -9,4 +12,12 @@
   position: absolute;
   right: 12px;
   top: 6px;
+  z-index: 1;
+}
+
+@media screen and (max-width: $mainMenuTabsBreakPoint) {
+  .App__startEndButtonContainer {
+    top: 52px;
+    right: 5px;
+  }
 }

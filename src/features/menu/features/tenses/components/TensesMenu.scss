@@ -20,3 +20,8 @@
     width: 50%;
   }
 }
+@media screen and (max-width: $mainMenuTabsBreakPoint) {
+  .TensesMenu__outer > div > div:not(:first-child) {
+    width: 100%;
+  }
+}

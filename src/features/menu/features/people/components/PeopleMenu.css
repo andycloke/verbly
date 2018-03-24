@@ -7,3 +7,9 @@
 .PeopleMenu__outer > div > div:not(:first-child) > span {
   border: 1px solid #eee;
   margin: -1px 0 0 -1px; }
+
+@media screen and (max-width: 750px) {
+  .PeopleMenu__outer {
+    width: 100%;
+    max-width: none;
+    background: white; } }

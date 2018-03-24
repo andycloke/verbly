@@ -2,6 +2,15 @@
   display: flex;
   height: 100%; }
 
+.MainMenu__outer--tabs {
+  display: none; }
+
 .MainMenu_rightContainer {
   height: 100%;
   overflow: auto; }
+
+@media screen and (max-width: 750px) {
+  .MainMenu__outer {
+    display: none; }
+  .MainMenu__outer--tabs {
+    display: block; } }

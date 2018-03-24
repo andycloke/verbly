@@ -18,3 +18,9 @@ $minWidth: 225px;
     width: 50%;
   }
 }
+
+@media screen and (max-width: $mainMenuTabsBreakPoint) {
+  .VerbsMenu__outer > div {
+    width: 100%;
+  }
+}

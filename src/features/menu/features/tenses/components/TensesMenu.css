@@ -14,3 +14,7 @@
 @media screen and (max-width: 1070px) {
   .TensesMenu__outer > div > div:not(:first-child) {
     width: 50%; } }
+
+@media screen and (max-width: 750px) {
+  .TensesMenu__outer > div > div:not(:first-child) {
+    width: 100%; } }
