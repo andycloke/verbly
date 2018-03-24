@@ -25,7 +25,7 @@ const PeopleMenu = ({ inPlay, togglePersonInPlay }: Props) => {
   return (
     <div className="PeopleMenu__outer">
       <Subheader>People</Subheader>
-      <List>
+      <List style={{ padding: 0 }}>
         {Object.keys(inPlay).map(key => {
           const checkBox = <Checkbox checked={inPlay[key]} />;
           return (
@@ -34,6 +34,7 @@ const PeopleMenu = ({ inPlay, togglePersonInPlay }: Props) => {
               primaryText={peopleMap[key].join(', ')}
               leftIcon={checkBox}
               onClick={makeClickHandler(key)}
+              style={{ padding: '3px 0' }}
             />
           );
         })}

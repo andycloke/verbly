@@ -7,14 +7,17 @@
   max-width: 300px;
 }
 
-.PeopleMenu__outer > div > div:not(:first-child) > span {
-  @include flatCard;
-}
+// .PeopleMenu__outer > div > div:not(:first-child) > span {
+//   @include flatCard;
+// }
 
 @media screen and (max-width: $mainMenuTabsBreakPoint) {
   .PeopleMenu__outer {
     width: 100%;
     max-width: none;
     background: white;
+  }
+  .PeopleMenu__outer > div > div {
+    @include flatCard;
   }
 }
