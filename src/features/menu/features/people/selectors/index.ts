@@ -13,8 +13,8 @@ export const getAllPeopleInPlay = (state: any): string[] => {
 export const getNumberOfPeopleInPlay = (state: any): number =>
   getAllPeopleInPlay(state).length;
 
-export const getNoPeopleInPlay = (state: any): boolean =>
-  getNumberOfPeopleInPlay(state) === 0;
+export const enoughPeopleToStartGame = (state: any): boolean =>
+  getNumberOfPeopleInPlay(state) > 0;
 
 export const getPeopleMenuProps = (state: any): PeopleMenuDataProps => ({
   inPlay: getPeopleInPlaySlice(state)

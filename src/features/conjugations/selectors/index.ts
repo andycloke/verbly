@@ -6,7 +6,9 @@ import {
   reflexiveVerbsExcluded,
   reflexiveVerbsOnly,
   commonVerbsOnly,
-  allVerbsInPlay
+  allVerbsInPlay,
+  userDefinedVerbsOnly,
+  getValidUserDefinedVerbs
 } from '../../menu/features/verbs/selectors';
 import { Conjugation } from '../models/Conjugation';
 
@@ -76,7 +78,9 @@ export const getVerbsFilteredByUserOptions = (state: any): Array<string> => {
     .filter(
       (infinitive: string): boolean =>
         (commonVerbsOnly(state) && isVerbCommon(state, infinitive)) ||
-        allVerbsInPlay(state)
+        allVerbsInPlay(state) ||
+        (userDefinedVerbsOnly(state) &&
+          getValidUserDefinedVerbs(state).includes(infinitive))
     );
 };
 

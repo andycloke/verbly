@@ -28,7 +28,7 @@ const CantStartModal = ({ missingItems, open, closeModal }: AllDataProps) => {
         />
       ]}
     >
-      {`Select some more ${missingItemsText}.`}
+      {`Add some more ${missingItemsText}.`}
     </Dialog>
   );
 };

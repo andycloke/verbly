@@ -3,11 +3,17 @@ import {
   VerbsIncludedOptions,
   WhichVerbsOptions
 } from '../models';
+import { StateProps as VerbsMenuStateProps } from '../containers/VerbsMenu';
+import {
+  getConjugationsFetched,
+  getAllInfinitves
+} from '../../../../conjugations/selectors';
 
-export const getVerbsInPlay = (state: any): VerbsInPlay => state.verbsInPlay;
+export const getVerbsInPlaySlice = (state: any): VerbsInPlay =>
+  state.verbsInPlay;
 
 export const getIrregularVerbsInPlay = (state: any): VerbsIncludedOptions =>
-  getVerbsInPlay(state).irregular;
+  getVerbsInPlaySlice(state).irregular;
 
 export const irregularVerbsIncluded = (state: any): boolean =>
   getIrregularVerbsInPlay(state) === VerbsIncludedOptions.Include;
@@ -19,7 +25,7 @@ export const irregularVerbsOnly = (state: any): boolean =>
   getIrregularVerbsInPlay(state) === VerbsIncludedOptions.Only;
 
 export const getReflexiveVerbsInPlay = (state: any): VerbsIncludedOptions =>
-  getVerbsInPlay(state).reflexive;
+  getVerbsInPlaySlice(state).reflexive;
 
 export const reflexiveVerbsIncluded = (state: any): boolean =>
   getReflexiveVerbsInPlay(state) === VerbsIncludedOptions.Include;
@@ -31,10 +37,39 @@ export const reflexiveVerbsOnly = (state: any): boolean =>
   getReflexiveVerbsInPlay(state) === VerbsIncludedOptions.Only;
 
 export const getWhichVerbsInPlay = (state: any): WhichVerbsOptions =>
-  getVerbsInPlay(state).whichVerbs;
+  getVerbsInPlaySlice(state).whichVerbs;
 
 export const commonVerbsOnly = (state: any): boolean =>
   getWhichVerbsInPlay(state) === WhichVerbsOptions.Common;
 
 export const allVerbsInPlay = (state: any): boolean =>
   getWhichVerbsInPlay(state) === WhichVerbsOptions.All;
+
+export const userDefinedVerbsOnly = (state: any): boolean =>
+  getWhichVerbsInPlay(state) === WhichVerbsOptions.UserDefined;
+
+export const getUserDefinedVerbs = (state: any): Array<string> =>
+  getVerbsInPlaySlice(state).userDefinedVerbs;
+
+export const getValidUserDefinedVerbs = (state: any): Array<string> => {
+  const spanishInfinitives = getAllInfinitves(state);
+  return getUserDefinedVerbs(state).filter((verb: string) =>
+    spanishInfinitives.includes(verb)
+  );
+};
+
+export const getNumberOfValidUserDefinedVerbs = (state: any): number =>
+  getValidUserDefinedVerbs(state).length;
+
+export const enoughVerbsToStartGame = (state: any): boolean =>
+  !(
+    userDefinedVerbsOnly(state) && getNumberOfValidUserDefinedVerbs(state) === 0
+  );
+
+export const getVerbsMenuProps = (state: any): VerbsMenuStateProps => ({
+  reflexive: getReflexiveVerbsInPlay(state),
+  irregular: getIrregularVerbsInPlay(state),
+  whichVerbs: getWhichVerbsInPlay(state),
+  userDefinedVerbs: getUserDefinedVerbs(state),
+  conjugationsFetched: getConjugationsFetched(state)
+});

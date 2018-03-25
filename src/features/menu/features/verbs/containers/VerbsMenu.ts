@@ -1,18 +1,33 @@
 import { connect } from 'react-redux';
 
-import { getVerbsInPlay } from '../selectors';
-import { VerbsInPlay } from '../models';
-import VerbsMenu, { VerbsMenuActionProps } from '../components/VerbsMenu';
+import { getVerbsMenuProps } from '../selectors';
+import VerbsMenu from '../components/VerbsMenu';
 import {
   setReflexiveVerbsInPlay,
   setIrregularVerbsInPlay,
   setWhichVerbsInPlay,
   updateUserDefinedVerbs
 } from '../actions';
+import { VerbsIncludedOptions, WhichVerbsOptions } from '../models';
 
-const mapStateToProps = (state: any): VerbsInPlay => getVerbsInPlay(state);
+export type StateProps = {
+  reflexive: VerbsIncludedOptions;
+  irregular: VerbsIncludedOptions;
+  whichVerbs: WhichVerbsOptions;
+  userDefinedVerbs: Array<string>;
+  conjugationsFetched: boolean;
+};
 
-const mapDispatchToProps = (dispatch: any): VerbsMenuActionProps => ({
+const mapStateToProps = (state: any): StateProps => getVerbsMenuProps(state);
+
+type DispatchProps = {
+  setReflexiveVerbsInPlay: (option: string) => any;
+  setIrregularVerbsInPlay: (option: string) => any;
+  setWhichVerbsInPlay: (option: string) => any;
+  updateUserDefinedVerbs: (verbs: Array<string>) => any;
+};
+
+const mapDispatchToProps = (dispatch: any): DispatchProps => ({
   setReflexiveVerbsInPlay: (option: string): any =>
     dispatch(setReflexiveVerbsInPlay(option)),
   setIrregularVerbsInPlay: (option: string): any =>
@@ -23,4 +38,5 @@ const mapDispatchToProps = (dispatch: any): VerbsMenuActionProps => ({
     dispatch(updateUserDefinedVerbs(verbs))
 });
 
+export type Props = DispatchProps & StateProps;
 export default connect(mapStateToProps, mapDispatchToProps)(VerbsMenu);

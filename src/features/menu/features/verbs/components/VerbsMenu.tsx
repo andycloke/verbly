@@ -3,24 +3,12 @@ import Subheader from 'material-ui/Subheader';
 import TextField from 'material-ui/TextField';
 import { List } from 'material-ui/List';
 
+import { Props } from '../containers/VerbsMenu';
 import ListRadioButton from '../../../../../features/common/components/ListRadioButton';
 
-import {
-  VerbsIncludedOptions,
-  WhichVerbsOptions,
-  VerbsInPlay
-} from '../models';
+import { VerbsIncludedOptions, WhichVerbsOptions } from '../models';
 
 import './VerbsMenu.css';
-
-export type VerbsMenuActionProps = {
-  setReflexiveVerbsInPlay: (option: string) => any;
-  setIrregularVerbsInPlay: (option: string) => any;
-  setWhichVerbsInPlay: (option: string) => any;
-  updateUserDefinedVerbs: (verbs: Array<string>) => any;
-};
-
-type Props = VerbsInPlay & VerbsMenuActionProps;
 
 type State = {
   whichVerbsInputValue: string;
@@ -51,7 +39,8 @@ export default class VerbsMenu extends React.PureComponent<Props, State> {
       whichVerbs,
       setReflexiveVerbsInPlay,
       setIrregularVerbsInPlay,
-      setWhichVerbsInPlay
+      setWhichVerbsInPlay,
+      conjugationsFetched
     } = this.props;
 
     return (
@@ -130,6 +119,7 @@ export default class VerbsMenu extends React.PureComponent<Props, State> {
                 }}
                 style={{ height: 35 }}
                 inputStyle={{ marginTop: -5 }}
+                disabled={!conjugationsFetched}
               />
             }
             onClick={setWhichVerbsInPlay}
