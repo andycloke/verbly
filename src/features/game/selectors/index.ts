@@ -36,17 +36,19 @@ export const getNumberOfGameShowAgainVerbTenses = (state: any): number =>
 export const noMoreShowAgainVerbTenses = (state: any): boolean =>
   getNumberOfGameShowAgainVerbTenses(state) === 0;
 
-export const getGameShowAgainVerbs = (state: any): Array<string> =>
-  getGameShowAgainVerbTenses(state).map(
-    (verbTense: VerbTense) => verbTense.spanishInfinitive
-  );
-
-export const verbIsToBeShownAgain = (
+export const verbTenseIsToBeShownAgain = (
   state: any,
-  spanishInfinitive: string
+  verb: string,
+  tense: string
 ): boolean => {
-  const showAgainVerbs = getGameShowAgainVerbs(state);
-  return !!showAgainVerbs.length && showAgainVerbs.includes(spanishInfinitive);
+  const showAgainVerbTenses = getGameShowAgainVerbTenses(state);
+  return (
+    !!showAgainVerbTenses.length &&
+    showAgainVerbTenses.some(
+      (verbTense: VerbTense) =>
+        verbTense.spanishInfinitive === verb && verbTense.tense === tense
+    )
+  );
 };
 
 export const getNextShowAgainVerbTense = (state: any): VerbTense =>

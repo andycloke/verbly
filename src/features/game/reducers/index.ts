@@ -33,7 +33,7 @@ export default (game: Game = initialState, action: any) => {
             verbTense.spanishInfinitive !== action.payload.verb
         )
       };
-    case actionTypes.ADD_SHOW_AGAIN_VERB:
+    case actionTypes.ADD_SHOW_AGAIN_VERB_TENSE:
       return {
         ...game,
         showAgainVerbTenses: [
@@ -49,7 +49,8 @@ export default (game: Game = initialState, action: any) => {
         ...game,
         showAgainVerbTenses: game.showAgainVerbTenses.filter(
           (verbTense: VerbTense): boolean =>
-            verbTense.spanishInfinitive !== action.payload.verb
+            verbTense.spanishInfinitive !== action.payload.verb ||
+            verbTense.tense !== action.payload.tense
         )
       };
     case actionTypes.NEW_QUESTION:

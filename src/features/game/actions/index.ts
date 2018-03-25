@@ -7,7 +7,7 @@ import {
   isUserAnswerCorrect,
   getCurrentQuestionVerb,
   getCurrentQuestionTense,
-  verbIsToBeShownAgain,
+  verbTenseIsToBeShownAgain,
   getConjugationsBeingDisplayed,
   userAnswerNotBlank
 } from '../selectors';
@@ -21,7 +21,7 @@ export const actionTypes = {
   SET_GAME_UNSEEN_VERBS: 'game/SET_GAME_UNSEEN_VERBS',
   REMOVE_GAME_VERB: 'game/REMOVE_GAME_VERB',
   REMOVE_UNSEEN_VERB: 'game/REMOVE_UNSEEN_VERB',
-  ADD_SHOW_AGAIN_VERB: 'game/ADD_SHOW_AGAIN_VERB',
+  ADD_SHOW_AGAIN_VERB_TENSE: 'game/ADD_SHOW_AGAIN_VERB_TENSE',
   REMOVE_SHOW_AGAIN_VERB: 'game/REMOVE_SHOW_AGAIN_VERB',
   SHOW_CONJUGATIONS: 'game/SHOW_CONJUGATIONS',
   HIDE_CONJUGATIONS: 'game/HIDE_CONJUGATIONS',
@@ -79,18 +79,18 @@ export const removeGameVerb = (verb: string) => ({
 });
 
 export const addShowAgainVerbTense = (verb: string, tense: string) => ({
-  type: actionTypes.ADD_SHOW_AGAIN_VERB,
+  type: actionTypes.ADD_SHOW_AGAIN_VERB_TENSE,
   payload: {
     verb,
     tense
   }
 });
 
-// no need for tenses, as we never have duplicate verbs tested in 1 game
-export const removeShowAgainVerbTense = (verb: string) => ({
+export const removeShowAgainVerbTense = (verb: string, tense: string) => ({
   type: actionTypes.REMOVE_SHOW_AGAIN_VERB,
   payload: {
-    verb
+    verb,
+    tense
   }
 });
 
@@ -141,20 +141,21 @@ export const submitAnswer = () => {
   return function(dispatch: any, getState: any) {
     const state = getState();
     const verb = getCurrentQuestionVerb(state);
+    const tense = getCurrentQuestionTense(state);
+    if (verbTenseIsToBeShownAgain(state, verb, tense)) {
+      dispatch(removeShowAgainVerbTense(verb, tense));
+    }
     if (isUserAnswerCorrect(state)) {
       dispatch(removeGameVerb(verb));
       dispatch(newQuestion());
       dispatch(clearUserAnswer());
     } else {
-      const tense = getCurrentQuestionTense(state);
-      if (!verbIsToBeShownAgain(state, verb)) {
+      if (!verbTenseIsToBeShownAgain(state, verb, tense)) {
+        // verb tense was unseen
         dispatch(removeUnseenVerb(verb));
-        dispatch(addShowAgainVerbTense(verb, tense));
-      } else {
-        // move verb-tense to back of show again verb-tenses
-        dispatch(removeShowAgainVerbTense(verb));
-        dispatch(addShowAgainVerbTense(verb, tense));
       }
+      // move to back of show again queue
+      dispatch(addShowAgainVerbTense(verb, tense));
       dispatch(showConjugations());
     }
   };
