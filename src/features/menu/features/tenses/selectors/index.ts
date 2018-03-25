@@ -10,6 +10,12 @@ export const getInPlayTenses = (state: any): string[] => {
   );
 };
 
+export const getNumberOfTensesInPlay = (state: any): number =>
+  getInPlayTenses(state).length;
+
+export const getNoTensesInPlay = (state: any): boolean =>
+  getNumberOfTensesInPlay(state) === 0;
+
 export const getTensesMenuProps = (state: any): TensesMenuDataProps => ({
   inPlay: getTensesInPlaySlice(state)
 });

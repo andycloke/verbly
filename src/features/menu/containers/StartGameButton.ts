@@ -1,10 +1,22 @@
 import { connect } from 'react-redux';
 
 import { startGame } from '../../game/actions';
-import StartGameButton, { Props } from '../components/StartGameButton';
+import StartGameButton from '../components/StartGameButton';
+import { getStartButtonProps } from '../selectors';
 
-const mapDispatchToProps = (dispatch: any): Props => ({
+export type StateProps = {
+  canStartGame: boolean;
+};
+
+export type DispatchProps = {
+  startGame: () => void;
+};
+
+const mapStateToProps = (state: any): StateProps => getStartButtonProps(state);
+
+const mapDispatchToProps = (dispatch: any): DispatchProps => ({
   startGame: () => dispatch(startGame())
 });
 
-export default connect(undefined, mapDispatchToProps)(StartGameButton);
+export type Props = StateProps & DispatchProps;
+export default connect(mapStateToProps, mapDispatchToProps)(StartGameButton);
