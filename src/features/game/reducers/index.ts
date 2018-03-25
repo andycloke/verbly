@@ -22,6 +22,16 @@ export default (game: Game = initialState, action: any) => {
           (verb: string): boolean => verb !== action.payload.verb
         )
       };
+    case actionTypes.ADD_MOST_RECENTLY_SEEN_VERB:
+      return {
+        ...game,
+        seenVerbs: [
+          ...game.mostRecentlySeenVerbs.filter(
+            (verb: string) => verb !== action.payload.verb
+          ),
+          action.payload.verb
+        ]
+      };
     case actionTypes.REMOVE_GAME_VERB:
       return {
         ...game,

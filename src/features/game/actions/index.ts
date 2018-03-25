@@ -21,6 +21,7 @@ export const actionTypes = {
   SET_GAME_UNSEEN_VERBS: 'game/SET_GAME_UNSEEN_VERBS',
   REMOVE_GAME_VERB: 'game/REMOVE_GAME_VERB',
   REMOVE_UNSEEN_VERB: 'game/REMOVE_UNSEEN_VERB',
+  ADD_MOST_RECENTLY_SEEN_VERB: 'game/ADD_MOST_RECENTLY_SEEN_VERB',
   ADD_SHOW_AGAIN_VERB_TENSE: 'game/ADD_SHOW_AGAIN_VERB_TENSE',
   REMOVE_SHOW_AGAIN_VERB: 'game/REMOVE_SHOW_AGAIN_VERB',
   SHOW_CONJUGATIONS: 'game/SHOW_CONJUGATIONS',
@@ -66,6 +67,13 @@ export const setGameUnseenVerbs = (verbs: Array<string>) => ({
 
 export const removeUnseenVerb = (verb: string) => ({
   type: actionTypes.REMOVE_UNSEEN_VERB,
+  payload: {
+    verb
+  }
+});
+
+export const addMostRecentlySeenVerb = (verb: string) => ({
+  type: actionTypes.ADD_MOST_RECENTLY_SEEN_VERB,
   payload: {
     verb
   }
@@ -142,6 +150,7 @@ export const submitAnswer = () => {
     const state = getState();
     const verb = getCurrentQuestionVerb(state);
     const tense = getCurrentQuestionTense(state);
+    dispatch(addMostRecentlySeenVerb(verb));
     if (verbTenseIsToBeShownAgain(state, verb, tense)) {
       dispatch(removeShowAgainVerbTense(verb, tense));
     }

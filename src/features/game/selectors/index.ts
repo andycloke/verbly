@@ -18,10 +18,19 @@ export const getGameStarted = (state: any): boolean =>
 export const getGameUnseenVerbs = (state: any): Array<string> =>
   getGameSlice(state).unseenVerbs;
 
+export const getMostRecentlySeenVerbs = (state: any): Array<string> =>
+  getGameSlice(state).mostRecentlySeenVerbs;
+
+export const getNumberOfSeenVerbs = (state: any): number =>
+  getMostRecentlySeenVerbs(state).length;
+
+export const getLeastRecentSeenVerb = (state: any): string =>
+  getMostRecentlySeenVerbs(state)[getNumberOfSeenVerbs(state) - 1];
+
 export const getNumberOfUnseenVerbs = (state: any): number =>
   getGameUnseenVerbs(state).length;
 
-export const noMoreUnseenVerbs = (state: any): boolean =>
+export const getNoMoreUnseenVerbs = (state: any): boolean =>
   getGameUnseenVerbs(state).length === 0;
 
 export const getNextUnseenVerb = (state: any): string =>
@@ -66,7 +75,7 @@ export const needToStartShowingShowAgainVerbTenses = (state: any): boolean =>
 export const needToUseShowAgainVerbTenseForNextQuestion = (
   state: any
 ): boolean =>
-  noMoreUnseenVerbs(state) || needToStartShowingShowAgainVerbTenses(state);
+  getNoMoreUnseenVerbs(state) || needToStartShowingShowAgainVerbTenses(state);
 
 export const gameShouldEnd = (state: any): boolean =>
   getNumberOfQuestionsAnswered(state) >= MAX_QUESTIONS_ANSWERED ||

@@ -4,15 +4,20 @@ import { VerbTense } from '../models';
 import {
   getNextUnseenVerb,
   getNextShowAgainVerbTense,
-  needToUseShowAgainVerbTenseForNextQuestion
+  needToUseShowAgainVerbTenseForNextQuestion,
+  getNoMoreUnseenVerbs,
+  getLeastRecentSeenVerb
 } from '../selectors';
 
 export const getNextVerbTenseToStudy = (state: any): VerbTense => {
   if (needToUseShowAgainVerbTenseForNextQuestion(state)) {
     return getNextShowAgainVerbTense(state);
   }
+  const noMoreUnseenVerbs = getNoMoreUnseenVerbs(state);
   return {
-    spanishInfinitive: getNextUnseenVerb(state),
+    spanishInfinitive: noMoreUnseenVerbs
+      ? getLeastRecentSeenVerb(state)
+      : getNextUnseenVerb(state),
     tense: randomElement(getInPlayTenses(state))
   };
 };
