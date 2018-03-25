@@ -58,28 +58,26 @@ export const getListOfAllConjugations = (state: any): Array<Conjugation> =>
   Object.values(getAllConjugations(state));
 
 export const getVerbsFilteredByUserOptions = (state: any): Array<string> => {
-  const allInfinitives = getAllInfinitves(state);
-  // TODO: which verbs - user specified
-  let filteredVerbs = allInfinitives.filter(
-    (infinitive: string): boolean =>
-      (irregularVerbsOnly(state) && isVerbIrregular(state, infinitive)) ||
-      (irregularVerbsExcluded(state) && !isVerbIrregular(state, infinitive)) ||
-      irregularVerbsIncluded(state)
-  );
-  if (!filteredVerbs.length) return [];
-  filteredVerbs = filteredVerbs.filter(
-    (infinitive: string): boolean =>
-      (reflexiveVerbsOnly(state) && isVerbReflexive(state, infinitive)) ||
-      (reflexiveVerbsExcluded(state) && !isVerbReflexive(state, infinitive)) ||
-      reflexiveVerbsIncluded(state)
-  );
-  if (!filteredVerbs.length) return [];
-  filteredVerbs = filteredVerbs.filter(
-    (infinitive: string): boolean =>
-      (commonVerbsOnly(state) && isVerbCommon(state, infinitive)) ||
-      allVerbsInPlay(state)
-  );
-  return filteredVerbs;
+  return getAllInfinitves(state)
+    .filter(
+      (infinitive: string): boolean =>
+        (irregularVerbsOnly(state) && isVerbIrregular(state, infinitive)) ||
+        (irregularVerbsExcluded(state) &&
+          !isVerbIrregular(state, infinitive)) ||
+        irregularVerbsIncluded(state)
+    )
+    .filter(
+      (infinitive: string): boolean =>
+        (reflexiveVerbsOnly(state) && isVerbReflexive(state, infinitive)) ||
+        (reflexiveVerbsExcluded(state) &&
+          !isVerbReflexive(state, infinitive)) ||
+        reflexiveVerbsIncluded(state)
+    )
+    .filter(
+      (infinitive: string): boolean =>
+        (commonVerbsOnly(state) && isVerbCommon(state, infinitive)) ||
+        allVerbsInPlay(state)
+    );
 };
 
 export {
