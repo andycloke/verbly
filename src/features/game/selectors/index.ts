@@ -1,9 +1,10 @@
 import { People } from '../../../const/models/people';
 import { Game, VerbTense, CurrentQuestion } from '../models';
-import { MAX_QUESTIONS_ANSWERED } from '../const';
+import { CORRECT_ANSWERS_TARGET } from '../const';
 import { StateProps } from '../containers/Game';
 import { ConjugationDisplayPair } from '../containers/ConjugationsTable';
 import { StateProps as ConjugationsTableStateProps } from '../containers/ConjugationsTable';
+import { StateProps as ProgressBarStateProps } from '../containers/ProgressBar';
 import { getDisplayEnglishInfinitive } from '../../options/selectors';
 import {
   getEnglishInfinitive,
@@ -66,10 +67,13 @@ export const getNextShowAgainVerbTense = (state: any): VerbTense =>
 export const getNumberOfQuestionsAnswered = (state: any): number =>
   getGameSlice(state).questionsAnswered;
 
-// Limited number of questions can be asked, so at a certain point we need to show
+export const getNumberOfQuestionsCorrect = (state: any): number =>
+  getGameSlice(state).questionsCorrect;
+
+// Limited number of questions can be answered, so at a certain point we need to show
 // any verb-tense combos that need reviewing
 export const needToStartShowingShowAgainVerbTenses = (state: any): boolean =>
-  MAX_QUESTIONS_ANSWERED - getNumberOfQuestionsAnswered(state) <=
+  CORRECT_ANSWERS_TARGET - getNumberOfQuestionsCorrect(state) <=
   getNumberOfGameShowAgainVerbTenses(state);
 
 export const needToUseShowAgainVerbTenseForNextQuestion = (
@@ -78,7 +82,7 @@ export const needToUseShowAgainVerbTenseForNextQuestion = (
   getNoMoreUnseenVerbs(state) || needToStartShowingShowAgainVerbTenses(state);
 
 export const gameShouldEnd = (state: any): boolean =>
-  getNumberOfQuestionsAnswered(state) >= MAX_QUESTIONS_ANSWERED ||
+  getNumberOfQuestionsCorrect(state) >= CORRECT_ANSWERS_TARGET ||
   (getGameUnseenVerbs(state).length === 0 &&
     getGameShowAgainVerbTenses(state).length === 0);
 
@@ -168,3 +172,8 @@ export const getConjugationsTableProps = (
     conjugations
   };
 };
+
+export const getProgressBarProps = (state: any): ProgressBarStateProps => ({
+  questionsCorrect: getNumberOfQuestionsCorrect(state),
+  questionsCorrectTarget: CORRECT_ANSWERS_TARGET
+});

@@ -32,7 +32,8 @@ export const actionTypes = {
   HIDE_CONJUGATIONS: 'game/HIDE_CONJUGATIONS',
   UPDATE_USER_ANSWER: 'game/UPDATE_USER_ANSWER',
   CLEAR_USER_ANSWER: 'game/CLEAR_USER_ANSWER',
-  SUBMIT_ANSWER: 'game/SUBMIT_ANSWER'
+  SUBMIT_ANSWER: 'game/SUBMIT_ANSWER',
+  ADD_QUESTION_CORRECT: 'game/ADD_QUESTION_CORRECT'
 };
 
 export const startGame = () => ({
@@ -106,6 +107,10 @@ export const removeShowAgainVerbTense = (verb: string, tense: string) => ({
   }
 });
 
+export const addQuestionCorrect = () => ({
+  type: actionTypes.ADD_QUESTION_CORRECT
+});
+
 export const newQuestion = () => {
   return function(dispatch: any, getState: any) {
     const state = getState();
@@ -159,6 +164,7 @@ export const submitAnswer = () => {
       dispatch(removeShowAgainVerbTense(verb, tense));
     }
     if (isUserAnswerCorrect(state)) {
+      dispatch(addQuestionCorrect());
       dispatch(removeGameVerb(verb));
       dispatch(newQuestion());
       dispatch(clearUserAnswer());

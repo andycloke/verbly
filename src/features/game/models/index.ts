@@ -18,6 +18,7 @@ export type Game = {
   showAgainVerbTenses: Array<VerbTense>; // need reviewing again in this game
   mostRecentlySeenVerbs: Array<string>;
   questionsAnswered: number;
+  questionsCorrect: number;
   currentQuestion: CurrentQuestion;
   userAnswer: string;
   displayConjugations: boolean;
@@ -29,6 +30,7 @@ export const initialState = {
   mostRecentlySeenVerbs: [],
   showAgainVerbTenses: [],
   questionsAnswered: 0,
+  questionsCorrect: 0,
   currentQuestion: {
     person: '',
     displayPerson: '',

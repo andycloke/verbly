@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 
 import { StateProps, DispatchProps } from '../containers/Game';
 import ConjugationsTable from '../containers/ConjugationsTable';
+import ProgressBar from '../containers/ProgressBar';
 import AccentedLetterKey from './AccentedLetterKey';
 import GameCard from './GameCard';
 
@@ -163,6 +164,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
     } = this.props;
     return (
       <div className="Game__outer">
+        <ProgressBar />
         <GameCard
           correct={this.state.showCorrectIcon}
           incorrect={displayConjugations}

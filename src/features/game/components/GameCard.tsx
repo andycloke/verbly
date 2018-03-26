@@ -25,7 +25,7 @@ type Props = {
   handleSubmitClick: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
-const positiveGreen = '#52c952';
+export const positiveGreen = '#52c952';
 const negativeRed = '#c10e0e';
 
 const GameCard = ({
