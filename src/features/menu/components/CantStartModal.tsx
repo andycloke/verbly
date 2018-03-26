@@ -6,7 +6,11 @@ import { AllDataProps } from '../containers/CantStartModal';
 
 const CantStartModal = ({ missingItems, open, closeModal }: AllDataProps) => {
   let missingItemsText = '';
-  if (missingItems.length === 2) {
+  if (missingItems.length === 3) {
+    missingItemsText = `${missingItems[0]}, ${missingItems[1]} & ${
+      missingItems[2]
+    }`;
+  } else if (missingItems.length === 2) {
     missingItemsText = `${missingItems[0]} & ${missingItems[1]}`;
   } else {
     missingItemsText = missingItems[0];
