@@ -17,6 +17,7 @@ export type StateProps = {
   englishInfinitive: string;
   userAnswer: string;
   displayConjugations: boolean;
+  userAnswerCorrect: boolean;
 };
 
 export type PreMergeDispatchProps = {

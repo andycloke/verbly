@@ -33,8 +33,20 @@ $rowHeight: 50px;
   grid-area: person;
 }
 
-.GameCard__input {
+.GameCard__inputCell {
   grid-area: input;
+  position: relative;
+}
+
+.GameCard__inputIconContainer {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .GameCard__submitButtonCell {

@@ -22,21 +22,25 @@ enum KeyboardKeys {
   Enter = 'Enter'
 }
 
+const displayCorrectIconDuration = 330;
 // for some reason need to delay calling of input functions e.g. focus
 // to get them to work. This delay time seems to work okay.
 const inputFuncsDelay = 100;
 
 type State = {
   lastKeyPressed: string;
+  showCorrectIcon: boolean;
 };
 
 class Game extends React.PureComponent<StateProps & DispatchProps, State> {
   answerInput: TextField;
   answerInputHTML: HTMLInputElement;
   mounted: boolean;
+  timeout: NodeJS.Timer;
 
   state = {
-    lastKeyPressed: ''
+    lastKeyPressed: '',
+    showCorrectIcon: false
   };
 
   componentDidMount() {
@@ -49,6 +53,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyDown);
     window.removeEventListener('keyup', this.handleKeyUp);
+    clearTimeout(this.timeout);
     this.mounted = false;
   }
 
@@ -63,9 +68,12 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
     } else if (!!lastKeyPressed) {
       const lastTwoKeysPressed = [key, lastKeyPressed];
       if (lastTwoKeysPressed.includes(KeyboardKeys.Shift)) {
-        const otherKeyPressed = lastTwoKeysPressed
-          .filter(k => k !== KeyboardKeys.Shift)[0]
-          .toLowerCase();
+        let otherKeyPressed = lastTwoKeysPressed.filter(
+          k => k !== KeyboardKeys.Shift
+        )[0];
+        if (otherKeyPressed) {
+          otherKeyPressed = otherKeyPressed.toLowerCase();
+        }
         if (Object.keys(accentedLettersMap).includes(otherKeyPressed)) {
           e.preventDefault();
           this.addAccentedLetterToUserAnswer(
@@ -102,8 +110,17 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
   };
 
   submitAndFocus = () => {
-    this.props.submit();
-    this.focusAnswerInput();
+    if (this.props.userAnswerCorrect) {
+      this.setState({ showCorrectIcon: true });
+      this.timeout = setTimeout(() => {
+        this.props.submit();
+        this.focusAnswerInput();
+        this.setState({ showCorrectIcon: false });
+      }, displayCorrectIconDuration);
+    } else {
+      this.props.submit();
+      this.focusAnswerInput();
+    }
   };
 
   focusAnswerInput = () => {
@@ -147,6 +164,8 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
     return (
       <div className="Game__outer">
         <GameCard
+          correct={this.state.showCorrectIcon}
+          incorrect={displayConjugations}
           tense={tense}
           person={person}
           verb={verb}

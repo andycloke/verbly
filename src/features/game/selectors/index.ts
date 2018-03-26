@@ -127,7 +127,8 @@ export const getGameProps = (state: any): StateProps => {
         ? getEnglishInfinitive(state, spanishInfinitive)
         : '',
       userAnswer: getUserAnswer(state),
-      displayConjugations: getConjugationsBeingDisplayed(state)
+      displayConjugations: getConjugationsBeingDisplayed(state),
+      userAnswerCorrect: isUserAnswerCorrect(state)
     };
   }
   return {
@@ -136,7 +137,8 @@ export const getGameProps = (state: any): StateProps => {
     verb: '',
     englishInfinitive: '',
     userAnswer: '',
-    displayConjugations: false
+    displayConjugations: false,
+    userAnswerCorrect: false
   };
 };
 
