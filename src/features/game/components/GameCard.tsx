@@ -19,7 +19,7 @@ type Props = {
   makeAnswerInputRef: (input: TextField) => void;
   englishInfinitive: string;
   userAnswer: string;
-  displayConjugations: boolean;
+  disabled: boolean;
   correct: boolean;
   incorrect: boolean;
   handleSubmitClick: (event: React.MouseEvent<HTMLElement>) => void;
@@ -36,7 +36,7 @@ const GameCard = ({
   makeAnswerInputRef,
   englishInfinitive,
   userAnswer,
-  displayConjugations,
+  disabled,
   correct,
   incorrect,
   handleSubmitClick
@@ -76,7 +76,7 @@ const GameCard = ({
               fullWidth
               onChange={handleUserAnswerChange}
               value={userAnswer}
-              disabled={displayConjugations}
+              disabled={disabled}
               underlineStyle={underlineStyle}
               inputStyle={inputStyle}
             />

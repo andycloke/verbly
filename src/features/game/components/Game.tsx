@@ -111,7 +111,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
   };
 
   submitAndFocus = () => {
-    if (this.props.userAnswerCorrect) {
+    if (this.props.userAnswerCorrect && !this.state.showCorrectIcon) {
       this.setState({ showCorrectIcon: true });
       this.timeout = setTimeout(() => {
         this.props.submit();
@@ -175,7 +175,7 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
           makeAnswerInputRef={this.makeAnswerInputRef}
           englishInfinitive={englishInfinitive}
           userAnswer={userAnswer}
-          displayConjugations={displayConjugations}
+          disabled={displayConjugations}
           handleSubmitClick={this.handleSubmitClick}
         />
         {displayConjugations ? (
