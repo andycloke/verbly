@@ -6,7 +6,7 @@ import {
 import { StateProps as VerbsMenuStateProps } from '../containers/VerbsMenu';
 import {
   getConjugationsFetched,
-  getAllInfinitves
+  getAllInfinitives
 } from '../../../../conjugations/selectors';
 
 export const getVerbsInPlaySlice = (state: any): VerbsInPlay =>
@@ -52,7 +52,7 @@ export const getUserDefinedVerbs = (state: any): Array<string> =>
   getVerbsInPlaySlice(state).userDefinedVerbs;
 
 export const getValidUserDefinedVerbs = (state: any): Array<string> => {
-  const spanishInfinitives = getAllInfinitves(state);
+  const spanishInfinitives = getAllInfinitives(state);
   return getUserDefinedVerbs(state).filter((verb: string) =>
     spanishInfinitives.includes(verb)
   );

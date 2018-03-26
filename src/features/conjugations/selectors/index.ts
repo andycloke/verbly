@@ -53,14 +53,14 @@ export const getEnglishInfinitive = (
   spanishInfinitive: string
 ): string => getSingleConjugation(state, spanishInfinitive).englishInfinitive;
 
-export const getAllInfinitves = (state: any): Array<string> =>
+export const getAllInfinitives = (state: any): Array<string> =>
   Object.keys(getAllConjugations(state));
 
 export const getListOfAllConjugations = (state: any): Array<Conjugation> =>
   Object.values(getAllConjugations(state));
 
 export const getVerbsFilteredByUserOptions = (state: any): Array<string> => {
-  return getAllInfinitves(state)
+  return getAllInfinitives(state)
     .filter(
       (infinitive: string): boolean =>
         (irregularVerbsOnly(state) && isVerbIrregular(state, infinitive)) ||
