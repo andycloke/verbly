@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import { getVerbsFilteredByUserOptions } from '../../conjugations/selectors';
 import {
   updateVerbTenseStatsAfterCorrect,
@@ -168,7 +169,9 @@ export const submitAnswer = () => {
       dispatch(removeGameVerb(verb));
       dispatch(newQuestion());
       dispatch(clearUserAnswer());
-      dispatch(updateVerbTenseStatsAfterCorrect(verb, tense, '21233'));
+      dispatch(
+        updateVerbTenseStatsAfterCorrect(verb, tense, moment().format())
+      );
     } else {
       if (!verbTenseIsToBeShownAgain(state, verb, tense)) {
         // verb tense was unseen
@@ -177,7 +180,9 @@ export const submitAnswer = () => {
       // move to back of show again queue
       dispatch(addShowAgainVerbTense(verb, tense));
       dispatch(showConjugations());
-      dispatch(updateVerbTenseStatsAfterIncorrect(verb, tense, '89777'));
+      dispatch(
+        updateVerbTenseStatsAfterIncorrect(verb, tense, moment().format())
+      );
     }
   };
 };
