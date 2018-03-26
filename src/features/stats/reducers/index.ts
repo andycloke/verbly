@@ -11,41 +11,57 @@ const statAlreadyExists = (
 // TODO: bit nested at the momemnt, could be simplified
 export default (stats: any = {}, action: any) => {
   switch (action.type) {
-    case actionTypes.UPDATE_VERB_TENSE_AFTER_CORRECT:
-      const { verb, tense, timeStamp } = action.payload;
+    case actionTypes.UPDATE_VERB_TENSE_STATS_AFTER_CORRECT:
       return {
         ...stats,
-        [tense]: {
-          ...stats[tense],
-          [verb]: {
-            timesSeen: statAlreadyExists(stats, tense, verb, 'timesSeen')
-              ? stats[tense][verb].timesSeen + 1
+        [action.payload.tense]: {
+          ...stats[action.payload.tense],
+          [action.payload.verb]: {
+            timesSeen: statAlreadyExists(
+              stats,
+              action.payload.tense,
+              action.payload.verb,
+              'timesSeen'
+            )
+              ? stats[action.payload.tense][action.payload.verb].timesSeen + 1
               : 1,
-            timesCorrect: statAlreadyExists(stats, tense, verb, 'timesCorrect')
-              ? stats[tense][verb].timesCorrect + 1
+            timesCorrect: statAlreadyExists(
+              stats,
+              action.payload.tense,
+              action.payload.verb,
+              'timesCorrect'
+            )
+              ? stats[action.payload.tense][action.payload.verb].timesCorrect +
+                1
               : 1,
-            lastSeen: timeStamp
+            lastSeen: action.payload.timeStamp
           }
         }
       };
-    case actionTypes.UPDATE_VERB_TENSE_AFTER_INCORRECT:
+    case actionTypes.UPDATE_VERB_TENSE_STATS_AFTER_INCORRECT:
       return {
         ...stats,
-        [tense]: {
-          ...stats[tense],
-          [verb]: {
-            timesSeen: statAlreadyExists(stats, tense, verb, 'timesSeen')
-              ? stats[tense][verb].timesSeen + 1
+        [action.payload.tense]: {
+          ...stats[action.payload.tense],
+          [action.payload.verb]: {
+            timesSeen: statAlreadyExists(
+              stats,
+              action.payload.tense,
+              action.payload.verb,
+              'timesSeen'
+            )
+              ? stats[action.payload.tense][action.payload.verb].timesSeen + 1
               : 1,
             timesIncorrect: statAlreadyExists(
               stats,
-              tense,
-              verb,
+              action.payload.tense,
+              action.payload.verb,
               'timesIncorrect'
             )
-              ? stats[tense][verb].timesIncorrect + 1
+              ? stats[action.payload.tense][action.payload.verb]
+                  .timesIncorrect + 1
               : 1,
-            lastSeen: timeStamp
+            lastSeen: action.payload.timeStamp
           }
         }
       };

@@ -1,14 +1,16 @@
 export const actionTypes = {
-  UPDATE_VERB_TENSE_AFTER_CORRECT: 'stats/UPDATE_VERB_TENSE_AFTER_CORRECT',
-  UPDATE_VERB_TENSE_AFTER_INCORRECT: 'stats/UPDATE_VERB_TENSE_AFTER_INCORRECT'
+  UPDATE_VERB_TENSE_STATS_AFTER_CORRECT:
+    'stats/UPDATE_VERB_TENSE_STATS_AFTER_CORRECT',
+  UPDATE_VERB_TENSE_STATS_AFTER_INCORRECT:
+    'stats/UPDATE_VERB_TENSE_STATS_AFTER_INCORRECT'
 };
 
-export const updateVerbTenseAfterCorrect = (
+export const updateVerbTenseStatsAfterCorrect = (
   verb: string,
   tense: string,
   timeStamp: string
 ) => ({
-  type: actionTypes.UPDATE_VERB_TENSE_AFTER_CORRECT,
+  type: actionTypes.UPDATE_VERB_TENSE_STATS_AFTER_CORRECT,
   payload: {
     verb,
     tense,
@@ -16,12 +18,12 @@ export const updateVerbTenseAfterCorrect = (
   }
 });
 
-export const updateVerbTenseAfterInCorrect = (
+export const updateVerbTenseStatsAfterIncorrect = (
   verb: string,
   tense: string,
   timeStamp: string
 ) => ({
-  type: actionTypes.UPDATE_VERB_TENSE_AFTER_INCORRECT,
+  type: actionTypes.UPDATE_VERB_TENSE_STATS_AFTER_INCORRECT,
   payload: {
     verb,
     tense,

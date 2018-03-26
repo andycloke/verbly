@@ -1,4 +1,8 @@
 import { getVerbsFilteredByUserOptions } from '../../conjugations/selectors';
+import {
+  updateVerbTenseStatsAfterCorrect,
+  updateVerbTenseStatsAfterIncorrect
+} from '../../stats/actions';
 import { getAllPeopleInPlay } from '../../menu/features/people/selectors';
 import { peopleMap } from '../../../const/models/people';
 import { N_GAME_VERBS } from '../const';
@@ -158,6 +162,7 @@ export const submitAnswer = () => {
       dispatch(removeGameVerb(verb));
       dispatch(newQuestion());
       dispatch(clearUserAnswer());
+      dispatch(updateVerbTenseStatsAfterCorrect(verb, tense, '21233'));
     } else {
       if (!verbTenseIsToBeShownAgain(state, verb, tense)) {
         // verb tense was unseen
@@ -166,6 +171,7 @@ export const submitAnswer = () => {
       // move to back of show again queue
       dispatch(addShowAgainVerbTense(verb, tense));
       dispatch(showConjugations());
+      dispatch(updateVerbTenseStatsAfterIncorrect(verb, tense, '89777'));
     }
   };
 };
