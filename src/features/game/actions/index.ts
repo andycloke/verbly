@@ -22,6 +22,7 @@ import { shuffle, randomElement } from '../../../util';
 export const actionTypes = {
   START_GAME: 'game/START_GAME',
   END_GAME: 'game/END_GAME',
+  OPEN_REVIEW: 'game/OPEN_REVIEW',
   NEW_QUESTION: 'game/NEW_QUESTION',
   SET_GAME_UNSEEN_VERBS: 'game/SET_GAME_UNSEEN_VERBS',
   REMOVE_GAME_VERB: 'game/REMOVE_GAME_VERB',
@@ -43,6 +44,10 @@ export const startGame = () => ({
 
 export const endGame = () => ({
   type: actionTypes.END_GAME
+});
+
+export const openReview = () => ({
+  type: actionTypes.OPEN_REVIEW
 });
 
 export const updateUserAnswer = (userAnswer: string) => ({
@@ -116,7 +121,7 @@ export const newQuestion = () => {
   return function(dispatch: any, getState: any) {
     const state = getState();
     if (gameShouldEnd(state)) {
-      dispatch(endGame());
+      dispatch(openReview());
     } else {
       if (getConjugationsBeingDisplayed(state)) {
         dispatch(hideConjugations());

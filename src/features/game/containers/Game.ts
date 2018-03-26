@@ -18,6 +18,7 @@ export type StateProps = {
   userAnswer: string;
   displayConjugations: boolean;
   userAnswerCorrect: boolean;
+  reviewOpen: boolean;
 };
 
 export type PreMergeDispatchProps = {

@@ -120,6 +120,9 @@ export const isUserAnswerCorrect = (state: any): boolean =>
 export const getConjugationsBeingDisplayed = (state: any): boolean =>
   getGameSlice(state).displayConjugations;
 
+export const getReviewOpen = (state: any): boolean =>
+  getGameSlice(state).reviewOpen;
+
 export const getGameProps = (state: any): StateProps => {
   const spanishInfinitive = getCurrentQuestionVerb(state);
   if (spanishInfinitive) {
@@ -132,7 +135,8 @@ export const getGameProps = (state: any): StateProps => {
         : '',
       userAnswer: getUserAnswer(state),
       displayConjugations: getConjugationsBeingDisplayed(state),
-      userAnswerCorrect: isUserAnswerCorrect(state)
+      userAnswerCorrect: isUserAnswerCorrect(state),
+      reviewOpen: getReviewOpen(state)
     };
   }
   return {
@@ -142,7 +146,8 @@ export const getGameProps = (state: any): StateProps => {
     englishInfinitive: '',
     userAnswer: '',
     displayConjugations: false,
-    userAnswerCorrect: false
+    userAnswerCorrect: false,
+    reviewOpen: false
   };
 };
 

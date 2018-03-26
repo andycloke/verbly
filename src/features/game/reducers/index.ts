@@ -10,6 +10,11 @@ export default (game: Game = initialState, action: any) => {
       };
     case actionTypes.END_GAME:
       return initialState;
+    case actionTypes.OPEN_REVIEW:
+      return {
+        ...game,
+        openReview: true
+      };
     case actionTypes.SET_GAME_UNSEEN_VERBS:
       return {
         ...game,
