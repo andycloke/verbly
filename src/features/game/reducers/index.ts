@@ -13,7 +13,7 @@ export default (game: Game = initialState, action: any) => {
     case actionTypes.OPEN_REVIEW:
       return {
         ...game,
-        openReview: true
+        reviewOpen: true
       };
     case actionTypes.SET_GAME_UNSEEN_VERBS:
       return {
