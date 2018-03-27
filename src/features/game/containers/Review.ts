@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { getReviewProps } from '../selectors';
-import { endGame } from '../actions';
+import { startGame, endGame } from '../actions';
 import Review from '../components/Review';
 
 export type StateProps = {
@@ -12,10 +12,12 @@ export type StateProps = {
 const mapStateToProps = (state: any): StateProps => getReviewProps(state);
 
 export type DispatchProps = {
+  startGame: () => void;
   endGame: () => void;
 };
 
 const mapDispatchToProps = (dispatch: any): DispatchProps => ({
+  startGame: () => dispatch(startGame()),
   endGame: () => dispatch(endGame())
 });
 

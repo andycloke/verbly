@@ -1,11 +1,26 @@
 import * as React from 'react';
-import Paper from 'material-ui/Paper';
+import { Link } from 'react-router-dom';
+import { Card, CardActions } from 'material-ui/Card';
 import { List, ListItem } from 'material-ui/List';
+import FlatButton from 'material-ui/FlatButton';
+
+import { pathToGame, pathToHome } from '../../../paths';
 import { Props } from '../containers/Review';
 
-const Review = ({ questionsCorrect, questionsAnswered }: Props) => {
+const Review = ({
+  questionsCorrect,
+  questionsAnswered,
+  startGame,
+  endGame
+}: Props) => {
+  const handleStartGameClick = (e: React.MouseEvent<HTMLElement>): void => {
+    startGame();
+  };
+  const handleEndGameClick = (e: React.MouseEvent<HTMLElement>): void => {
+    endGame();
+  };
   return (
-    <Paper style={{ width: '100%' }}>
+    <Card style={{ width: '100%' }}>
       <List>
         <ListItem
           primaryText="Questions Answered"
@@ -16,7 +31,15 @@ const Review = ({ questionsCorrect, questionsAnswered }: Props) => {
           rightIcon={<span>{questionsCorrect}</span>}
         />
       </List>
-    </Paper>
+      <CardActions>
+        <Link to={pathToHome()}>
+          <FlatButton onClick={handleStartGameClick} label="Quit" />
+        </Link>
+        <Link to={pathToGame()}>
+          <FlatButton onClick={handleEndGameClick} label="Play Again" />
+        </Link>
+      </CardActions>
+    </Card>
   );
 };
 
