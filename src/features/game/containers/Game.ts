@@ -18,7 +18,6 @@ export type StateProps = {
   userAnswer: string;
   displayConjugations: boolean;
   userAnswerCorrect: boolean;
-  reviewOpen: boolean;
 };
 
 export type PreMergeDispatchProps = {
@@ -38,7 +37,7 @@ const mapDispatchToProps = (dispatch: any): PreMergeDispatchProps => ({
   newQuestion: () => dispatch(newQuestion())
 });
 
-export type DispatchProps = {
+type DispatchProps = {
   initialiseGame: () => void;
   updateUserAnswer: (userAnswer: string) => void;
   submit: () => void;
@@ -58,4 +57,5 @@ const Game = connect(mapStateToProps, mapDispatchToProps, mergeProps)(
   GameComp as any
 );
 
+export type Props = StateProps & DispatchProps;
 export default ConjugationsFetchWrapper(Game);

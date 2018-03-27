@@ -1,0 +1,13 @@
+@import 'common.scss';
+
+.GameContainer__outer {
+  width: 95%;
+  max-width: 650px;
+  margin: 20px auto 10px;
+}
+
+@media screen and (max-width: $gameMobileBreakPoint) {
+  .GameContainer__outer {
+    margin-top: 10px;
+  }
+}

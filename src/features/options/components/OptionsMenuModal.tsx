@@ -2,12 +2,9 @@ import * as React from 'react';
 import Dialog from 'material-ui/Dialog';
 
 import OptionsMenu from '../containers/OptionsMenu';
-import { StateProps, DispatchProps } from '../containers/OptionsMenuModal';
+import { Props } from '../containers/OptionsMenuModal';
 
-const OptionsMenuModal = ({
-  open,
-  toggleOptionsMenuOpen
-}: StateProps & DispatchProps) => {
+const OptionsMenuModal = ({ open, toggleOptionsMenuOpen }: Props) => {
   const handleRequestClose = (buttonClicked: boolean): void =>
     toggleOptionsMenuOpen();
   return (

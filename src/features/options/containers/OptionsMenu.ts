@@ -9,7 +9,7 @@ export type StateProps = {
   audioFeedback: boolean;
 };
 
-export type DispatchProps = {
+type DispatchProps = {
   toggleEnglishInfinitive: () => any;
   toggleAudioFeedback: () => any;
 };
@@ -21,4 +21,5 @@ const mapDispatchToProps = (dispatch: any): DispatchProps => ({
   toggleAudioFeedback: () => dispatch(toggleAudioFeedback())
 });
 
+export type Props = StateProps & DispatchProps;
 export default connect(mapStateToProps, mapDispatchToProps)(OptionsMenu);

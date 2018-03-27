@@ -3,14 +3,14 @@ import Toggle from 'material-ui/Toggle';
 import Subheader from 'material-ui/Subheader';
 import { List, ListItem } from 'material-ui/List';
 
-import { StateProps, DispatchProps } from '../containers/OptionsMenu';
+import { Props } from '../containers/OptionsMenu';
 
 const OptionsMenu = ({
   displayEnglishInfinitive,
   toggleEnglishInfinitive,
   audioFeedback,
   toggleAudioFeedback
-}: StateProps & DispatchProps) => {
+}: Props) => {
   const handleEnglishInfinitiveClick = (
     event: React.MouseEvent<HTMLElement>
   ): void => toggleEnglishInfinitive();

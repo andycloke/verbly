@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch: any): DispatchProps => ({
   toggleOptionsMenuOpen: () => dispatch(toggleOptionsMenuOpen())
 });
 
+export type Props = StateProps & DispatchProps;
 export default connect(mapStateToProps, mapDispatchToProps)(
   OptionsMenuModal as any
 );

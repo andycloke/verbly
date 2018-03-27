@@ -6,7 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import AppBar from './features/common/containers/AppBar';
 import MainMenu from './features/menu/components/MainMenu';
-import Game from './features/game/containers/Game';
+import GameContainer from './features/game/containers/GameContainer';
 
 import { pathToHome, pathToGame } from './paths';
 import OptionsMenuModal from './features/options/containers/OptionsMenuModal';
@@ -25,7 +25,7 @@ class App extends React.PureComponent {
               <div className="App__inner">
                 <Switch>
                   <Route exact path={pathToHome()} component={MainMenu} />
-                  <Route exact path={pathToGame()} component={Game} />
+                  <Route exact path={pathToGame()} component={GameContainer} />
                   <Redirect to={pathToHome()} />
                 </Switch>
               </div>

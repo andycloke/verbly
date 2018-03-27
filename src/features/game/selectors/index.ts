@@ -5,6 +5,8 @@ import { StateProps } from '../containers/Game';
 import { ConjugationDisplayPair } from '../containers/ConjugationsTable';
 import { StateProps as ConjugationsTableStateProps } from '../containers/ConjugationsTable';
 import { StateProps as ProgressBarStateProps } from '../containers/ProgressBar';
+import { StateProps as ReviewStateProps } from '../containers/Review';
+import { StateProps as GameContainerStateProps } from '../containers/GameContainer';
 import { getDisplayEnglishInfinitive } from '../../options/selectors';
 import {
   getEnglishInfinitive,
@@ -135,8 +137,7 @@ export const getGameProps = (state: any): StateProps => {
         : '',
       userAnswer: getUserAnswer(state),
       displayConjugations: getConjugationsBeingDisplayed(state),
-      userAnswerCorrect: isUserAnswerCorrect(state),
-      reviewOpen: getReviewOpen(state)
+      userAnswerCorrect: isUserAnswerCorrect(state)
     };
   }
   return {
@@ -146,8 +147,7 @@ export const getGameProps = (state: any): StateProps => {
     englishInfinitive: '',
     userAnswer: '',
     displayConjugations: false,
-    userAnswerCorrect: false,
-    reviewOpen: false
+    userAnswerCorrect: false
   };
 };
 
@@ -181,4 +181,13 @@ export const getConjugationsTableProps = (
 export const getProgressBarProps = (state: any): ProgressBarStateProps => ({
   questionsCorrect: getNumberOfQuestionsCorrect(state),
   questionsCorrectTarget: CORRECT_ANSWERS_TARGET
+});
+
+export const getReviewProps = (state: any): ReviewStateProps => ({
+  questionsCorrect: getNumberOfQuestionsCorrect(state),
+  questionsAnswered: getNumberOfQuestionsAnswered(state)
+});
+
+export const getGameContainerProps = (state: any): GameContainerStateProps => ({
+  reviewOpen: getReviewOpen(state)
 });

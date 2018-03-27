@@ -2,9 +2,8 @@ import * as React from 'react';
 
 import TextField from 'material-ui/TextField';
 
-import { StateProps, DispatchProps } from '../containers/Game';
+import { Props } from '../containers/Game';
 import ConjugationsTable from '../containers/ConjugationsTable';
-import ProgressBar from '../containers/ProgressBar';
 import AccentedLetterKey from './AccentedLetterKey';
 import GameCard from './GameCard';
 
@@ -33,7 +32,7 @@ type State = {
   showCorrectIcon: boolean;
 };
 
-class Game extends React.PureComponent<StateProps & DispatchProps, State> {
+class Game extends React.PureComponent<Props, State> {
   answerInput: TextField;
   answerInputHTML: HTMLInputElement;
   mounted: boolean;
@@ -164,7 +163,6 @@ class Game extends React.PureComponent<StateProps & DispatchProps, State> {
     } = this.props;
     return (
       <div className="Game__outer">
-        <ProgressBar />
         <GameCard
           correct={this.state.showCorrectIcon}
           incorrect={displayConjugations}
