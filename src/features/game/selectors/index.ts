@@ -72,7 +72,7 @@ export const getNumberOfQuestionsAnswered = (state: any): number =>
 export const getNumberOfQuestionsCorrect = (state: any): number =>
   getGameSlice(state).questionsCorrect;
 
-// Limited number of questions can be answered, so at a certain point we need to show
+// Limited number of questions can be answered correctly, so at a certain point we need to show
 // any verb-tense combos that need reviewing
 export const needToStartShowingShowAgainVerbTenses = (state: any): boolean =>
   CORRECT_ANSWERS_TARGET - getNumberOfQuestionsCorrect(state) <=
