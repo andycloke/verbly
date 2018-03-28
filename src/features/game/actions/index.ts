@@ -35,7 +35,8 @@ export const actionTypes = {
   UPDATE_USER_ANSWER: 'game/UPDATE_USER_ANSWER',
   CLEAR_USER_ANSWER: 'game/CLEAR_USER_ANSWER',
   SUBMIT_ANSWER: 'game/SUBMIT_ANSWER',
-  ADD_QUESTION_CORRECT: 'game/ADD_QUESTION_CORRECT'
+  ADD_QUESTION_CORRECT: 'game/ADD_QUESTION_CORRECT',
+  INCREMENT_QUESTIONS_ANSWERED: 'game/INCREMENT_QUESTIONS_ANSWERED'
 };
 
 export const startGame = () => ({
@@ -117,6 +118,10 @@ export const addQuestionCorrect = () => ({
   type: actionTypes.ADD_QUESTION_CORRECT
 });
 
+export const incrementQuestionsAnswered = () => ({
+  type: actionTypes.INCREMENT_QUESTIONS_ANSWERED
+});
+
 export const newQuestion = () => {
   return function(dispatch: any, getState: any) {
     const state = getState();
@@ -162,6 +167,7 @@ export const initialiseGame = () => {
 
 export const submitAnswer = () => {
   return function(dispatch: any, getState: any) {
+    dispatch(incrementQuestionsAnswered());
     const state = getState();
     const verb = getCurrentQuestionVerb(state);
     const tense = getCurrentQuestionTense(state);

@@ -71,8 +71,12 @@ export default (game: Game = initialState, action: any) => {
     case actionTypes.NEW_QUESTION:
       return {
         ...game,
-        questionsAnswered: game.questionsAnswered + 1,
         currentQuestion: action.payload
+      };
+    case actionTypes.INCREMENT_QUESTIONS_ANSWERED:
+      return {
+        ...game,
+        questionsAnswered: game.questionsAnswered + 1
       };
     case actionTypes.ADD_QUESTION_CORRECT:
       return {
