@@ -12,14 +12,15 @@ export const getAllVerbsThatHaveStatsForTense = (
 
 export const getStatsForVerbTense = (
   state: any,
-  verb: string,
-  tense: string
+  tense: string,
+  verb: string
 ): VerbTenseStats => getTenseSlice(state, tense)[verb];
 
 export const getAllVerbsTenseStatsForTense = (
   state: any,
   tense: string
 ): Array<VerbTenseStats> =>
-  getAllVerbsThatHaveStatsForTense(state, tense).map((verb: string) =>
-    getStatsForVerbTense(state, tense, verb)
-  );
+  getAllVerbsThatHaveStatsForTense(state, tense).map((verb: string) => ({
+    verb,
+    ...getStatsForVerbTense(state, tense, verb)
+  }));
