@@ -1,21 +1,6 @@
 import { VerbTenseStats, initialState } from '../models';
 import { actionTypes } from '../actions';
 
-export default (stats: any = {}, action: any) => {
-  const { verb, tense } = action.payload;
-  const initialVerbTenseStats =
-    stats.hasOwnProperty(tense) && stats[tense].hasOwnProperty(verb)
-      ? stats[tense][verb]
-      : undefined;
-  return {
-    ...stats,
-    [tense]: {
-      ...stats[tense],
-      [verb]: individualVerbTenseStatsReducer(initialVerbTenseStats, action)
-    }
-  };
-};
-
 const individualVerbTenseStatsReducer = (
   stats: VerbTenseStats = initialState,
   action: any
@@ -38,4 +23,22 @@ const individualVerbTenseStatsReducer = (
     default:
       return stats;
   }
+};
+
+export default (stats: any = {}, action: any) => {
+  if (Object.values(actionTypes).includes(action.type)) {
+    const { verb, tense } = action.payload;
+    const initialVerbTenseStats =
+      stats.hasOwnProperty(tense) && stats[tense].hasOwnProperty(verb)
+        ? stats[tense][verb]
+        : undefined;
+    return {
+      ...stats,
+      [tense]: {
+        ...stats[tense],
+        [verb]: individualVerbTenseStatsReducer(initialVerbTenseStats, action)
+      }
+    };
+  }
+  return stats;
 };
