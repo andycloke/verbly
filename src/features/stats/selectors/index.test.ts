@@ -1,12 +1,14 @@
 import {
   getAllVerbsThatHaveStatsForTense,
-  getAllVerbsTenseStatsForTense
+  getAllVerbsTenseStatsForTense,
+  getVerbsForTenseSortedByPercentageIncorrect
 } from './';
 
 describe('conjugations selectors', () => {
   const verb1 = 'acabar';
   const verb2 = 'hacer';
   const verb3 = 'estar';
+  const verb4 = 'pagar';
   const tense1 = 'IndicativePresent';
   const tense2 = 'IndicativePresentProgressive';
   const tense3 = 'IndicativeFuture';
@@ -109,6 +111,43 @@ describe('conjugations selectors', () => {
         { verb: verb1, ...stats1 },
         { verb: verb2, ...stats2 }
       ]);
+    });
+  });
+  describe('getVerbsForTenseSortedByPercentageIncorrect', () => {
+    it('gets all verbs that have been studied for a tense and sorts by highest % incorrect', () => {
+      const state = {
+        stats: {
+          [tense1]: {
+            [verb1]: {
+              timesSeen: 10,
+              timesCorrect: 10,
+              timesIncorrect: 0,
+              lastSeen: timeStamp
+            },
+            [verb2]: {
+              timesSeen: 10,
+              timesCorrect: 8,
+              timesIncorrect: 2,
+              lastSeen: timeStamp
+            },
+            [verb3]: {
+              timesSeen: 10,
+              timesCorrect: 4,
+              timesIncorrect: 6,
+              lastSeen: timeStamp
+            },
+            [verb4]: {
+              timesSeen: 10,
+              timesCorrect: 6,
+              timesIncorrect: 4,
+              lastSeen: timeStamp
+            }
+          }
+        }
+      };
+      expect(
+        getVerbsForTenseSortedByPercentageIncorrect(state, tense1)
+      ).toEqual([verb3, verb4, verb2, verb1]);
     });
   });
 });
