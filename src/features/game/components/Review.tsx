@@ -14,6 +14,7 @@ const Review = ({
   endGame
 }: Props) => {
   const handleStartGameClick = (e: React.MouseEvent<HTMLElement>): void => {
+    endGame();
     startGame();
   };
   const handleEndGameClick = (e: React.MouseEvent<HTMLElement>): void => {
@@ -33,10 +34,10 @@ const Review = ({
       </List>
       <CardActions>
         <Link to={pathToHome()}>
-          <FlatButton onClick={handleStartGameClick} label="Quit" />
+          <FlatButton onClick={handleEndGameClick} label="Quit" />
         </Link>
         <Link to={pathToGame()}>
-          <FlatButton onClick={handleEndGameClick} label="Play Again" />
+          <FlatButton onClick={handleStartGameClick} label="Play Again" />
         </Link>
       </CardActions>
     </Card>
