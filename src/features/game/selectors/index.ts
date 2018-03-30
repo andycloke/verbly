@@ -74,15 +74,11 @@ export const getNumberOfQuestionsCorrect = (state: any): number =>
 
 // Limited number of questions can be answered correctly, so at a certain point we need to show
 // any verb-tense combos that need reviewing
-export const needToStartShowingShowAgainVerbTenses = (state: any): boolean =>
-  CORRECT_ANSWERS_TARGET - getNumberOfQuestionsCorrect(state) <=
-  getNumberOfGameShowAgainVerbTenses(state);
-
 export const needToUseShowAgainVerbTenseForNextQuestion = (
   state: any
 ): boolean =>
-  getNoMoreUnseenVerbTenses(state) ||
-  needToStartShowingShowAgainVerbTenses(state);
+  CORRECT_ANSWERS_TARGET - getNumberOfQuestionsCorrect(state) <=
+  getNumberOfGameShowAgainVerbTenses(state);
 
 export const gameShouldEnd = (state: any): boolean =>
   getNumberOfQuestionsCorrect(state) >= CORRECT_ANSWERS_TARGET;

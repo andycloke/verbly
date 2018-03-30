@@ -57,13 +57,18 @@ type VerbIncorrectPer = {
 
 export const getVerbsForTenseSortedByPercentageIncorrect = (
   state: any,
-  tense: string
+  tense: string,
+  percentageIncorrectLowerBound: number = 0
 ): Array<string> =>
   getAllVerbsThatHaveStatsForTense(state, tense)
     .map((verb: string): VerbIncorrectPer => ({
       verb,
       percentageIncorrect: getPercentageIncorrect(state, tense, verb)
     }))
+    .filter(
+      (o: VerbIncorrectPer): boolean =>
+        o.percentageIncorrect >= percentageIncorrectLowerBound
+    )
     .sort((a: VerbIncorrectPer, b: VerbIncorrectPer) => {
       if (a.percentageIncorrect >= b.percentageIncorrect) return -1;
       return 1;

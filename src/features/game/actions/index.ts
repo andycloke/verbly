@@ -5,8 +5,10 @@ import {
   updateVerbTenseStatsAfterIncorrect
 } from '../../stats/actions';
 import { getAllPeopleInPlay } from '../../menu/features/people/selectors';
+import { getInPlayTenses } from '../../menu/features/tenses/selectors';
+import { getVerbsForTenseSortedByPercentageIncorrect } from '../../stats/selectors';
 import { peopleMap } from '../../../const/models/people';
-import { N_GAME_VERBS } from '../const';
+import { N_GAME_VERB_TENSES, MAX_FRACTION_OF_OLD_VERBS } from '../const';
 import {
   gameShouldEnd,
   isUserAnswerCorrect,
@@ -17,6 +19,7 @@ import {
   userAnswerNotBlank
 } from '../selectors';
 import { getNextVerbTenseToStudy } from '../logic';
+import { VerbTense } from '../models';
 import { shuffle, randomElement } from '../../../util';
 
 export const actionTypes = {
@@ -24,12 +27,12 @@ export const actionTypes = {
   END_GAME: 'game/END_GAME',
   OPEN_REVIEW: 'game/OPEN_REVIEW',
   NEW_QUESTION: 'game/NEW_QUESTION',
-  SET_GAME_UNSEEN_VERBS: 'game/SET_GAME_UNSEEN_VERBS',
-  REMOVE_GAME_VERB: 'game/REMOVE_GAME_VERB',
-  REMOVE_UNSEEN_VERB: 'game/REMOVE_UNSEEN_VERB',
-  ADD_MOST_RECENTLY_SEEN_VERB: 'game/ADD_MOST_RECENTLY_SEEN_VERB',
+  SET_GAME_UNSEEN_VERB_TENSES: 'game/SET_GAME_UNSEEN_VERB_TENSES',
+  REMOVE_GAME_VERB_TENSE: 'game/REMOVE_GAME_VERB_TENSE',
+  REMOVE_UNSEEN_VERB_TENSE: 'game/REMOVE_UNSEEN_VERB_TENSE',
+  ADD_MOST_RECENTLY_SEEN_VERB_TENSE: 'game/ADD_MOST_RECENTLY_SEEN_VERB_TENSE',
   ADD_SHOW_AGAIN_VERB_TENSE: 'game/ADD_SHOW_AGAIN_VERB_TENSE',
-  REMOVE_SHOW_AGAIN_VERB: 'game/REMOVE_SHOW_AGAIN_VERB',
+  REMOVE_SHOW_AGAIN_VERB_TENSE: 'game/REMOVE_SHOW_AGAIN_VERB_TENSE',
   SHOW_CONJUGATIONS: 'game/SHOW_CONJUGATIONS',
   HIDE_CONJUGATIONS: 'game/HIDE_CONJUGATIONS',
   UPDATE_USER_ANSWER: 'game/UPDATE_USER_ANSWER',
@@ -70,31 +73,34 @@ export const hideConjugations = () => ({
   type: actionTypes.HIDE_CONJUGATIONS
 });
 
-export const setGameUnseenVerbs = (verbs: Array<string>) => ({
-  type: actionTypes.SET_GAME_UNSEEN_VERBS,
+export const setGameUnseenVerbTenses = (verbTenses: Array<VerbTense>) => ({
+  type: actionTypes.SET_GAME_UNSEEN_VERB_TENSES,
   payload: {
-    verbs
+    verbTenses
   }
 });
 
-export const removeUnseenVerb = (verb: string) => ({
-  type: actionTypes.REMOVE_UNSEEN_VERB,
+export const removeUnseenVerbTense = (verb: string, tense: string) => ({
+  type: actionTypes.REMOVE_UNSEEN_VERB_TENSE,
   payload: {
-    verb
+    verb,
+    tense
   }
 });
 
-export const addMostRecentlySeenVerb = (verb: string) => ({
-  type: actionTypes.ADD_MOST_RECENTLY_SEEN_VERB,
+export const addMostRecentlySeenVerbTense = (verb: string, tense: string) => ({
+  type: actionTypes.ADD_MOST_RECENTLY_SEEN_VERB_TENSE,
   payload: {
-    verb
+    verb,
+    tense
   }
 });
 
-export const removeGameVerb = (verb: string) => ({
-  type: actionTypes.REMOVE_GAME_VERB,
+export const removeGameVerbTense = (verb: string, tense: string) => ({
+  type: actionTypes.REMOVE_GAME_VERB_TENSE,
   payload: {
-    verb
+    verb,
+    tense
   }
 });
 
@@ -107,7 +113,7 @@ export const addShowAgainVerbTense = (verb: string, tense: string) => ({
 });
 
 export const removeShowAgainVerbTense = (verb: string, tense: string) => ({
-  type: actionTypes.REMOVE_SHOW_AGAIN_VERB,
+  type: actionTypes.REMOVE_SHOW_AGAIN_VERB_TENSE,
   payload: {
     verb,
     tense
@@ -135,14 +141,14 @@ export const newQuestion = () => {
         dispatch(clearUserAnswer());
       }
       const verbTense = getNextVerbTenseToStudy(state);
-      const { spanishInfinitive, tense } = verbTense;
+      const { verb, tense } = verbTense;
       const person = randomElement(getAllPeopleInPlay(state));
       const displayPerson = randomElement(peopleMap[person]);
       dispatch({
         type: actionTypes.NEW_QUESTION,
         payload: {
           person,
-          spanishInfinitive,
+          verb,
           tense,
           displayPerson
         }
@@ -156,11 +162,38 @@ export const initialiseGame = () => {
     dispatch(startGame());
     dispatch(clearUserAnswer());
     const state = getState();
-    const suitableVerbs: string[] = getVerbsFilteredByUserOptions(state);
-    const shuffledVerbs: string[] = shuffle(suitableVerbs);
-    // TODO: use historical stats to decide which to see here
-    const gameVerbs = shuffledVerbs.slice(0, N_GAME_VERBS);
-    dispatch(setGameUnseenVerbs(gameVerbs));
+    const tenses = getInPlayTenses(state);
+    const userFilteredVerbs: string[] = getVerbsFilteredByUserOptions(state);
+    const nGameVerbTenses = Math.min(
+      N_GAME_VERB_TENSES,
+      userFilteredVerbs.length
+    );
+    const verbTenses: Array<VerbTense> = [];
+    const nTenses = tenses.length;
+    const maxOldVerbsPerTense = Math.round(
+      N_GAME_VERB_TENSES * MAX_FRACTION_OF_OLD_VERBS / nTenses
+    );
+    for (let i = 0; i < nTenses; i++) {
+      const tense = tenses[i];
+      getVerbsForTenseSortedByPercentageIncorrect(state, tense, 0.1)
+        .filter((verb: string): boolean => userFilteredVerbs.includes(verb))
+        .slice(0, maxOldVerbsPerTense)
+        .forEach((verb: string) => {
+          verbTenses.push({
+            verb,
+            tense
+          });
+        });
+    }
+    while (verbTenses.length < nGameVerbTenses) {
+      for (let i = 0; i < nTenses; i++) {
+        verbTenses.push({
+          verb: randomElement(userFilteredVerbs),
+          tense: tenses[i]
+        });
+      }
+    }
+    dispatch(setGameUnseenVerbTenses(shuffle(verbTenses)));
     dispatch(newQuestion());
   };
 };
@@ -171,13 +204,13 @@ export const submitAnswer = () => {
     const state = getState();
     const verb = getCurrentQuestionVerb(state);
     const tense = getCurrentQuestionTense(state);
-    dispatch(addMostRecentlySeenVerb(verb));
+    dispatch(addMostRecentlySeenVerbTense(verb, tense));
     if (verbTenseIsToBeShownAgain(state, verb, tense)) {
       dispatch(removeShowAgainVerbTense(verb, tense));
     }
     if (isUserAnswerCorrect(state)) {
       dispatch(addQuestionCorrect());
-      dispatch(removeGameVerb(verb));
+      dispatch(removeGameVerbTense(verb, tense));
       dispatch(newQuestion());
       dispatch(clearUserAnswer());
       dispatch(
@@ -186,7 +219,7 @@ export const submitAnswer = () => {
     } else {
       if (!verbTenseIsToBeShownAgain(state, verb, tense)) {
         // verb tense was unseen
-        dispatch(removeUnseenVerb(verb));
+        dispatch(removeUnseenVerbTense(verb, tense));
       }
       // move to back of show again queue
       dispatch(addShowAgainVerbTense(verb, tense));
