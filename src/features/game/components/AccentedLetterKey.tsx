@@ -8,13 +8,13 @@ const letterButtonStyle = {
 
 type Props = {
   letter: string;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseDown: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const AccentedLetterKey = ({ letter, onClick }: Props) => (
+const AccentedLetterKey = ({ letter, onMouseDown }: Props) => (
   <RaisedButton
     label={letter}
-    onClick={onClick}
+    onMouseDown={onMouseDown}
     primary
     style={letterButtonStyle}
   />

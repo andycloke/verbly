@@ -102,7 +102,13 @@ class Game extends React.PureComponent<Props, State> {
     this.props.updateUserAnswer(newValue);
   };
 
-  handleSubmitClick = (event: React.MouseEvent<HTMLElement>): void => {
+  handleSubmitClick = (e: React.MouseEvent<HTMLElement>): void => {
+    if (
+      (!this.props.displayConjugations && this.props.userAnswerCorrect) ||
+      this.props.displayConjugations
+    ) {
+      e.preventDefault();
+    }
     this.submitAndFocus();
   };
 
@@ -146,8 +152,11 @@ class Game extends React.PureComponent<Props, State> {
   };
 
   makeLetterButtonClickHandler = (letter: string) => (
-    event: React.MouseEvent<HTMLElement>
-  ) => this.addAccentedLetterToUserAnswer(letter);
+    e: React.MouseEvent<HTMLElement>
+  ) => {
+    e.preventDefault();
+    this.addAccentedLetterToUserAnswer(letter);
+  };
 
   render() {
     const {
@@ -181,7 +190,7 @@ class Game extends React.PureComponent<Props, State> {
               <AccentedLetterKey
                 key={letter}
                 letter={letter}
-                onClick={this.makeLetterButtonClickHandler(letter)}
+                onMouseDown={this.makeLetterButtonClickHandler(letter)}
               />
             ))}
           </div>

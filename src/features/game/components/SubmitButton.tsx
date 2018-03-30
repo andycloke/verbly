@@ -5,15 +5,15 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 import './SubmitButton.css';
 
 type Props = {
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseDown: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const SubmitButton = ({ onClick }: Props) => (
+const SubmitButton = ({ onMouseDown }: Props) => (
   <FloatingActionButton
     secondary
     mini
     className="SubmitButton__button"
-    onClick={onClick}
+    onMouseDown={onMouseDown}
   >
     <ContentSend />
   </FloatingActionButton>

@@ -84,7 +84,7 @@ const GameCard = ({
           <div className="GameCard__inputIconContainer">{icon}</div>
         </div>
         <div className="GameCard__submitButtonCell">
-          <SubmitButton onClick={handleSubmitClick} />
+          <SubmitButton onMouseDown={handleSubmitClick} />
         </div>
       </div>
     </Paper>
