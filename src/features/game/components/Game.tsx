@@ -17,18 +17,23 @@ const accentedLettersMap = {
   o: 'ó',
   u: 'ú'
 };
+const ACCENTED_LETTER_KEYS = [...Object.keys(accentedLettersMap)];
 enum KeyboardKeys {
   Shift = 'Shift',
   Enter = 'Enter'
 }
 
-const displayCorrectIconDuration = 330;
+const keysLetterCanBeAccentedLetter = (key: string): boolean =>
+  ACCENTED_LETTER_KEYS.includes(key) ||
+  ACCENTED_LETTER_KEYS.includes(key.toLowerCase());
+
+const DISPLAY_CORRECT_ICON_DURATION = 330;
 // for some reason need to delay calling of input functions e.g. focus
 // to get them to work. This delay time seems to work okay.
-const inputFuncsDelay = 100;
+const INPUT_FUNCS_DELAY = 100;
 
 type State = {
-  lastKeyPressed: string;
+  shiftDown: boolean;
   showCorrectIcon: boolean;
 };
 
@@ -39,7 +44,7 @@ class Game extends React.PureComponent<Props, State> {
   timeout: NodeJS.Timer;
 
   state = {
-    lastKeyPressed: '',
+    shiftDown: false,
     showCorrectIcon: false
   };
 
@@ -59,33 +64,25 @@ class Game extends React.PureComponent<Props, State> {
 
   handleKeyDown = (e: KeyboardEvent) => {
     const { key } = e;
-    const { lastKeyPressed } = this.state;
-    this.setState({
-      lastKeyPressed: key
-    });
     if (key === KeyboardKeys.Enter) {
       this.submitAndFocus();
-    } else if (!!lastKeyPressed) {
-      const lastTwoKeysPressed = [key, lastKeyPressed];
-      if (lastTwoKeysPressed.includes(KeyboardKeys.Shift)) {
-        let otherKeyPressed = lastTwoKeysPressed.filter(
-          k => k !== KeyboardKeys.Shift
-        )[0];
-        if (otherKeyPressed) {
-          otherKeyPressed = otherKeyPressed.toLowerCase();
-        }
-        if (Object.keys(accentedLettersMap).includes(otherKeyPressed)) {
-          e.preventDefault();
-          this.addAccentedLetterToUserAnswer(
-            accentedLettersMap[otherKeyPressed]
-          );
-        }
-      }
+      return;
+    }
+    if (key === KeyboardKeys.Shift) {
+      this.setState({ shiftDown: true });
+      return;
+    }
+    if (keysLetterCanBeAccentedLetter(key) && this.state.shiftDown) {
+      e.preventDefault();
+      this.addAccentedLetterToUserAnswer(accentedLettersMap[key.toLowerCase()]);
+      return;
     }
   };
 
   handleKeyUp = (e: KeyboardEvent) => {
-    this.setState({ lastKeyPressed: '' });
+    if (e.key === KeyboardKeys.Shift) {
+      this.setState({ shiftDown: false });
+    }
   };
 
   makeAnswerInputRef = (input: TextField): void => {
@@ -116,7 +113,7 @@ class Game extends React.PureComponent<Props, State> {
         this.props.submit();
         this.focusAnswerInput();
         this.setState({ showCorrectIcon: false });
-      }, displayCorrectIconDuration);
+      }, DISPLAY_CORRECT_ICON_DURATION);
     } else {
       this.props.submit();
       this.focusAnswerInput();
@@ -126,7 +123,7 @@ class Game extends React.PureComponent<Props, State> {
   focusAnswerInput = () => {
     setTimeout(() => {
       if (this.mounted) this.answerInput.focus();
-    }, inputFuncsDelay);
+    }, INPUT_FUNCS_DELAY);
   };
 
   addAccentedLetterToUserAnswer = (letter: string) => {
@@ -145,7 +142,7 @@ class Game extends React.PureComponent<Props, State> {
           selectionStart + 1
         );
       }
-    }, inputFuncsDelay);
+    }, INPUT_FUNCS_DELAY);
   };
 
   makeLetterButtonClickHandler = (letter: string) => (
