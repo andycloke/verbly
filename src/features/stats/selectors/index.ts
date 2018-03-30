@@ -10,6 +10,11 @@ export const getAllVerbsThatHaveStatsForTense = (
   tense: string
 ): string[] => Object.keys(getTenseSlice(state, tense));
 
+export const getNumberOfVerbsWithStatsForTense = (
+  state: any,
+  tense: string
+): number => getAllVerbsThatHaveStatsForTense(state, tense).length;
+
 export const getStatsForVerbTense = (
   state: any,
   tense: string,

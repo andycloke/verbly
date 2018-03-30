@@ -11,7 +11,7 @@ type SingleTenseConjugations = {
 };
 
 export type Conjugation = {
-  spanishInfinitive: string;
+  verb: string;
   englishInfinitive: string;
   irregular: boolean;
   type: string;

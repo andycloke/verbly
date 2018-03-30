@@ -52,9 +52,9 @@ export const getUserDefinedVerbs = (state: any): Array<string> =>
   getVerbsInPlaySlice(state).userDefinedVerbs;
 
 export const getValidUserDefinedVerbs = (state: any): Array<string> => {
-  const spanishInfinitives = getAllInfinitives(state);
+  const verbs = getAllInfinitives(state);
   return getUserDefinedVerbs(state).filter((verb: string) =>
-    spanishInfinitives.includes(verb)
+    verbs.includes(verb)
   );
 };
 

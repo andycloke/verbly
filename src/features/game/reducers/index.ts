@@ -15,37 +15,43 @@ export default (game: Game = initialState, action: any) => {
         ...game,
         reviewOpen: true
       };
-    case actionTypes.SET_GAME_UNSEEN_VERBS:
+    case actionTypes.SET_GAME_UNSEEN_VERB_TENSES:
       return {
         ...game,
-        unseenVerbs: action.payload.verbs
+        unseenVerbTenses: action.payload.verbTenses
       };
-    case actionTypes.REMOVE_UNSEEN_VERB:
+    case actionTypes.REMOVE_UNSEEN_VERB_TENSE:
       return {
         ...game,
-        unseenVerbs: game.unseenVerbs.filter(
-          (verb: string): boolean => verb !== action.payload.verb
+        unseenVerbTenses: game.unseenVerbTenses.filter(
+          ({ verb, tense }: VerbTense): boolean =>
+            verb !== action.payload.verb || tense !== action.payload.tense
         )
       };
-    case actionTypes.ADD_MOST_RECENTLY_SEEN_VERB:
+    case actionTypes.ADD_MOST_RECENTLY_SEEN_VERB_TENSE:
       return {
         ...game,
-        mostRecentlySeenVerbs: [
-          ...game.mostRecentlySeenVerbs.filter(
-            (verb: string) => verb !== action.payload.verb
+        mostRecentlySeenVerbTenses: [
+          ...game.mostRecentlySeenVerbTenses.filter(
+            ({ verb, tense }: VerbTense) =>
+              verb !== action.payload.verb || tense !== action.payload.tense
           ),
-          action.payload.verb
+          {
+            verb: action.payload.verb,
+            tense: action.payload.tense
+          }
         ]
       };
-    case actionTypes.REMOVE_GAME_VERB:
+    case actionTypes.REMOVE_GAME_VERB_TENSE:
       return {
         ...game,
-        unseenVerbs: game.unseenVerbs.filter(
-          (verb: string): boolean => verb !== action.payload.verb
+        unseenVerbTenses: game.unseenVerbTenses.filter(
+          ({ verb, tense }: VerbTense): boolean =>
+            verb !== action.payload.verb || tense !== action.payload.tense
         ),
         showAgainVerbTenses: game.showAgainVerbTenses.filter(
-          (verbTense: VerbTense): boolean =>
-            verbTense.spanishInfinitive !== action.payload.verb
+          ({ verb, tense }: VerbTense): boolean =>
+            verb !== action.payload.verb || tense !== action.payload.tense
         )
       };
     case actionTypes.ADD_SHOW_AGAIN_VERB_TENSE:
@@ -54,17 +60,17 @@ export default (game: Game = initialState, action: any) => {
         showAgainVerbTenses: [
           ...game.showAgainVerbTenses,
           {
-            spanishInfinitive: action.payload.verb,
+            verb: action.payload.verb,
             tense: action.payload.tense
           }
         ]
       };
-    case actionTypes.REMOVE_SHOW_AGAIN_VERB:
+    case actionTypes.REMOVE_SHOW_AGAIN_VERB_TENSE:
       return {
         ...game,
         showAgainVerbTenses: game.showAgainVerbTenses.filter(
           (verbTense: VerbTense): boolean =>
-            verbTense.spanishInfinitive !== action.payload.verb ||
+            verbTense.verb !== action.payload.verb ||
             verbTense.tense !== action.payload.tense
         )
       };

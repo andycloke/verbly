@@ -1,23 +1,23 @@
 // Game UI as well as short term game data
 
 export type VerbTense = {
-  spanishInfinitive: string;
+  verb: string;
   tense: string;
 };
 
 export type CurrentQuestion = {
   person: string;
   displayPerson: string;
-  spanishInfinitive: string;
+  verb: string;
   tense: string;
 };
 
 export type Game = {
   started: boolean;
   reviewOpen: boolean;
-  unseenVerbs: Array<string>; // unseen (as far as this game is concerned)
+  unseenVerbTenses: Array<VerbTense>; // unseen (as far as this game is concerned)
   showAgainVerbTenses: Array<VerbTense>; // need reviewing again in this game
-  mostRecentlySeenVerbs: Array<string>;
+  mostRecentlySeenVerbTenses: Array<VerbTense>;
   questionsAnswered: number;
   questionsCorrect: number;
   currentQuestion: CurrentQuestion;
@@ -28,15 +28,15 @@ export type Game = {
 export const initialState = {
   started: false,
   reviewOpen: false,
-  unseenVerbs: [],
-  mostRecentlySeenVerbs: [],
+  unseenVerbTenses: [],
+  mostRecentlySeenVerbTenses: [],
   showAgainVerbTenses: [],
   questionsAnswered: 0,
   questionsCorrect: 0,
   currentQuestion: {
     person: '',
     displayPerson: '',
-    spanishInfinitive: '',
+    verb: '',
     tense: ''
   },
   userAnswer: '',

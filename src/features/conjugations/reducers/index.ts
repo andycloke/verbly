@@ -17,7 +17,7 @@ const conjugations = (
         (cs: object, c: Conjugation) => {
           return {
             ...cs,
-            [c.spanishInfinitive]: c
+            [c.verb]: c
           };
         },
         {}

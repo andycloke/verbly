@@ -1,23 +1,18 @@
-import { randomElement } from '../../../util';
-import { getInPlayTenses } from '../../menu/features/tenses/selectors';
 import { VerbTense } from '../models';
 import {
-  getNextUnseenVerb,
+  getNextUnseenVerbTense,
   getNextShowAgainVerbTense,
   needToUseShowAgainVerbTenseForNextQuestion,
-  getNoMoreUnseenVerbs,
-  getLeastRecentSeenVerb
+  getNoMoreUnseenVerbTenses,
+  getLeastRecentlySeenVerbTense
 } from '../selectors';
 
 export const getNextVerbTenseToStudy = (state: any): VerbTense => {
   if (needToUseShowAgainVerbTenseForNextQuestion(state)) {
     return getNextShowAgainVerbTense(state);
   }
-  const noMoreUnseenVerbs = getNoMoreUnseenVerbs(state);
-  return {
-    spanishInfinitive: noMoreUnseenVerbs
-      ? getLeastRecentSeenVerb(state)
-      : getNextUnseenVerb(state),
-    tense: randomElement(getInPlayTenses(state))
-  };
+  if (getNoMoreUnseenVerbTenses(state)) {
+    return getLeastRecentlySeenVerbTense(state);
+  }
+  return getNextUnseenVerbTense(state);
 };

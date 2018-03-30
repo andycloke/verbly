@@ -18,26 +18,26 @@ export const getGameSlice = (state: any): Game => state.game;
 export const getGameStarted = (state: any): boolean =>
   getGameSlice(state).started;
 
-export const getGameUnseenVerbs = (state: any): Array<string> =>
-  getGameSlice(state).unseenVerbs;
+export const getGameUnseenVerbTenses = (state: any): Array<VerbTense> =>
+  getGameSlice(state).unseenVerbTenses;
 
-export const getMostRecentlySeenVerbs = (state: any): Array<string> =>
-  getGameSlice(state).mostRecentlySeenVerbs;
+export const getMostRecentlySeenVerbTenses = (state: any): Array<VerbTense> =>
+  getGameSlice(state).mostRecentlySeenVerbTenses;
 
-export const getNumberOfSeenVerbs = (state: any): number =>
-  getMostRecentlySeenVerbs(state).length;
+export const getNumberOfSeenVerbTenses = (state: any): number =>
+  getMostRecentlySeenVerbTenses(state).length;
 
-export const getLeastRecentSeenVerb = (state: any): string =>
-  getMostRecentlySeenVerbs(state)[getNumberOfSeenVerbs(state) - 1];
+export const getLeastRecentlySeenVerbTense = (state: any): VerbTense =>
+  getMostRecentlySeenVerbTenses(state)[getNumberOfSeenVerbTenses(state) - 1];
 
-export const getNumberOfUnseenVerbs = (state: any): number =>
-  getGameUnseenVerbs(state).length;
+export const getNumberOfUnseenVerbTenses = (state: any): number =>
+  getGameUnseenVerbTenses(state).length;
 
-export const getNoMoreUnseenVerbs = (state: any): boolean =>
-  getGameUnseenVerbs(state).length === 0;
+export const getNoMoreUnseenVerbTenses = (state: any): boolean =>
+  getNumberOfUnseenVerbTenses(state) === 0;
 
-export const getNextUnseenVerb = (state: any): string =>
-  getGameUnseenVerbs(state)[0];
+export const getNextUnseenVerbTense = (state: any): VerbTense =>
+  getGameUnseenVerbTenses(state)[0];
 
 export const getGameShowAgainVerbTenses = (state: any): Array<VerbTense> =>
   getGameSlice(state).showAgainVerbTenses;
@@ -58,7 +58,7 @@ export const verbTenseIsToBeShownAgain = (
     !!showAgainVerbTenses.length &&
     showAgainVerbTenses.some(
       (verbTense: VerbTense) =>
-        verbTense.spanishInfinitive === verb && verbTense.tense === tense
+        verbTense.verb === verb && verbTense.tense === tense
     )
   );
 };
@@ -81,12 +81,11 @@ export const needToStartShowingShowAgainVerbTenses = (state: any): boolean =>
 export const needToUseShowAgainVerbTenseForNextQuestion = (
   state: any
 ): boolean =>
-  getNoMoreUnseenVerbs(state) || needToStartShowingShowAgainVerbTenses(state);
+  getNoMoreUnseenVerbTenses(state) ||
+  needToStartShowingShowAgainVerbTenses(state);
 
 export const gameShouldEnd = (state: any): boolean =>
-  getNumberOfQuestionsCorrect(state) >= CORRECT_ANSWERS_TARGET ||
-  (getGameUnseenVerbs(state).length === 0 &&
-    getGameShowAgainVerbTenses(state).length === 0);
+  getNumberOfQuestionsCorrect(state) >= CORRECT_ANSWERS_TARGET;
 
 export const getCurrentQuestion = (state: any): CurrentQuestion =>
   getGameSlice(state).currentQuestion;
@@ -101,7 +100,7 @@ export const getCurrentQuestionDisplayPerson = (state: any): string =>
   getCurrentQuestion(state).displayPerson;
 
 export const getCurrentQuestionVerb = (state: any): string =>
-  getCurrentQuestion(state).spanishInfinitive;
+  getCurrentQuestion(state).verb;
 
 export const getUserAnswer = (state: any): string =>
   getGameSlice(state).userAnswer;
@@ -126,14 +125,14 @@ export const getReviewOpen = (state: any): boolean =>
   getGameSlice(state).reviewOpen;
 
 export const getGameProps = (state: any): StateProps => {
-  const spanishInfinitive = getCurrentQuestionVerb(state);
-  if (spanishInfinitive) {
+  const verb = getCurrentQuestionVerb(state);
+  if (verb) {
     return {
       tense: getCurrentQuestionTense(state),
       person: getCurrentQuestionDisplayPerson(state),
-      verb: spanishInfinitive,
+      verb: verb,
       englishInfinitive: getDisplayEnglishInfinitive(state)
-        ? getEnglishInfinitive(state, spanishInfinitive)
+        ? getEnglishInfinitive(state, verb)
         : '',
       userAnswer: getUserAnswer(state),
       displayConjugations: getConjugationsBeingDisplayed(state),
