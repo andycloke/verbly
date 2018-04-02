@@ -1,8 +1,9 @@
 @import 'common.scss';
 
 .SignUpForm {
-  width: 90%;
+  padding: 20px 5%;
   margin: 25px auto 10px;
+  border-top: 1px solid #d1d1d1;
 }
 
 .SignUpForm__title {
@@ -61,6 +62,7 @@
 
 @media screen and (max-width: $mainMenuTabsBreakPoint) {
   .SignUpForm {
-    width: 96%;
+    padding: 0 3%;
+    border-top: none;
   }
 }
