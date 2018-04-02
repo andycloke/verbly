@@ -18,6 +18,8 @@ export type StateProps = {
   userAnswer: string;
   displayConjugations: boolean;
   userAnswerCorrect: boolean;
+  correctAnswer: string;
+  audioFeedback: boolean;
 };
 
 export type DispatchProps = {

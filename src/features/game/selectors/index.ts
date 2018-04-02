@@ -7,7 +7,10 @@ import { StateProps as ConjugationsTableStateProps } from '../containers/Conjuga
 import { StateProps as ProgressBarStateProps } from '../containers/ProgressBar';
 import { StateProps as ReviewStateProps } from '../containers/Review';
 import { StateProps as GameContainerStateProps } from '../containers/GameContainer';
-import { getDisplayEnglishInfinitive } from '../../options/selectors';
+import {
+  getDisplayEnglishInfinitive,
+  getAudioFeedback
+} from '../../options/selectors';
 import {
   getEnglishInfinitive,
   getConjugationInTenseForPerson
@@ -111,6 +114,9 @@ export const getCorrectAnswers = (state: any): string[] => {
   return getConjugationInTenseForPerson(state, verb, tense, person);
 };
 
+export const getFirstCorrectAnswer = (state: any): string =>
+  getCorrectAnswers(state)[0];
+
 export const isUserAnswerCorrect = (state: any): boolean =>
   getCorrectAnswers(state).includes(getUserAnswer(state).toLowerCase());
 
@@ -132,7 +138,9 @@ export const getGameProps = (state: any): StateProps => {
         : '',
       userAnswer: getUserAnswer(state),
       displayConjugations: getConjugationsBeingDisplayed(state),
-      userAnswerCorrect: isUserAnswerCorrect(state)
+      userAnswerCorrect: isUserAnswerCorrect(state),
+      correctAnswer: getFirstCorrectAnswer(state),
+      audioFeedback: getAudioFeedback(state)
     };
   }
   return {
@@ -142,7 +150,9 @@ export const getGameProps = (state: any): StateProps => {
     englishInfinitive: '',
     userAnswer: '',
     displayConjugations: false,
-    userAnswerCorrect: false
+    userAnswerCorrect: false,
+    correctAnswer: '',
+    audioFeedback: getAudioFeedback(state)
   };
 };
 

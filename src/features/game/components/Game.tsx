@@ -11,7 +11,8 @@ import {
   keysLetterCanBeAccentedLetter,
   accentedLettersMap,
   DISPLAY_CORRECT_ICON_DURATION,
-  INPUT_FUNCS_DELAY
+  INPUT_FUNCS_DELAY,
+  AUDIO_OPTIONS
 } from '../const';
 
 import './Game.css';
@@ -98,6 +99,7 @@ class Game extends React.PureComponent<Props, State> {
 
   submitAndFocus = () => {
     if (this.props.userAnswerCorrect && !this.state.showCorrectIcon) {
+      this.sayAnswer();
       this.setState({ showCorrectIcon: true });
       this.timeout = setTimeout(() => {
         this.props.submitAnswer();
@@ -105,6 +107,7 @@ class Game extends React.PureComponent<Props, State> {
         this.setState({ showCorrectIcon: false });
       }, DISPLAY_CORRECT_ICON_DURATION);
     } else if (!this.props.displayConjugations) {
+      this.sayAnswer();
       this.props.submitAnswer();
       this.blurAnswerInput();
     } else {
@@ -123,6 +126,18 @@ class Game extends React.PureComponent<Props, State> {
     setTimeout(() => {
       if (this.mounted) this.answerInput.blur();
     }, INPUT_FUNCS_DELAY);
+  };
+
+  sayAnswer = () => {
+    if (this.props.audioFeedback) {
+      const { userAnswerCorrect, userAnswer, correctAnswer } = this.props;
+      const msg = new SpeechSynthesisUtterance();
+      msg.text = userAnswerCorrect ? userAnswer : correctAnswer;
+      msg.rate = AUDIO_OPTIONS.RATE;
+      msg.pitch = AUDIO_OPTIONS.PITCH;
+      msg.lang = AUDIO_OPTIONS.LANG;
+      speechSynthesis.speak(msg);
+    }
   };
 
   addAccentedLetterToUserAnswer = (letter: string) => {
