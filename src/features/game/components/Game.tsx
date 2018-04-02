@@ -6,31 +6,15 @@ import { Props } from '../containers/Game';
 import ConjugationsTable from '../containers/ConjugationsTable';
 import AccentedLetterKey from './AccentedLetterKey';
 import GameCard from './GameCard';
+import {
+  KeyboardKeys,
+  keysLetterCanBeAccentedLetter,
+  accentedLettersMap,
+  DISPLAY_CORRECT_ICON_DURATION,
+  INPUT_FUNCS_DELAY
+} from '../const';
 
 import './Game.css';
-
-const accentedLettersMap = {
-  a: 'á',
-  e: 'é',
-  i: 'í',
-  n: 'ñ',
-  o: 'ó',
-  u: 'ú'
-};
-const ACCENTED_LETTER_KEYS = [...Object.keys(accentedLettersMap)];
-enum KeyboardKeys {
-  Shift = 'Shift',
-  Enter = 'Enter'
-}
-
-const keysLetterCanBeAccentedLetter = (key: string): boolean =>
-  ACCENTED_LETTER_KEYS.includes(key) ||
-  ACCENTED_LETTER_KEYS.includes(key.toLowerCase());
-
-const DISPLAY_CORRECT_ICON_DURATION = 330;
-// for some reason need to delay calling of input functions e.g. focus
-// to get them to work. This delay time seems to work okay.
-const INPUT_FUNCS_DELAY = 100;
 
 type State = {
   shiftDown: boolean;
