@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-
+import { PersistGate } from 'redux-persist/integration/react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import AppBar from './features/common/containers/AppBar';
@@ -17,22 +17,28 @@ import './App.css';
 class App extends React.PureComponent {
   render() {
     return (
-      <Provider store={store}>
-        <BrowserRouter>
-          <MuiThemeProvider>
-            <div>
-              <AppBar />
-              <div className="App__inner">
-                <Switch>
-                  <Route exact path={pathToHome()} component={MainMenu} />
-                  <Route exact path={pathToGame()} component={GameContainer} />
-                  <Redirect to={pathToHome()} />
-                </Switch>
+      <Provider store={store().store}>
+        <PersistGate loading={null} persistor={store().persistor}>
+          <BrowserRouter>
+            <MuiThemeProvider>
+              <div>
+                <AppBar />
+                <div className="App__inner">
+                  <Switch>
+                    <Route exact path={pathToHome()} component={MainMenu} />
+                    <Route
+                      exact
+                      path={pathToGame()}
+                      component={GameContainer}
+                    />
+                    <Redirect to={pathToHome()} />
+                  </Switch>
+                </div>
+                <OptionsMenuModal />
               </div>
-              <OptionsMenuModal />
-            </div>
-          </MuiThemeProvider>
-        </BrowserRouter>
+            </MuiThemeProvider>
+          </BrowserRouter>
+        </PersistGate>
       </Provider>
     );
   }

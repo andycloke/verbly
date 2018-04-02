@@ -1,5 +1,7 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -11,6 +13,11 @@ import game from './features/game/reducers';
 import conjugations from './features/conjugations/reducers';
 import stats from './features/stats/reducers';
 
+const persistConfig = {
+  key: 'root',
+  storage
+};
+
 const reducer = combineReducers({
   options,
   peopleInPlay,
@@ -21,6 +28,13 @@ const reducer = combineReducers({
   stats
 });
 
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+const persistedReducer = persistReducer(persistConfig, reducer);
 
-export default store;
+export default () => {
+  let store = createStore(
+    persistedReducer,
+    composeEnhancers(applyMiddleware(thunk))
+  );
+  let persistor = persistStore(store);
+  return { store, persistor };
+};
