@@ -15,7 +15,8 @@ import stats from './features/stats/reducers';
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  throttle: 5000
 };
 
 const reducer = combineReducers({
