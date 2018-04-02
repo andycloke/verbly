@@ -11,9 +11,20 @@
   margin: 0;
 }
 
+.SignUpForm__message,
+.SignUpForm__footer {
+  font-size: 13px;
+}
+
 .SignUpForm__message {
-  font-size: 12px;
   margin: 5px 0;
+}
+
+.SignUpForm__footer {
+  margin: 6px 0;
+  a {
+    color: #03bcd7;
+  }
 }
 
 .SignUpForm__form {

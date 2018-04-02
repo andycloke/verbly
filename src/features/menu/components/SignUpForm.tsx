@@ -64,6 +64,12 @@ const SignUpForm = () => (
         </div>
       </div>
     </form>
+    <p className="SignUpForm__footer">
+      Verbly is made by{' '}
+      <a target="_blank" rel="nofollow" href="https://twitter.com/clokehead">
+        Andy Cloke
+      </a>
+    </p>
   </div>
 );
 
