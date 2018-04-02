@@ -7,17 +7,25 @@ import VerbsMenu from '../features/verbs/containers/VerbsMenu';
 import ConjugationsFetchWrapper from '../../conjugations/containers/ConjugationsFetchWrapper';
 import StartGameButton from '../containers/StartGameButton';
 
+import SignUpForm from './SignUpForm';
+
 import './MainMenu.css';
 
 class MainMenu extends React.PureComponent {
   render() {
+    const peopleMenuSignUpSection = (
+      <div className="MainMenu__peopleSignUpSection">
+        <PeopleMenu />
+        <SignUpForm />
+      </div>
+    );
     return (
       <div>
         <div className="MainMenu__startButton">
           <StartGameButton />
         </div>
         <div className="MainMenu__outer">
-          <PeopleMenu />
+          {peopleMenuSignUpSection}
           <div className="MainMenu_rightContainer">
             <TensesMenu />
             <VerbsMenu />
@@ -25,9 +33,7 @@ class MainMenu extends React.PureComponent {
         </div>
         <div className="MainMenu__outer--tabs">
           <Tabs initialSelectedIndex={1}>
-            <Tab label="People">
-              <PeopleMenu />
-            </Tab>
+            <Tab label="People">{peopleMenuSignUpSection}</Tab>
             <Tab label="Tenses">
               <TensesMenu />
             </Tab>

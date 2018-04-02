@@ -21,6 +21,10 @@
   z-index: 1;
 }
 
+.MainMenu__peopleSignUpSection {
+  background: $ultraLight;
+}
+
 @media screen and (max-width: $mainMenuTabsBreakPoint) {
   .MainMenu__outer {
     display: none;
@@ -31,5 +35,8 @@
   .MainMenu__startButton {
     right: 5px;
     top: 54px;
+  }
+  .MainMenu__peopleSignUpSection {
+    background: white;
   }
 }

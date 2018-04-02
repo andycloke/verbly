@@ -2,14 +2,9 @@
 
 .PeopleMenu__outer {
   flex: 1;
-  background: $ultraLight;
   min-width: 260px;
   max-width: 300px;
 }
-
-// .PeopleMenu__outer > div > div:not(:first-child) > span {
-//   @include flatCard;
-// }
 
 @media screen and (max-width: $mainMenuTabsBreakPoint) {
   .PeopleMenu__outer {
