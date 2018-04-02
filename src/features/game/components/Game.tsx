@@ -116,12 +116,15 @@ class Game extends React.PureComponent<Props, State> {
     if (this.props.userAnswerCorrect && !this.state.showCorrectIcon) {
       this.setState({ showCorrectIcon: true });
       this.timeout = setTimeout(() => {
-        this.props.submit();
+        this.props.submitAnswer();
         this.focusAnswerInput();
         this.setState({ showCorrectIcon: false });
       }, DISPLAY_CORRECT_ICON_DURATION);
+    } else if (!this.props.displayConjugations) {
+      this.props.submitAnswer();
+      this.blurAnswerInput();
     } else {
-      this.props.submit();
+      this.props.newQuestion();
       this.focusAnswerInput();
     }
   };
@@ -129,6 +132,12 @@ class Game extends React.PureComponent<Props, State> {
   focusAnswerInput = () => {
     setTimeout(() => {
       if (this.mounted) this.answerInput.focus();
+    }, INPUT_FUNCS_DELAY);
+  };
+
+  blurAnswerInput = () => {
+    setTimeout(() => {
+      if (this.mounted) this.answerInput.blur();
     }, INPUT_FUNCS_DELAY);
   };
 
