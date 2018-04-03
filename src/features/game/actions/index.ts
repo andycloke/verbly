@@ -24,7 +24,7 @@ import { shuffle, randomElement } from '../../../util';
 
 export const actionTypes = {
   START_GAME: 'game/START_GAME',
-  END_GAME: 'game/END_GAME',
+  RESET_GAME: 'game/RESET_GAME',
   OPEN_REVIEW: 'game/OPEN_REVIEW',
   NEW_QUESTION: 'game/NEW_QUESTION',
   SET_GAME_UNSEEN_VERB_TENSES: 'game/SET_GAME_UNSEEN_VERB_TENSES',
@@ -42,16 +42,22 @@ export const actionTypes = {
   INCREMENT_QUESTIONS_ANSWERED: 'game/INCREMENT_QUESTIONS_ANSWERED'
 };
 
-export const startGame = () => ({
-  type: actionTypes.START_GAME
+export const startGame = (startTime: string) => ({
+  type: actionTypes.START_GAME,
+  payload: {
+    startTime
+  }
 });
 
-export const endGame = () => ({
-  type: actionTypes.END_GAME
+export const resetGame = () => ({
+  type: actionTypes.RESET_GAME
 });
 
-export const openReview = () => ({
-  type: actionTypes.OPEN_REVIEW
+export const openReview = (endTime: string) => ({
+  type: actionTypes.OPEN_REVIEW,
+  payload: {
+    endTime
+  }
 });
 
 export const updateUserAnswer = (userAnswer: string) => ({
@@ -132,7 +138,7 @@ export const newQuestion = () => {
   return function(dispatch: any, getState: any) {
     const state = getState();
     if (gameShouldEnd(state)) {
-      dispatch(openReview());
+      dispatch(openReview(moment().format()));
     } else {
       if (getConjugationsBeingDisplayed(state)) {
         dispatch(hideConjugations());
@@ -159,7 +165,7 @@ export const newQuestion = () => {
 
 export const initialiseGame = () => {
   return function(dispatch: any, getState: any) {
-    dispatch(startGame());
+    dispatch(startGame(moment().format()));
     dispatch(clearUserAnswer());
     const state = getState();
     const tenses = getInPlayTenses(state);

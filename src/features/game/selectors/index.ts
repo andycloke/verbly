@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import { People } from '../../../const/models/people';
 import { Game, VerbTense, CurrentQuestion } from '../models';
 import { CORRECT_ANSWERS_TARGET } from '../const';
@@ -126,6 +127,14 @@ export const getConjugationsBeingDisplayed = (state: any): boolean =>
 export const getReviewOpen = (state: any): boolean =>
   getGameSlice(state).reviewOpen;
 
+export const getStartTime = (state: any): string =>
+  getGameSlice(state).startTime;
+
+export const getEndTime = (state: any): string => getGameSlice(state).endTime;
+
+export const getGameDuration = (state: any): number =>
+  moment(getStartTime(state)).diff(moment(getEndTime(state)));
+
 export const getGameProps = (state: any): StateProps => {
   const verb = getCurrentQuestionVerb(state);
   if (verb) {
@@ -190,7 +199,8 @@ export const getProgressBarProps = (state: any): ProgressBarStateProps => ({
 
 export const getReviewProps = (state: any): ReviewStateProps => ({
   questionsCorrect: getNumberOfQuestionsCorrect(state),
-  questionsAnswered: getNumberOfQuestionsAnswered(state)
+  questionsAnswered: getNumberOfQuestionsAnswered(state),
+  gameDuration: getGameDuration(state)
 });
 
 export const getGameContainerProps = (state: any): GameContainerStateProps => ({

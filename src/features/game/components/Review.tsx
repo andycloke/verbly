@@ -11,14 +11,14 @@ const Review = ({
   questionsCorrect,
   questionsAnswered,
   startGame,
-  endGame
+  resetGame
 }: Props) => {
   const handleStartGameClick = (e: React.MouseEvent<HTMLElement>): void => {
-    endGame();
+    resetGame();
     startGame();
   };
   const handleEndGameClick = (e: React.MouseEvent<HTMLElement>): void => {
-    endGame();
+    resetGame();
   };
   return (
     <Card style={{ width: '100%' }}>

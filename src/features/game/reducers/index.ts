@@ -6,14 +6,16 @@ export default (game: Game = initialState, action: any) => {
     case actionTypes.START_GAME:
       return {
         ...game,
-        started: true
+        started: true,
+        startTime: action.payload.startTime
       };
-    case actionTypes.END_GAME:
+    case actionTypes.RESET_GAME:
       return initialState;
     case actionTypes.OPEN_REVIEW:
       return {
         ...game,
-        reviewOpen: true
+        reviewOpen: true,
+        endTime: action.payload.endTime
       };
     case actionTypes.SET_GAME_UNSEEN_VERB_TENSES:
       return {

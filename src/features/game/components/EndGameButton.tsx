@@ -6,11 +6,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { pathToHome } from '../../../paths';
 
 export type Props = {
-  endGame: () => void;
+  resetGame: () => void;
 };
 
-const EndGameButton = ({ endGame }: Props) => {
-  const handleClick = (e: React.MouseEvent<HTMLElement>): void => endGame();
+const EndGameButton = ({ resetGame }: Props) => {
+  const handleClick = (e: React.MouseEvent<HTMLElement>): void => resetGame();
   return (
     <Link to={pathToHome()}>
       <RaisedButton

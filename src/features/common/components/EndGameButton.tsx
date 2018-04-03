@@ -9,11 +9,11 @@ import { pathToHome } from '../../../paths';
 import { pathToGame } from '../../../paths';
 
 export type Props = {
-  endGame: () => void;
+  resetGame: () => void;
 };
 
-const AppBarEndGameButton = ({ endGame }: Props) => {
-  const handleClick = (e: React.MouseEvent<HTMLElement>): void => endGame();
+const AppBarEndGameButton = ({ resetGame }: Props) => {
+  const handleClick = (e: React.MouseEvent<HTMLElement>): void => resetGame();
   return (
     <Route
       exact

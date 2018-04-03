@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import * as moment from 'moment';
 
 import { startGame } from '../../game/actions';
 import StartGameButton from '../components/StartGameButton';
@@ -15,7 +16,7 @@ export type DispatchProps = {
 const mapStateToProps = (state: any): StateProps => getStartButtonProps(state);
 
 const mapDispatchToProps = (dispatch: any): DispatchProps => ({
-  startGame: () => dispatch(startGame())
+  startGame: () => dispatch(startGame(moment().format()))
 });
 
 export type Props = StateProps & DispatchProps;
