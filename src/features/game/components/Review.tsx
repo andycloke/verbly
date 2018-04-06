@@ -8,8 +8,8 @@ import { pathToGame, pathToHome } from '../../../paths';
 import { Props } from '../containers/Review';
 
 const Review = ({
-  questionsCorrect,
-  questionsAnswered,
+  percentageCorrect,
+  gameDuration,
   startGame,
   resetGame
 }: Props) => {
@@ -24,12 +24,12 @@ const Review = ({
     <Card style={{ width: '100%' }}>
       <List>
         <ListItem
-          primaryText="Questions Answered"
-          rightIcon={<span>{questionsAnswered}</span>}
+          primaryText="Accuracy"
+          rightIcon={<span>{percentageCorrect}%</span>}
         />
         <ListItem
-          primaryText="Questions Correct"
-          rightIcon={<span>{questionsCorrect}</span>}
+          primaryText="Time taken"
+          rightIcon={<span>{gameDuration / 1000}s</span>}
         />
       </List>
       <CardActions>

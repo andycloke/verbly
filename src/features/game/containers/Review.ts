@@ -6,8 +6,7 @@ import { startGame, resetGame } from '../actions';
 import Review from '../components/Review';
 
 export type StateProps = {
-  questionsCorrect: number;
-  questionsAnswered: number;
+  percentageCorrect: number;
   gameDuration: number;
 };
 

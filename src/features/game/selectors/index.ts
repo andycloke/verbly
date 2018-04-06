@@ -76,6 +76,13 @@ export const getNumberOfQuestionsAnswered = (state: any): number =>
 export const getNumberOfQuestionsCorrect = (state: any): number =>
   getGameSlice(state).questionsCorrect;
 
+export const getPercentageCorrect = (state: any): number =>
+  Math.round(
+    getNumberOfQuestionsCorrect(state) /
+      getNumberOfQuestionsAnswered(state) *
+      100
+  );
+
 // Limited number of questions can be answered correctly, so at a certain point we need to show
 // any verb-tense combos that need reviewing
 export const needToUseShowAgainVerbTenseForNextQuestion = (
@@ -133,7 +140,7 @@ export const getStartTime = (state: any): string =>
 export const getEndTime = (state: any): string => getGameSlice(state).endTime;
 
 export const getGameDuration = (state: any): number =>
-  moment(getStartTime(state)).diff(moment(getEndTime(state)));
+  moment(getEndTime(state)).diff(moment(getStartTime(state)));
 
 export const getGameProps = (state: any): StateProps => {
   const verb = getCurrentQuestionVerb(state);
@@ -198,8 +205,7 @@ export const getProgressBarProps = (state: any): ProgressBarStateProps => ({
 });
 
 export const getReviewProps = (state: any): ReviewStateProps => ({
-  questionsCorrect: getNumberOfQuestionsCorrect(state),
-  questionsAnswered: getNumberOfQuestionsAnswered(state),
+  percentageCorrect: getPercentageCorrect(state),
   gameDuration: getGameDuration(state)
 });
 
