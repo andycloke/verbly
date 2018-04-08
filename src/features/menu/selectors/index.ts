@@ -1,6 +1,6 @@
-import { enoughTensesToStartGame } from '../../menu/features/tenses/selectors';
-import { enoughPeopleToStartGame } from '../../menu/features/people/selectors';
-import { enoughVerbsToStartGame } from '../../menu/features/verbs/selectors';
+import { enoughTensesToStartGame } from '../features/tenses/selectors';
+import { enoughPeopleToStartGame } from '../features/people/selectors';
+import { enoughVerbsToStartGame } from '../features/verbs/selectors';
 import { StateProps as StartGameButtonStateProps } from '../containers/StartGameButton';
 import { StateProps as CantStartModalStateProps } from '../containers/CantStartModal';
 
