@@ -17,6 +17,7 @@ import {
   getConjugationInTenseForPerson
 } from '../../conjugations/selectors';
 import { getDifficultyFactor } from '../../menu/selectors';
+import { calculateAccuracyScore } from '../logic';
 
 export const getGameSlice = (state: any): Game => state.game;
 
@@ -205,11 +206,15 @@ export const getProgressBarProps = (state: any): ProgressBarStateProps => ({
   questionsCorrectTarget: CORRECT_ANSWERS_TARGET
 });
 
-export const getReviewProps = (state: any): ReviewStateProps => ({
-  percentageCorrect: getPercentageCorrect(state),
-  gameDuration: getGameDuration(state),
-  difficultyFactor: getDifficultyFactor(state)
-});
+export const getReviewProps = (state: any): ReviewStateProps => {
+  const percentageCorrect = getPercentageCorrect(state);
+  return {
+    percentageCorrect,
+    accuracyScore: calculateAccuracyScore(percentageCorrect),
+    gameDuration: getGameDuration(state),
+    difficultyFactor: getDifficultyFactor(state)
+  };
+};
 
 export const getGameContainerProps = (state: any): GameContainerStateProps => ({
   reviewOpen: getReviewOpen(state)

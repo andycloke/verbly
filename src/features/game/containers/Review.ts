@@ -7,6 +7,7 @@ import Review from '../components/Review';
 
 export type StateProps = {
   percentageCorrect: number;
+  accuracyScore: number;
   gameDuration: number;
   difficultyFactor: number;
 };

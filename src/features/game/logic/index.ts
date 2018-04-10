@@ -16,3 +16,6 @@ export const getNextVerbTenseToStudy = (state: any): VerbTense => {
   }
   return getNextUnseenVerbTense(state);
 };
+
+export const calculateAccuracyScore = (accuracyPercentage: number): number =>
+  100 + 900 * (accuracyPercentage / 100);
