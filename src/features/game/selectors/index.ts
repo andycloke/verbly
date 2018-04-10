@@ -16,6 +16,7 @@ import {
   getEnglishInfinitive,
   getConjugationInTenseForPerson
 } from '../../conjugations/selectors';
+import { getDifficultyFactor } from '../../menu/selectors';
 
 export const getGameSlice = (state: any): Game => state.game;
 
@@ -206,7 +207,8 @@ export const getProgressBarProps = (state: any): ProgressBarStateProps => ({
 
 export const getReviewProps = (state: any): ReviewStateProps => ({
   percentageCorrect: getPercentageCorrect(state),
-  gameDuration: getGameDuration(state)
+  gameDuration: getGameDuration(state),
+  difficultyFactor: getDifficultyFactor(state)
 });
 
 export const getGameContainerProps = (state: any): GameContainerStateProps => ({

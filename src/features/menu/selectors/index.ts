@@ -1,6 +1,15 @@
-import { enoughTensesToStartGame } from '../features/tenses/selectors';
-import { enoughPeopleToStartGame } from '../features/people/selectors';
-import { enoughVerbsToStartGame } from '../features/verbs/selectors';
+import {
+  enoughTensesToStartGame,
+  getTensesDifficultyFactor
+} from '../features/tenses/selectors';
+import {
+  enoughPeopleToStartGame,
+  getPeopleDifficultyFactor
+} from '../features/people/selectors';
+import {
+  enoughVerbsToStartGame,
+  getVerbsDifficultyFactor
+} from '../features/verbs/selectors';
 import { StateProps as StartGameButtonStateProps } from '../containers/StartGameButton';
 import { StateProps as CantStartModalStateProps } from '../containers/CantStartModal';
 
@@ -30,3 +39,8 @@ export const getCantStartModalProps = (
     missingItems
   };
 };
+
+export const getDifficultyFactor = (state: any): number =>
+  getTensesDifficultyFactor(state) *
+  getPeopleDifficultyFactor(state) *
+  getVerbsDifficultyFactor(state);

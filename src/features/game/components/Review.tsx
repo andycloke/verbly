@@ -7,9 +7,12 @@ import FlatButton from 'material-ui/FlatButton';
 import { pathToGame, pathToHome } from '../../../paths';
 import { Props } from '../containers/Review';
 
+import './Review.css';
+
 const Review = ({
   percentageCorrect,
   gameDuration,
+  difficultyFactor,
   startGame,
   resetGame
 }: Props) => {
@@ -25,11 +28,23 @@ const Review = ({
       <List>
         <ListItem
           primaryText="Accuracy"
-          rightIcon={<span>{percentageCorrect}%</span>}
+          rightIcon={
+            <span className="Review__statText">{percentageCorrect}%</span>
+          }
         />
         <ListItem
           primaryText="Time taken"
-          rightIcon={<span>{gameDuration / 1000}s</span>}
+          rightIcon={
+            <span className="Review__statText">{gameDuration / 1000}s</span>
+          }
+        />
+        <ListItem
+          primaryText="Difficulty factor"
+          rightIcon={
+            <span className="Review__statText">
+              {difficultyFactor.toFixed(2)}
+            </span>
+          }
         />
       </List>
       <CardActions>
