@@ -18,7 +18,7 @@ export type TensesInPlay = {
 
 export const initialState: TensesInPlay = {
   [Tenses.IndicativePresent]: true,
-  [Tenses.IndicativePresentProgressive]: false,
+  [Tenses.IndicativePresentProgressive]: true,
   [Tenses.IndicativeFuture]: false,
   [Tenses.ConditionalPresent]: false,
   [Tenses.IndicativePreterite]: false,
