@@ -8,6 +8,11 @@ import {
   getConjugationsFetched,
   getAllInfinitives
 } from '../../../../conjugations/selectors';
+import {
+  IRREGULAR_DIFFICULTIES,
+  REFLEXIVE_DIFFICULTIES,
+  WHICH_VERBS_DIFFICULTIES
+} from '../const/difficulties';
 
 export const getVerbsInPlaySlice = (state: any): VerbsInPlay =>
   state.verbsInPlay;
@@ -73,3 +78,8 @@ export const getVerbsMenuProps = (state: any): VerbsMenuStateProps => ({
   userDefinedVerbs: getUserDefinedVerbs(state),
   conjugationsFetched: getConjugationsFetched(state)
 });
+
+export const getVerbsDifficultyFactor = (state: any): number =>
+  IRREGULAR_DIFFICULTIES[getIrregularVerbsInPlay(state)] +
+  REFLEXIVE_DIFFICULTIES[getReflexiveVerbsInPlay(state)] +
+  WHICH_VERBS_DIFFICULTIES[getWhichVerbsInPlay(state)];
