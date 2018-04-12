@@ -8,8 +8,10 @@ import Review from '../components/Review';
 export type StateProps = {
   percentageCorrect: number;
   accuracyScore: number;
-  gameDuration: number;
+  timeTaken: number;
+  timeTakenScore: number;
   difficultyFactor: number;
+  gameScore: number;
 };
 
 const mapStateToProps = (state: any): StateProps => getReviewProps(state);

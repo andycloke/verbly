@@ -17,7 +17,11 @@ import {
   getConjugationInTenseForPerson
 } from '../../conjugations/selectors';
 import { getDifficultyFactor } from '../../menu/selectors';
-import { calculateAccuracyScore } from '../logic';
+import {
+  calculateAccuracyScore,
+  calculateTimeTakenScore,
+  calculateGameScore
+} from '../logic';
 
 export const getGameSlice = (state: any): Game => state.game;
 
@@ -85,6 +89,9 @@ export const getPercentageCorrect = (state: any): number =>
       100
   );
 
+export const getAccuracyScore = (state: any): number =>
+  calculateAccuracyScore(getPercentageCorrect(state));
+
 // Limited number of questions can be answered correctly, so at a certain point we need to show
 // any verb-tense combos that need reviewing
 export const needToUseShowAgainVerbTenseForNextQuestion = (
@@ -141,8 +148,18 @@ export const getStartTime = (state: any): string =>
 
 export const getEndTime = (state: any): string => getGameSlice(state).endTime;
 
-export const getGameDuration = (state: any): number =>
+export const getTimeTaken = (state: any): number =>
   moment(getEndTime(state)).diff(moment(getStartTime(state)));
+
+export const getTimeTakenScore = (state: any): number =>
+  calculateTimeTakenScore(getTimeTaken(state));
+
+export const getGameScore = (state: any): number =>
+  calculateGameScore(
+    getAccuracyScore(state),
+    getTimeTakenScore(state),
+    getDifficultyFactor(state)
+  );
 
 export const getGameProps = (state: any): StateProps => {
   const verb = getCurrentQuestionVerb(state);
@@ -207,12 +224,13 @@ export const getProgressBarProps = (state: any): ProgressBarStateProps => ({
 });
 
 export const getReviewProps = (state: any): ReviewStateProps => {
-  const percentageCorrect = getPercentageCorrect(state);
   return {
-    percentageCorrect,
-    accuracyScore: calculateAccuracyScore(percentageCorrect),
-    gameDuration: getGameDuration(state),
-    difficultyFactor: getDifficultyFactor(state)
+    percentageCorrect: getPercentageCorrect(state),
+    accuracyScore: getAccuracyScore(state),
+    timeTaken: getTimeTaken(state),
+    timeTakenScore: getTimeTakenScore(state),
+    difficultyFactor: getDifficultyFactor(state),
+    gameScore: getGameScore(state)
   };
 };
 

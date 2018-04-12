@@ -6,12 +6,13 @@ import FlatButton from 'material-ui/FlatButton';
 
 import { pathToGame, pathToHome } from '../../../paths';
 import { Props } from '../containers/Review';
-
-import './Review.css';
+import ReviewRow from './ReviewRow';
 
 const Review = ({
   percentageCorrect,
-  gameDuration,
+  accuracyScore,
+  timeTaken,
+  timeTakenScore,
   difficultyFactor,
   startGame,
   resetGame
@@ -26,17 +27,15 @@ const Review = ({
   return (
     <Card style={{ width: '100%' }}>
       <List>
-        <ListItem
-          primaryText="Accuracy"
-          rightIcon={
-            <span className="Review__statText">{percentageCorrect}%</span>
-          }
+        <ReviewRow
+          label="Accuracy"
+          value={`${percentageCorrect}%`}
+          score={accuracyScore}
         />
-        <ListItem
-          primaryText="Time taken"
-          rightIcon={
-            <span className="Review__statText">{gameDuration / 1000}s</span>
-          }
+        <ReviewRow
+          label="Time taken"
+          value={`${timeTaken / 1000}s`}
+          score={timeTakenScore}
         />
         <ListItem
           primaryText="Difficulty factor"
