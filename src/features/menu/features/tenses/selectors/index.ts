@@ -22,8 +22,11 @@ export const getTensesMenuProps = (state: any): TensesMenuDataProps => ({
   inPlay: getTensesInPlaySlice(state)
 });
 
-export const getTensesDifficultyFactor = (state: any): number =>
-  getInPlayTenses(state).reduce(
+export const getTensesDifficultyFactor = (state: any): number => {
+  const inPlayTenses = getInPlayTenses(state);
+  const sum = inPlayTenses.reduce(
     (count: number, tense: Tenses) => (count += DIFFICULTIES[tense]),
     0
   );
+  return sum / inPlayTenses.length;
+};

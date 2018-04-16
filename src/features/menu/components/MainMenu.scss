@@ -21,6 +21,13 @@
   z-index: 1;
 }
 
+.MainMenu__difficultyFactor {
+  position: absolute;
+  top: 17px;
+  right: 120px;
+  z-index: 1;
+}
+
 .MainMenu__peopleSignUpSection {
   background: $ultraLight;
 }
@@ -35,6 +42,12 @@
   .MainMenu__startButton {
     right: 5px;
     top: 54px;
+  }
+  .MainMenu__difficultyFactor {
+    position: absolute;
+    top: 64px;
+    right: 111px;
+    z-index: 1;
   }
   .MainMenu__peopleSignUpSection {
     background: white;

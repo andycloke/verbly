@@ -1,17 +1,17 @@
 import { Tenses } from '../../../../../const/models/tenses';
 
 export default {
-  [Tenses.IndicativePresent]: 0.5,
-  [Tenses.IndicativePresentProgressive]: 0.5,
-  [Tenses.IndicativeFuture]: 0.6,
-  [Tenses.ConditionalPresent]: 0.6,
-  [Tenses.IndicativePreterite]: 0.7,
-  [Tenses.IndicativeImperfect]: 0.7,
-  [Tenses.IndicativePresentPerfect]: 0.6,
-  [Tenses.IndicativeFuturePerfect]: 0.65,
-  [Tenses.IndicativePastPerfect]: 0.65,
-  [Tenses.ConditionalPerfect]: 0.65,
-  [Tenses.SubjunctivePresent]: 0.7,
-  [Tenses.ImperativeAffirmativePresent]: 0.7,
-  [Tenses.ImperativeNegativePresent]: 0.7
+  [Tenses.IndicativePresent]: 1,
+  [Tenses.IndicativePresentProgressive]: 1,
+  [Tenses.IndicativeFuture]: 1.2,
+  [Tenses.ConditionalPresent]: 1.2,
+  [Tenses.IndicativePreterite]: 1.4,
+  [Tenses.IndicativeImperfect]: 1.4,
+  [Tenses.IndicativePresentPerfect]: 1.2,
+  [Tenses.IndicativeFuturePerfect]: 1.25,
+  [Tenses.IndicativePastPerfect]: 1.25,
+  [Tenses.ConditionalPerfect]: 1.25,
+  [Tenses.SubjunctivePresent]: 1.4,
+  [Tenses.ImperativeAffirmativePresent]: 1.4,
+  [Tenses.ImperativeNegativePresent]: 1.4
 };

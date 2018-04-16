@@ -6,6 +6,7 @@ import TensesMenu from '../features/tenses/containers/TensesMenu';
 import VerbsMenu from '../features/verbs/containers/VerbsMenu';
 import ConjugationsFetchWrapper from '../../conjugations/containers/ConjugationsFetchWrapper';
 import StartGameButton from '../containers/StartGameButton';
+import DifficultyFactor from '../containers/DifficultyFactor';
 
 import SignUpForm from './SignUpForm';
 
@@ -21,6 +22,9 @@ class MainMenu extends React.PureComponent {
     );
     return (
       <div>
+        <div className="MainMenu__difficultyFactor">
+          <DifficultyFactor />
+        </div>
         <div className="MainMenu__startButton">
           <StartGameButton />
         </div>
