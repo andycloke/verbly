@@ -34,7 +34,6 @@ export type Conjugation = {
 
 export type ConjugationsState = {
   conjugations: object;
-  // TODO: conjugations: object<string, Conjugation>;
 };
 
 export const initialState = {
