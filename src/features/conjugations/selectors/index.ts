@@ -23,10 +23,8 @@ export const getConjugationsSlice = (state: any) => state.conjugations;
 export const getAllConjugations = (state: any) =>
   getConjugationsSlice(state).conjugations;
 
-export const getSingleConjugation = (
-  state: any,
-  verb: string
-): Conjugation => getAllConjugations(state)[verb];
+export const getSingleConjugation = (state: any, verb: string): Conjugation =>
+  getAllConjugations(state)[verb];
 
 export const getConjugationInTenseForPerson = (
   state: any,
@@ -35,23 +33,17 @@ export const getConjugationInTenseForPerson = (
   person: string
 ): string[] => getSingleConjugation(state, verb)[tense][person];
 
-export const isVerbIrregular = (
-  state: any,
-  verb: string
-): boolean => getSingleConjugation(state, verb).irregular;
+export const isVerbIrregular = (state: any, verb: string): boolean =>
+  getSingleConjugation(state, verb).irregular;
 
-export const isVerbReflexive = (
-  state: any,
-  verb: string
-): boolean => getSingleConjugation(state, verb).reflexive;
+export const isVerbReflexive = (state: any, verb: string): boolean =>
+  getSingleConjugation(state, verb).reflexive;
 
 export const isVerbCommon = (state: any, verb: string): boolean =>
   getSingleConjugation(state, verb).common;
 
-export const getEnglishInfinitive = (
-  state: any,
-  verb: string
-): string => getSingleConjugation(state, verb).englishInfinitive;
+export const getEnglishInfinitive = (state: any, verb: string): string =>
+  getSingleConjugation(state, verb).englishInfinitive;
 
 export const getAllInfinitives = (state: any): Array<string> =>
   Object.keys(getAllConjugations(state));
@@ -63,6 +55,7 @@ export const getVerbsFilteredByUserOptions = (state: any): Array<string> => {
   return getAllInfinitives(state)
     .filter(
       (infinitive: string): boolean =>
+        userDefinedVerbsOnly(state) ||
         (irregularVerbsOnly(state) && isVerbIrregular(state, infinitive)) ||
         (irregularVerbsExcluded(state) &&
           !isVerbIrregular(state, infinitive)) ||
@@ -70,6 +63,7 @@ export const getVerbsFilteredByUserOptions = (state: any): Array<string> => {
     )
     .filter(
       (infinitive: string): boolean =>
+        userDefinedVerbsOnly(state) ||
         (reflexiveVerbsOnly(state) && isVerbReflexive(state, infinitive)) ||
         (reflexiveVerbsExcluded(state) &&
           !isVerbReflexive(state, infinitive)) ||
