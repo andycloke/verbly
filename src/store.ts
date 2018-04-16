@@ -22,7 +22,8 @@ import stats from './features/stats/reducers';
 const persistConfig = {
   key: 'root',
   storage,
-  throttle: 5000
+  throttle: 5000,
+  blacklist: ['game', 'conjugations']
 };
 
 const reducer = combineReducers({

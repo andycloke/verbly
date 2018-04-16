@@ -14,6 +14,7 @@ import OptionsMenuModal from './features/options/containers/OptionsMenuModal';
 
 import store from './store';
 import './App.css';
+
 ReactGA.initialize('UA-99771850-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
