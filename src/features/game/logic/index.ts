@@ -20,10 +20,10 @@ export const getNextVerbTenseToStudy = (state: any): VerbTense => {
 export const calculateAccuracyScore = (percentageCorrect: number): number =>
   1000 + 9000 * (percentageCorrect / 100);
 
-export const calculateTimeTakenScore = (timeTakenMs: number): number =>
-  Math.max((50 - timeTakenMs / 1000) * 1000, 500);
-
-// TODO: improve calculateTimeTakenScore
+export const calculateTimeTakenScore = (timeTakenMs: number): number => {
+  const timeS = timeTakenMs / 1000;
+  return Math.max(10000 - (timeS - 50) * 10, 500);
+};
 
 export const calculateGameScore = (
   accuracyScore: number,
