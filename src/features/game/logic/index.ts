@@ -29,4 +29,4 @@ export const calculateGameScore = (
   accuracyScore: number,
   timeTakenScore: number,
   difficultyFactor: number
-): number => accuracyScore * timeTakenScore * difficultyFactor;
+): number => (accuracyScore + timeTakenScore) * difficultyFactor;
