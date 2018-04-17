@@ -5,6 +5,8 @@ import { List, ListItem } from 'material-ui/List';
 
 import { Props } from '../containers/OptionsMenu';
 
+// TODO: keybaor shortcuts
+
 const OptionsMenu = ({
   displayEnglishInfinitive,
   toggleEnglishInfinitive,
