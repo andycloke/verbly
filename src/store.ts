@@ -18,6 +18,7 @@ import verbsInPlay from './features/menu/features/verbs/reducers';
 import game from './features/game/reducers';
 import conjugations from './features/conjugations/reducers';
 import stats from './features/stats/reducers';
+import scores from './features/scores/reducers';
 
 const persistConfig = {
   key: 'root',
@@ -33,7 +34,8 @@ const reducer = combineReducers({
   verbsInPlay,
   game,
   conjugations,
-  stats
+  stats,
+  scores
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);

@@ -4,6 +4,7 @@ import {
   updateVerbTenseStatsAfterCorrect,
   updateVerbTenseStatsAfterIncorrect
 } from '../../stats/actions';
+import { updateNecessaryScoresAfterGame } from '../../scores/actions';
 import { getAllPeopleInPlay } from '../../menu/features/people/selectors';
 import { getInPlayTenses } from '../../menu/features/tenses/selectors';
 import { getVerbsForTenseSortedByPercentageIncorrect } from '../../stats/selectors';
@@ -16,7 +17,8 @@ import {
   getCurrentQuestionTense,
   verbTenseIsToBeShownAgain,
   getConjugationsBeingDisplayed,
-  userAnswerNotBlank
+  userAnswerNotBlank,
+  getGameScore
 } from '../selectors';
 import { getNextVerbTenseToStudy } from '../logic';
 import { VerbTense } from '../models';
@@ -139,6 +141,8 @@ export const newQuestion = () => {
     const state = getState();
     if (gameShouldEnd(state)) {
       dispatch(openReview(moment().format()));
+      const state2 = getState();
+      dispatch(updateNecessaryScoresAfterGame(getGameScore(state2)));
     } else {
       if (getConjugationsBeingDisplayed(state)) {
         dispatch(hideConjugations());
