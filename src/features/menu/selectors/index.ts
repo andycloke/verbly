@@ -40,7 +40,6 @@ export const getCantStartModalProps = (
   };
 };
 
-// TODO: avoid NaN
 export const getDifficultyFactor = (state: any): number =>
   Math.round(
     getTensesDifficultyFactor(state) *
