@@ -12,6 +12,7 @@ export type StateProps = {
   timeTakenScore: number;
   difficultyFactor: number;
   gameScore: number;
+  newHighScore: boolean;
 };
 
 const mapStateToProps = (state: any): StateProps => getReviewProps(state);

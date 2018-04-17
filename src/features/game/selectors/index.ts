@@ -17,6 +17,7 @@ import {
   getConjugationInTenseForPerson
 } from '../../conjugations/selectors';
 import { getDifficultyFactor } from '../../menu/selectors';
+import { getHighScore } from '../../scores/selectors';
 import {
   calculateAccuracyScore,
   calculateTimeTakenScore,
@@ -161,6 +162,9 @@ export const getGameScore = (state: any): number =>
     getDifficultyFactor(state)
   );
 
+export const getNewHighScore = (state: any): boolean =>
+  getGameScore(state) === getHighScore(state);
+
 export const getGameProps = (state: any): StateProps => {
   const verb = getCurrentQuestionVerb(state);
   if (verb) {
@@ -230,7 +234,8 @@ export const getReviewProps = (state: any): ReviewStateProps => {
     timeTaken: getTimeTaken(state),
     timeTakenScore: getTimeTakenScore(state),
     difficultyFactor: getDifficultyFactor(state),
-    gameScore: getGameScore(state)
+    gameScore: getGameScore(state),
+    newHighScore: getNewHighScore(state)
   };
 };
 
