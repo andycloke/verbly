@@ -1,11 +1,10 @@
 import * as React from 'react';
 import Toggle from 'material-ui/Toggle';
-import Subheader from 'material-ui/Subheader';
 import { List, ListItem } from 'material-ui/List';
 
 import { Props } from '../containers/OptionsMenu';
 
-// TODO: keybaor shortcuts
+const toggleStyle = { right: 15 };
 
 const OptionsMenu = ({
   displayEnglishInfinitive,
@@ -21,17 +20,18 @@ const OptionsMenu = ({
   ): void => toggleAudioFeedback();
   return (
     <List>
-      <Subheader>Options</Subheader>
       <ListItem
         primaryText="Display english infinitive"
         onClick={handleEnglishInfinitiveClick}
-        rightIcon={<Toggle toggled={displayEnglishInfinitive} />}
+        rightIcon={
+          <Toggle style={toggleStyle} toggled={displayEnglishInfinitive} />
+        }
         innerDivStyle={{ lineHeight: 1.3 }}
       />
       <ListItem
         primaryText="Audio feedback"
         onClick={handleAudioFeedbackClick}
-        rightIcon={<Toggle toggled={audioFeedback} />}
+        rightIcon={<Toggle style={toggleStyle} toggled={audioFeedback} />}
       />
     </List>
   );
