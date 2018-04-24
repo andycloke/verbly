@@ -2,8 +2,9 @@ import * as React from 'react';
 import Dialog from 'material-ui/Dialog';
 import { Tabs, Tab } from 'material-ui/Tabs';
 
-import OptionsMenu from '../containers/OptionsMenu';
 import { Props } from '../containers/OptionsMenuModal';
+import OptionsMenu from '../containers/OptionsMenu';
+import KeyboardShortcuts from './KeyboardShortcuts';
 
 const tabStyle = {
   color: 'rgba(0, 0, 0, 0.54)',
@@ -30,7 +31,7 @@ const OptionsMenuModal = ({ open, toggleOptionsMenuOpen }: Props) => {
           <OptionsMenu />
         </Tab>
         <Tab style={tabStyle} label="Keyboard shortcuts">
-          <div>KEYBOARD SHORTCUTS</div>
+          <KeyboardShortcuts />
         </Tab>
       </Tabs>
     </Dialog>
