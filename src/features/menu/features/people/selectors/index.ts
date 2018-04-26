@@ -15,6 +15,9 @@ export const getAllPeopleInPlay = (state: any): string[] => {
 export const getNumberOfPeopleInPlay = (state: any): number =>
   getAllPeopleInPlay(state).length;
 
+export const getOnlyYoInPlay = (state: any): boolean =>
+  getAllPeopleInPlay(state).every((person: string) => person === People.Yo);
+
 export const enoughPeopleToStartGame = (state: any): boolean =>
   getNumberOfPeopleInPlay(state) > 0;
 

@@ -15,6 +15,13 @@ export const getInPlayTenses = (state: any): string[] => {
 export const getNumberOfTensesInPlay = (state: any): number =>
   getInPlayTenses(state).length;
 
+export const getOnlyImperativeTensesInPlay = (state: any): boolean =>
+  getInPlayTenses(state).every(
+    (tense: string) =>
+      tense === Tenses.ImperativeAffirmativePresent ||
+      tense === Tenses.ImperativeNegativePresent
+  );
+
 export const enoughTensesToStartGame = (state: any): boolean =>
   getNumberOfTensesInPlay(state) > 0;
 
