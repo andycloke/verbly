@@ -30,7 +30,7 @@ const OptionsMenuModal = ({ open, toggleOptionsMenuOpen }: Props) => {
         <Tab style={tabStyle} label="Options">
           <OptionsMenu />
         </Tab>
-        <Tab style={tabStyle} label="Keyboard shortcuts">
+        <Tab style={tabStyle} label="Keyboard Shortcuts">
           <KeyboardShortcuts />
         </Tab>
       </Tabs>
