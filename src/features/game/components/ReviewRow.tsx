@@ -1,28 +1,48 @@
 import * as React from 'react';
-import { TableRow, TableRowColumn } from 'material-ui/Table';
+import { TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 
 type Value = string | number;
 
 type Props = {
-  label: string;
-  leftValue?: Value;
-  rightValue?: Value;
+  head?: boolean;
+  firstValue?: string;
+  secondValue?: Value;
+  thirdValue?: Value;
 };
 
-const numberCellPadding = '17px';
-
-const numberCellStyle = {
-  paddingLeft: numberCellPadding,
-  paddingRight: numberCellPadding
+const LEFT_HAND_COL_SPAN = 2;
+const CELL_PADDING = 8;
+const LEFT_CELL_PADDING = 10;
+const cellStyle = {
+  paddingLeft: CELL_PADDING,
+  paddingRight: CELL_PADDING
 };
 
-// TODO: display new high score + animations!
-const ReviewRow = ({ label, leftValue, rightValue }: Props) => (
-  <TableRow selectable={false}>
-    <TableRowColumn style={{ width: '145px' }}>{label}</TableRowColumn>
-    <TableRowColumn style={numberCellStyle}>{leftValue}</TableRowColumn>
-    <TableRowColumn style={numberCellStyle}>{rightValue}</TableRowColumn>
-  </TableRow>
-);
+const leftCellStyle = {
+  ...cellStyle,
+  paddingLeft: LEFT_CELL_PADDING,
+  paddingRight: LEFT_CELL_PADDING
+};
+
+// TODO: scss, display new high score + animations!
+// TODO: top cell height reduce
+const ReviewRow = ({ head, firstValue, secondValue, thirdValue }: Props) =>
+  head ? (
+    <>
+      <TableHeaderColumn style={leftCellStyle} colSpan={LEFT_HAND_COL_SPAN}>
+        {firstValue}
+      </TableHeaderColumn>
+      <TableHeaderColumn style={cellStyle}>{secondValue}</TableHeaderColumn>
+      <TableHeaderColumn style={cellStyle}>{thirdValue}</TableHeaderColumn>
+    </>
+  ) : (
+    <TableRow selectable={false}>
+      <TableRowColumn style={leftCellStyle} colSpan={LEFT_HAND_COL_SPAN}>
+        {firstValue}
+      </TableRowColumn>
+      <TableRowColumn style={cellStyle}>{secondValue}</TableRowColumn>
+      <TableRowColumn style={cellStyle}>{thirdValue}</TableRowColumn>
+    </TableRow>
+  );
 
 export default ReviewRow;

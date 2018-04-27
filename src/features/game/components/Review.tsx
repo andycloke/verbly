@@ -2,24 +2,20 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardActions } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
-import {
-  Table,
-  TableHeader,
-  TableHeaderColumn,
-  TableBody
-} from 'material-ui/Table';
+import { Table, TableHeader, TableBody } from 'material-ui/Table';
 
 import { pathToGame, pathToHome } from '../../../paths';
 import { Props } from '../containers/Review';
 import ReviewRow from './ReviewRow';
 
-const tableHeaderCellStyle = {
-  height: '44px'
+const wrapperStyle = { maxWidth: '500px', margin: '0 auto' };
+const cardActionsStyle = {
+  display: 'flex',
+  justifyContent: 'center' as 'center'
 };
-
-const scoreCellStyle = {
-  ...tableHeaderCellStyle,
-  textAlign: 'center'
+const tableStyle = {
+  borderLeft: '1px solid rgb(224, 224, 224)',
+  borderRight: '1px solid rgb(224, 224, 224)'
 };
 
 const Review = ({
@@ -40,32 +36,34 @@ const Review = ({
     resetGame();
   };
   return (
-    <Card style={{ width: '100%' }}>
-      <Table>
-        <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
-          <TableHeaderColumn style={tableHeaderCellStyle} />
-          <TableHeaderColumn style={tableHeaderCellStyle} />
-          <TableHeaderColumn style={scoreCellStyle}>Score</TableHeaderColumn>
+    <Card>
+      <Table style={wrapperStyle}>
+        <TableHeader
+          style={tableStyle}
+          adjustForCheckbox={false}
+          displaySelectAll={false}
+        >
+          <ReviewRow head thirdValue="score" />
         </TableHeader>
-        <TableBody displayRowCheckbox={false}>
+        <TableBody style={tableStyle} displayRowCheckbox={false}>
           <ReviewRow
-            label="Answers correct"
-            leftValue={`${percentageCorrect}%`}
-            rightValue={accuracyScore}
+            firstValue="Answers correct"
+            secondValue={`${percentageCorrect}%`}
+            thirdValue={accuracyScore}
           />
           <ReviewRow
-            label="Time taken"
-            leftValue={`${timeTaken / 1000}s`}
-            rightValue={timeTakenScore}
+            firstValue="Time taken"
+            secondValue={`${timeTaken / 1000}s`}
+            thirdValue={timeTakenScore}
           />
           <ReviewRow
-            label="Difficulty factor"
-            leftValue={difficultyFactor.toFixed(2)}
+            firstValue="Difficulty factor"
+            secondValue={difficultyFactor.toFixed(2)}
           />
-          <ReviewRow label="Score" rightValue={gameScore} />
+          <ReviewRow firstValue="Score" thirdValue={gameScore} />
         </TableBody>
       </Table>
-      <CardActions>
+      <CardActions style={cardActionsStyle}>
         <Link to={pathToHome()}>
           <FlatButton onClick={handleEndGameClick} label="Quit" />
         </Link>
