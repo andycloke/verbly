@@ -31,9 +31,13 @@ export const calculateTimeTakenMultiplier = (timeTakenMs: number): number => {
   const gradient =
     (TARGET_TIME_TAKEN_MULTIPLIER - MIN_TIME_TAKEN_MULTIPLIER) /
     (TARGET_TIME_S - LOWEST_TIME_S);
-  return Math.max(
-    TARGET_TIME_TAKEN_MULTIPLIER + gradient * (timeS - TARGET_TIME_S),
-    MIN_TIME_TAKEN_MULTIPLIER
+  return (
+    Math.round(
+      Math.max(
+        TARGET_TIME_TAKEN_MULTIPLIER + gradient * (timeS - TARGET_TIME_S),
+        MIN_TIME_TAKEN_MULTIPLIER
+      ) * 100
+    ) / 100
   );
 };
 
