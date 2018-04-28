@@ -4,12 +4,15 @@
 
 An app for practising Spanish Verb Conjugations. A re-write of the original Verb Master that I wrote in 2017.
 
+![Verb Master](http://www.giphy.com/gifs/ujx69LZs5df3O4Z8Ey)
+
 New to this Version:
 
 * Much smaller bundle (down from ~17MB to 0.5MB), due to fetching conjugations data separately to the app.
 * Mobile performance issues fixed.
 * Saving user stats to local storage between sessions and using them to decide what verb-tense combinations to show.
 * Different URLs for menu / game.
+* Game review and score with high score functionality
 
 Libraries/ languages used:
 
