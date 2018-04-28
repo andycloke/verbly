@@ -1,0 +1,8 @@
+.ReviewRowFade-enter {
+  opacity: 0.01;
+}
+
+.ReviewRowFade-enter.ReviewRowFade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
