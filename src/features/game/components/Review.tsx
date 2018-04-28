@@ -18,6 +18,7 @@ const tableStyle = {
   borderRight: '1px solid rgb(224, 224, 224)'
 };
 const SHOW_NEXT_ROW_DELAY = 800;
+const N_ROWS = 5;
 
 type State = {
   nRowsToShow: number;
@@ -33,9 +34,16 @@ class Review extends React.PureComponent<Props, State> {
   componentDidMount() {
     this.rowInterval = setInterval(
       () =>
-        this.setState((prevState: State) => ({
-          nRowsToShow: prevState.nRowsToShow + 1
-        })),
+        this.setState(
+          (prevState: State) => ({
+            nRowsToShow: prevState.nRowsToShow + 1
+          }),
+          () => {
+            if (this.state.nRowsToShow >= N_ROWS) {
+              clearInterval(this.rowInterval);
+            }
+          }
+        ),
       SHOW_NEXT_ROW_DELAY
     );
   }
@@ -58,7 +66,8 @@ class Review extends React.PureComponent<Props, State> {
       accuracyScore,
       timeTakenMultiplier,
       difficultyMultiplier,
-      gameScore
+      gameScore,
+      newHighScore
     } = this.props;
     const { nRowsToShow } = this.state;
 
@@ -93,6 +102,13 @@ class Review extends React.PureComponent<Props, State> {
               secondValue={gameScore}
               showValues={nRowsToShow >= 4}
             />
+            {newHighScore && (
+              <ReviewRow
+                secondValue="New High Score! 🔥"
+                newHighScore
+                showValues={nRowsToShow >= 5}
+              />
+            )}
           </TableBody>
         </Table>
         <CardActions style={cardActionsStyle}>
