@@ -20,13 +20,24 @@ export const getNextVerbTenseToStudy = (state: any): VerbTense => {
 export const calculateAccuracyScore = (percentageCorrect: number): number =>
   1000 + 9000 * (percentageCorrect / 100);
 
-export const calculateTimeTakenScore = (timeTakenMs: number): number => {
+export const TARGET_TIME_S = 15;
+export const LOWEST_TIME_S = 90; // beyond this time give user the minimum multiplier i.e. dont give them 0 or a negative one
+export const TARGET_TIME_TAKEN_MULTIPLIER = 5;
+export const MIN_TIME_TAKEN_MULTIPLIER = 1;
+
+export const calculateTimeTakenMultiplier = (timeTakenMs: number): number => {
   const timeS = timeTakenMs / 1000;
-  return Math.max(10000 - (timeS - 50) * 10, 500);
+  const gradient =
+    (TARGET_TIME_TAKEN_MULTIPLIER - MIN_TIME_TAKEN_MULTIPLIER) /
+    (TARGET_TIME_S - LOWEST_TIME_S);
+  return Math.max(
+    TARGET_TIME_TAKEN_MULTIPLIER + gradient * (timeS - TARGET_TIME_S),
+    MIN_TIME_TAKEN_MULTIPLIER
+  );
 };
 
 export const calculateGameScore = (
   accuracyScore: number,
-  timeTakenScore: number,
-  difficultyFactor: number
-): number => (accuracyScore + timeTakenScore) * difficultyFactor;
+  timeTakenMultiplier: number,
+  difficultyMultiplier: number
+): number => accuracyScore * timeTakenMultiplier * difficultyMultiplier;

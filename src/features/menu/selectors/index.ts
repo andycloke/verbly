@@ -46,7 +46,7 @@ export const getCantStartModalProps = (
   };
 };
 
-export const getDifficultyFactor = (state: any): number =>
+export const getDifficultyMultiplier = (state: any): number =>
   Math.round(
     getTensesDifficultyFactor(state) *
       getPeopleDifficultyFactor(state) *

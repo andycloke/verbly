@@ -6,11 +6,9 @@ import { startGame, resetGame } from '../actions';
 import Review from '../components/Review';
 
 export type StateProps = {
-  percentageCorrect: number;
   accuracyScore: number;
-  timeTaken: number;
-  timeTakenScore: number;
-  difficultyFactor: number;
+  timeTakenMultiplier: number;
+  difficultyMultiplier: number;
   gameScore: number;
   newHighScore: boolean;
 };

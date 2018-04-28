@@ -16,11 +16,11 @@ import {
   getEnglishInfinitive,
   getConjugationInTenseForPerson
 } from '../../conjugations/selectors';
-import { getDifficultyFactor } from '../../menu/selectors';
+import { getDifficultyMultiplier } from '../../menu/selectors';
 import { getHighScore } from '../../scores/selectors';
 import {
   calculateAccuracyScore,
-  calculateTimeTakenScore,
+  calculateTimeTakenMultiplier,
   calculateGameScore
 } from '../logic';
 
@@ -152,14 +152,14 @@ export const getEndTime = (state: any): string => getGameSlice(state).endTime;
 export const getTimeTaken = (state: any): number =>
   moment(getEndTime(state)).diff(moment(getStartTime(state)));
 
-export const getTimeTakenScore = (state: any): number =>
-  calculateTimeTakenScore(getTimeTaken(state));
+export const getTimeTakenMultiplier = (state: any): number =>
+  calculateTimeTakenMultiplier(getTimeTaken(state));
 
 export const getGameScore = (state: any): number =>
   calculateGameScore(
     getAccuracyScore(state),
-    getTimeTakenScore(state),
-    getDifficultyFactor(state)
+    getTimeTakenMultiplier(state),
+    getDifficultyMultiplier(state)
   );
 
 export const getNewHighScore = (state: any): boolean =>
@@ -229,11 +229,9 @@ export const getProgressBarProps = (state: any): ProgressBarStateProps => ({
 
 export const getReviewProps = (state: any): ReviewStateProps => {
   return {
-    percentageCorrect: getPercentageCorrect(state),
     accuracyScore: getAccuracyScore(state),
-    timeTaken: getTimeTaken(state),
-    timeTakenScore: getTimeTakenScore(state),
-    difficultyFactor: getDifficultyFactor(state),
+    timeTakenMultiplier: getTimeTakenMultiplier(state),
+    difficultyMultiplier: getDifficultyMultiplier(state),
     gameScore: getGameScore(state),
     newHighScore: getNewHighScore(state)
   };
