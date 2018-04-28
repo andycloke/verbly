@@ -32,28 +32,15 @@ type Props = {
   head?: boolean;
   firstValue?: string;
   secondValue?: Value;
-  thirdValue?: Value;
 };
 
 // TODO: display new high score
-const ReviewRow = ({
-  head,
-  showValues,
-  firstValue,
-  secondValue,
-  thirdValue
-}: Props) => {
+const ReviewRow = ({ head, showValues, firstValue, secondValue }: Props) => {
   const animatedSecondValue = (
     <ReviewRowFade show={showValues}>
       <span>{secondValue}</span>
     </ReviewRowFade>
   );
-  const animatedThirdValue = (
-    <ReviewRowFade show={showValues}>
-      <span>{thirdValue}</span>
-    </ReviewRowFade>
-  );
-
   if (head) {
     return (
       <>
@@ -66,9 +53,6 @@ const ReviewRow = ({
         <TableHeaderColumn style={topCellStyle}>
           {animatedSecondValue}
         </TableHeaderColumn>
-        <TableHeaderColumn style={topCellStyle}>
-          {animatedThirdValue}
-        </TableHeaderColumn>
       </>
     );
   }
@@ -78,7 +62,6 @@ const ReviewRow = ({
         {firstValue}
       </TableRowColumn>
       <TableRowColumn style={cellStyle}>{animatedSecondValue}</TableRowColumn>
-      <TableRowColumn style={cellStyle}>{animatedThirdValue}</TableRowColumn>
     </TableRow>
   );
 };

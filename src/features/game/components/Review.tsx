@@ -70,27 +70,27 @@ class Review extends React.PureComponent<Props, State> {
             adjustForCheckbox={false}
             displaySelectAll={false}
           >
-            <ReviewRow head thirdValue="score" showValues />
+            <ReviewRow head secondValue="score" showValues />
           </TableHeader>
           <TableBody style={tableStyle} displayRowCheckbox={false}>
             <ReviewRow
               firstValue="Accuracy score"
-              thirdValue={accuracyScore}
+              secondValue={accuracyScore}
               showValues={nRowsToShow >= 1}
             />
             <ReviewRow
               firstValue="Speed multiplier"
-              thirdValue={timeTakenMultiplier}
+              secondValue={timeTakenMultiplier}
               showValues={nRowsToShow >= 2}
             />
             <ReviewRow
               firstValue="Difficulty multiplier"
-              thirdValue={difficultyMultiplier.toFixed(2)}
+              secondValue={difficultyMultiplier.toFixed(2)}
               showValues={nRowsToShow >= 3}
             />
             <ReviewRow
               firstValue="Total Score"
-              thirdValue={gameScore}
+              secondValue={gameScore}
               showValues={nRowsToShow >= 4}
             />
           </TableBody>
