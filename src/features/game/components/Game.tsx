@@ -54,7 +54,9 @@ class Game extends React.PureComponent<Props, State> {
       return;
     }
     if (key === KeyboardKeys.Shift) {
-      this.setState({ shiftDown: true });
+      if (this.mounted) {
+        this.setState({ shiftDown: true });
+      }
       return;
     }
     if (keysLetterCanBeAccentedLetter(key) && this.state.shiftDown) {
@@ -66,7 +68,9 @@ class Game extends React.PureComponent<Props, State> {
 
   handleKeyUp = (e: KeyboardEvent) => {
     if (e.key === KeyboardKeys.Shift) {
-      this.setState({ shiftDown: false });
+      if (this.mounted) {
+        this.setState({ shiftDown: false });
+      }
     }
   };
 
@@ -100,11 +104,15 @@ class Game extends React.PureComponent<Props, State> {
   submitAndFocus = () => {
     if (this.props.userAnswerCorrect && !this.state.showCorrectIcon) {
       this.sayAnswer();
-      this.setState({ showCorrectIcon: true });
+      if (this.mounted) {
+        this.setState({ showCorrectIcon: true });
+      }
       this.timeout = setTimeout(() => {
         this.props.submitAnswer();
         this.focusAnswerInput();
-        this.setState({ showCorrectIcon: false });
+        if (this.mounted) {
+          this.setState({ showCorrectIcon: false });
+        }
       }, DISPLAY_CORRECT_ICON_DURATION);
     } else if (!this.props.displayConjugations) {
       this.sayAnswer();
