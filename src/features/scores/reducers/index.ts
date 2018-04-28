@@ -15,7 +15,7 @@ export default (
       return {
         ...scores,
         previousHighScore: scores.previousHighScore,
-        highScore: scores.highScore + action.payload.score
+        highScore: action.payload.score
       };
     default:
       return scores;
