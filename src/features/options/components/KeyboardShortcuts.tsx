@@ -19,6 +19,7 @@ const KeyboardShortcuts = () => (
     <TableBody displayRowCheckbox={false}>
       {Object.entries(accentedLettersMap).map(([letter, accentedLetter]) => (
         <ShortcutRow
+          key={letter}
           letter={letter.toUpperCase()}
           shortcut={`Shift - ${accentedLetter.toUpperCase()}`}
         />
