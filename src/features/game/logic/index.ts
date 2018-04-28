@@ -21,7 +21,8 @@ export const calculateAccuracyScore = (percentageCorrect: number): number =>
   1000 + 9000 * (percentageCorrect / 100);
 
 export const TARGET_TIME_S = 15;
-export const LOWEST_TIME_S = 90; // beyond this time give user the minimum multiplier i.e. dont give them 0 or a negative one
+// beyond LOWEST_TIME_S times give user the minimum multiplier i.e. dont give them 0 or a negative one
+export const LOWEST_TIME_S = 90;
 export const TARGET_TIME_TAKEN_MULTIPLIER = 5;
 export const MIN_TIME_TAKEN_MULTIPLIER = 1;
 
