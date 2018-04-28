@@ -57,6 +57,10 @@ const Review = ({
             thirdValue={timeTakenScore}
           />
           <ReviewRow
+            firstValue="Total Score"
+            thirdValue={accuracyScore + timeTakenScore}
+          />
+          <ReviewRow
             firstValue="Difficulty factor"
             secondValue={difficultyFactor.toFixed(2)}
           />

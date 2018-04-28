@@ -14,14 +14,23 @@ const LEFT_HAND_COL_SPAN = 2;
 const CELL_PADDING = 8;
 const LEFT_CELL_PADDING = 10;
 const cellStyle = {
+  fontSize: 14,
   paddingLeft: CELL_PADDING,
   paddingRight: CELL_PADDING
 };
-
+const topCellStyle = {
+  ...cellStyle,
+  fontSize: 13,
+  height: 35
+};
 const leftCellStyle = {
   ...cellStyle,
   paddingLeft: LEFT_CELL_PADDING,
   paddingRight: LEFT_CELL_PADDING
+};
+const leftTopCellStyle = {
+  ...topCellStyle,
+  ...leftCellStyle
 };
 
 // TODO: scss, display new high score + animations!
@@ -29,11 +38,11 @@ const leftCellStyle = {
 const ReviewRow = ({ head, firstValue, secondValue, thirdValue }: Props) =>
   head ? (
     <>
-      <TableHeaderColumn style={leftCellStyle} colSpan={LEFT_HAND_COL_SPAN}>
+      <TableHeaderColumn style={leftTopCellStyle} colSpan={LEFT_HAND_COL_SPAN}>
         {firstValue}
       </TableHeaderColumn>
-      <TableHeaderColumn style={cellStyle}>{secondValue}</TableHeaderColumn>
-      <TableHeaderColumn style={cellStyle}>{thirdValue}</TableHeaderColumn>
+      <TableHeaderColumn style={topCellStyle}>{secondValue}</TableHeaderColumn>
+      <TableHeaderColumn style={topCellStyle}>{thirdValue}</TableHeaderColumn>
     </>
   ) : (
     <TableRow selectable={false}>
