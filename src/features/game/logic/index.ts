@@ -18,7 +18,7 @@ export const getNextVerbTenseToStudy = (state: any): VerbTense => {
 };
 
 export const calculateAccuracyScore = (percentageCorrect: number): number =>
-  1000 + 9000 * (percentageCorrect / 100);
+  100 + 900 * (percentageCorrect / 100);
 
 export const TARGET_TIME_S = 15;
 // beyond LOWEST_TIME_S times give user the minimum multiplier i.e. dont give them 0 or a negative one
@@ -45,4 +45,5 @@ export const calculateGameScore = (
   accuracyScore: number,
   timeTakenMultiplier: number,
   difficultyMultiplier: number
-): number => accuracyScore * timeTakenMultiplier * difficultyMultiplier;
+): number =>
+  Math.round(accuracyScore * timeTakenMultiplier * difficultyMultiplier);
