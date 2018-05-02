@@ -151,9 +151,11 @@ export const newQuestion = () => {
       if (userAnswerNotBlank(state)) {
         dispatch(clearUserAnswer());
       }
+      // TODO: future tense of ocurrir
       const verbTense = getNextVerbTenseToStudy(state);
       const { verb, tense } = verbTense;
       let person = '';
+
       do {
         person = randomElement(getAllPeopleInPlay(state));
       } while (tenseIsImperative(tense) && personIsYo(person));

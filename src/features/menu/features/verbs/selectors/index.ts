@@ -66,7 +66,7 @@ export const getValidUserDefinedVerbs = (state: any): Array<string> => {
 export const getNumberOfValidUserDefinedVerbs = (state: any): number =>
   getValidUserDefinedVerbs(state).length;
 
-export const enoughVerbsToStartGame = (state: any): boolean =>
+export const moreThanOneVerbInPlay = (state: any): boolean =>
   !(
     userDefinedVerbsOnly(state) && getNumberOfValidUserDefinedVerbs(state) === 0
   );

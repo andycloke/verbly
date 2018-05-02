@@ -22,7 +22,14 @@ export const getOnlyImperativeTensesInPlay = (state: any): boolean =>
       tense === Tenses.ImperativeNegativePresent
   );
 
-export const enoughTensesToStartGame = (state: any): boolean =>
+export const getSomeImperativeTensesInPlay = (state: any): boolean =>
+  getInPlayTenses(state).some(
+    (tense: string) =>
+      tense === Tenses.ImperativeAffirmativePresent ||
+      tense === Tenses.ImperativeNegativePresent
+  );
+
+export const moreThanOneTenseInPlay = (state: any): boolean =>
   getNumberOfTensesInPlay(state) > 0;
 
 export const getTensesMenuProps = (state: any): TensesMenuDataProps => ({
