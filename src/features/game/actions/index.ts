@@ -22,6 +22,7 @@ import {
 } from '../selectors';
 import { getNextVerbTenseToStudy } from '../logic';
 import { VerbTense } from '../models';
+import { tenseIsImperative, personIsYo } from '../functions';
 import { shuffle, randomElement } from '../../../util';
 
 export const actionTypes = {
@@ -152,7 +153,10 @@ export const newQuestion = () => {
       }
       const verbTense = getNextVerbTenseToStudy(state);
       const { verb, tense } = verbTense;
-      const person = randomElement(getAllPeopleInPlay(state));
+      let person = '';
+      do {
+        person = randomElement(getAllPeopleInPlay(state));
+      } while (tenseIsImperative(tense) && personIsYo(person));
       const displayPerson = randomElement(peopleMap[person]);
       dispatch({
         type: actionTypes.NEW_QUESTION,
