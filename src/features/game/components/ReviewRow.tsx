@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+import { TableRow, TableRowColumn } from 'material-ui/Table';
 import ReviewRowFade from './ReviewRowFade';
-import QuestionMarkIcon from './QuestionMarkIcon';
+import QuestionMarkTooltip from './QuestionMarkTooltip';
 
 import './ReviewRow.css';
 
@@ -11,9 +11,7 @@ const cellStyle = {
   fontSize: 14,
   paddingLeft: CELL_PADDING,
   paddingRight: CELL_PADDING,
-  color: 'rgba(0, 0, 0, 0.87)',
-  height: 48,
-  borderBottom: '1px solid rgb(224, 224, 224)'
+  overflow: 'visible' as 'visible'
 };
 const highScoreCellStyle = {
   ...cellStyle,
@@ -37,46 +35,31 @@ const ReviewRow = ({
   showValues,
   firstValue,
   secondValue
-}: Props) => {
-  const animatedSecondValue = (
-    <ReviewRowFade show={showValues}>
-      <span>{secondValue}</span>
-    </ReviewRowFade>
-  );
-  if (scoreTooltip) {
-    return (
-      <>
-        <TableHeaderColumn
-          style={cellStyle}
-          colSpan={LEFT_HAND_COL_SPAN}
-          tooltip="100 + 0.48 x % Answers Correct x (15 - time) x Difficulty"
-        >
+}: Props) => (
+  <TableRow selectable={false}>
+    {!newHighScore && (
+      <TableRowColumn style={cellStyle} colSpan={LEFT_HAND_COL_SPAN}>
+        {scoreTooltip ? (
           <div className="ReviewRow__scoreLabelCell">
             {firstValue}
-            <QuestionMarkIcon />
+            <QuestionMarkTooltip />
           </div>
-        </TableHeaderColumn>
-        <TableHeaderColumn style={cellStyle}>
-          {animatedSecondValue}
-        </TableHeaderColumn>
-      </>
-    );
-  }
-  return (
-    <TableRow selectable={false}>
-      {!newHighScore && (
-        <TableRowColumn style={cellStyle} colSpan={LEFT_HAND_COL_SPAN}>
-          {firstValue}
-        </TableRowColumn>
-      )}
-      <TableRowColumn
-        colSpan={newHighScore ? 3 : 1}
-        style={newHighScore ? highScoreCellStyle : cellStyle}
-      >
-        {animatedSecondValue}
+        ) : (
+          firstValue
+        )}
       </TableRowColumn>
-    </TableRow>
-  );
-};
+    )}
+    <TableRowColumn
+      colSpan={newHighScore ? 3 : 1}
+      style={newHighScore ? highScoreCellStyle : cellStyle}
+    >
+      {
+        <ReviewRowFade show={showValues}>
+          <span>{secondValue}</span>
+        </ReviewRowFade>
+      }
+    </TableRowColumn>
+  </TableRow>
+);
 
 export default ReviewRow;

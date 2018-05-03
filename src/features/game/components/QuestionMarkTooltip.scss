@@ -1,0 +1,14 @@
+.QuestionMarkTooltip {
+  position: relative;
+}
+
+.QuestionMarkTooltip__tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.54);
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  transform: translatex(-16%);
+  top: -100%;
+}
