@@ -6,7 +6,7 @@ import './DifficultyMultiplier.css';
 
 const DifficultyMultiplier = ({ difficultyMultiplier }: Props) => (
   <span className="DifficultyMultiplier">
-    {`Difficulty Multiplier: ${difficultyMultiplier}`}
+    {`Difficulty: ${difficultyMultiplier}`}
   </span>
 );
 
