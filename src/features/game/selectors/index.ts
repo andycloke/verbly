@@ -229,8 +229,9 @@ export const getProgressBarProps = (state: any): ProgressBarStateProps => ({
 
 export const getReviewProps = (state: any): ReviewStateProps => {
   return {
-    accuracyScore: getAccuracyScore(state),
-    timeTakenMultiplier: getTimeTakenMultiplier(state),
+    questionsAnswered: getNumberOfQuestionsAnswered(state),
+    questionsCorrect: getNumberOfQuestionsCorrect(state),
+    timeTaken: getTimeTaken(state),
     difficultyMultiplier: getDifficultyMultiplier(state),
     gameScore: getGameScore(state),
     newHighScore: getNewHighScore(state)

@@ -1,33 +1,24 @@
 import * as React from 'react';
 import { TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import ReviewRowFade from './ReviewRowFade';
+import QuestionMarkIcon from './QuestionMarkIcon';
+
+import './ReviewRow.css';
 
 const LEFT_HAND_COL_SPAN = 2;
-const CELL_PADDING = 8;
-const LEFT_CELL_PADDING = 10;
+const CELL_PADDING = 10;
 const cellStyle = {
   fontSize: 14,
   paddingLeft: CELL_PADDING,
-  paddingRight: CELL_PADDING
+  paddingRight: CELL_PADDING,
+  color: 'rgba(0, 0, 0, 0.87)',
+  height: 48,
+  borderBottom: '1px solid rgb(224, 224, 224)'
 };
 const highScoreCellStyle = {
   ...cellStyle,
   textAlign: 'center',
   color: '#bd4040'
-};
-const topCellStyle = {
-  ...cellStyle,
-  fontSize: 13,
-  height: 35
-};
-const leftCellStyle = {
-  ...cellStyle,
-  paddingLeft: LEFT_CELL_PADDING,
-  paddingRight: LEFT_CELL_PADDING
-};
-const leftTopCellStyle = {
-  ...topCellStyle,
-  ...leftCellStyle
 };
 
 type Value = string | number;
@@ -35,13 +26,13 @@ type Value = string | number;
 type Props = {
   newHighScore?: boolean;
   showValues: boolean;
-  head?: boolean;
+  scoreTooltip?: boolean;
   firstValue?: string;
   secondValue?: Value;
 };
 
 const ReviewRow = ({
-  head,
+  scoreTooltip,
   newHighScore,
   showValues,
   firstValue,
@@ -52,16 +43,20 @@ const ReviewRow = ({
       <span>{secondValue}</span>
     </ReviewRowFade>
   );
-  if (head) {
+  if (scoreTooltip) {
     return (
       <>
         <TableHeaderColumn
-          style={leftTopCellStyle}
+          style={cellStyle}
           colSpan={LEFT_HAND_COL_SPAN}
+          tooltip="100 + 0.48 x % Answers Correct x (15 - time) x Difficulty"
         >
-          {firstValue}
+          <div className="ReviewRow__scoreLabelCell">
+            {firstValue}
+            <QuestionMarkIcon />
+          </div>
         </TableHeaderColumn>
-        <TableHeaderColumn style={topCellStyle}>
+        <TableHeaderColumn style={cellStyle}>
           {animatedSecondValue}
         </TableHeaderColumn>
       </>
@@ -70,7 +65,7 @@ const ReviewRow = ({
   return (
     <TableRow selectable={false}>
       {!newHighScore && (
-        <TableRowColumn style={leftCellStyle} colSpan={LEFT_HAND_COL_SPAN}>
+        <TableRowColumn style={cellStyle} colSpan={LEFT_HAND_COL_SPAN}>
           {firstValue}
         </TableRowColumn>
       )}

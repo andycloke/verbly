@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardActions } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
-import { Table, TableHeader, TableBody } from 'material-ui/Table';
+import { Table, TableBody } from 'material-ui/Table';
 
 import { pathToGame, pathToHome } from '../../../paths';
 import { Props } from '../containers/Review';
@@ -63,8 +63,9 @@ class Review extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      accuracyScore,
-      timeTakenMultiplier,
+      questionsCorrect,
+      questionsAnswered,
+      timeTaken,
       difficultyMultiplier,
       gameScore,
       newHighScore
@@ -74,31 +75,25 @@ class Review extends React.PureComponent<Props, State> {
     return (
       <Card>
         <Table style={wrapperStyle}>
-          <TableHeader
-            style={tableStyle}
-            adjustForCheckbox={false}
-            displaySelectAll={false}
-          >
-            <ReviewRow head secondValue="score" showValues />
-          </TableHeader>
           <TableBody style={tableStyle} displayRowCheckbox={false}>
             <ReviewRow
-              firstValue="Accuracy score"
-              secondValue={accuracyScore}
+              firstValue="Questions correct"
+              secondValue={`${questionsCorrect} / ${questionsAnswered}`}
               showValues={nRowsToShow >= 1}
             />
             <ReviewRow
-              firstValue="Speed multiplier"
-              secondValue={timeTakenMultiplier}
+              firstValue="Time"
+              secondValue={`${timeTaken / 1000}s`}
               showValues={nRowsToShow >= 2}
             />
             <ReviewRow
-              firstValue="Difficulty multiplier"
+              firstValue="Difficulty"
               secondValue={difficultyMultiplier.toFixed(2)}
               showValues={nRowsToShow >= 3}
             />
             <ReviewRow
-              firstValue="Total Score"
+              scoreTooltip
+              firstValue="Score"
               secondValue={gameScore}
               showValues={nRowsToShow >= 4}
             />

@@ -6,8 +6,9 @@ import { startGame, resetGame } from '../actions';
 import Review from '../components/Review';
 
 export type StateProps = {
-  accuracyScore: number;
-  timeTakenMultiplier: number;
+  questionsAnswered: number;
+  questionsCorrect: number;
+  timeTaken: number;
   difficultyMultiplier: number;
   gameScore: number;
   newHighScore: boolean;
