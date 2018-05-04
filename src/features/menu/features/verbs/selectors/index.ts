@@ -3,6 +3,7 @@ import {
   VerbsIncludedOptions,
   WhichVerbsOptions
 } from '../models';
+import { EndingsInPlay } from '../models/endings';
 import { StateProps as VerbsMenuStateProps } from '../containers/VerbsMenu';
 import {
   getConjugationsFetched,
@@ -71,11 +72,26 @@ export const moreThanOneVerbInPlay = (state: any): boolean =>
     userDefinedVerbsOnly(state) && getNumberOfValidUserDefinedVerbs(state) === 0
   );
 
+export const getVerbEndingsInPlay = (state: any): EndingsInPlay =>
+  getVerbsInPlaySlice(state).endings;
+
+export const getErVerbsInPlay = (state: any): boolean =>
+  getVerbEndingsInPlay(state).Er;
+
+export const getArVerbsInPlay = (state: any): boolean =>
+  getVerbEndingsInPlay(state).Ar;
+
+export const getIrVerbsInPlay = (state: any): boolean =>
+  getVerbEndingsInPlay(state).Ir;
+
 export const getVerbsMenuProps = (state: any): VerbsMenuStateProps => ({
   reflexive: getReflexiveVerbsInPlay(state),
   irregular: getIrregularVerbsInPlay(state),
   whichVerbs: getWhichVerbsInPlay(state),
   userDefinedVerbs: getUserDefinedVerbs(state),
+  erVerbsInPlay: getErVerbsInPlay(state),
+  irVerbsInPlay: getIrVerbsInPlay(state),
+  arVerbsInPlay: getArVerbsInPlay(state),
   conjugationsFetched: getConjugationsFetched(state)
 });
 

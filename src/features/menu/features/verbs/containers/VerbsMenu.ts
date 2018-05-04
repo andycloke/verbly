@@ -6,7 +6,8 @@ import {
   setReflexiveVerbsInPlay,
   setIrregularVerbsInPlay,
   setWhichVerbsInPlay,
-  updateUserDefinedVerbs
+  updateUserDefinedVerbs,
+  toggleVerbEndingInPlay
 } from '../actions';
 import { VerbsIncludedOptions, WhichVerbsOptions } from '../models';
 
@@ -16,6 +17,9 @@ export type StateProps = {
   whichVerbs: WhichVerbsOptions;
   userDefinedVerbs: Array<string>;
   conjugationsFetched: boolean;
+  erVerbsInPlay: boolean;
+  arVerbsInPlay: boolean;
+  irVerbsInPlay: boolean;
 };
 
 const mapStateToProps = (state: any): StateProps => getVerbsMenuProps(state);
@@ -24,6 +28,7 @@ type DispatchProps = {
   setReflexiveVerbsInPlay: (option: string) => any;
   setIrregularVerbsInPlay: (option: string) => any;
   setWhichVerbsInPlay: (option: string) => any;
+  toggleVerbEndingInPlay: (ending: string) => any;
   updateUserDefinedVerbs: (verbs: Array<string>) => any;
 };
 
@@ -34,6 +39,8 @@ const mapDispatchToProps = (dispatch: any): DispatchProps => ({
     dispatch(setIrregularVerbsInPlay(option)),
   setWhichVerbsInPlay: (option: string): any =>
     dispatch(setWhichVerbsInPlay(option)),
+  toggleVerbEndingInPlay: (ending: string): any =>
+    dispatch(toggleVerbEndingInPlay(ending)),
   updateUserDefinedVerbs: (verbs: Array<string>): any =>
     dispatch(updateUserDefinedVerbs(verbs))
 });

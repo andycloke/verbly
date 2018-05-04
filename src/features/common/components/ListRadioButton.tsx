@@ -3,15 +3,24 @@ import { ListItem } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 import RadioChecked from 'material-ui/svg-icons/toggle/radio-button-checked';
 import RadioUnchecked from 'material-ui/svg-icons/toggle/radio-button-unchecked';
+import CheckboxChecked from 'material-ui/svg-icons/toggle/check-box';
+import CheckboxUnchecked from 'material-ui/svg-icons/toggle/check-box-outline-blank';
 
 type Props = {
   value: string;
   checked: boolean;
   onClick: (value: string) => void;
   primaryText: React.ReactNode;
+  checkbox?: boolean;
 };
 
-const ListRadioButton = ({ value, checked, onClick, primaryText }: Props) => {
+const ListRadioButton = ({
+  value,
+  checked,
+  onClick,
+  primaryText,
+  checkbox
+}: Props) => {
   const handleClick = (event: React.MouseEvent<HTMLElement>): void =>
     onClick(value);
   return (
@@ -21,8 +30,8 @@ const ListRadioButton = ({ value, checked, onClick, primaryText }: Props) => {
       leftIcon={
         <Checkbox
           checked={checked}
-          checkedIcon={<RadioChecked />}
-          uncheckedIcon={<RadioUnchecked />}
+          checkedIcon={checkbox ? <CheckboxChecked /> : <RadioChecked />}
+          uncheckedIcon={checkbox ? <CheckboxUnchecked /> : <RadioUnchecked />}
         />
       }
     />

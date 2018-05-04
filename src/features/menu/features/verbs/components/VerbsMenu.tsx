@@ -7,6 +7,8 @@ import { Props } from '../containers/VerbsMenu';
 import ListRadioButton from '../../../../../features/common/components/ListRadioButton';
 
 import { VerbsIncludedOptions, WhichVerbsOptions } from '../models';
+import { VerbEndingOptions } from '../models/endings';
+// TODO: checked={reflexive === VerbsIncludedOptions.Include} could use a selector?
 
 import './VerbsMenu.css';
 
@@ -39,7 +41,11 @@ export default class VerbsMenu extends React.PureComponent<Props, State> {
       whichVerbs,
       setReflexiveVerbsInPlay,
       setIrregularVerbsInPlay,
+      toggleVerbEndingInPlay,
       setWhichVerbsInPlay,
+      erVerbsInPlay,
+      arVerbsInPlay,
+      irVerbsInPlay,
       conjugationsFetched
     } = this.props;
 
@@ -124,6 +130,30 @@ export default class VerbsMenu extends React.PureComponent<Props, State> {
             }
             onClick={setWhichVerbsInPlay}
             checked={whichVerbs === WhichVerbsOptions.UserDefined}
+          />
+        </List>
+        <List>
+          <Subheader>Endings</Subheader>
+          <ListRadioButton
+            checkbox
+            primaryText="-ar"
+            value={VerbEndingOptions.Ar}
+            onClick={toggleVerbEndingInPlay}
+            checked={arVerbsInPlay}
+          />
+          <ListRadioButton
+            checkbox
+            primaryText="-er"
+            value={VerbEndingOptions.Er}
+            onClick={toggleVerbEndingInPlay}
+            checked={erVerbsInPlay}
+          />
+          <ListRadioButton
+            checkbox
+            primaryText="-ir"
+            value={VerbEndingOptions.Ir}
+            onClick={toggleVerbEndingInPlay}
+            checked={irVerbsInPlay}
           />
         </List>
       </div>
