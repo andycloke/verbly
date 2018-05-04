@@ -7,7 +7,8 @@ import { EndingsInPlay, VerbEndingOptions } from '../models/endings';
 import { StateProps as VerbsMenuStateProps } from '../containers/VerbsMenu';
 import {
   getConjugationsFetched,
-  getAllInfinitives
+  getAllInfinitives,
+  getNumberOfVerbsInPlay
 } from '../../../../conjugations/selectors';
 import {
   IRREGULAR_DIFFICULTIES,
@@ -68,9 +69,7 @@ export const getNumberOfValidUserDefinedVerbs = (state: any): number =>
   getValidUserDefinedVerbs(state).length;
 
 export const moreThanOneVerbInPlay = (state: any): boolean =>
-  !(
-    userDefinedVerbsOnly(state) && getNumberOfValidUserDefinedVerbs(state) === 0
-  );
+  getNumberOfVerbsInPlay(state) > 0;
 
 export const getVerbEndingsInPlay = (state: any): EndingsInPlay =>
   getVerbsInPlaySlice(state).endings;

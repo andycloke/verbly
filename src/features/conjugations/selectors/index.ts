@@ -68,7 +68,7 @@ export const getListOfAllConjugations = (state: any): Array<Conjugation> =>
   Object.values(getAllConjugations(state));
 
 export const getVerbsFilteredByUserOptions = (state: any): Array<string> => {
-  // TODO: find and warn with modal cases where no verbs
+  // TODO: add reselect
   return getAllInfinitives(state)
     .filter(
       (infinitive: string): boolean =>
@@ -101,6 +101,9 @@ export const getVerbsFilteredByUserOptions = (state: any): Array<string> => {
         (getIrVerbsInPlay(state) && verbEndsInIr(state, infinitive))
     );
 };
+
+export const getNumberOfVerbsInPlay = (state: any): number =>
+  getVerbsFilteredByUserOptions(state).length;
 
 export {
   getConjugationsFetching,
