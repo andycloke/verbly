@@ -1,8 +1,4 @@
-export const verbsIncludedOptions = {
-  include: 'Include',
-  exclude: 'Exclude',
-  only: 'Only'
-};
+import { initialState as endingsInitialState, EndingsInPlay } from './endings';
 
 export enum VerbsIncludedOptions {
   Include = 'Include',
@@ -21,11 +17,13 @@ export type VerbsInPlay = {
   irregular: VerbsIncludedOptions;
   whichVerbs: WhichVerbsOptions;
   userDefinedVerbs: Array<string>;
+  endings: EndingsInPlay;
 };
 
 export const initialState: VerbsInPlay = {
   reflexive: VerbsIncludedOptions.Include,
   irregular: VerbsIncludedOptions.Include,
   whichVerbs: WhichVerbsOptions.Common,
-  userDefinedVerbs: []
+  userDefinedVerbs: [],
+  endings: endingsInitialState
 };

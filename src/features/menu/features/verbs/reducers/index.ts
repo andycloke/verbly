@@ -1,5 +1,6 @@
 import { actionTypes } from '../actions';
 import { initialState, VerbsInPlay } from '../models';
+import endingsReducer from './endings';
 
 const reducer = (verbsInPlay: VerbsInPlay = initialState, action: any) => {
   switch (action.type) {
@@ -22,6 +23,11 @@ const reducer = (verbsInPlay: VerbsInPlay = initialState, action: any) => {
       return {
         ...verbsInPlay,
         userDefinedVerbs: action.payload.verbs
+      };
+    case actionTypes.TOGGLE_VERB_ENDING_IN_PLAY:
+      return {
+        ...verbsInPlay,
+        endings: endingsReducer(verbsInPlay.endings, action)
       };
     default:
       return verbsInPlay;
