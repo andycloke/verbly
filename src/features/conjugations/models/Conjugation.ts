@@ -1,3 +1,4 @@
+import { VerbEndingOptions } from '../../menu/features/verbs/models/endings';
 import { Tenses } from '../../../const/models/tenses';
 import { People } from '../../../const/models/people';
 
@@ -17,6 +18,7 @@ export type Conjugation = {
   type: string;
   common: boolean;
   reflexive: boolean;
+  ending: VerbEndingOptions;
   [Tenses.IndicativePresent]: SingleTenseConjugations;
   [Tenses.IndicativePreterite]: SingleTenseConjugations;
   [Tenses.IndicativeFuture]: SingleTenseConjugations;

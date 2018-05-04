@@ -48,7 +48,6 @@ export default class VerbsMenu extends React.PureComponent<Props, State> {
       irVerbsInPlay,
       conjugationsFetched
     } = this.props;
-
     return (
       <div className="VerbsMenu__outer">
         <Subheader>Verbs</Subheader>

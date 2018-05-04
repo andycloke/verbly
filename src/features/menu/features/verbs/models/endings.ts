@@ -1,13 +1,13 @@
 export enum VerbEndingOptions {
-  Ir = 'Ir',
-  Ar = 'Ar',
-  Er = 'Er'
+  Ir = 'ir',
+  Ar = 'ar',
+  Er = 'er'
 }
 
 export type EndingsInPlay = {
   [VerbEndingOptions.Ar]: boolean;
-  [VerbEndingOptions.Ir]: boolean;
   [VerbEndingOptions.Er]: boolean;
+  [VerbEndingOptions.Ir]: boolean;
 };
 
 export const initialState: EndingsInPlay = {

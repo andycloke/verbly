@@ -8,8 +8,12 @@ import {
   commonVerbsOnly,
   allVerbsInPlay,
   userDefinedVerbsOnly,
-  getValidUserDefinedVerbs
+  getValidUserDefinedVerbs,
+  getErVerbsInPlay,
+  getArVerbsInPlay,
+  getIrVerbsInPlay
 } from '../../menu/features/verbs/selectors';
+import { VerbEndingOptions } from '../../menu/features/verbs/models/endings';
 import { Conjugation } from '../models/Conjugation';
 
 import {
@@ -42,6 +46,18 @@ export const isVerbReflexive = (state: any, verb: string): boolean =>
 export const isVerbCommon = (state: any, verb: string): boolean =>
   getSingleConjugation(state, verb).common;
 
+export const getVerbEnding = (state: any, verb: string): VerbEndingOptions =>
+  getSingleConjugation(state, verb).ending;
+
+export const verbEndsInAr = (state: any, verb: string): boolean =>
+  getVerbEnding(state, verb) === VerbEndingOptions.Ar;
+
+export const verbEndsInEr = (state: any, verb: string): boolean =>
+  getVerbEnding(state, verb) === VerbEndingOptions.Er;
+
+export const verbEndsInIr = (state: any, verb: string): boolean =>
+  getVerbEnding(state, verb) === VerbEndingOptions.Ir;
+
 export const getEnglishInfinitive = (state: any, verb: string): string =>
   getSingleConjugation(state, verb).englishInfinitive;
 
@@ -52,6 +68,7 @@ export const getListOfAllConjugations = (state: any): Array<Conjugation> =>
   Object.values(getAllConjugations(state));
 
 export const getVerbsFilteredByUserOptions = (state: any): Array<string> => {
+  // TODO: find and warn with modal cases where no verbs
   return getAllInfinitives(state)
     .filter(
       (infinitive: string): boolean =>
@@ -75,6 +92,13 @@ export const getVerbsFilteredByUserOptions = (state: any): Array<string> => {
         allVerbsInPlay(state) ||
         (userDefinedVerbsOnly(state) &&
           getValidUserDefinedVerbs(state).includes(infinitive))
+    )
+    .filter(
+      (infinitive: string): boolean =>
+        userDefinedVerbsOnly(state) ||
+        (getErVerbsInPlay(state) && verbEndsInEr(state, infinitive)) ||
+        (getArVerbsInPlay(state) && verbEndsInAr(state, infinitive)) ||
+        (getIrVerbsInPlay(state) && verbEndsInIr(state, infinitive))
     );
 };
 

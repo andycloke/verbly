@@ -3,7 +3,7 @@ import {
   VerbsIncludedOptions,
   WhichVerbsOptions
 } from '../models';
-import { EndingsInPlay } from '../models/endings';
+import { EndingsInPlay, VerbEndingOptions } from '../models/endings';
 import { StateProps as VerbsMenuStateProps } from '../containers/VerbsMenu';
 import {
   getConjugationsFetched,
@@ -76,13 +76,13 @@ export const getVerbEndingsInPlay = (state: any): EndingsInPlay =>
   getVerbsInPlaySlice(state).endings;
 
 export const getErVerbsInPlay = (state: any): boolean =>
-  getVerbEndingsInPlay(state).Er;
+  getVerbEndingsInPlay(state)[VerbEndingOptions.Er];
 
 export const getArVerbsInPlay = (state: any): boolean =>
-  getVerbEndingsInPlay(state).Ar;
+  getVerbEndingsInPlay(state)[VerbEndingOptions.Ar];
 
 export const getIrVerbsInPlay = (state: any): boolean =>
-  getVerbEndingsInPlay(state).Ir;
+  getVerbEndingsInPlay(state)[VerbEndingOptions.Ir];
 
 export const getVerbsMenuProps = (state: any): VerbsMenuStateProps => ({
   reflexive: getReflexiveVerbsInPlay(state),
