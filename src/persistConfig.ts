@@ -4,5 +4,5 @@ export default {
   key: 'root',
   storage,
   throttle: 5000,
-  blacklist: ['game', 'conjugations']
+  blacklist: ['game', 'conjugations', 'verbsInPlay', 'tensesInPlay']
 };
