@@ -11,6 +11,12 @@ body,
   width: 100vw;
 }
 
+// Fix mobile safari
+button,
+input {
+  -webkit-appearance: none;
+}
+
 * {
   box-sizing: border-box;
 }
