@@ -68,6 +68,7 @@ class Review extends React.PureComponent<Props, State> {
       timeTaken,
       difficultyMultiplier,
       gameScore,
+      highScore,
       newHighScore
     } = this.props;
     const { nRowsToShow } = this.state;
@@ -97,13 +98,16 @@ class Review extends React.PureComponent<Props, State> {
               secondValue={gameScore}
               showValues={nRowsToShow >= 4}
             />
-            {newHighScore && (
-              <ReviewRow
-                secondValue="New High Score! 🔥"
+            <ReviewRow
+              fullWidth
+              secondValue={
                 newHighScore
-                showValues={nRowsToShow >= 5}
-              />
-            )}
+                  ? 'New High Score! 🔥'
+                  : `Your high score: ${highScore}`
+              }
+              newHighScore={newHighScore}
+              showValues={nRowsToShow >= 5}
+            />
           </TableBody>
         </Table>
         <CardActions style={cardActionsStyle}>

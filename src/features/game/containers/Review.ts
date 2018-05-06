@@ -11,6 +11,7 @@ export type StateProps = {
   timeTaken: number;
   difficultyMultiplier: number;
   gameScore: number;
+  highScore: number;
   newHighScore: boolean;
 };
 

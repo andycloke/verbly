@@ -15,14 +15,14 @@ const cellStyle = {
 };
 const highScoreCellStyle = {
   ...cellStyle,
-  textAlign: 'center',
-  color: '#bd4040'
+  textAlign: 'center'
 };
 
 type Value = string | number;
 
 type Props = {
   newHighScore?: boolean;
+  fullWidth?: boolean;
   showValues: boolean;
   scoreTooltip?: boolean;
   firstValue?: string;
@@ -31,13 +31,14 @@ type Props = {
 
 const ReviewRow = ({
   scoreTooltip,
-  newHighScore,
+  fullWidth,
   showValues,
   firstValue,
-  secondValue
+  secondValue,
+  newHighScore
 }: Props) => (
   <TableRow selectable={false}>
-    {!newHighScore && (
+    {!fullWidth && (
       <TableRowColumn style={cellStyle} colSpan={LEFT_HAND_COL_SPAN}>
         {scoreTooltip ? (
           <div className="ReviewRow__scoreLabelCell">
@@ -50,8 +51,14 @@ const ReviewRow = ({
       </TableRowColumn>
     )}
     <TableRowColumn
-      colSpan={newHighScore ? 3 : 1}
-      style={newHighScore ? highScoreCellStyle : cellStyle}
+      colSpan={fullWidth ? 3 : 1}
+      style={
+        fullWidth
+          ? newHighScore
+            ? { ...highScoreCellStyle, color: '#bd4040' }
+            : highScoreCellStyle
+          : cellStyle
+      }
     >
       {
         <ReviewRowFade show={showValues}>

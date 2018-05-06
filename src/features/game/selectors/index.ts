@@ -234,6 +234,7 @@ export const getReviewProps = (state: any): ReviewStateProps => {
     timeTaken: getTimeTaken(state),
     difficultyMultiplier: getDifficultyMultiplier(state),
     gameScore: getGameScore(state),
+    highScore: getHighScore(state),
     newHighScore: getNewHighScore(state)
   };
 };
