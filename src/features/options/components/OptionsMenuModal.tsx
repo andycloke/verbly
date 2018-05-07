@@ -7,6 +7,7 @@ import OptionsMenu from '../containers/OptionsMenu';
 import KeyboardShortcuts from './KeyboardShortcuts';
 
 const tabStyle = {
+  minWidth: 122,
   color: 'rgba(0, 0, 0, 0.54)',
   textTransform: 'none',
   fontSize: '13px'

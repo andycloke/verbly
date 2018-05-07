@@ -12,6 +12,8 @@ import SignUpForm from './SignUpForm';
 
 import './MainMenu.css';
 
+const tabStyle = { minWidth: 100 };
+
 class MainMenu extends React.PureComponent {
   render() {
     const peopleMenuSignUpSection = (
@@ -37,11 +39,13 @@ class MainMenu extends React.PureComponent {
         </div>
         <div className="MainMenu__outer--tabs">
           <Tabs initialSelectedIndex={1}>
-            <Tab label="People">{peopleMenuSignUpSection}</Tab>
-            <Tab label="Tenses">
+            <Tab style={tabStyle} label="People">
+              {peopleMenuSignUpSection}
+            </Tab>
+            <Tab style={tabStyle} label="Tenses">
               <TensesMenu />
             </Tab>
-            <Tab label="Verbs">
+            <Tab style={tabStyle} label="Verbs">
               <VerbsMenu />
             </Tab>
           </Tabs>
