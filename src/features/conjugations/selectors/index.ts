@@ -67,40 +67,37 @@ export const getAllInfinitives = (state: any): Array<string> =>
 export const getListOfAllConjugations = (state: any): Array<Conjugation> =>
   Object.values(getAllConjugations(state));
 
-export const getVerbsFilteredByUserOptions = (state: any): Array<string> => {
-  // TODO: add reselect
-  return getAllInfinitives(state)
-    .filter(
-      (infinitive: string): boolean =>
-        userDefinedVerbsOnly(state) ||
-        (irregularVerbsOnly(state) && isVerbIrregular(state, infinitive)) ||
-        (irregularVerbsExcluded(state) &&
-          !isVerbIrregular(state, infinitive)) ||
-        irregularVerbsIncluded(state)
-    )
-    .filter(
-      (infinitive: string): boolean =>
-        userDefinedVerbsOnly(state) ||
-        (reflexiveVerbsOnly(state) && isVerbReflexive(state, infinitive)) ||
-        (reflexiveVerbsExcluded(state) &&
-          !isVerbReflexive(state, infinitive)) ||
-        reflexiveVerbsIncluded(state)
-    )
-    .filter(
-      (infinitive: string): boolean =>
-        (commonVerbsOnly(state) && isVerbCommon(state, infinitive)) ||
-        allVerbsInPlay(state) ||
-        (userDefinedVerbsOnly(state) &&
-          getValidUserDefinedVerbs(state).includes(infinitive))
-    )
-    .filter(
-      (infinitive: string): boolean =>
-        userDefinedVerbsOnly(state) ||
-        (getErVerbsInPlay(state) && verbEndsInEr(state, infinitive)) ||
-        (getArVerbsInPlay(state) && verbEndsInAr(state, infinitive)) ||
-        (getIrVerbsInPlay(state) && verbEndsInIr(state, infinitive))
-    );
-};
+export const irregularVerbFilter = (state: any, infinitive: string): boolean =>
+  userDefinedVerbsOnly(state) ||
+  (irregularVerbsOnly(state) && isVerbIrregular(state, infinitive)) ||
+  (irregularVerbsExcluded(state) && !isVerbIrregular(state, infinitive)) ||
+  irregularVerbsIncluded(state);
+
+export const reflexiveVerbFilter = (state: any, infinitive: string): boolean =>
+  userDefinedVerbsOnly(state) ||
+  (reflexiveVerbsOnly(state) && isVerbReflexive(state, infinitive)) ||
+  (reflexiveVerbsExcluded(state) && !isVerbReflexive(state, infinitive)) ||
+  reflexiveVerbsIncluded(state);
+
+export const commonVerbFilter = (state: any, infinitive: string): boolean =>
+  (commonVerbsOnly(state) && isVerbCommon(state, infinitive)) ||
+  allVerbsInPlay(state) ||
+  (userDefinedVerbsOnly(state) &&
+    getValidUserDefinedVerbs(state).includes(infinitive));
+
+export const filterVerbForEnding = (state: any, infinitive: string): boolean =>
+  userDefinedVerbsOnly(state) ||
+  (getErVerbsInPlay(state) && verbEndsInEr(state, infinitive)) ||
+  (getArVerbsInPlay(state) && verbEndsInAr(state, infinitive)) ||
+  (getIrVerbsInPlay(state) && verbEndsInIr(state, infinitive));
+
+// TODO: add reselect
+export const getVerbsFilteredByUserOptions = (state: any): Array<string> =>
+  getAllInfinitives(state)
+    .filter((infinitive: string) => irregularVerbFilter(state, infinitive))
+    .filter((infinitive: string) => reflexiveVerbFilter(state, infinitive))
+    .filter((infinitive: string) => commonVerbFilter(state, infinitive))
+    .filter((infinitive: string) => filterVerbForEnding(state, infinitive));
 
 export const getNumberOfVerbsInPlay = (state: any): number =>
   getVerbsFilteredByUserOptions(state).length;
