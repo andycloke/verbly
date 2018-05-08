@@ -8,7 +8,6 @@ import ListRadioButton from '../../../../../features/common/components/ListRadio
 
 import { VerbsIncludedOptions, WhichVerbsOptions } from '../models';
 import { VerbEndingOptions } from '../models/endings';
-// TODO: checked={reflexive === VerbsIncludedOptions.Include} could use a selector?
 
 import './VerbsMenu.css';
 
