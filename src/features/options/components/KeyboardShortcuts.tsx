@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Table, TableBody, TableRow, TableRowColumn } from 'material-ui/Table';
-import { accentedLettersMap } from '../../game/const';
+import { KEYBOARD_SHORTCUTS } from '../const';
 
 type ShortcutRowProps = {
-  letter: string;
+  command: string;
   shortcut: string;
 };
 
-const ShortcutRow = ({ letter, shortcut }: ShortcutRowProps) => (
+const ShortcutRow = ({ command, shortcut }: ShortcutRowProps) => (
   <TableRow selectable={false}>
-    <TableRowColumn>{letter}</TableRowColumn>
+    <TableRowColumn>{command}</TableRowColumn>
     <TableRowColumn>{shortcut}</TableRowColumn>
   </TableRow>
 );
@@ -17,12 +17,8 @@ const ShortcutRow = ({ letter, shortcut }: ShortcutRowProps) => (
 const KeyboardShortcuts = () => (
   <Table>
     <TableBody displayRowCheckbox={false}>
-      {Object.entries(accentedLettersMap).map(([letter, accentedLetter]) => (
-        <ShortcutRow
-          key={letter}
-          letter={letter.toUpperCase()}
-          shortcut={`Shift - ${accentedLetter.toUpperCase()}`}
-        />
+      {KEYBOARD_SHORTCUTS.map(({ command, shortcut }) => (
+        <ShortcutRow key={command} command={command} shortcut={shortcut} />
       ))}
     </TableBody>
   </Table>

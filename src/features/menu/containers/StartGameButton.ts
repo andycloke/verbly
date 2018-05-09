@@ -20,4 +20,6 @@ const mapDispatchToProps = (dispatch: any): DispatchProps => ({
 });
 
 export type Props = StateProps & DispatchProps;
-export default connect(mapStateToProps, mapDispatchToProps)(StartGameButton);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  StartGameButton as any
+);

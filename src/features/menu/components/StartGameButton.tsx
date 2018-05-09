@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import ArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -10,18 +10,41 @@ import { pathToGame } from '../../../paths';
 type State = {
   cantStartModalOpen: boolean;
 };
-export default class StartGameButton extends React.PureComponent<Props, State> {
+class StartGameButton extends React.PureComponent<
+  Props & RouteComponentProps<any>,
+  State
+> {
   state = {
     cantStartModalOpen: false
   };
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyDown);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  }
+  handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      this.startGameOrOpenCantStartModal(true);
+    }
+  };
+
   handleClick = (e: React.MouseEvent<HTMLElement>): void => {
+    this.startGameOrOpenCantStartModal();
+  };
+
+  startGameOrOpenCantStartModal = (redirect: boolean = false) => {
     const { canStartGame, startGame } = this.props;
     if (canStartGame) {
       startGame();
+      if (redirect) {
+        this.props.history.push(pathToGame());
+      }
     } else {
       this.openCantStartModal();
     }
   };
+
   openCantStartModal = () => this.setState({ cantStartModalOpen: true });
   closeCantStartModal = () => this.setState({ cantStartModalOpen: false });
   render() {
@@ -53,3 +76,5 @@ export default class StartGameButton extends React.PureComponent<Props, State> {
     );
   }
 }
+
+export default withRouter(StartGameButton as any);
