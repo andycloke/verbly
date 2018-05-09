@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 import { pathToHome } from '../../../paths';
 import { DispatchProps } from '../containers/AppBar';
-import EndGameButton from '../containers/EndGameButton';
+import AppBarEndGameButton from '../containers/AppBarEndGameButton';
 
 import './AppBar.css';
 
@@ -24,7 +24,7 @@ const AppBar = ({ toggleOptionsMenuOpen }: DispatchProps) => {
           onClick={handleOptionsClick}
         />
       }
-      iconElementLeft={<EndGameButton />}
+      iconElementLeft={<AppBarEndGameButton />}
     />
   );
 };

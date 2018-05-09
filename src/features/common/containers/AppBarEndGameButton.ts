@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { resetGame } from '../../game/actions';
-import EndGameButton, { Props } from '../components/EndGameButton';
+import AppBarEndGameButton, { Props } from '../components/AppBarEndGameButton';
 
 const mapDispatchToProps = (dispatch: any): Props => ({
   resetGame: () => dispatch(resetGame())
@@ -9,4 +9,4 @@ const mapDispatchToProps = (dispatch: any): Props => ({
 
 export default connect(undefined, mapDispatchToProps, undefined, {
   pure: false
-})(EndGameButton as any);
+})(AppBarEndGameButton as any);
