@@ -1,13 +1,15 @@
 import * as moment from 'moment';
-import { getVerbsFilteredByUserOptions } from '../../conjugations/selectors';
+
 import {
   updateVerbTenseStatsAfterCorrect,
   updateVerbTenseStatsAfterIncorrect
-} from '../../stats/actions';
+} from '../../../core/features/stats/actions';
+import { getVerbsForTenseSortedByPercentageIncorrect } from '../../../core/features/stats/selectors';
+
+import { getVerbsFilteredByUserOptions } from '../../conjugations/selectors';
 import { updateNecessaryScoresAfterGame } from '../../scores/actions';
 import { getAllPeopleInPlay } from '../../menu/features/people/selectors';
 import { getInPlayTenses } from '../../menu/features/tenses/selectors';
-import { getVerbsForTenseSortedByPercentageIncorrect } from '../../stats/selectors';
 import { peopleMap } from '../../../const/models/people';
 import { N_GAME_VERB_TENSES, MAX_FRACTION_OF_OLD_VERBS } from '../const';
 import {
