@@ -5,9 +5,9 @@ import {
   updateVerbTenseStatsAfterIncorrect
 } from '../../../core/features/stats/actions';
 import { getVerbsForTenseSortedByPercentageIncorrect } from '../../../core/features/stats/selectors';
+import { updateNecessaryScoresAfterGame } from '../../../core/features/scores/actions';
 
 import { getVerbsFilteredByUserOptions } from '../../conjugations/selectors';
-import { updateNecessaryScoresAfterGame } from '../../scores/actions';
 import { getAllPeopleInPlay } from '../../menu/features/people/selectors';
 import { getInPlayTenses } from '../../menu/features/tenses/selectors';
 import { peopleMap } from '../../../const/models/people';

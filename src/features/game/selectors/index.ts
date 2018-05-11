@@ -1,4 +1,7 @@
 import * as moment from 'moment';
+
+import { getHighScore } from '../../../core/features/scores/selectors';
+
 import { People } from '../../../const/models/people';
 import { Game, VerbTense, CurrentQuestion } from '../models';
 import { CORRECT_ANSWERS_TARGET } from '../const';
@@ -17,7 +20,6 @@ import {
   getConjugationInTenseForPerson
 } from '../../conjugations/selectors';
 import { getDifficultyMultiplier } from '../../menu/selectors';
-import { getHighScore } from '../../scores/selectors';
 import {
   calculateAccuracyScore,
   calculateTimeTakenMultiplier,
