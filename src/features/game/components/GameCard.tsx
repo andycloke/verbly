@@ -3,9 +3,10 @@ import * as React from 'react';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 
+import { DISPLAY_TEXT } from '../../../core/constants/tenses';
+
 import CheckIcon from 'material-ui/svg-icons/navigation/check';
 import CrossIcon from 'material-ui/svg-icons/navigation/close';
-import displayText from '../../../const/display-text/tenses';
 
 import SubmitButton from './SubmitButton';
 
@@ -60,7 +61,7 @@ const GameCard = ({
       <div className="GameCard__wrapper">
         <span className="GameCard__innerText--border">Tense</span>
         <span className="GameCard__innerText--border GameCard__innerText--leftAlign GameCard__tense">
-          {tense ? displayText[tense].text : ''}
+          {tense ? DISPLAY_TEXT[tense].text : ''}
         </span>
         <span className="GameCard__innerText--border">Verb</span>
         <span className="GameCard__innerText--border GameCard__innerText--leftAlign GameCard__verb">

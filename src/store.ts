@@ -5,12 +5,12 @@ import persistConfig from './persistConfig';
 
 import stats from './core/features/stats/reducers';
 import scores from './core/features/scores/reducers';
+import game from './core/features/game/reducers';
 
 import options from './features/options/reducers';
 import peopleInPlay from './features/menu/features/people/reducers';
 import tensesInPlay from './features/menu/features/tenses/reducers';
 import verbsInPlay from './features/menu/features/verbs/reducers';
-import game from './features/game/reducers';
 import conjugations from './features/conjugations/reducers';
 
 declare global {

@@ -1,13 +1,6 @@
-export enum People {
-  Yo = 'Yo',
-  Tu = 'Tu',
-  El = 'El',
-  Nosotros = 'Nosotros',
-  Vosotros = 'Vosotros',
-  Ellos = 'Ellos'
-}
+import People from './People';
 
-export const peopleMap = {
+export default {
   [People.Yo]: ['Yo'],
   [People.Tu]: ['Tú'],
   [People.El]: ['Él', 'Ella', 'Usted'],

@@ -1,9 +1,10 @@
-import { personIsYo } from '../../../../../features/game/functions';
+import { People } from '../../../../../core/constants/people';
+import { personIsYo } from '../../../../../core/util';
+
 import { getOnlyImperativeTensesInPlay } from '../../tenses/selectors';
 import { PeopleInPlay } from '../models';
 import { PeopleMenuDataProps } from '../components/PeopleMenu';
 import DIFFICULTIES from '../const/difficulties';
-import { People } from '../../../../../const/models/people';
 
 const getPeopleInPlaySlice = (state: any): PeopleInPlay => state.peopleInPlay;
 

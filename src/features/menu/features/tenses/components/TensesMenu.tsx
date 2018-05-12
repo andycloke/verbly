@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import Checkbox from 'material-ui/Checkbox';
 import Subheader from 'material-ui/Subheader';
 import { List, ListItem } from 'material-ui/List';
+import Checkbox from 'material-ui/Checkbox';
+
+import { DISPLAY_TEXT } from '../../../../../core/constants/tenses';
 
 import { TensesInPlay } from '../models';
-import displayText from '../../../../../const/display-text/tenses';
 
 import './TensesMenu.css';
 
@@ -32,8 +33,8 @@ const TensesMenu = ({ inPlay, toggleTenseInPlay }: Props) => {
           return (
             <ListItem
               key={key}
-              primaryText={displayText[key].text}
-              secondaryText={displayText[key].example}
+              primaryText={DISPLAY_TEXT[key].text}
+              secondaryText={DISPLAY_TEXT[key].example}
               leftIcon={checkBox}
               onClick={makeClickHandler(key)}
             />

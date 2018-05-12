@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import * as moment from 'moment';
 
-import { startGame } from '../../game/actions';
+import { startGame } from '../../../core/features/game/actions';
 import StartGameButton from '../components/StartGameButton';
 import { getStartButtonProps } from '../selectors';
 

@@ -1,17 +1,18 @@
 import * as moment from 'moment';
 
+import { PEOPLE_MAP } from '../../../constants/people';
+
 import {
   updateVerbTenseStatsAfterCorrect,
   updateVerbTenseStatsAfterIncorrect
-} from '../../../core/features/stats/actions';
-import { getVerbsForTenseSortedByPercentageIncorrect } from '../../../core/features/stats/selectors';
-import { updateNecessaryScoresAfterGame } from '../../../core/features/scores/actions';
+} from '../../stats/actions';
+import { getVerbsForTenseSortedByPercentageIncorrect } from '../../stats/selectors';
+import { updateNecessaryScoresAfterGame } from '../../scores/actions';
 
-import { getVerbsFilteredByUserOptions } from '../../conjugations/selectors';
-import { getAllPeopleInPlay } from '../../menu/features/people/selectors';
-import { getInPlayTenses } from '../../menu/features/tenses/selectors';
-import { peopleMap } from '../../../const/models/people';
-import { N_GAME_VERB_TENSES, MAX_FRACTION_OF_OLD_VERBS } from '../const';
+import { getVerbsFilteredByUserOptions } from '../../../../features/conjugations/selectors';
+import { getAllPeopleInPlay } from '../../../../features/menu/features/people/selectors';
+import { getInPlayTenses } from '../../../../features/menu/features/tenses/selectors';
+import { N_GAME_VERB_TENSES, MAX_FRACTION_OF_OLD_VERBS } from '../constants';
 import {
   gameShouldEnd,
   isUserAnswerCorrect,
@@ -24,8 +25,12 @@ import {
 } from '../selectors';
 import { getNextVerbTenseToStudy } from '../logic';
 import { VerbTense } from '../models';
-import { tenseIsImperative, personIsYo } from '../functions';
-import { shuffle, randomElement } from '../../../util';
+import {
+  shuffle,
+  randomElement,
+  tenseIsImperative,
+  personIsYo
+} from '../../../util';
 
 export const actionTypes = {
   START_GAME: 'game/START_GAME',
@@ -160,7 +165,7 @@ export const newQuestion = () => {
       do {
         person = randomElement(getAllPeopleInPlay(state));
       } while (tenseIsImperative(tense) && personIsYo(person));
-      const displayPerson = randomElement(peopleMap[person]);
+      const displayPerson = randomElement(PEOPLE_MAP[person]);
       dispatch({
         type: actionTypes.NEW_QUESTION,
         payload: {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { resetGame } from '../../game/actions';
+import { resetGame } from '../../../core/features/game/actions';
 import AppBarEndGameButton, { Props } from '../components/AppBarEndGameButton';
 
 const mapDispatchToProps = (dispatch: any): Props => ({

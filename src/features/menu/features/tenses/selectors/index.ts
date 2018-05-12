@@ -1,7 +1,7 @@
 import { TensesInPlay } from '../models';
 import { TensesMenuDataProps } from '../components/TensesMenu';
 import DIFFICULTIES from '../const/difficulties';
-import { Tenses } from '../../../../../const/models/tenses';
+import { Tenses } from '../../../../../core/constants/tenses';
 
 const getTensesInPlaySlice = (state: any): TensesInPlay => state.tensesInPlay;
 

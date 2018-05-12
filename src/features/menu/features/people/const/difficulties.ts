@@ -1,4 +1,4 @@
-import { People } from '../../../../../const/models/people';
+import { People } from '../../../../../core/constants/people';
 
 export default {
   [People.Yo]: 0.2,

@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { peopleMap } from '../../../../../const/models/people';
+import { PEOPLE_MAP } from '../../../../../core/constants/people';
+
 import { PeopleInPlay } from '../models';
 import Checkbox from 'material-ui/Checkbox';
 import Subheader from 'material-ui/Subheader';
@@ -31,7 +32,7 @@ const PeopleMenu = ({ inPlay, togglePersonInPlay }: Props) => {
           return (
             <ListItem
               key={key}
-              primaryText={peopleMap[key].join(', ')}
+              primaryText={PEOPLE_MAP[key].join(', ')}
               leftIcon={checkBox}
               onClick={makeClickHandler(key)}
               style={{ padding: '3px 0' }}

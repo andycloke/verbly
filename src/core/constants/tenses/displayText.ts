@@ -1,6 +1,6 @@
-import { Tenses } from '../models/tenses';
+import Tenses from './Tenses';
 
-const DisplayText = {
+export default {
   [Tenses.IndicativePresent]: {
     text: 'Present',
     example: 'Yo hablo'
@@ -54,5 +54,3 @@ const DisplayText = {
     example: 'No hables!'
   }
 };
-
-export default DisplayText;

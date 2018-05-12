@@ -2,18 +2,18 @@ import * as React from 'react';
 
 import TextField from 'material-ui/TextField';
 
-import { Props } from '../containers/Game';
+import { Props } from '../../../core/features/game/containers/Game';
 import ConjugationsTable from '../containers/ConjugationsTable';
 import AccentedLetterKey from './AccentedLetterKey';
 import GameCard from './GameCard';
 import {
   KeyboardKeys,
   keysLetterCanBeAccentedLetter,
-  accentedLettersMap,
+  ACCENTED_LETTER_MAP,
   DISPLAY_CORRECT_ICON_DURATION,
   INPUT_FUNCS_DELAY,
   AUDIO_OPTIONS
-} from '../const';
+} from '../../../core/features/game/constants';
 
 import './Game.css';
 
@@ -61,7 +61,9 @@ class Game extends React.PureComponent<Props, State> {
     }
     if (keysLetterCanBeAccentedLetter(key) && this.state.shiftDown) {
       e.preventDefault();
-      this.addAccentedLetterToUserAnswer(accentedLettersMap[key.toLowerCase()]);
+      this.addAccentedLetterToUserAnswer(
+        ACCENTED_LETTER_MAP[key.toLowerCase()]
+      );
       return;
     }
   };
@@ -202,7 +204,7 @@ class Game extends React.PureComponent<Props, State> {
           <ConjugationsTable />
         ) : (
           <div className="Game__accentedLetters">
-            {Object.values(accentedLettersMap).map((letter: string) => (
+            {Object.values(ACCENTED_LETTER_MAP).map((letter: string) => (
               <AccentedLetterKey
                 key={letter}
                 letter={letter}

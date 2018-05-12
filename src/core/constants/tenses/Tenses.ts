@@ -1,4 +1,4 @@
-export enum Tenses {
+enum Tenses {
   IndicativePresent = 'IndicativePresent',
   IndicativePresentProgressive = 'IndicativePresentProgressive',
   IndicativeFuture = 'IndicativeFuture',
@@ -13,3 +13,5 @@ export enum Tenses {
   ImperativeAffirmativePresent = 'ImperativeAffirmativePresent',
   ImperativeNegativePresent = 'ImperativeNegativePresent'
 }
+
+export default Tenses;

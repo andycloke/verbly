@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Table, TableBody, TableRow, TableRowColumn } from 'material-ui/Table';
-import { KEYBOARD_SHORTCUTS } from '../const';
+import { KEYBOARD_SHORTCUTS } from '../constants';
 
 type ShortcutRowProps = {
   command: string;

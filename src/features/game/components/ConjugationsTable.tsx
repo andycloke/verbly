@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import Paper from 'material-ui/Paper';
 
-import { StateProps } from '../containers/ConjugationsTable';
+import { StateProps } from '../../../core/features/game/containers/ConjugationsTable';
 
 import './ConjugationsTable.css';
 

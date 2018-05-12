@@ -1,30 +1,33 @@
 import * as moment from 'moment';
 
-import { getHighScore } from '../../../core/features/scores/selectors';
+import { getHighScore } from '../../scores/selectors';
+import { People } from '../../../constants/people';
 
-import { People } from '../../../const/models/people';
 import { Game, VerbTense, CurrentQuestion } from '../models';
-import { CORRECT_ANSWERS_TARGET } from '../const';
-import { StateProps } from '../containers/Game';
-import { ConjugationDisplayPair } from '../containers/ConjugationsTable';
-import { StateProps as ConjugationsTableStateProps } from '../containers/ConjugationsTable';
-import { StateProps as ProgressBarStateProps } from '../containers/ProgressBar';
-import { StateProps as ReviewStateProps } from '../containers/Review';
-import { StateProps as GameContainerStateProps } from '../containers/GameContainer';
+import { CORRECT_ANSWERS_TARGET } from '../constants';
 import {
   getDisplayEnglishInfinitive,
   getAudioFeedback
-} from '../../options/selectors';
+} from '../../../../features/options/selectors';
 import {
   getEnglishInfinitive,
   getConjugationInTenseForPerson
-} from '../../conjugations/selectors';
-import { getDifficultyMultiplier } from '../../menu/selectors';
+} from '../../../../features/conjugations/selectors';
+import { getDifficultyMultiplier } from '../../../../features/menu/selectors';
 import {
   calculateAccuracyScore,
   calculateTimeTakenMultiplier,
   calculateGameScore
 } from '../logic';
+
+import { StateProps } from '../containers/Game';
+import {
+  ConjugationDisplayPair,
+  StateProps as ConjugationsTableStateProps
+} from '../containers/ConjugationsTable';
+import { StateProps as ProgressBarStateProps } from '../containers/ProgressBar';
+import { StateProps as ReviewStateProps } from '../containers/Review';
+import { StateProps as GameContainerStateProps } from '../containers/GameContainer';
 
 export const getGameSlice = (state: any): Game => state.game;
 

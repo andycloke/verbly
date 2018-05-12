@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Props } from '../containers/ProgressBar';
+import { Props } from '../../../core/features/game/containers/ProgressBar';
 import LinearProgress from 'material-ui/LinearProgress';
 
 import { positiveGreen } from './GameCard';

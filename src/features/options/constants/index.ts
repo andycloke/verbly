@@ -1,7 +1,7 @@
-import { accentedLettersMap } from '../../game/const';
+import { ACCENTED_LETTER_MAP } from '../../../core/features/game/constants';
 
 export const KEYBOARD_SHORTCUTS = [
-  ...Object.entries(accentedLettersMap).map(([letter, accentedLetter]) => ({
+  ...Object.entries(ACCENTED_LETTER_MAP).map(([letter, accentedLetter]) => ({
     command: letter,
     shortcut: `Shift - ${accentedLetter.toUpperCase()}`
   })),

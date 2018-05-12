@@ -1,4 +1,4 @@
-import { People } from '../../../../../const/models/people';
+import { People } from '../../../../../core/constants/people';
 
 export type PeopleInPlay = {
   [People.Yo]: boolean;

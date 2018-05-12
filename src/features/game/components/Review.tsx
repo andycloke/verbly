@@ -5,7 +5,7 @@ import FlatButton from 'material-ui/FlatButton';
 import { Table, TableBody } from 'material-ui/Table';
 
 import { pathToGame, pathToHome } from '../../../paths';
-import { Props } from '../containers/Review';
+import { Props } from '../../../core/features/game/containers/Review';
 import ReviewRow from './ReviewRow';
 
 const wrapperStyle = { maxWidth: '500px', margin: '0 auto' };

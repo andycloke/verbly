@@ -13,6 +13,7 @@ const tabStyle = {
   fontSize: '13px'
 };
 
+// TODO: use route not redux for modal opening so same store can be used on native.
 const OptionsMenuModal = ({ open, toggleOptionsMenuOpen }: Props) => {
   const handleRequestClose = (buttonClicked: boolean): void =>
     toggleOptionsMenuOpen();

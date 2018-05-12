@@ -6,7 +6,7 @@ export const N_GAME_VERB_TENSES = 10; // max number of different verbs tested in
 export const MAX_FRACTION_OF_OLD_VERBS = 0.6;
 export const CORRECT_ANSWERS_TARGET = 10;
 
-export const accentedLettersMap = {
+export const ACCENTED_LETTER_MAP = {
   a: 'á',
   e: 'é',
   i: 'í',
@@ -14,7 +14,8 @@ export const accentedLettersMap = {
   o: 'ó',
   u: 'ú'
 };
-export const ACCENTED_LETTER_KEYS = [...Object.keys(accentedLettersMap)];
+export const ACCENTED_LETTER_KEYS = [...Object.keys(ACCENTED_LETTER_MAP)];
+// TODO should be logic not in a constants folder!
 export const keysLetterCanBeAccentedLetter = (key: string): boolean =>
   ACCENTED_LETTER_KEYS.includes(key) ||
   ACCENTED_LETTER_KEYS.includes(key.toLowerCase());
