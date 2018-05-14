@@ -65,9 +65,6 @@ export const getValidUserDefinedVerbs = (state: any): Array<string> => {
   );
 };
 
-export const getNumberOfValidUserDefinedVerbs = (state: any): number =>
-  getValidUserDefinedVerbs(state).length;
-
 export const moreThanOneVerbInPlay = (state: any): boolean =>
   getNumberOfVerbsInPlay(state) > 0;
 
