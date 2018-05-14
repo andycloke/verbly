@@ -1,7 +1,7 @@
+import { Tenses } from '../../../../../constants/tenses';
 import { TensesInPlay } from '../models';
-import { TensesMenuDataProps } from '../components/TensesMenu';
-import DIFFICULTIES from '../const/difficulties';
-import { Tenses } from '../../../../../core/constants/tenses';
+import { TensesMenuStateProps } from '../containers/TensesMenu';
+import DIFFICULTIES from '../constants/difficulties';
 
 const getTensesInPlaySlice = (state: any): TensesInPlay => state.tensesInPlay;
 
@@ -32,7 +32,7 @@ export const getSomeImperativeTensesInPlay = (state: any): boolean =>
 export const moreThanOneTenseInPlay = (state: any): boolean =>
   getNumberOfTensesInPlay(state) > 0;
 
-export const getTensesMenuProps = (state: any): TensesMenuDataProps => ({
+export const getTensesMenuProps = (state: any): TensesMenuStateProps => ({
   inPlay: getTensesInPlaySlice(state)
 });
 

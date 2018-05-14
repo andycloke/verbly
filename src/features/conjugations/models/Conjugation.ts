@@ -1,4 +1,4 @@
-import { VerbEndingOptions } from '../../menu/features/verbs/models/endings';
+import { VerbEndingOptions } from '../../../core/features/menu/features/verbs/models/endings';
 import { Tenses } from '../../../core/constants/tenses';
 import { People } from '../../../core/constants/people';
 

@@ -1,23 +1,13 @@
 import * as React from 'react';
 
 import { PEOPLE_MAP } from '../../../../../core/constants/people';
+import { Props } from '../../../../../core/features/menu/features/people/containers/PeopleMenu';
 
-import { PeopleInPlay } from '../models';
 import Checkbox from 'material-ui/Checkbox';
 import Subheader from 'material-ui/Subheader';
 import { List, ListItem } from 'material-ui/List';
 
 import './PeopleMenu.css';
-
-export type PeopleMenuDataProps = {
-  inPlay: PeopleInPlay;
-};
-
-type PeopleMenuDispatchProps = {
-  togglePersonInPlay: (person: string) => any;
-};
-
-type Props = PeopleMenuDataProps & PeopleMenuDispatchProps;
 
 const PeopleMenu = ({ inPlay, togglePersonInPlay }: Props) => {
   const makeClickHandler = (person: string) => (

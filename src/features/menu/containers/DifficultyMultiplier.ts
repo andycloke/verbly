@@ -1,14 +1,4 @@
-import { connect } from 'react-redux';
-import { getDifficultyMultiplier } from '../selectors';
+import makeContainer from '../../../core/features/menu/containers/DifficultyMultiplier';
 import DifficultyMultiplier from '../components/DifficultyMultiplier';
 
-export type StateProps = {
-  difficultyMultiplier: number;
-};
-
-const mapStateToProps = (state: any): StateProps => ({
-  difficultyMultiplier: getDifficultyMultiplier(state)
-});
-
-export type Props = StateProps;
-export default connect(mapStateToProps)(DifficultyMultiplier);
+export default makeContainer(DifficultyMultiplier);

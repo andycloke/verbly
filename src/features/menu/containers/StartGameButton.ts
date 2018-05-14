@@ -1,25 +1,4 @@
-import { connect } from 'react-redux';
-import * as moment from 'moment';
-
-import { startGame } from '../../../core/features/game/actions';
+import makeContainer from '../../../core/features/menu/containers/StartGameButton';
 import StartGameButton from '../components/StartGameButton';
-import { getStartButtonProps } from '../selectors';
 
-export type StateProps = {
-  canStartGame: boolean;
-};
-
-export type DispatchProps = {
-  startGame: () => void;
-};
-
-const mapStateToProps = (state: any): StateProps => getStartButtonProps(state);
-
-const mapDispatchToProps = (dispatch: any): DispatchProps => ({
-  startGame: () => dispatch(startGame(moment().format()))
-});
-
-export type Props = StateProps & DispatchProps;
-export default connect(mapStateToProps, mapDispatchToProps)(
-  StartGameButton as any
-);
+export default makeContainer(StartGameButton);

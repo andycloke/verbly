@@ -12,8 +12,8 @@ import {
   getErVerbsInPlay,
   getArVerbsInPlay,
   getIrVerbsInPlay
-} from '../../menu/features/verbs/selectors';
-import { VerbEndingOptions } from '../../menu/features/verbs/models/endings';
+} from '../../../core/features/menu/features/verbs/selectors';
+import { VerbEndingOptions } from '../../../core/features/menu/features/verbs/models/endings';
 import { Conjugation } from '../models/Conjugation';
 
 import {

@@ -5,20 +5,9 @@ import { List, ListItem } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 
 import { DISPLAY_TEXT } from '../../../../../core/constants/tenses';
-
-import { TensesInPlay } from '../models';
+import { Props } from '../../../../../core/features/menu/features/tenses/containers/TensesMenu';
 
 import './TensesMenu.css';
-
-export type TensesMenuDataProps = {
-  inPlay: TensesInPlay;
-};
-
-type TensesMenuDispatchProps = {
-  toggleTenseInPlay: (tense: string) => any;
-};
-
-type Props = TensesMenuDataProps & TensesMenuDispatchProps;
 
 const TensesMenu = ({ inPlay, toggleTenseInPlay }: Props) => {
   const makeClickHandler = (tense: string) => (

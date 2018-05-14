@@ -2,9 +2,9 @@ import * as React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
-import { AllDataProps } from '../containers/CantStartModal';
+import { Props } from '../../../core/features/menu/containers/CantStartModal';
 
-const CantStartModal = ({ missingItems, open, closeModal }: AllDataProps) => {
+const CantStartModal = ({ missingItems, open, closeModal }: Props) => {
   let missingItemsText = '';
   if (missingItems.length === 3) {
     missingItemsText = `${missingItems[0]}, ${missingItems[1]} & ${

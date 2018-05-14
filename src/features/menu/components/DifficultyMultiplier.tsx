@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Props } from '../containers/DifficultyMultiplier';
+import { Props } from '../../../core/features/menu/containers/DifficultyMultiplier';
 
 import './DifficultyMultiplier.css';
 

@@ -1,4 +1,4 @@
-import { Tenses } from '../../../../../core/constants/tenses';
+import { Tenses } from '../../../../../constants/tenses';
 
 export type TensesInPlay = {
   [Tenses.IndicativePresent]: boolean;

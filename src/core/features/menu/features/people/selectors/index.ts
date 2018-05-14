@@ -1,10 +1,9 @@
-import { People } from '../../../../../core/constants/people';
-import { personIsYo } from '../../../../../core/util';
-
+import { personIsYo } from '../../../../../util';
+import { People } from '../../../../../constants/people';
 import { getOnlyImperativeTensesInPlay } from '../../tenses/selectors';
+import { PeopleMenuStateProps } from '../containers/PeopleMenu';
+import DIFFICULTIES from '../constants/difficulties';
 import { PeopleInPlay } from '../models';
-import { PeopleMenuDataProps } from '../components/PeopleMenu';
-import DIFFICULTIES from '../const/difficulties';
 
 const getPeopleInPlaySlice = (state: any): PeopleInPlay => state.peopleInPlay;
 
@@ -24,7 +23,7 @@ export const getOnlyYoInPlay = (state: any): boolean =>
 export const moreThanOnePersonInPlay = (state: any): boolean =>
   getNumberOfPeopleInPlay(state) > 0;
 
-export const getPeopleMenuProps = (state: any): PeopleMenuDataProps => ({
+export const getPeopleMenuProps = (state: any): PeopleMenuStateProps => ({
   inPlay: getPeopleInPlaySlice(state)
 });
 

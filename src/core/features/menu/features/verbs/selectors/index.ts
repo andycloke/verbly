@@ -5,16 +5,17 @@ import {
 } from '../models';
 import { EndingsInPlay, VerbEndingOptions } from '../models/endings';
 import { StateProps as VerbsMenuStateProps } from '../containers/VerbsMenu';
+// TODO: shouldnt be importing from features - need to add getConjugationsFetchedWrapper in web stuff that handles that
 import {
   getConjugationsFetched,
   getAllInfinitives,
   getNumberOfVerbsInPlay
-} from '../../../../conjugations/selectors';
+} from '../../../../../../features/conjugations/selectors';
 import {
   IRREGULAR_DIFFICULTIES,
   REFLEXIVE_DIFFICULTIES,
   WHICH_VERBS_DIFFICULTIES
-} from '../const/difficulties';
+} from '../constants/difficulties';
 
 export const getVerbsInPlaySlice = (state: any): VerbsInPlay =>
   state.verbsInPlay;

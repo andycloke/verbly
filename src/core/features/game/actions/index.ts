@@ -1,6 +1,12 @@
 import * as moment from 'moment';
 
 import { PEOPLE_MAP } from '../../../constants/people';
+import {
+  shuffle,
+  randomElement,
+  tenseIsImperative,
+  personIsYo
+} from '../../../util';
 
 import {
   updateVerbTenseStatsAfterCorrect,
@@ -8,10 +14,10 @@ import {
 } from '../../stats/actions';
 import { getVerbsForTenseSortedByPercentageIncorrect } from '../../stats/selectors';
 import { updateNecessaryScoresAfterGame } from '../../scores/actions';
-
 import { getVerbsFilteredByUserOptions } from '../../../../features/conjugations/selectors';
-import { getAllPeopleInPlay } from '../../../../features/menu/features/people/selectors';
-import { getInPlayTenses } from '../../../../features/menu/features/tenses/selectors';
+import { getAllPeopleInPlay } from '../../menu/features/people/selectors';
+import { getInPlayTenses } from '../../menu/features/tenses/selectors';
+
 import { N_GAME_VERB_TENSES, MAX_FRACTION_OF_OLD_VERBS } from '../constants';
 import {
   gameShouldEnd,
@@ -25,12 +31,6 @@ import {
 } from '../selectors';
 import { getNextVerbTenseToStudy } from '../logic';
 import { VerbTense } from '../models';
-import {
-  shuffle,
-  randomElement,
-  tenseIsImperative,
-  personIsYo
-} from '../../../util';
 
 export const actionTypes = {
   START_GAME: 'game/START_GAME',

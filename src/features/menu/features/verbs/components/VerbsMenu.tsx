@@ -3,11 +3,14 @@ import Subheader from 'material-ui/Subheader';
 import TextField from 'material-ui/TextField';
 import { List } from 'material-ui/List';
 
-import { Props } from '../containers/VerbsMenu';
-import ListRadioButton from '../../../../../features/common/components/ListRadioButton';
+import { Props } from '../../../../../core/features/menu/features/verbs/containers/VerbsMenu';
+import {
+  VerbsIncludedOptions,
+  WhichVerbsOptions
+} from '../../../../../core/features/menu/features/verbs/models';
+import { VerbEndingOptions } from '../../../../../core/features/menu/features/verbs/models/endings';
 
-import { VerbsIncludedOptions, WhichVerbsOptions } from '../models';
-import { VerbEndingOptions } from '../models/endings';
+import ListRadioButton from '../../../../../features/common/components/ListRadioButton';
 
 import './VerbsMenu.css';
 

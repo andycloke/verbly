@@ -3,7 +3,7 @@ import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import ArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import { Props } from '../containers/StartGameButton';
+import { Props } from '../../../core/features/menu/containers/StartGameButton';
 import CantStartModal from '../containers/CantStartModal';
 import { pathToGame } from '../../../paths';
 
