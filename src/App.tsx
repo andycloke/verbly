@@ -9,7 +9,7 @@ import AppBar from './features/common/components/AppBar';
 import MainMenu from './features/menu/components/MainMenu';
 import GameContainer from './features/game/containers/GameContainer';
 
-import { pathToHome, pathToGame } from './paths';
+import { pathToHome, pathToGame, pathToOptions } from './paths';
 
 import store from './store';
 import './App.css';
@@ -28,7 +28,8 @@ class App extends React.PureComponent {
                 <AppBar />
                 <div className="App__inner">
                   <Switch>
-                    <Route path={pathToHome()} component={MainMenu} />
+                    <Route exact path={pathToOptions()} component={MainMenu} />
+                    <Route exact path={pathToHome()} component={MainMenu} />
                     <Route
                       exact
                       path={pathToGame()}
