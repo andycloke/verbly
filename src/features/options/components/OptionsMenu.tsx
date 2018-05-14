@@ -2,7 +2,7 @@ import * as React from 'react';
 import Toggle from 'material-ui/Toggle';
 import { List, ListItem } from 'material-ui/List';
 
-import { Props } from '../containers/OptionsMenu';
+import { Props } from '../../../core/features/options/containers/OptionsMenu';
 
 const toggleStyle = { right: 15 };
 

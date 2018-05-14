@@ -8,7 +8,7 @@ import { CORRECT_ANSWERS_TARGET } from '../constants';
 import {
   getDisplayEnglishInfinitive,
   getAudioFeedback
-} from '../../../../features/options/selectors';
+} from '../../options/selectors';
 import {
   getEnglishInfinitive,
   getConjugationInTenseForPerson

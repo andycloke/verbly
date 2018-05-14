@@ -9,8 +9,8 @@ import game from './core/features/game/reducers';
 import tensesInPlay from './core/features/menu/features/tenses/reducers';
 import peopleInPlay from './core/features/menu/features/people/reducers';
 import verbsInPlay from './core/features/menu/features/verbs/reducers';
+import options from './core/features/options/reducers';
 
-import options from './features/options/reducers';
 import conjugations from './features/conjugations/reducers';
 
 declare global {

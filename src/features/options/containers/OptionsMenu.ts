@@ -1,25 +1,4 @@
-import { connect } from 'react-redux';
-
-import { getOptionsMenuProps } from '../selectors';
+import makeContainer from '../../../core/features/options/containers/OptionsMenu';
 import OptionsMenu from '../components/OptionsMenu';
-import { toggleEnglishInfinitive, toggleAudioFeedback } from '../actions';
 
-export type StateProps = {
-  displayEnglishInfinitive: boolean;
-  audioFeedback: boolean;
-};
-
-type DispatchProps = {
-  toggleEnglishInfinitive: () => any;
-  toggleAudioFeedback: () => any;
-};
-
-const mapStateToProps = (state: any): StateProps => getOptionsMenuProps(state);
-
-const mapDispatchToProps = (dispatch: any): DispatchProps => ({
-  toggleEnglishInfinitive: () => dispatch(toggleEnglishInfinitive()),
-  toggleAudioFeedback: () => dispatch(toggleAudioFeedback())
-});
-
-export type Props = StateProps & DispatchProps;
-export default connect(mapStateToProps, mapDispatchToProps)(OptionsMenu);
+export default makeContainer(OptionsMenu);
