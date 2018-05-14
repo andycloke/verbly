@@ -16,13 +16,15 @@ export type StateProps = {
   irregular: VerbsIncludedOptions;
   whichVerbs: WhichVerbsOptions;
   userDefinedVerbs: Array<string>;
-  conjugationsFetched: boolean;
   erVerbsInPlay: boolean;
   arVerbsInPlay: boolean;
   irVerbsInPlay: boolean;
 };
 
-const mapStateToProps = (state: any): StateProps => getVerbsMenuProps(state);
+const mapStateToProps = (state: any, ownProps: any): StateProps => ({
+  ...ownProps,
+  ...getVerbsMenuProps(state)
+});
 
 type DispatchProps = {
   setReflexiveVerbsInPlay: (option: string) => any;

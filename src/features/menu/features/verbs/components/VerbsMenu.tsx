@@ -3,7 +3,7 @@ import Subheader from 'material-ui/Subheader';
 import TextField from 'material-ui/TextField';
 import { List } from 'material-ui/List';
 
-import { Props } from '../../../../../core/features/menu/features/verbs/containers/VerbsMenu';
+import { Props as CoreProps } from '../../../../../core/features/menu/features/verbs/containers/VerbsMenu';
 import {
   VerbsIncludedOptions,
   WhichVerbsOptions
@@ -17,6 +17,8 @@ import './VerbsMenu.css';
 type State = {
   whichVerbsInputValue: string;
 };
+
+type Props = CoreProps & { conjugationsFetched: boolean };
 
 export default class VerbsMenu extends React.PureComponent<Props, State> {
   constructor(props: Props) {

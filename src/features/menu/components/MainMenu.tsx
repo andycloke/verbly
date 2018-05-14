@@ -14,8 +14,13 @@ import './MainMenu.css';
 
 const tabStyle = { minWidth: 100 };
 
-class MainMenu extends React.PureComponent {
+type Props = {
+  conjugationsFetched: boolean;
+};
+
+class MainMenu extends React.PureComponent<Props> {
   render() {
+    const { conjugationsFetched } = this.props;
     const peopleMenuSignUpSection = (
       <div className="MainMenu__peopleSignUpSection">
         <PeopleMenu />
@@ -34,7 +39,7 @@ class MainMenu extends React.PureComponent {
           {peopleMenuSignUpSection}
           <div className="MainMenu_rightContainer">
             <TensesMenu />
-            <VerbsMenu />
+            <VerbsMenu conjugationsFetched={conjugationsFetched} />
           </div>
         </div>
         <div className="MainMenu__outer--tabs">
@@ -46,7 +51,7 @@ class MainMenu extends React.PureComponent {
               <TensesMenu />
             </Tab>
             <Tab style={tabStyle} label="Verbs">
-              <VerbsMenu />
+              <VerbsMenu conjugationsFetched={conjugationsFetched} />
             </Tab>
           </Tabs>
         </div>

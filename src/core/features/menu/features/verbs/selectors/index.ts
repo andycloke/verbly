@@ -5,9 +5,8 @@ import {
 } from '../models';
 import { EndingsInPlay, VerbEndingOptions } from '../models/endings';
 import { StateProps as VerbsMenuStateProps } from '../containers/VerbsMenu';
-// TODO: shouldnt be importing from features - need to add getConjugationsFetchedWrapper in web stuff that handles that
+// TODO: shouldnt be importing from features
 import {
-  getConjugationsFetched,
   getAllInfinitives,
   getNumberOfVerbsInPlay
 } from '../../../../../../features/conjugations/selectors';
@@ -91,8 +90,7 @@ export const getVerbsMenuProps = (state: any): VerbsMenuStateProps => ({
   userDefinedVerbs: getUserDefinedVerbs(state),
   erVerbsInPlay: getErVerbsInPlay(state),
   irVerbsInPlay: getIrVerbsInPlay(state),
-  arVerbsInPlay: getArVerbsInPlay(state),
-  conjugationsFetched: getConjugationsFetched(state)
+  arVerbsInPlay: getArVerbsInPlay(state)
 });
 
 export const getVerbsDifficultyFactor = (state: any): number =>
