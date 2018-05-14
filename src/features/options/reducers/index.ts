@@ -13,11 +13,6 @@ const reducer = (options: Options = initialOptions, action: any) => {
         ...options,
         audioFeedback: !options.audioFeedback
       };
-    case actionTypes.TOGGLE_OPTIONS_MENU_OPEN:
-      return {
-        ...options,
-        optionsModalOpen: !options.optionsModalOpen
-      };
     default:
       return options;
   }

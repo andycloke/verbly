@@ -1,10 +1,11 @@
 import * as React from 'react';
 import Dialog from 'material-ui/Dialog';
 import { Tabs, Tab } from 'material-ui/Tabs';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { Props } from '../containers/OptionsMenuModal';
 import OptionsMenu from '../containers/OptionsMenu';
 import KeyboardShortcuts from './KeyboardShortcuts';
+import { pathToHome } from '../../../paths';
 
 const tabStyle = {
   minWidth: 122,
@@ -13,15 +14,17 @@ const tabStyle = {
   fontSize: '13px'
 };
 
-// TODO: use route not redux for modal opening so same store can be used on native.
-const OptionsMenuModal = ({ open, toggleOptionsMenuOpen }: Props) => {
-  const handleRequestClose = (buttonClicked: boolean): void =>
-    toggleOptionsMenuOpen();
+type Props = RouteComponentProps<any>;
+
+const OptionsMenuModal = ({ history }: Props) => {
+  const handleRequestClose = (buttonClicked: boolean): void => {
+    history.push(pathToHome());
+  };
   return (
     <Dialog
       contentStyle={{ width: '86%' }}
       bodyStyle={{ padding: '15px' }}
-      open={open}
+      open
       onRequestClose={handleRequestClose}
     >
       <Tabs
@@ -40,4 +43,4 @@ const OptionsMenuModal = ({ open, toggleOptionsMenuOpen }: Props) => {
   );
 };
 
-export default OptionsMenuModal;
+export default withRouter(OptionsMenuModal);

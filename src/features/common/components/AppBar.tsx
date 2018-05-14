@@ -4,25 +4,24 @@ import MaterialAppBar from 'material-ui/AppBar';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import FlatButton from 'material-ui/FlatButton';
 
-import { pathToHome } from '../../../paths';
-import { DispatchProps } from '../containers/AppBar';
+import { pathToHome, pathToOptions } from '../../../paths';
 import AppBarEndGameButton from '../containers/AppBarEndGameButton';
 
 import './AppBar.css';
 
-const AppBar = ({ toggleOptionsMenuOpen }: DispatchProps) => {
-  const handleOptionsClick = (e: React.MouseEvent<HTMLButtonElement>): void =>
-    toggleOptionsMenuOpen();
+const AppBar = () => {
   return (
     <MaterialAppBar
       className="AppBar__outer"
       title={<Link to={pathToHome()}>Verbly</Link>}
       iconElementRight={
-        <FlatButton
-          label="Options"
-          icon={<SettingsIcon />}
-          onClick={handleOptionsClick}
-        />
+        <Link to={pathToOptions()}>
+          <FlatButton
+            label="Options"
+            icon={<SettingsIcon />}
+            style={{ color: 'white', marginTop: 7 }}
+          />
+        </Link>
       }
       iconElementLeft={<AppBarEndGameButton />}
     />

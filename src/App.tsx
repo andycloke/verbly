@@ -5,12 +5,11 @@ import * as ReactGA from 'react-ga';
 import { PersistGate } from 'redux-persist/integration/react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import AppBar from './features/common/containers/AppBar';
+import AppBar from './features/common/components/AppBar';
 import MainMenu from './features/menu/components/MainMenu';
 import GameContainer from './features/game/containers/GameContainer';
 
 import { pathToHome, pathToGame } from './paths';
-import OptionsMenuModal from './features/options/containers/OptionsMenuModal';
 
 import store from './store';
 import './App.css';
@@ -29,7 +28,7 @@ class App extends React.PureComponent {
                 <AppBar />
                 <div className="App__inner">
                   <Switch>
-                    <Route exact path={pathToHome()} component={MainMenu} />
+                    <Route path={pathToHome()} component={MainMenu} />
                     <Route
                       exact
                       path={pathToGame()}
@@ -38,7 +37,6 @@ class App extends React.PureComponent {
                     <Redirect to={pathToHome()} />
                   </Switch>
                 </div>
-                <OptionsMenuModal />
               </div>
             </MuiThemeProvider>
           </BrowserRouter>

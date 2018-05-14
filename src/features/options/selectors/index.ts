@@ -8,9 +8,6 @@ export const getDisplayEnglishInfinitive = (state: any): boolean =>
 export const getAudioFeedback = (state: any): boolean =>
   getOptionsSlice(state).audioFeedback;
 
-export const getOptionModalOpen = (state: any): boolean =>
-  getOptionsSlice(state).optionsModalOpen;
-
 export const getOptionsMenuProps = (state: any) => ({
   displayEnglishInfinitive: getDisplayEnglishInfinitive(state),
   audioFeedback: getAudioFeedback(state)

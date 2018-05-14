@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
+import { Route } from 'react-router-dom';
 
 import PeopleMenu from '../features/people/containers/PeopleMenu';
 import TensesMenu from '../features/tenses/containers/TensesMenu';
@@ -7,6 +8,9 @@ import VerbsMenu from '../features/verbs/containers/VerbsMenu';
 import ConjugationsFetchWrapper from '../../conjugations/containers/ConjugationsFetchWrapper';
 import StartGameButton from '../containers/StartGameButton';
 import DifficultyMultiplier from '../containers/DifficultyMultiplier';
+import OptionsMenuModal from '../../../features/options/components/OptionsMenuModal';
+
+import { pathToOptions } from '../../../paths';
 
 import SignUpForm from './SignUpForm';
 
@@ -18,7 +22,7 @@ type Props = {
   conjugationsFetched: boolean;
 };
 
-class MainMenu extends React.PureComponent<Props> {
+class MainMenu extends React.Component<Props> {
   render() {
     const { conjugationsFetched } = this.props;
     const peopleMenuSignUpSection = (
@@ -29,6 +33,7 @@ class MainMenu extends React.PureComponent<Props> {
     );
     return (
       <div>
+        <Route exact path={pathToOptions()} component={OptionsMenuModal} />
         <div className="MainMenu__difficultyFactor">
           <DifficultyMultiplier />
         </div>
