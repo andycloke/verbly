@@ -14,7 +14,7 @@ import {
 } from '../../stats/actions';
 import { getVerbsForTenseSortedByPercentageIncorrect } from '../../stats/selectors';
 import { updateNecessaryScoresAfterGame } from '../../scores/actions';
-import { getVerbsFilteredByUserOptions } from '../../../../features/conjugations/selectors';
+import { getVerbsFilteredByUserOptions } from '../../conjugations/selectors';
 import { getAllPeopleInPlay } from '../../menu/features/people/selectors';
 import { getInPlayTenses } from '../../menu/features/tenses/selectors';
 

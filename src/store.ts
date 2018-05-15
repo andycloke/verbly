@@ -10,8 +10,9 @@ import tensesInPlay from './core/features/menu/features/tenses/reducers';
 import peopleInPlay from './core/features/menu/features/people/reducers';
 import verbsInPlay from './core/features/menu/features/verbs/reducers';
 import options from './core/features/options/reducers';
+import conjugations from './core/features/conjugations/reducers';
 
-import conjugations from './features/conjugations/reducers';
+import conjugationsFetch from './features/conjugations/reducers';
 
 declare global {
   interface Window {
@@ -28,6 +29,7 @@ const reducer = combineReducers({
   verbsInPlay,
   game,
   conjugations,
+  conjugationsFetch,
   stats,
   scores
 });

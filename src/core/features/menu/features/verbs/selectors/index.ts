@@ -5,11 +5,10 @@ import {
 } from '../models';
 import { EndingsInPlay, VerbEndingOptions } from '../models/endings';
 import { StateProps as VerbsMenuStateProps } from '../containers/VerbsMenu';
-// TODO: shouldnt be importing from features
 import {
   getAllInfinitives,
   getNumberOfVerbsInPlay
-} from '../../../../../../features/conjugations/selectors';
+} from '../../../../conjugations/selectors';
 import {
   IRREGULAR_DIFFICULTIES,
   REFLEXIVE_DIFFICULTIES,

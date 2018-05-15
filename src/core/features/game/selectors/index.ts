@@ -12,7 +12,7 @@ import {
 import {
   getEnglishInfinitive,
   getConjugationInTenseForPerson
-} from '../../../../features/conjugations/selectors';
+} from '../../conjugations/selectors';
 import { getDifficultyMultiplier } from '../../../features/menu/selectors';
 import {
   calculateAccuracyScore,

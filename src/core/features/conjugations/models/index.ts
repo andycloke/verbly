@@ -1,6 +1,6 @@
-import { VerbEndingOptions } from '../../../core/features/menu/features/verbs/models/endings';
-import { Tenses } from '../../../core/constants/tenses';
-import { People } from '../../../core/constants/people';
+import { VerbEndingOptions } from '../../../features/menu/features/verbs/models/endings';
+import { Tenses } from '../../../constants/tenses';
+import { People } from '../../../constants/people';
 
 type SingleTenseConjugations = {
   [People.Yo]: Array<string>;

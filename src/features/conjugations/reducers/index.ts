@@ -1,33 +1,26 @@
 import { actionTypes } from '../actions';
-import { combineReducers } from 'redux';
-import {
-  initialState,
-  ConjugationsState,
-  Conjugation
-} from '../models/Conjugation';
-import fetch from './fetch';
+import { initialState, Fetch } from '../models';
 
-const conjugations = (
-  conjugationsState: ConjugationsState = initialState,
-  action: any
-) => {
+export default (fetch: Fetch = initialState, action: any) => {
   switch (action.type) {
-    case actionTypes.RECEIVE_CONJUGATIONS:
-      return action.payload.conjugations.reduce(
-        (cs: object, c: Conjugation) => {
-          return {
-            ...cs,
-            [c.verb]: c
-          };
-        },
-        {}
-      );
+    case actionTypes.START_FETCHING_CONJUGATIONS:
+      return {
+        ...fetch,
+        fetching: true
+      };
+    case actionTypes.SUCCESS_FETCHING_CONJUGATIONS:
+      return {
+        ...fetch,
+        fetching: false,
+        fetched: true
+      };
+    case actionTypes.ERROR_FETCHING_CONJUGATIONS:
+      return {
+        ...fetch,
+        fetching: false,
+        error: true
+      };
     default:
-      return conjugationsState;
+      return fetch;
   }
 };
-
-export default combineReducers({
-  fetch,
-  conjugations
-});

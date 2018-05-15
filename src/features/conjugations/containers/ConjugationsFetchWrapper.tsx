@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { getConjugationsFetched } from '../selectors';
-import { fetchConjugationsIfNotFetched } from '../../conjugations/actions/fetch';
+import { fetchConjugationsIfNotFetched } from '../actions';
 
 type StateProps = {
   fetched: boolean;
