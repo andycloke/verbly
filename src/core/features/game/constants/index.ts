@@ -15,15 +15,7 @@ export const ACCENTED_LETTER_MAP = {
   u: 'ú'
 };
 export const ACCENTED_LETTER_KEYS = [...Object.keys(ACCENTED_LETTER_MAP)];
-// TODO should be logic not in a constants folder!
-export const keysLetterCanBeAccentedLetter = (key: string): boolean =>
-  ACCENTED_LETTER_KEYS.includes(key) ||
-  ACCENTED_LETTER_KEYS.includes(key.toLowerCase());
 
-export enum KeyboardKeys {
-  Shift = 'Shift',
-  Enter = 'Enter'
-}
 export const DISPLAY_CORRECT_ICON_DURATION = 330;
 // for some reason need to delay calling of input functions e.g. focus
 // to get them to work. This delay time seems to work okay.
