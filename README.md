@@ -4,7 +4,7 @@
 
 An app for practising Spanish Verb Conjugations. A re-write of the original Verb Master that I wrote in 2017.
 
-![Demo gif](https://media.giphy.com/media/mMEw4B71Lhmg2bFbjZ/giphy.mp4)
+![Demo gif](https://media.giphy.com/media/mMEw4B71Lhmg2bFbjZ/giphy.gif)
 
 New to this Version:
 
